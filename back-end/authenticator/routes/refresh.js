@@ -4,7 +4,7 @@ const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken')
-const {getAuthtoken} = require('../controllers/user')
+const {validate} = require('../server/controllers/authtoken')
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -15,9 +15,9 @@ passport.use('refresh_token', new JWTstrategy(
     },
     function(token, done) {
         const old_token=jwt.sign(token, process.env.REFRESH_SECRET);
-        getAuthtoken(token.username, old_token)
-            .then((isValid) =>{
-                if(token && isValid){
+        validate(token.username, old_token)
+            .then((data) =>{
+                if(token && data.length != 0 ){
                     const username = token.username;
                     let new_token = jwt.sign({username}, process.env.SECRET, { expiresIn: 300 });
                     return done(null,{new_token});
