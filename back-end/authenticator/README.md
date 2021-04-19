@@ -15,7 +15,12 @@ git checkout PureExpress
  ```
  sequelize db:migrate
  ```
- 5. Run app with
+ 5. (Optional) Populate database with data from `server\dummy_data' directory:
+ ```
+ sequelize-cli db:seed:all                  //for all seeds
+ sequelize-cli db:seed --seed seed_name     //for specific seed
+ ```
+ 6. Run app with
  ```
  npm run dev
  ```
