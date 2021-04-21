@@ -2,13 +2,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Question_Keywords', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
       questionId: {
+        primaryKey: true,
         allowNull :false,
         type: Sequelize.INTEGER,
         references:{
@@ -24,18 +19,15 @@ module.exports = {
         type: Sequelize.DATE
       },
       keywordId: {
+        primaryKey: true,
         allowNull :false,
         type: Sequelize.INTEGER,
         references:{
           model: 'Keywords',
           key: 'id'
         }
-      },
-      sequence: {
-        autoIncrement: true,
-        type: Sequelize.SMALLINT
       }
-    });
+    })
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Question_Keywords');

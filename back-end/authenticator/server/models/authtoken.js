@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      AuthToken.belongsTo(models.User,{foreignKey:'usersId'});
+      AuthToken.belongsTo(models.User,{foreignKey:'userId'});
     }
   };
   AuthToken.init({

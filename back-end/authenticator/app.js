@@ -1,17 +1,20 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const loginauthRouter = require('./routes/loginauth')
 const authenticatorRouter = require('./routes/authenticator');
 const testRouter = require('./routes/test_cookie');
 const refreshRouter = require('./routes/refresh');
 const logoutRouter = require('./routes/logout');
+const updateRouter = require('./routes/updateUser');
 const passport = require('passport');
-var app = express();
+const app = express();
 const dotenv = require('dotenv');
-
+const cors = require('cors')
+const transaction = require('./middlewares/transaction')
+const db = require('./server/models/index')
 
 dotenv.config();
 // view engine setup
@@ -24,24 +27,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors())
+app.use(transaction({ sequelize: db.sequelize }))
 
-/*
-app.use((req, res, next) => {
-  // Get auth token from the cookies
-  const authToken = req.cookies['AuthToken'];
-  const db = dbService.getDBServiceInstance();
-  // Inject the user to the request
-  db.getUserbyCookie(authToken)
-      .then(data => {
-        req.user=data;
-        next()
-      })
-});*/
 
 app.use('/register', authenticatorRouter);
 app.use('/login', loginauthRouter);
 app.use('/safespace', testRouter);
 app.use('/refresh', refreshRouter);
+app.use('/update', updateRouter);
 app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler

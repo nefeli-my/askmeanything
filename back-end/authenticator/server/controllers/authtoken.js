@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 module.exports = {
     async create(req, res, next) {
         let username = req.user
-        let token = jwt.sign({username}, process.env.SECRET, {expiresIn: 60});
+        let accessToken = jwt.sign({username}, process.env.SECRET, {expiresIn: 60});
         let refreshToken = jwt.sign({username}, process.env.REFRESH_SECRET);
         return AuthToken.findAll({
             include: {
@@ -28,12 +28,12 @@ module.exports = {
                         .then(user => {
                         AuthToken.create({
                             tokenstr: refreshToken,
-                            usersId: user[0].id
+                            userId: user[0].id
                         })
                     })
-                        .then(data => res.send({token, refreshToken}))
+                        .then(data => res.send({accessToken, refreshToken}))
                 } else {
-                    res.send({token, refreshToken: data[0].tokenstr})
+                    res.send({accessToken, refreshToken: data[0].tokenstr})
                 }
             })
 
@@ -51,13 +51,31 @@ module.exports = {
         })
             .then(data => {
                 if(data  === 0 ) {
-                    res.send({message: "You weren't logged in!"})
+                    res.status(400).send({message: "You weren't logged in!"})
                 }
                 else{
-                    res.send({message:"Logout successful!"})
+                    res.status(200).send({message:"Logout successful!"})
                 }
             })
             .catch(err => next(err))
+    },
+    async update(new_username, old_username){
+        let refreshToken = jwt.sign({username: new_username}, process.env.REFRESH_SECRET);
+        return AuthToken.update(
+            {
+              tokenstr: refreshToken
+            },
+            {
+            where:{},
+            include:{
+                model: User,
+                where: {
+                    username: old_username
+                }
+            },
+                returning:true,
+                plain: true
+        })
     },
     async validate(username,token){
         return AuthToken.findAll({

@@ -31,7 +31,7 @@ passport.use('refresh_token', new JWTstrategy(
 router.get('/',  passport.authenticate('refresh_token',{session:false}),
     (req, res) => {
         res.send({
-            token:req.user.new_token
+            accessToken:req.user.new_token
         });
     });
 

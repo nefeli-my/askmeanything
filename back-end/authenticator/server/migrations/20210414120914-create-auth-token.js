@@ -20,14 +20,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      usersId:
+      userId:
           {
             type: Sequelize.INTEGER,
+            allowNull: false,
             unique: true,
             references: {
               model: 'Users',
-              key: 'id',
-              as: 'usersId',
+              key: 'id'
             }
 
           }
