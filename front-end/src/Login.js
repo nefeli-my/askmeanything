@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import login from './assets/login1.png'
+import { Link } from "react-router-dom"
+import { Form, Button } from "react-bootstrap";
+import login from './assets/login.png'
+import './css/Login.css';
 
 const Login = () => {
   const [username, setUsename] = useState("");
@@ -13,8 +14,8 @@ const Login = () => {
     event.preventDefault();
   }
   return (
-    <div className="Login">
-      <nav className="login">
+    <div className="login">
+      <nav>
         <h1><b>ask</b>me<b>anything</b></h1>
       </nav>
       <div className="login-form">
@@ -42,9 +43,11 @@ const Login = () => {
             Sign In
           </Button>
           <hr/>
-          <Button block variant="outline-secondary">
-            Create a New Account
-          </Button>
+          <Link to ="/register">
+            <Button block variant="outline-secondary">
+              Create a New Account
+            </Button>
+          </Link>
         </Form>
       </div>
     </div>

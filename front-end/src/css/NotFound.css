@@ -1,0 +1,17 @@
+.not-found {
+  margin-top: 100px;
+  margin-left: 220px;
+  margin-right: 220px;
+  background-color: #baf19c;
+  padding: 30px;
+  border-radius: 15px;
+}
+.not-found Link {
+  margin-top: 20px;
+}
+.not-found img {
+  margin-top: 40px;
+  margin-left: 27%;
+  width: 500px;
+  height: 400px;
+}
