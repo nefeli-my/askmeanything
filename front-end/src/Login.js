@@ -3,15 +3,39 @@ import { Link } from "react-router-dom"
 import { Form, Button } from "react-bootstrap";
 import login from './assets/login.png'
 import './css/Login.css';
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsename] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
+
   function validateForm() {
     return username.length > 0 && password.length > 0;
   }
   function handleSubmit(event) {
     event.preventDefault();
+    const user = { username, password};
+
+    fetch('http://localhost:3000/login/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user)
+    }).then(res => {
+      if(res.status === 200 ){
+          res.json()
+            .then( token => {
+              localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token));
+              history.push('/home');
+            })
+      }
+      else{
+        //something to indicate user credentials are wrong
+        //for now, just print it in console
+        console.log("user invalid")
+      }
+    })
+        .catch(err => console.log(err))
   }
   return (
     <div className="login">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import login from './assets/login.png'
 import './css/Register.css';
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
   const [username, setUsename] = useState("");
@@ -9,14 +10,33 @@ const Register = () => {
   const [password_reset, setPassReset] = useState("");
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const history = useHistory();
 
   function validateForm() {
     return username.length > 0 && password.length > 0 &&
     first_name.length > 0 && last_name.length &&
-    (password == password_reset);
+    (password === password_reset) && email.length > 0;
   }
   function handleSubmit(event) {
     event.preventDefault();
+    const user = { username, password, firstName: first_name, lastName: last_name, email };
+
+    fetch('http://localhost:3000/register/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user)
+    }).then(res => {
+      if(res.status === 201 ){
+        history.push('/login');
+      }
+      else{
+        //something to indicate user already exists
+        //for now, just print it in console
+        console.log("user exists")
+      }
+    })
+        .catch(err => console.log(err))
   }
   return (
     <div className="register">
@@ -51,6 +71,15 @@ const Register = () => {
               type="text"
               value={username}
               onChange={(e) => setUsename(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group size="lg" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+                autoFocus
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
           <Form.Group size="lg" controlId="password">

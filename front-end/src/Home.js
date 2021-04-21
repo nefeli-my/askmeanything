@@ -17,8 +17,8 @@ const Home = () => {
          and bloom along with people <br/> from all over the world. 🌎
       </p>
       <hr/>
-      <div class="options-div">
-        <div class="row">
+      <div className="options-div">
+        <div className="row">
           <div className="col-sm" onClick={redirect("myprofile")}>
             <h4><b>My askmeanything</b></h4>
             <p> View the questions you've made and  <br/> the answers
