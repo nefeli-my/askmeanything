@@ -22,8 +22,8 @@ const Home = () => {
           <div className="col-sm" onClick={redirect("myprofile")}>
             <h4><b>My askmeanything</b></h4>
             <p> View the questions you've made and  <br/> the answers
-            you have given, as well <br/> as statistics and general information
-            about your account.
+            you have given, as well <br/> as <b>statistics</b> and <b>general information </b>
+            about your <b>account</b>.
             </p>
             <div className="col-sm-img1">
               <img src={myaccount} />
@@ -32,7 +32,7 @@ const Home = () => {
           <div className="col-sm" onClick={redirect("newquestion")}>
             <h4><b>Make a new question</b></h4>
             <p> Don't be shy to make your own question! Try to pose your questions
-            in a simple and clear way and don't forget to add the necessary keywords.
+            in a <b>simple</b> and <b>clear way</b> and don't forget to add the necessary <b>keywords</b>.
             </p>
             <div className="col-sm-img2">
               <img src={newquestion} />
@@ -40,9 +40,9 @@ const Home = () => {
           </div>
           <div className="col-sm" onClick={redirect("browse")}>
             <h4><b>Browse questions & answers</b></h4>
-            <p> Browse the existing questions and answers
-            and apply searching filters <br/> to find exactly what you're looking
-            for. <br/> Answer questions to add your piece <br/> to this knowledge puzzle!
+            <p> <b>Browse the existing questions</b> and <b>answers </b>
+            and <b>apply searching filters</b> <br/> to find exactly what you're looking
+            for. <b>Answer questions</b> to add your piece to this knowledge puzzle!
             </p>
             <div className="col-sm-img3">
               <img src={answer} />

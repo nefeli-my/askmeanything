@@ -68,7 +68,7 @@ const Login = () => {
           </Button>
           <hr/>
           <Link to ="/register">
-            <Button block variant="outline-secondary">
+            <Button className="b2" block variant="outline-secondary">
               Create a New Account
             </Button>
           </Link>

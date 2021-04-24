@@ -1,23 +1,23 @@
 .footer {
   position: fixed;
-  bottom: 0;
-  right: 255px;
+  bottom: 0%;
   width: 70%;
+  right: 15%;
   background-color: #d8e2dc;
   text-align: center;
 }
 .links {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 1%;
+  margin-bottom: 1%;
   font-size: 16px;
 }
 .names p {
   font-size: 15px;
 }
 .footer a {
-  margin-left: 16px;
+  margin-left: 1.5%;
   text-decoration: none;
-  padding: 6px;
+  padding: 0.6%;
   color: black;
 }
 .footer a:hover {

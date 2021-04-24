@@ -46,7 +46,7 @@ const Register = () => {
       <div className="register-form">
         <Form onSubmit={handleSubmit}>
           <h3><b> Sign Up </b></h3>
-          <Form.Group size="lg" controlId="first_name">
+          <Form.Group controlId="first_name">
             <Form.Label>First Name</Form.Label>
             <Form.Control
               autoFocus
@@ -55,7 +55,7 @@ const Register = () => {
               onChange={(e) => setFirstName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group size="lg" controlId="last_name">
+          <Form.Group controlId="last_name">
             <Form.Label>Last Name</Form.Label>
             <Form.Control
               autoFocus
@@ -64,7 +64,7 @@ const Register = () => {
               onChange={(e) => setLastName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group size="lg" controlId="username">
+          <Form.Group controlId="username">
             <Form.Label>Username</Form.Label>
             <Form.Control
               autoFocus
@@ -73,7 +73,7 @@ const Register = () => {
               onChange={(e) => setUsename(e.target.value)}
             />
           </Form.Group>
-          <Form.Group size="lg" controlId="email">
+          <Form.Group controlId="email">
             <Form.Label>Email</Form.Label>
             <Form.Control
                 autoFocus
@@ -82,7 +82,7 @@ const Register = () => {
                 onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-          <Form.Group size="lg" controlId="password">
+          <Form.Group controlId="password">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -90,7 +90,7 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-          <Form.Group size="lg" controlId="password_reset">
+          <Form.Group controlId="password_reset">
             <Form.Label>Reset Password</Form.Label>
             <Form.Control
               type="password"

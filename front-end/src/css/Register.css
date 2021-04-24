@@ -1,31 +1,25 @@
 .register-form {
   width: 20%;
   margin-left: 40%;
-  margin-top: 40px;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  border-radius: 15px;
+  margin-top: 1.5%;
+  box-shadow: 0px 10px 80px rgba(34, 35, 58, 0.2);
+  border-radius: 4%;
 }
 .register form {
   margin-left: auto;
   margin-right: auto;
-  max-width: 320px;
-  padding: 20px;
+  max-width: 85%;
+  padding: 3%;
 }
 .b1 {
-  margin-top: 20px;
+  margin-top: 5%;
 }
 .register h1 {
-  padding: 20px;
+  padding: 0.5%;
   width: 70%;
-  margin: 20px auto;
+  margin: 1% auto;
   border-bottom: 1px solid #ccc;
 }
 .register h3 {
-  margin-top: 10px;
-}
-.register img {
-  margin-top: 10px;
-  margin-left: 200px;
-  width: 90px;
-  height: 80px;
+  margin-top: 2%;
 }
