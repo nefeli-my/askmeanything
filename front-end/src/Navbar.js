@@ -11,7 +11,7 @@ const Navbar = () => {
         <a href="/newquestion" style={{
           color: 'black',
           backgroundColor: '#87bdd8',
-          borderRadius: '8px'
+          borderRadius: '15px'
         }}>New Question</a>
         <a href="/logout">Log out</a>
       </div>

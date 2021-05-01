@@ -6,8 +6,9 @@ import './css/Login.css';
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsename] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const history = useHistory();
 
   function validateForm() {
@@ -15,7 +16,7 @@ const Login = () => {
   }
   function handleSubmit(event) {
     event.preventDefault();
-    const user = { username, password};
+    const user = { username, password };
 
     fetch('http://localhost:3000/login/', {
       method: 'POST',
@@ -52,7 +53,7 @@ const Login = () => {
               autoFocus
               type="text"
               value={username}
-              onChange={(e) => setUsename(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </Form.Group>
           <Form.Group size="lg" controlId="password">

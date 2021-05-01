@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom"
 import './css/NotFound.css';
 import error404 from './assets/error2.png'

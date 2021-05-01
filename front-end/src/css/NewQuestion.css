@@ -1,0 +1,24 @@
+.new-question {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #d8e2dc;
+  padding: 2%;
+  border-radius: 4%;
+}
+.new-question p {
+  margin-top: 2%;
+  font-size: 18px;
+}
+#text-box {
+  width: 100%;
+}
+#keyword-box {
+  width: 30%;
+  margin-left: 1%;
+  margin-right: 3%;
+}
+#btn-nq {
+  margin-left: 45%;
+  margin-top: 3%;
+}

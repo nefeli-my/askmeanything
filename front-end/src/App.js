@@ -4,6 +4,7 @@ import Login from './Login.js';
 import Home from './Home.js';
 import NotFound from './NotFound.js';
 import Register from './Register.js';
+import NewQuestion from './NewQuestion.js';
 import { BrowserRouter as Router,  Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
             <Navbar/>
             <Home/>
             <Footer/>
+          </Route>
+          <Route extact path="/newquestion">
+            <Navbar/>
+            <NewQuestion/>
           </Route>
           <Route path="*">
             <NotFound/>
