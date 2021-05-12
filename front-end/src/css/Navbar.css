@@ -1,12 +1,17 @@
 .navbar {
   padding: 2%;
-  display: flex;
   width: 70%;
   margin: 1.5% auto;
   border-bottom: 1px solid #ccc;
 }
-.navbar .links {
-  width: 55%;
+.navbar h1 {
+  font-size: 35px;
+}
+.navbar .logged-links {
+  width: 60%;
+}
+.navbar .notlogged-links {
+  width: 20%;
 }
 .navbar a {
   text-decoration: none;

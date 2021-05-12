@@ -6,6 +6,9 @@
   padding: 2%;
   border-radius: 4%;
 }
+.new-question h3 {
+  font-size: 22px;
+}
 .new-question p {
   margin-top: 2%;
   font-size: 18px;

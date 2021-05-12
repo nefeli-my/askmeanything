@@ -4,7 +4,6 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="links">
-        <a href="/">about this project </a>
         <a href="https://github.com/IlianaXn/SaaS-25">
           link on github
         </a>
@@ -12,8 +11,8 @@ const Footer = () => {
           course materials
         </a>
       </div>
-      <div className = "names">
-        <p> made with ❤️ by Iliana & Nefeli. </p>
+      <div className = "our-names">
+        <p> made by Iliana & Nefeli. 👩‍💻 </p>
       </div>
     </div>
   );

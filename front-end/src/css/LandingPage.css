@@ -1,26 +1,33 @@
-.home {
+.landing-main {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 2%;
   width: 70%;
-  background-color: #ffee99;
-  padding: 1.5%;
+  background-color: #c0d6df;
+  padding: 1%;
   border-radius: 1.5%;
 }
-.home h2 {
-  margin-top: 1.5%;
-  margin-left: 3.5%;
-  font-size: 22px;
+.landing-page nav {
+  padding: 1%;
+  width: 70%;
+  margin: 1.5% auto;
+  border-bottom: 1px solid #ccc;
 }
-.home h4 {
+.landing-main h2 {
+  margin-top: 1.5%;
+  margin-left: 3.5%
+}
+.landing-main h4 {
   font-size: 20px;
   text-align: center;
+  margin-top: 1%;
 }
 .p-lg {
-  font-size: 10px;
+  font-size: 20px;
   margin-top: 2.5%;
   margin-left: 3.5%;
 }
-.home hr {
+.landing-main hr {
   background-color: #ccc;
   width: 45%;
   margin-top: 1.5%;
@@ -32,26 +39,26 @@
   margin-left: auto;
   margin-right: auto;
 }
-.home .col-sm {
-  margin-left: 3%;
-  margin-right: 3%;
+.landing-main .col-sm {
+  margin-left: 4%;
+  margin-right: 4%;
   padding: 0.5%;
   background-color: white;
   border-radius: 1.5%;
 }
-.home .col-sm:hover {
+.landing-main .col-sm:hover {
   transform: scale(1.1);
 }
-.home .col-sm p {
+.landing-main .col-sm p {
   margin-left: 0.75%;
   margin-right: 0.75%;
-  margin-top: 5%;
+  margin-top: 2%;
   font-size: 16px;
   text-align: center;
 }
-.home .col-sm img {
+.landing-main .col-sm img {
   margin-left: 32%;
-  margin-top: 2%;
+  margin-top: 3%;
   width: 35%;
   height: 10%;
 }

@@ -1,10 +1,12 @@
-import Navbar from './Navbar.js';
 import Footer from './Footer.js';
-import Login from './Login.js';
 import Home from './Home.js';
+import LandingPage from './LandingPage.js';
+import Login from './Login.js';
+import Navbar from './Navbar.js';
 import NotFound from './NotFound.js';
-import Register from './Register.js';
 import NewQuestion from './NewQuestion.js';
+import PrivateRoute from './PrivateRoute'
+import Register from './Register.js';
 import { BrowserRouter as Router,  Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -12,23 +14,22 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route extact path="/login">
+          <Route exact path="/">
+            <Navbar/>
+            <LandingPage/>
+            <Footer/>
+          </Route>
+          <Route path="/login">
+            <Navbar/>
             <Login/>
             <Footer/>
           </Route>
-          <Route extact path="/register">
+          <Route path="/register">
+            <Navbar/>
             <Register/>
-            <Footer/>
           </Route>
-          <Route extact path="/home">
-            <Navbar/>
-            <Home/>
-            <Footer/>
-          </Route>
-          <Route extact path="/newquestion">
-            <Navbar/>
-            <NewQuestion/>
-          </Route>
+          <PrivateRoute path="/home" component={Home}/>
+          <PrivateRoute path="/newquestion" component={NewQuestion}/>
           <Route path="*">
             <NotFound/>
           </Route>
