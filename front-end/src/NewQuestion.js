@@ -1,20 +1,21 @@
 import './css/NewQuestion.css';
 import { Form, Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import Navbar from './Navbar.js';
 
 const NewQuestion = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const keywords = [];
+  const [keyword, setKeyword] = useState("");
+  const [keywords, setKeywords] = useState([]);
 
-  const listkeywords = keywords.map((keyword) =>
-  <li key={keyword.id}>
-    {keyword}
-  </li>
-);
-  //const history = useHistory();
+  function updateKeywords() {
+    if (!keywords.includes(keyword)) {
+      keywords.push(keyword);
+    }
+    setKeyword("");
+  }
 
   return (
     <div>
@@ -48,20 +49,33 @@ const NewQuestion = () => {
             onChange={(e) => setBody(e.target.value)}
           />
           </Form.Group>
+          <ul>
+              {keywords.map(keyword => (
+              <li className="keyword" key={keyword}>{keyword}</li>
+              ))}
+          </ul>
           <div className="input-group">
             <label id="label-kw"> Keyword: </label>
             <input
-            id= "keyword-box"
             placeholder="  Enter keyword"
+            id= "keyword-box"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
             />
-            <button className="btn btn-outline-dark btn-sm">
-              Add keyword
+            <button
+              className="btn btn-outline-dark btn-sm"
+              onClick={updateKeywords}
+            >
+              add keyword
+            </button>
+            <button
+              className="btn btn-outline-dark btn-sm"
+              onClick={() => {setKeyword(""); setKeywords([])}}
+            >
+              clear keywords
             </button>
           </div>
-          <Button id="btn-nq" variant="dark"
-                  type="submit">
-            Submit
-          </Button>
+          <Button id="btn-nq" variant="dark" type="submit"> Submit </Button>
         </Form>
       </div>
     </div>

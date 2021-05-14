@@ -14,10 +14,10 @@ const Home = () => {
       <Navbar/>
       <div className="home">
         <h2> Welcome to <b>ask</b>me<b>anything</b> {username}! </h2>
-        <p className="p-lg">
+        <div className="p-lg">
            A place to ask and answer questions freely.  Discuss, learn
            and bloom along with people <br/> from all over the world. 🌎
-        </p>
+        </div>
         <hr/>
         <div className="options-div">
           <div className="row">
@@ -28,7 +28,7 @@ const Home = () => {
               about your <b>account</b>.
               </p>
               <div>
-                <img src={myaccount} />
+                <img src={myaccount}  alt="my account"/>
               </div>
             </div>
             <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/newquestion')}}>
@@ -37,7 +37,7 @@ const Home = () => {
               in a <b>simple</b> and<br/> <b>clear way</b> and don't forget to <br/>add the necessary <b>keywords</b>.
               </p>
               <div>
-                <img src={newquestion} />
+                <img src={newquestion} alt="new question"/>
               </div>
             </div>
             <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/browse')}}>
@@ -47,7 +47,7 @@ const Home = () => {
               your piece to this <br/> knowledge puzzle!
               </p>
               <div>
-                <img src={answer} />
+                <img src={answer} alt="puzzle piece"/>
               </div>
             </div>
           </div>

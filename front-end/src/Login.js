@@ -39,7 +39,7 @@ const Login = () => {
     <div className="login">
       <div className="login-form">
         <Form onSubmit={handleSubmit}>
-          <img src={login} />
+          <img src={login} alt="talk bubble"/>
           <h3><b> Sign In </b></h3>
           <Form.Group size="lg" controlId="username">
             <Form.Label>Username</Form.Label>

@@ -20,7 +20,8 @@ const Navbar = () => {
       }
       { !isLoggedIn &&
       <div className="notlogged-links">
-        <a href="/login">Login</a>or
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
         <a href="/register">Create an Account</a>
       </div>
       }

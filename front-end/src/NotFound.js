@@ -15,7 +15,7 @@ return (
     <div className="homepage-link">
       <Link to = {path}> Back to your homepage </Link>
     </div>
-    <img src={error404} />
+    <img src={error404} alt="not found"/>
   </div>
 );
 }

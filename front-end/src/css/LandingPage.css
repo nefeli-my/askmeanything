@@ -14,6 +14,7 @@
   border-bottom: 1px solid #ccc;
 }
 .landing-main h2 {
+  font-size: 25px;
   margin-top: 1.5%;
   margin-left: 3.5%
 }
@@ -23,7 +24,7 @@
   margin-top: 1%;
 }
 .p-lg {
-  font-size: 20px;
+  font-size: 18px;
   margin-top: 2.5%;
   margin-left: 3.5%;
 }
@@ -42,6 +43,7 @@
 .landing-main .col-sm {
   margin-left: 4%;
   margin-right: 4%;
+  margin-bottom: 2%;
   padding: 0.5%;
   background-color: white;
   border-radius: 1.5%;

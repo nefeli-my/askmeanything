@@ -7,16 +7,16 @@
   border-radius: 1.5%;
 }
 .home h2 {
+  font-size: 25px;
   margin-top: 1.5%;
   margin-left: 3.5%;
-  font-size: 22px;
 }
 .home h4 {
   font-size: 20px;
   text-align: center;
 }
 .p-lg {
-  font-size: 10px;
+  font-size: 18px;
   margin-top: 2.5%;
   margin-left: 3.5%;
 }

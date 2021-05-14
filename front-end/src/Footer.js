@@ -12,7 +12,7 @@ const Footer = () => {
         </a>
       </div>
       <div className = "our-names">
-        <p> made by Iliana & Nefeli. 👩‍💻 </p>
+        <p> provided by Iliana Xigkou & Nefeli Myropoulou. 👩‍💻 </p>
       </div>
     </div>
   );

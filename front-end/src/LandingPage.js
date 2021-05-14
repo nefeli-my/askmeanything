@@ -20,31 +20,30 @@ const LandingPage = () => {
             <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/login')}}>
               <h4><b>Login or sign up</b></h4>
               <p> <b>Create an account</b> (or <b>login</b>),<br/>
-              to gain access to useful features<br/> as <b>asking </b>
-              and <b>answering questions!</b>
+              to gain access to useful <br/> features as <b>asking </b>
+              and <b> <br/> answering  questions!</b>
               </p>
               <div>
-                <img src={unlock} />
+                <img src={unlock} alt="unlock"/>
               </div>
             </div>
             <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/stats')}}>
               <h4><b>General statistics</b></h4>
               <p> Do you want to know about what the world is curious about? <br/>
               View askmeanything's <b> general <br/> statistics </b>
-              and get to know <br/> all about the talk of the town.
+              and learn all about <br/> the talk of the town.
               </p>
               <div>
-                <img src={stats} />
+                <img src={stats} alt="stats"/>
               </div>
             </div>
             <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/browse')}}>
               <h4><b>Browse questions & answers</b></h4>
-              <p> <b>Browse the existing questions</b> <br/>and <b>answers </b>
-              and <b>apply searching <br/>filters</b> to find exactly what you're <br/>
-              looking for.
+              <p> <b>Browse the existing questions</b> <br/>and <b>answers. </b>
+              Apply <b> searching  <br/> filters</b> to find exactly what <br/> you're looking for!
               </p>
               <div>
-                <img src={newquestion} />
+                <img src={newquestion} alt="new question"/>
               </div>
             </div>
           </div>
