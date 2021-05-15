@@ -27,6 +27,7 @@ function App() {
           <Route path="/register">
             <Navbar/>
             <Register/>
+            <Footer/>
           </Route>
           <PrivateRoute path="/home" component={Home}/>
           <PrivateRoute path="/newquestion" component={NewQuestion}/>

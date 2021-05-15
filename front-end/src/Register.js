@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Col } from "react-bootstrap";
 import './css/Register.css';
 import { useHistory } from "react-router-dom";
 
@@ -19,10 +19,6 @@ const Register = () => {
       setError("Password confirmation failed.");
       return;
     }
-    //else if (password.length <= 5 || !(/\d/.test(password))) {
-    // ....
-    //  return;
-    //}
     const user = { username, password, firstName: first_name, lastName: last_name, email };
     fetch('http://localhost:3000/register/', {
       method: 'POST',
@@ -42,71 +38,75 @@ const Register = () => {
   return (
     <div className="register">
       <div className="register-form">
-        <Form onSubmit={handleSubmit}>
-          <h3><b> Sign Up </b></h3>
-          <Form.Group controlId="first_name">
+      <Form  onSubmit={handleSubmit}>
+        <h3><b> Sign Up </b></h3>
+        <Form.Row>
+          <Form.Group as={Col}>
             <Form.Label>First Name</Form.Label>
             <Form.Control
-              autoFocus
-              required
-              type="text"
-              value={first_name}
-              onChange={(e) => setFirstName(e.target.value)}
+            required
+            placeholder="Enter first name"
+            value={first_name}
+            onChange={(e) => setFirstName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="last_name">
+
+          <Form.Group as={Col}>
             <Form.Label>Last Name</Form.Label>
             <Form.Control
-              autoFocus
-              required
-              type="text"
-              value={last_name}
-              onChange={(e) => setLastName(e.target.value)}
-            />
+            required
+            placeholder="Enter last name"
+            value={last_name}
+            onChange={(e) => setLastName(e.target.value)}
+          />
           </Form.Group>
-          <Form.Group controlId="username">
+        </Form.Row>
+
+        <Form.Row>
+          <Form.Group as={Col}>
             <Form.Label>Username</Form.Label>
             <Form.Control
-              autoFocus
-              required
-              type="text"
-              value={username}
-              onChange={(e) => setUsename(e.target.value)}
+            required
+            placeholder="Enter username"
+            value={username}
+            onChange={(e) => setUsename(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="email">
-            <Form.Label>Email</Form.Label>
+
+          <Form.Group as={Col}>
+            <Form.Label>Email Address</Form.Label>
             <Form.Control
-                autoFocus
-                required
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+            type="email" required
+            placeholder="example: user@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="password_reset">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              required
-              value={password_reset}
-              onChange={(e) => setPassReset(e.target.value)}
-            />
-          </Form.Group>
-          <Button className="b1" block variant="outline-primary" type="submit">
-            Create Account
-          </Button>
-          <a href="/login" className="back-login"> back to login </a>
-        </Form>
+        </Form.Row>
+        <Form.Group as={Col}>
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+          type="password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group as={Col}>
+          <Form.Label>Confirm password</Form.Label>
+          <Form.Control
+          type="password"
+          required
+          value={password_reset}
+          onChange={(e) => setPassReset(e.target.value)}
+          />
+        </Form.Group>
+
+        <Button variant="outline-primary" className="b1" type="submit">
+          Sign Up
+        </Button>
+      </Form>
       </div>
       {error && <p className="error"> {error} </p>}
     </div>

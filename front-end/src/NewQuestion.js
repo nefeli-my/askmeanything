@@ -72,7 +72,7 @@ const NewQuestion = () => {
               className="btn btn-outline-dark btn-sm"
               onClick={() => {setKeyword(""); setKeywords([])}}
             >
-              clear keywords
+              clear all keywords
             </button>
           </div>
           <Button id="btn-nq" variant="dark" type="submit"> Submit </Button>
