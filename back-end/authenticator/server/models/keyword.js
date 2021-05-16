@@ -17,7 +17,30 @@ module.exports = (sequelize, DataTypes) => {
     word: {
       type:DataTypes.STRING,
       allowNull:false,
-      unique:true
+      unique:true,
+      validate: {
+        isAlphanumeric: true,
+        notContains: ' '
+      }
+    },
+    createdAt:{
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true
+      }
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true,
+        isAfter(value) {
+          if (Date.parse(value) < Date.parse(this.createdAt)) {
+            throw new Error('UpdatedAt should not be earlier than CreatedAt');
+          }
+        }
+      }
     }
   }, {
     sequelize,

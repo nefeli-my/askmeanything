@@ -48,14 +48,22 @@ app.use(function (err, req, res, next ){
   if( status >= 500 || req.app.get('env') === 'development'){
     console.error(err.stack);
   }
-  next(err)
+  if (err.name === 'SequelizeValidationError') {
+    return res.status(400).json({
+      success: false,
+      msg: err.errors.map(e => e.message)
+    })
+  }
+  else {
+    next(err)
+  }
 })
 
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   const status = err.status || 500;
-  res.status = status;
+  res.status(status);
   const message = status >= 500 ? "Something's wrong": err.message;
   const expose = status >= 500 && req.app.get('env') === 'development';
   res.end(expose ? message + '\n\n' + err.stack : message);

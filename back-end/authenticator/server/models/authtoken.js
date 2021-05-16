@@ -10,13 +10,32 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      AuthToken.belongsTo(models.User,{foreignKey:'userId'});
+      AuthToken.belongsTo(models.User,{foreignKey: {name: 'userId', allowNull: false}});
     }
   };
   AuthToken.init({
     tokenstr: {
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
+    },
+    createdAt:{
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true
+      }
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true,
+        isAfter(value) {
+          if (Date.parse(value) < Date.parse(this.createdAt)) {
+            throw new Error('UpdatedAt should not be earlier than CreatedAt');
+          }
+        }
+      }
     }
   }, {
     sequelize,

@@ -10,14 +10,36 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Answer.belongsTo(models.Question, {foreignKey:'questionId'})
-      Answer.belongsTo(models.User,{foreignKey:'userId'})
+      Answer.belongsTo(models.Question, {foreignKey:{ name: 'questionId', allowNull :false}})
+      Answer.belongsTo(models.User,{foreignKey:{name:'userId', allowNull: false}})
     }
   };
   Answer.init({
     body: {
       type:DataTypes.TEXT,
-      allowNull:false
+      allowNull:false,
+      validate: {
+        isAlphanumeric: true
+      }
+    },
+    createdAt:{
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true
+      }
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      validate: {
+        isDate: true,
+        isAfter(value) {
+          if (Date.parse(value) < Date.parse(this.createdAt)) {
+            throw new Error('UpdatedAt should not be earlier than CreatedAt');
+          }
+        }
+      }
     }
   }, {
     sequelize,
