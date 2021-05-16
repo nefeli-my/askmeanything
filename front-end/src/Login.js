@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import { Form, Button } from "react-bootstrap";
-import login from './assets/login.png'
 import './css/Login.css';
+import login from './assets/login.png'
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
@@ -11,9 +11,6 @@ const Login = () => {
   const [error, setError] = useState("");
   const history = useHistory();
 
-  function validateForm() {
-    return username.length > 0 && password.length > 0;
-  }
   function handleSubmit(event) {
     event.preventDefault();
     const user = { username, password };
@@ -27,31 +24,29 @@ const Login = () => {
           res.json()
             .then( token => {
               localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token));
+              localStorage.setItem('username', user.username)
               history.push('/home');
             })
       }
       else{
-        //something to indicate user credentials are wrong
-        //for now, just print it in console
-        console.log("user invalid")
+        setError("The username or password you've inserted is incorrect. Please try again.");
+        console.log("user invalid");
       }
     })
         .catch(err => console.log(err))
   }
   return (
     <div className="login">
-      <nav>
-        <h1><b>ask</b>me<b>anything</b></h1>
-      </nav>
       <div className="login-form">
         <Form onSubmit={handleSubmit}>
-          <img src={login} />
+          <img src={login} alt="talk bubble"/>
           <h3><b> Sign In </b></h3>
           <Form.Group size="lg" controlId="username">
             <Form.Label>Username</Form.Label>
             <Form.Control
               autoFocus
               type="text"
+              required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -60,11 +55,12 @@ const Login = () => {
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
+              required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-          <Button className="b1" block variant="outline-primary" type="submit" disabled={!validateForm()}>
+          <Button className="b1" block variant="outline-primary" type="submit">
             Sign In
           </Button>
           <hr/>
@@ -75,6 +71,7 @@ const Login = () => {
           </Link>
         </Form>
       </div>
+      {error && <p className="error"> {error} </p>}
     </div>
   );
 }
