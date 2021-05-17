@@ -3,12 +3,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const loginauthRouter = require('./routes/loginauth')
-const authenticatorRouter = require('./routes/authenticator');
-const testRouter = require('./routes/test_cookie');
-const refreshRouter = require('./routes/refresh');
-const logoutRouter = require('./routes/logout');
-const updateRouter = require('./routes/updateUser');
+const getQuestionRouter = require('./routes/getQuestions')
+const getAnswerRouter = require('./routes/getAnswers')
+const answerRouter = require('./routes/answerQuestion')
+const questionRouter = require('./routes/createQuestion');
 const passport = require('passport');
 const app = express();
 const dotenv = require('dotenv');
@@ -31,12 +29,11 @@ app.use(cors())
 app.use(transaction({ sequelize: db.sequelize }))
 
 
-app.use('/register', authenticatorRouter);
-app.use('/login', loginauthRouter);
-app.use('/safespace', testRouter);
-app.use('/refresh', refreshRouter);
-app.use('/update', updateRouter);
-app.use('/logout', logoutRouter);
+app.use('/createquestion',questionRouter);
+app.use('/createanswer', answerRouter);
+app.use('/getanswers', getAnswerRouter);
+app.use('/getquestions', getQuestionRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
