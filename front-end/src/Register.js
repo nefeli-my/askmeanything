@@ -39,7 +39,7 @@ const Register = () => {
     <div className="register">
       <div className="register-form">
       <Form  onSubmit={handleSubmit}>
-        <h3><b> Sign Up </b></h3>
+        <h3><b> Sign Up. It's free! </b></h3>
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>First Name</Form.Label>
