@@ -1,6 +1,7 @@
 const models = require('../models');
 const User = models.User;
 const Question = models.Question;
+const Keyword = models.Keyword;
 
 module.exports = {
     async create(req, res, next) {
@@ -18,7 +19,7 @@ module.exports = {
         await Question.create(
                 question,
                 {
-                    include: models.Keyword,
+                    include: Keyword,
                     returning: true,
                     plain: true
                 }
@@ -38,85 +39,86 @@ module.exports = {
       let end_date = req.params.end_date !== null;
 
       if (author && !keyword && !start_date) {
-        await Question.findAll({
-                where: {
-                  author: req.params.author
-                }
-             })
-            .then(data => res.status(200).send(data))
-            .catch(err => next(err))
+        var query = {
+          where: {
+            author: req.params.author
+          }
+        }
       }
       if (author && keyword && !start_date) {
-        await Question.findAll({
-                where: {
-                  author: req.params.author,
-                  // keyword
-                }
-             })
-            .then(data => res.status(200).send(data))
-            .catch(err => next(err))
+        var query = {
+          where: {
+            author: req.params.author,
+            include: [{
+              model: Keyword,
+              where: { word: req.params.keyword  }
+            }]
+          }
+        }
       }
       if (author && keyword && start_date) {
-        await Question.findAll({
-                where: {
-                  author: req.params.author,
-                  // keyword ,
-                  createdAt: {
-                    // params may need some modification
-                    // to fit the Date() type
-                    [Op.lte]: req.params.end_date,
-                    [Op.gte]: req.params.start_date
-                  }
-                }
-             })
-            .then(data => res.status(200).send(data))
-            .catch(err => next(err))
+        var query = {
+          where: {
+            author: req.params.author,
+            include: [{
+              model: Keyword,
+              where: { word: req.params.keyword  }
+            }],
+            createdAt: {
+              // params may need some modification
+              // to fit the Date() type
+              [Op.lte]: req.params.end_date,
+              [Op.gte]: req.params.start_date
+            }
+          }
+        }
       }
       if (keyword && !start_date && !author) {
-        await Question.findAll({
-                where: {
-                  // keyword
-                }
-             })
-            .then(data => res.status(200).send(data))
-            .catch(err => next(err))
+        var query = {
+          where: {
+            include: [{
+              model: Keyword,
+              where: { word: req.params.keyword  }
+            }]
+          }
+        }
       }
       if (keyword && start_date && !author) {
-        await Question.findAll({
-                where: {
-                  // keyword ,
-                  createdAt: {
-                    [Op.lte]: req.params.end_date
-                    [Op.gte]: req.params.start_date
-                  }
-                }
-             })
-            .then(data => res.status(200).send(data))
-            .catch(err => next(err))
+        var query = {
+          where: {
+            include: [{
+              model: Keyword,
+              where: { word: req.params.keyword  }
+            }],
+            createdAt: {
+              [Op.lte]: req.params.end_date
+              [Op.gte]: req.params.start_date
+            }
+          }
+        }
       }
       if (start_date && !author && !keyword) {
-        await Question.findAll({
-                where: {
-                  createdAt: {
-                    [Op.lte]: req.params.end_date,
-                    [Op.gte]: req.params.start_date
-                  }
-                }
-             })
-            .then(data => res.status(200).send(data))
-            .catch(err => next(err))
+        var query = {
+          where: {
+            createdAt: {
+              [Op.lte]: req.params.end_date
+              [Op.gte]: req.params.start_date
+            }
+          }
+        }
       }
       if (start_date && author && !keyword) {
-        await Question.findAll({
-                where: {
-                  author: req.params.author,
-                  createdAt: {
-                    [Op.lte]: req.params.end_date,
-                    [Op.gte]: req.params.start_date
-                  }
-                }
-             })
-            .then(data => res.status(200).send(data))
-            .catch(err => next(err))
+        var query = {
+          where: {
+            author: req.params.author,
+            createdAt: {
+              [Op.lte]: req.params.end_date
+              [Op.gte]: req.params.start_date
+            }
+          }
+        }
       }
-}
+      await Question.findAll(query)
+          .then(data => res.status(200).send(data))
+          .catch(err => next(err))
+    }
