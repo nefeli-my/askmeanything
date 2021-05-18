@@ -14,13 +14,13 @@ passport.use('refresh_token', new JWTstrategy(
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
     },
     function(token, done) {
+        console.log(token)
         const old_token=jwt.sign(token, process.env.REFRESH_SECRET);
         validate(token.username, old_token)
             .then((data) =>{
                 if(token && data.length != 0 ){
                     const username = token.username;
-                    let new_token = jwt.sign({username}, process.env.SECRET, { expiresIn: 300 });
-                    return done(null,{new_token});
+                    return done(null,username);
                 }
                 return done(null, false)
             })
@@ -30,8 +30,9 @@ passport.use('refresh_token', new JWTstrategy(
 
 router.get('/',  passport.authenticate('refresh_token',{session:false}),
     (req, res) => {
+        let new_token = jwt.sign({username: req.username}, process.env.SECRET, { expiresIn: 300 });
         res.send({
-            accessToken:req.user.new_token
+            accessToken: new_token
         });
     });
 

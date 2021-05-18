@@ -25,13 +25,14 @@ module.exports = {
                             username: username
                         }
                     })
-                        .then(user => {
-                        AuthToken.create({
+                        .then(async user => {
+                        await AuthToken.create({
                             tokenstr: refreshToken,
                             userId: user[0].id
                         })
                     })
                         .then(data => res.send({accessToken, refreshToken}))
+                        .catch(err => next(err))
                 } else {
                     res.send({accessToken, refreshToken: data[0].tokenstr})
                 }
@@ -58,24 +59,6 @@ module.exports = {
                 }
             })
             .catch(err => next(err))
-    },
-    async update(new_username, old_username){
-        let refreshToken = jwt.sign({username: new_username}, process.env.REFRESH_SECRET);
-        return AuthToken.update(
-            {
-              tokenstr: refreshToken
-            },
-            {
-            where:{},
-            include:{
-                model: User,
-                where: {
-                    username: old_username
-                }
-            },
-                returning:true,
-                plain: true
-        })
     },
     async validate(username,token){
         return AuthToken.findAll({

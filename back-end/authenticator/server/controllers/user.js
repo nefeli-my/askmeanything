@@ -34,7 +34,7 @@ module.exports = {
                         password: getHashedPassword(password),
                         email: email
                     })
-                        .then(user => res.status(201).send({username:user.username,createdOn:user.updatedAt}))
+                        .then(user => res.status(201).send({username:user.username,createdOn:user.updatedAt.toString()}))
                         .catch(error => next(error))
                 }
                 else{
@@ -62,23 +62,29 @@ module.exports = {
           .catch(err=>console.log(err))
     },
     async update(req, res,next) {
-        try{
-            const data = await User.update(
+        try {
+            if (req.body.username || req.body.email) {
+                res.status(400).send({message: 'Username and email can not be changed!'})
+            } else {
+                if (req.password)
+                    req.password = getHashedPassword(req.password)
+                const data = await User.update(
                     req.body,
                     {
                         where: {
-                            username : req.user
+                            username: req.user
                         },
-                        returning:true,
+                        returning: true,
                         plain: true
                     }
                 );
-            let {username, firstName, lastName, email, updatedAt} = data[1];
-            let accessToken = jwt.sign({username}, process.env.SECRET, {expiresIn: 60});
-            let user = {username, firstName, lastName, email, updatedAt, accessToken};
-            let dataToken = await updateToken(username, req.user);
-            user.refreshToken  = dataToken[1].tokenstr;
-            res.status(200).send(user)
+                if(data[0] === 0 ) res.status(200).send({message: 'Nothing was updated'})
+                else {
+                    let {username, firstName, lastName, email, updatedAt} = data[1];
+                    let user = {username, firstName, lastName, email, updatedAt: updatedAt.toString()};
+                    res.status(200).send(user)
+                }
+            }
         }
         catch(err){
             next(err)
