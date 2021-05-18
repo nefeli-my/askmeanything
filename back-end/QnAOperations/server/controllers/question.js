@@ -38,10 +38,59 @@ module.exports = {
       let start_date = req.params.start_date !== null;
       let end_date = req.params.end_date !== null;
 
+      if (!author && !keyword && start_date) {
+        var query = {
+          where: {
+            createdAt: {
+              // params may need some modification
+              // to fit the Date() type
+              [Op.lte]: req.params.end_date,
+              [Op.gte]: req.params.start_date
+            }
+          }
+        }
+      }
+      if (!author && keyword && !start_date) {
+        var query = {
+          where: {
+            include: [{
+              model: Keyword,
+              where: { word: req.params.keyword  }
+            }]
+          }
+        }
+      }
+      if (!author && keyword && start_date) {
+        var query = {
+          where: {
+            include: [{
+              model: Keyword,
+              where: { word: req.params.keyword  }
+            }],
+            createdAt: {
+              // params may need some modification
+              // to fit the Date() type
+              [Op.lte]: req.params.end_date,
+              [Op.gte]: req.params.start_date
+            }
+          }
+        }
+      }
       if (author && !keyword && !start_date) {
         var query = {
           where: {
             author: req.params.author
+          }
+        }
+      }
+      if (author && !keyword && start_date) {
+        var query = {
+          where: {
+            author: req.params.author,
+            createdAt: {
+              [Op.lte]: req.params.end_date
+              [Op.gte]: req.params.start_date
+            }
           }
         }
       }
@@ -60,61 +109,14 @@ module.exports = {
         var query = {
           where: {
             author: req.params.author,
-            include: [{
-              model: Keyword,
-              where: { word: req.params.keyword  }
-            }],
-            createdAt: {
-              // params may need some modification
-              // to fit the Date() type
-              [Op.lte]: req.params.end_date,
-              [Op.gte]: req.params.start_date
-            }
-          }
-        }
-      }
-      if (keyword && !start_date && !author) {
-        var query = {
-          where: {
-            include: [{
-              model: Keyword,
-              where: { word: req.params.keyword  }
-            }]
-          }
-        }
-      }
-      if (keyword && start_date && !author) {
-        var query = {
-          where: {
-            include: [{
-              model: Keyword,
-              where: { word: req.params.keyword  }
-            }],
             createdAt: {
               [Op.lte]: req.params.end_date
               [Op.gte]: req.params.start_date
-            }
-          }
-        }
-      }
-      if (start_date && !author && !keyword) {
-        var query = {
-          where: {
-            createdAt: {
-              [Op.lte]: req.params.end_date
-              [Op.gte]: req.params.start_date
-            }
-          }
-        }
-      }
-      if (start_date && author && !keyword) {
-        var query = {
-          where: {
-            author: req.params.author,
-            createdAt: {
-              [Op.lte]: req.params.end_date
-              [Op.gte]: req.params.start_date
-            }
+            },
+            include: [{
+              model: Keyword,
+              where: { word: req.params.keyword  }
+            }]    
           }
         }
       }
