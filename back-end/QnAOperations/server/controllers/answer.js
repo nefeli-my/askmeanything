@@ -28,7 +28,7 @@ module.exports = {
             const questionId = req.params.questionId;
             const question = await Question.findByPk(questionId);
             const answers = await question.getAnswers({raw: true})
-            res.status(200).send(answers)
+            res.status(200).send({question, answers})
         }catch(err){
             next(err)
         }
