@@ -11,8 +11,8 @@ const NewQuestion = () => {
   const [keywords, setKeywords] = useState([]);
 
   function updateKeywords() {
-    if (!keywords.includes(keyword)) {
-      keywords.push(keyword);
+    if (!keywords.includes(keyword.toLowerCase())) {
+      keywords.push(keyword.toLowerCase());
     }
     setKeyword("");
   }
