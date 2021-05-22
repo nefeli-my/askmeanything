@@ -1,5 +1,5 @@
-back-end/node_modules
-back-end/.env
+back-end/SOA/node_modules
+back-end/SOA/.env
 back-end/database/.env
 back-end/authenticator/routes/.env
 .idea
