@@ -1,6 +1,6 @@
 back-end/node_modules
 back-end/.env
-back-end/database/.env
 back-end/Authenticator service/.env
-back-end/QnAOperations service/.env
 back-end/Analytics service/.env
+back-end/Data access layer/.env
+back-end/QnAOperations service/.env
