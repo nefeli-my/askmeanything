@@ -1,602 +1,402 @@
 [
 	{
 		"questionId": 96,
-		"keywordId": 45,
-		"createdAt": "09/24/2021",
-		"updatedAt": "04/17/2022"
+		"keywordId": 45
 	},
 	{
 		"questionId": 11,
-		"keywordId": 52,
-		"createdAt": "02/17/2022",
-		"updatedAt": "09/05/2022"
+		"keywordId": 52
 	},
 	{
 		"questionId": 75,
-		"keywordId": 99,
-		"createdAt": "06/12/2020",
-		"updatedAt": "11/11/2020"
+		"keywordId": 99
 	},
 	{
 		"questionId": 64,
-		"keywordId": 51,
-		"createdAt": "05/24/2021",
-		"updatedAt": "11/04/2021"
+		"keywordId": 51
 	},
 	{
 		"questionId": 54,
-		"keywordId": 36,
-		"createdAt": "11/12/2020",
-		"updatedAt": "02/01/2021"
+		"keywordId": 36
 	},
 	{
 		"questionId": 86,
-		"keywordId": 59,
-		"createdAt": "02/17/2022",
-		"updatedAt": "09/01/2022"
+		"keywordId": 59
 	},
 	{
 		"questionId": 12,
-		"keywordId": 89,
-		"createdAt": "03/08/2022",
-		"updatedAt": "12/21/2022"
+		"keywordId": 89
 	},
 	{
 		"questionId": 73,
-		"keywordId": 39,
-		"createdAt": "04/04/2021",
-		"updatedAt": "10/16/2022"
+		"keywordId": 39
 	},
 	{
 		"questionId": 91,
-		"keywordId": 9,
-		"createdAt": "06/19/2021",
-		"updatedAt": "07/26/2022"
+		"keywordId": 9
 	},
 	{
 		"questionId": 98,
-		"keywordId": 80,
-		"createdAt": "01/11/2022",
-		"updatedAt": "06/27/2022"
+		"keywordId": 80
 	},
 	{
 		"questionId": 82,
-		"keywordId": 48,
-		"createdAt": "11/28/2020",
-		"updatedAt": "03/13/2021"
+		"keywordId": 48
 	},
 	{
 		"questionId": 52,
-		"keywordId": 74,
-		"createdAt": "07/26/2021",
-		"updatedAt": "06/07/2022"
+		"keywordId": 74
 	},
 	{
 		"questionId": 90,
-		"keywordId": 92,
-		"createdAt": "10/03/2021",
-		"updatedAt": "06/20/2022"
+		"keywordId": 92
 	},
 	{
 		"questionId": 90,
-		"keywordId": 28,
-		"createdAt": "12/29/2021",
-		"updatedAt": "11/06/2022"
+		"keywordId": 28
 	},
 	{
 		"questionId": 8,
-		"keywordId": 31,
-		"createdAt": "11/12/2021",
-		"updatedAt": "02/03/2022"
+		"keywordId": 31
 	},
 	{
 		"questionId": 42,
-		"keywordId": 23,
-		"createdAt": "11/06/2020",
-		"updatedAt": "05/24/2021"
+		"keywordId": 23
 	},
 	{
 		"questionId": 29,
-		"keywordId": 38,
-		"createdAt": "08/10/2021",
-		"updatedAt": "11/24/2021"
+		"keywordId": 38
 	},
 	{
 		"questionId": 56,
-		"keywordId": 69,
-		"createdAt": "06/24/2021",
-		"updatedAt": "03/10/2022"
+		"keywordId": 69
 	},
 	{
 		"questionId": 6,
-		"keywordId": 24,
-		"createdAt": "05/12/2021",
-		"updatedAt": "01/04/2022"
+		"keywordId": 24
 	},
 	{
 		"questionId": 73,
-		"keywordId": 57,
-		"createdAt": "08/13/2021",
-		"updatedAt": "09/05/2022"
+		"keywordId": 57
 	},
 	{
 		"questionId": 56,
-		"keywordId": 94,
-		"createdAt": "12/21/2021",
-		"updatedAt": "01/10/2022"
+		"keywordId": 94
 	},
 	{
 		"questionId": 47,
-		"keywordId": 55,
-		"createdAt": "09/17/2021",
-		"updatedAt": "08/21/2022"
+		"keywordId": 55
 	},
 	{
 		"questionId": 45,
-		"keywordId": 37,
-		"createdAt": "04/05/2022",
-		"updatedAt": "10/11/2022"
+		"keywordId": 37
 	},
 	{
 		"questionId": 75,
-		"keywordId": 32,
-		"createdAt": "09/06/2021",
-		"updatedAt": "01/09/2022"
+		"keywordId": 32
 	},
 	{
 		"questionId": 84,
-		"keywordId": 31,
-		"createdAt": "11/25/2020",
-		"updatedAt": "01/31/2022"
+		"keywordId": 31
 	},
 	{
 		"questionId": 38,
-		"keywordId": 17,
-		"createdAt": "08/31/2020",
-		"updatedAt": "12/01/2021"
+		"keywordId": 17
 	},
 	{
 		"questionId": 11,
-		"keywordId": 41,
-		"createdAt": "05/29/2020",
-		"updatedAt": "09/24/2020"
+		"keywordId": 41
 	},
 	{
 		"questionId": 76,
-		"keywordId": 29,
-		"createdAt": "11/21/2020",
-		"updatedAt": "11/27/2021"
+		"keywordId": 29
 	},
 	{
 		"questionId": 14,
-		"keywordId": 20,
-		"createdAt": "04/23/2021",
-		"updatedAt": "06/28/2021"
+		"keywordId": 20
 	},
 	{
 		"questionId": 68,
-		"keywordId": 42,
-		"createdAt": "10/28/2020",
-		"updatedAt": "03/13/2022"
+		"keywordId": 42
 	},
 	{
 		"questionId": 3,
-		"keywordId": 93,
-		"createdAt": "03/10/2022",
-		"updatedAt": "05/07/2022"
+		"keywordId": 93
 	},
 	{
 		"questionId": 52,
-		"keywordId": 54,
-		"createdAt": "10/10/2021",
-		"updatedAt": "01/12/2022"
+		"keywordId": 54
 	},
 	{
 		"questionId": 36,
-		"keywordId": 33,
-		"createdAt": "04/18/2022",
-		"updatedAt": "07/04/2022"
+		"keywordId": 33
 	},
 	{
 		"questionId": 1,
-		"keywordId": 36,
-		"createdAt": "02/19/2022",
-		"updatedAt": "11/24/2022"
+		"keywordId": 36
 	},
 	{
 		"questionId": 2,
-		"keywordId": 63,
-		"createdAt": "09/27/2020",
-		"updatedAt": "03/16/2021"
+		"keywordId": 63
 	},
 	{
 		"questionId": 94,
-		"keywordId": 8,
-		"createdAt": "02/13/2021",
-		"updatedAt": "02/17/2021"
+		"keywordId": 8
 	},
 	{
 		"questionId": 66,
-		"keywordId": 35,
-		"createdAt": "11/11/2020",
-		"updatedAt": "04/09/2021"
+		"keywordId": 35
 	},
 	{
 		"questionId": 34,
-		"keywordId": 71,
-		"createdAt": "10/17/2021",
-		"updatedAt": "10/20/2021"
+		"keywordId": 71
 	},
 	{
 		"questionId": 94,
-		"keywordId": 67,
-		"createdAt": "09/02/2020",
-		"updatedAt": "07/13/2021"
+		"keywordId": 67
 	},
 	{
 		"questionId": 82,
-		"keywordId": 68,
-		"createdAt": "11/11/2020",
-		"updatedAt": "06/23/2021"
+		"keywordId": 68
 	},
 	{
 		"questionId": 39,
-		"keywordId": 35,
-		"createdAt": "07/02/2021",
-		"updatedAt": "07/10/2021"
+		"keywordId": 35
 	},
 	{
 		"questionId": 74,
-		"keywordId": 23,
-		"createdAt": "05/08/2020",
-		"updatedAt": "01/22/2022"
+		"keywordId": 23
 	},
 	{
 		"questionId": 16,
-		"keywordId": 64,
-		"createdAt": "06/11/2021",
-		"updatedAt": "11/22/2021"
+		"keywordId": 64
 	},
 	{
 		"questionId": 62,
-		"keywordId": 64,
-		"createdAt": "12/07/2020",
-		"updatedAt": "10/20/2021"
+		"keywordId": 64
 	},
 	{
 		"questionId": 28,
-		"keywordId": 20,
-		"createdAt": "06/11/2020",
-		"updatedAt": "06/20/2021"
+		"keywordId": 20
 	},
 	{
 		"questionId": 5,
-		"keywordId": 41,
-		"createdAt": "10/14/2020",
-		"updatedAt": "07/12/2021"
+		"keywordId": 41
 	},
 	{
 		"questionId": 99,
-		"keywordId": 73,
-		"createdAt": "02/20/2021",
-		"updatedAt": "09/29/2021"
+		"keywordId": 73
 	},
 	{
 		"questionId": 28,
-		"keywordId": 21,
-		"createdAt": "10/14/2021",
-		"updatedAt": "02/04/2022"
+		"keywordId": 21
 	},
 	{
 		"questionId": 10,
-		"keywordId": 83,
-		"createdAt": "12/13/2020",
-		"updatedAt": "12/09/2021"
+		"keywordId": 83
 	},
 	{
 		"questionId": 79,
-		"keywordId": 51,
-		"createdAt": "06/05/2020",
-		"updatedAt": "02/26/2022"
+		"keywordId": 51
 	},
 	{
 		"questionId": 82,
-		"keywordId": 67,
-		"createdAt": "10/13/2020",
-		"updatedAt": "12/17/2020"
+		"keywordId": 67
 	},
 	{
 		"questionId": 61,
-		"keywordId": 11,
-		"createdAt": "11/01/2021",
-		"updatedAt": "08/03/2022"
+		"keywordId": 11
 	},
 	{
 		"questionId": 46,
-		"keywordId": 77,
-		"createdAt": "08/21/2020",
-		"updatedAt": "07/04/2021"
+		"keywordId": 77
 	},
 	{
 		"questionId": 7,
-		"keywordId": 10,
-		"createdAt": "08/14/2020",
-		"updatedAt": "07/25/2021"
+		"keywordId": 10
 	},
 	{
 		"questionId": 13,
-		"keywordId": 16,
-		"createdAt": "10/06/2020",
-		"updatedAt": "09/25/2021"
+		"keywordId": 16
 	},
 	{
 		"questionId": 65,
-		"keywordId": 5,
-		"createdAt": "03/13/2022",
-		"updatedAt": "11/07/2022"
+		"keywordId": 5
 	},
 	{
 		"questionId": 2,
-		"keywordId": 98,
-		"createdAt": "04/06/2022",
-		"updatedAt": "06/25/2022"
+		"keywordId": 98
 	},
 	{
 		"questionId": 92,
-		"keywordId": 67,
-		"createdAt": "12/11/2021",
-		"updatedAt": "09/21/2022"
+		"keywordId": 67
 	},
 	{
 		"questionId": 15,
-		"keywordId": 64,
-		"createdAt": "05/23/2020",
-		"updatedAt": "02/16/2022"
+		"keywordId": 64
 	},
 	{
 		"questionId": 1,
-		"keywordId": 21,
-		"createdAt": "08/14/2020",
-		"updatedAt": "06/10/2021"
+		"keywordId": 21
 	},
 	{
 		"questionId": 46,
-		"keywordId": 62,
-		"createdAt": "01/31/2021",
-		"updatedAt": "09/07/2021"
+		"keywordId": 62
 	},
 	{
 		"questionId": 47,
-		"keywordId": 58,
-		"createdAt": "03/18/2021",
-		"updatedAt": "08/14/2021"
+		"keywordId": 58
 	},
 	{
 		"questionId": 5,
-		"keywordId": 17,
-		"createdAt": "01/31/2022",
-		"updatedAt": "09/07/2022"
+		"keywordId": 17
 	},
 	{
 		"questionId": 66,
-		"keywordId": 82,
-		"createdAt": "02/04/2021",
-		"updatedAt": "03/31/2022"
+		"keywordId": 82
 	},
 	{
 		"questionId": 65,
-		"keywordId": 73,
-		"createdAt": "01/02/2021",
-		"updatedAt": "10/17/2021"
+		"keywordId": 73
 	},
 	{
 		"questionId": 80,
-		"keywordId": 13,
-		"createdAt": "03/15/2022",
-		"updatedAt": "10/12/2022"
+		"keywordId": 13
 	},
 	{
 		"questionId": 70,
-		"keywordId": 68,
-		"createdAt": "09/27/2021",
-		"updatedAt": "04/27/2022"
+		"keywordId": 68
 	},
 	{
 		"questionId": 74,
-		"keywordId": 19,
-		"createdAt": "06/23/2020",
-		"updatedAt": "02/08/2021"
+		"keywordId": 19
 	},
 	{
 		"questionId": 44,
-		"keywordId": 45,
-		"createdAt": "04/17/2021",
-		"updatedAt": "11/27/2021"
+		"keywordId": 45
 	},
 	{
 		"questionId": 98,
-		"keywordId": 72,
-		"createdAt": "09/02/2021",
-		"updatedAt": "07/26/2022"
+		"keywordId": 72
 	},
 	{
 		"questionId": 98,
-		"keywordId": 57,
-		"createdAt": "07/22/2020",
-		"updatedAt": "01/20/2021"
+		"keywordId": 57
 	},
 	{
 		"questionId": 13,
-		"keywordId": 32,
-		"createdAt": "11/10/2021",
-		"updatedAt": "09/16/2022"
+		"keywordId": 32
 	},
 	{
 		"questionId": 42,
-		"keywordId": 77,
-		"createdAt": "02/25/2021",
-		"updatedAt": "02/14/2022"
+		"keywordId": 77
 	},
 	{
 		"questionId": 67,
-		"keywordId": 27,
-		"createdAt": "10/28/2020",
-		"updatedAt": "09/05/2021"
+		"keywordId": 27
 	},
 	{
 		"questionId": 9,
-		"keywordId": 35,
-		"createdAt": "03/19/2022",
-		"updatedAt": "05/24/2022"
+		"keywordId": 35
 	},
 	{
 		"questionId": 33,
-		"keywordId": 97,
-		"createdAt": "03/17/2021",
-		"updatedAt": "12/27/2021"
+		"keywordId": 97
 	},
 	{
 		"questionId": 7,
-		"keywordId": 8,
-		"createdAt": "07/03/2020",
-		"updatedAt": "01/05/2022"
+		"keywordId": 8
 	},
 	{
 		"questionId": 54,
-		"keywordId": 32,
-		"createdAt": "09/26/2020",
-		"updatedAt": "04/07/2022"
+		"keywordId": 32
 	},
 	{
 		"questionId": 96,
-		"keywordId": 3,
-		"createdAt": "10/11/2020",
-		"updatedAt": "09/12/2021"
+		"keywordId": 3
 	},
 	{
 		"questionId": 36,
-		"keywordId": 51,
-		"createdAt": "10/18/2020",
-		"updatedAt": "05/02/2021"
+		"keywordId": 51
 	},
 	{
 		"questionId": 16,
-		"keywordId": 3,
-		"createdAt": "05/09/2021",
-		"updatedAt": "07/29/2021"
+		"keywordId": 3
 	},
 	{
 		"questionId": 11,
-		"keywordId": 53,
-		"createdAt": "11/11/2020",
-		"updatedAt": "04/24/2021"
+		"keywordId": 53
 	},
 	{
 		"questionId": 15,
-		"keywordId": 86,
-		"createdAt": "11/09/2020",
-		"updatedAt": "03/09/2021"
+		"keywordId": 86
 	},
 	{
 		"questionId": 3,
-		"keywordId": 41,
-		"createdAt": "07/06/2020",
-		"updatedAt": "11/23/2021"
+		"keywordId": 41
 	},
 	{
 		"questionId": 78,
-		"keywordId": 65,
-		"createdAt": "02/09/2021",
-		"updatedAt": "09/19/2021"
+		"keywordId": 65
 	},
 	{
 		"questionId": 40,
-		"keywordId": 33,
-		"createdAt": "08/15/2021",
-		"updatedAt": "02/15/2022"
+		"keywordId": 33
 	},
 	{
 		"questionId": 55,
-		"keywordId": 56,
-		"createdAt": "06/21/2020",
-		"updatedAt": "07/25/2020"
+		"keywordId": 56
 	},
 	{
 		"questionId": 100,
-		"keywordId": 93,
-		"createdAt": "07/02/2020",
-		"updatedAt": "03/12/2022"
+		"keywordId": 93
 	},
 	{
 		"questionId": 27,
-		"keywordId": 15,
-		"createdAt": "04/13/2021",
-		"updatedAt": "02/25/2022"
+		"keywordId": 15
 	},
 	{
 		"questionId": 60,
-		"keywordId": 80,
-		"createdAt": "02/21/2022",
-		"updatedAt": "08/26/2022"
+		"keywordId": 80
 	},
 	{
 		"questionId": 67,
-		"keywordId": 56,
-		"createdAt": "11/10/2021",
-		"updatedAt": "04/14/2022"
+		"keywordId": 56
 	},
 	{
 		"questionId": 53,
-		"keywordId": 43,
-		"createdAt": "07/25/2020",
-		"updatedAt": "06/01/2021"
+		"keywordId": 43
 	},
 	{
 		"questionId": 97,
-		"keywordId": 39,
-		"createdAt": "11/10/2020",
-		"updatedAt": "08/27/2021"
+		"keywordId": 39
 	},
 	{
 		"questionId": 76,
-		"keywordId": 51,
-		"createdAt": "12/18/2020",
-		"updatedAt": "12/22/2020"
+		"keywordId": 51
 	},
 	{
 		"questionId": 32,
-		"keywordId": 60,
-		"createdAt": "07/21/2021",
-		"updatedAt": "09/19/2021"
+		"keywordId": 60
 	},
 	{
 		"questionId": 69,
-		"keywordId": 19,
-		"createdAt": "03/12/2022",
-		"updatedAt": "06/28/2022"
+		"keywordId": 19
 	},
 	{
 		"questionId": 75,
-		"keywordId": 71,
-		"createdAt": "09/28/2021",
-		"updatedAt": "02/05/2022"
+		"keywordId": 71
 	},
 	{
 		"questionId": 1,
-		"keywordId": 61,
-		"createdAt": "01/31/2021",
-		"updatedAt": "06/30/2021"
+		"keywordId": 61
 	},
 	{
 		"questionId": 58,
-		"keywordId": 21,
-		"createdAt": "04/06/2021",
-		"updatedAt": "11/21/2021"
+		"keywordId": 21
 	},
 	{
 		"questionId": 88,
-		"keywordId": 37,
-		"createdAt": "04/23/2020",
-		"updatedAt": "05/27/2020"
+		"keywordId": 37
 	}
 ]

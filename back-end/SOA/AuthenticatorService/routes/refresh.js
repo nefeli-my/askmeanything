@@ -4,7 +4,7 @@ const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken')
-const {validate} = require('../server/controllers/authtoken')
+const {validate} = require('../controllers/AuthToken')
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -14,7 +14,6 @@ passport.use('refresh_token', new JWTstrategy(
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
     },
     function(token, done) {
-        console.log(token)
         const old_token=jwt.sign(token, process.env.REFRESH_SECRET);
         validate(token.username, old_token)
             .then((data) =>{

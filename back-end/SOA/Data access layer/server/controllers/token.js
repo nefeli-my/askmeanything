@@ -3,11 +3,14 @@ const AuthToken = models.AuthToken;
 const User = models.User;
 const { Op } = require("sequelize");
 const jwt = require('jsonwebtoken')
+const dotenv = require('dotenv');
+dotenv.config();
+
 
 module.exports = {
     async create(req, res, next) {
-        let username = req.user
-        let accessToken = jwt.sign({username}, process.env.SECRET, {expiresIn: 60});
+        let username = req.body.user;
+        let accessToken = jwt.sign({username}, process.env.SECRET, {expiresIn: 30000});
         let refreshToken = jwt.sign({username}, process.env.REFRESH_SECRET);
         return AuthToken.findAll({
             include: {
@@ -26,11 +29,11 @@ module.exports = {
                         }
                     })
                         .then(async user => {
-                        await AuthToken.create({
-                            tokenstr: refreshToken,
-                            userId: user[0].id
+                            await AuthToken.create({
+                                tokenstr: refreshToken,
+                                userId: user[0].id
+                            })
                         })
-                    })
                         .then(data => res.send({accessToken, refreshToken}))
                         .catch(err => next(err))
                 } else {
@@ -60,19 +63,25 @@ module.exports = {
             })
             .catch(err => next(err))
     },
-    async validate(username,token){
-        return AuthToken.findAll({
-            where : {
-                tokenstr: token
-            },
-            include: {
-                model: User,
+    async validate(req, res, next){
+        try {
+            const {username, token} = req.body;
+            const isThere = await AuthToken.findAll({
                 where: {
-                    username: username
+                    tokenstr: token
                 },
-            },
-            attributes: ['id']
-        })
+                include: {
+                    model: User,
+                    where: {
+                        username: username
+                    },
+                },
+                attributes: ['id']
+            })
+            res.send(isThere)
+        }catch(err){
+            next(err);
+        }
     },
 
 };

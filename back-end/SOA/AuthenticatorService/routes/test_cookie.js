@@ -5,6 +5,7 @@ const JWTstrategy = require('passport-jwt').Strategy
 const passport = require('passport');
 const dotenv = require('dotenv')
 dotenv.config()
+console.log(process.env.SECRET)
 
 passport.use('token', new JWTstrategy(
     {
@@ -21,7 +22,7 @@ router.get('/',  passport.authenticate('token',{session:false}),
     (req, res) => {
         res.send({
             message: 'access-token ok',
-            username: req.user.username
+            username: req.user
         });
 });
 

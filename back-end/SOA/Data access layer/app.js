@@ -3,16 +3,18 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const getQuestionRouter = require('./routes/getQuestions')
-const getAnswerRouter = require('./routes/getAnswers')
-const answerRouter = require('./routes/answerQuestion')
-const questionRouter = require('./routes/createQuestion');
+const tokenRouter = require('./routes/token/token');
+const userRouter = require('./routes/user/user')
+const getQuestionRouter = require('./routes/question/getQuestions');
+const getAnswerRouter = require('./routes/answer/getAnswers');
+const answerRouter = require('./routes/answer/answerQuestion');
+const questionRouter = require('./routes/question/createQuestion');
 const passport = require('passport');
 const app = express();
 const dotenv = require('dotenv');
-const cors = require('cors')
-const transaction = require('./middlewares/transaction')
-const db = require('./server/models/index')
+const cors = require('cors');
+const transaction = require('./middlewares/transaction');
+const db = require('./server/models/index');
 
 dotenv.config();
 // view engine setup
@@ -28,7 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(transaction({ sequelize: db.sequelize }));
 
-
+app.use('/user', userRouter);
+app.use('/token', tokenRouter);
 app.use('/question/create',questionRouter);
 app.use('/answer/create', answerRouter);
 app.use('/answer/get', getAnswerRouter);

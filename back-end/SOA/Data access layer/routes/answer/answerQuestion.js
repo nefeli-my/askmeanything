@@ -4,7 +4,7 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 const JWTstrategy = require('passport-jwt').Strategy
 const passport = require('passport');
 const dotenv = require('dotenv')
-const {create} = require('../server/controllers/answer')
+const {create} = require('../../server/controllers/answer')
 
 dotenv.config()
 

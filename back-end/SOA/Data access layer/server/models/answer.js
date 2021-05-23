@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.TEXT,
       allowNull:false,
       validate: {
-        isAlphanumeric: true
+        isText: true
       }
     },
     createdAt:{

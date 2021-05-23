@@ -2,54 +2,75 @@ const models = require('../models');
 const User = models.User;
 const Question = models.Question;
 const Keyword = models.Keyword;
+const Keyword_Question = models.Question_Keyword;
 
 module.exports = {
     async create(req, res, next) {
-        let question;
-        question.title = req.body.title;
-        question.body = req.body.body;
-        question.keywords = req.body.keywords;
-        const user = await User.findOne({
-            where:{
-                   username: req.user.username
-            }
-        })
-            .catch(err => next(err))
-        question.author = user.getDataValue('id')
-        await Question.create(
-                question,
-                {
-                    include: Keyword,
-                    returning: true,
-                    plain: true
+        try {
+            let question = {};
+            question.title = req.body.title;
+            question.body = req.body.body;
+            const keywords = req.body.keywords.split(",")
+            const user = await User.findOne({
+                where: {
+                    username: 'ilianaxn'//req.user.username
                 }
+            })
+                .catch(err => next(err))
+            question.author = user.getDataValue('id')
+            let createdQ = await Question.create(
+                question
             )
-            .then(data => res.status(200).send(data))
-            .catch(err => next(err))
+            for (x of keywords) {
+                const keyw = await Keyword.findOrCreate(
+                    {
+                        where: {
+                            word: x
+                        }/*,
+                        include:[{
+                            model: Keyword_Question,
+                            attributes: []
+                        }
+
+                        ]*/
+                    })
+                await createdQ.addKeyword(keyw[0])
+            }
+            const keyws = await createdQ.getKeywords(
+                {
+                    attributes: ['word'],
+                }
+            );
+            createdQ = createdQ.dataValues
+            createdQ.keywords = keyws;
+            res.status(200).send(createdQ);
+        }
+        catch(err){
+            next(err)
+        }
     },
-    /*
-    {
-      model: Keyword,
-      attributes: ['word'],
-      through: {
-        attributes: []
-      }
-      */
     async findAll(req, res, next){
       const questions =
         await Question.findAll({
+          offset: req.params.id,
           limit: 10,
           order: [['createdAt', 'DESC']],
-          raw: true,
           include: [{
             model: User,
             as: 'Author',
             attributes: ['username']
-          }]
+          },
+              {
+                  model: Keyword,
+                  attributes: ['word'],
+                  through: {
+                      model: Keyword_Question,
+                      attributes: []
+                  }
+              }]
         })
           .catch(err => next(err))
-      const keywords = await questions.getKeywords({raw: true})
-      res.status(200).send({questions, keywords})
+      res.status(200).send(questions)
     },
 
     async findFiltered(req, res, next){

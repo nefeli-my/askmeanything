@@ -1,15 +1,14 @@
-const {validate} = require('../server/controllers/user')
-const {create} = require('../server/controllers/authtoken')
+const {validate} = require('../controllers/user')
+const {create} = require('../controllers/AuthToken')
 const express = require('express');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 const router = express.Router();
 const jwt = require('jsonwebtoken')
 
-passport.use('signin', new LocalStrategy((function (username, password, done){
+passport.use('signin', new LocalStrategy((async function (username, password, done){
     let user_auth = {username, password};
-    const result = validate(user_auth);
-    result
+    const result = await validate(user_auth)
         .then(data => done(null,data))
 })))
 

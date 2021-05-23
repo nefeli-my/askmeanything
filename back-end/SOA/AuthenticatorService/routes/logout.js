@@ -4,7 +4,7 @@ const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken')
-const {remove} = require('../server/controllers/authtoken')
+const {remove} = require('../controllers/AuthToken')
 
 passport.use('token', new JWTstrategy(
     {

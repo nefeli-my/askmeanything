@@ -14,29 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       Question_Keyword.belongsTo(models.Question, {foreignKey: {name:'questionId', allowNull: false}})
     }
   };
-  Question_Keyword.init({
-    createdAt:{
-      type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-        isDate: true
-      }
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-        isDate: true,
-        isAfter(value) {
-          if (Date.parse(value) < Date.parse(this.createdAt)) {
-            throw new Error('UpdatedAt should not be earlier than CreatedAt');
-          }
-        }
-      }
-    }
-  }, {
-    sequelize,
-    modelName: 'Question_Keyword',
-  });
+  Question_Keyword.init({},
+      {
+        timestamps: false,
+        sequelize,
+        modelName: 'Question_Keyword',
+      });
   return Question_Keyword;
 };
