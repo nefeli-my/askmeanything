@@ -1,13 +1,10 @@
-const express = require('express');
-const router = express.Router();
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 const JWTstrategy = require('passport-jwt').Strategy
 const passport = require('passport');
-const dotenv = require('dotenv')
-const {findAll} = require('../../server/controllers/QnAService/answer');
-
-
-dotenv.config()
+const express = require('express');
+const router = express.Router();
+const jwt = require('jsonwebtoken')
+const {update} = require('../controllers/user')
 
 passport.use('token', new JWTstrategy(
     {
@@ -15,11 +12,11 @@ passport.use('token', new JWTstrategy(
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken()
     },
     function(token, done) {
-        return done(null, token)
+        return done(null, token.username)
     }
     )
 )
 
-router.get('/', findAll);
+router.patch('/',  passport.authenticate('token',{session:false}), update);
 
 module.exports = router;

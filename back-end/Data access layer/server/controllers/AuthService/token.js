@@ -1,4 +1,4 @@
-const models = require('../models');
+const models = require('../../models');
 const AuthToken = models.AuthToken;
 const User = models.User;
 const { Op } = require("sequelize");

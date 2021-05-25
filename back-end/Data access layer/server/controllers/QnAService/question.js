@@ -1,4 +1,4 @@
-const models = require('../models');
+const models = require('../../models');
 const User = models.User;
 const Question = models.Question;
 const Keyword = models.Keyword;
@@ -13,13 +13,13 @@ module.exports = {
             const keywords = req.body.keywords.split(",")
             const user = await User.findOne({
                 where: {
-                    username: 'ilianaxn'//req.user.username
+                    username: req.body.user.username
                 }
             })
                 .catch(err => next(err))
             question.author = user.getDataValue('id')
             let createdQ = await Question.create(
-                question
+                question,
             )
             for (x of keywords) {
                 const keyw = await Keyword.findOrCreate(
@@ -39,6 +39,10 @@ module.exports = {
             const keyws = await createdQ.getKeywords(
                 {
                     attributes: ['word'],
+                    through: {
+                        model: Keyword_Question,
+                        attributes: []
+                            }
                 }
             );
             createdQ = createdQ.dataValues

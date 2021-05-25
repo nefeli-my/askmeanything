@@ -1,4 +1,4 @@
-const models = require('../models');
+const models = require('../../models');
 const Answer = models.Answer;
 const User = models.User;
 const Question = models.Question;
@@ -9,7 +9,7 @@ module.exports = {
         let answer = req.body;
         const user = await User.findOne({
             where:{
-                username: req.user.username
+                username: req.body.user.username
             }
         })
             .catch(err => next(err))
@@ -18,7 +18,16 @@ module.exports = {
             answer,
             {
                 returning: true,
-                plain: true
+                plain: true,
+                include: [
+                    {
+                        model: User,
+                        attributes: ['username']
+                    },
+                    {
+                        model: Question
+                    }
+                ]
             }
         )
             .then(answer => res.status(200).send(answer))
@@ -26,7 +35,7 @@ module.exports = {
     },
     async findAll(req,res,next){
         try {
-            const questionId = req.params.questionId;
+            const questionId = req.query.questionId;
             const question = await Question.findByPk(questionId,
             {
               include: [

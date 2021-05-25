@@ -39,16 +39,16 @@ module.exports = {
         const result = await axios.post(DataLayerUrl + '/answer' + '/create', answer);
         return {success: true, body: result};
       }
-      catch {
+      catch(err) {
         return {success: false, error: err};
       }
     },
-    async Aget(question_id){
+    async Aget(questionId){
       try {
-        const result = await axios.get(DataLayerUrl + '/answer' + '/get', { params: { question_id } });
+        const result = await axios.get(DataLayerUrl + '/answer' + '/get', { params: { questionId } });
         return {success: true, body: result};
       }
-      catch {
+      catch(err) {
         return {success: false, error: err};
       }
     }

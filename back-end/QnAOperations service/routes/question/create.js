@@ -19,6 +19,6 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-router.post('/', create);
+router.post('/',passport.authenticate('token',{session:false}),create);
 
 module.exports = router;
