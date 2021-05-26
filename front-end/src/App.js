@@ -1,12 +1,13 @@
-import Footer from './Footer.js';
-import Home from './Home.js';
-import LandingPage from './LandingPage.js';
-import Login from './Login.js';
-import Navbar from './Navbar.js';
-import NotFound from './NotFound.js';
-import NewQuestion from './NewQuestion.js';
+import Browse from './Browse';
+import Footer from './Footer';
+import Home from './Home';
+import LandingPage from './LandingPage';
+import Login from './Login';
+import Navbar from './Navbar';
+import NotFound from './NotFound';
+import NewQuestion from './NewQuestion';
 import PrivateRoute from './PrivateRoute'
-import Register from './Register.js';
+import Register from './Register';
 import { BrowserRouter as Router,  Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -28,6 +29,10 @@ function App() {
             <Navbar/>
             <Register/>
             <Footer/>
+          </Route>
+          <Route path="/browse">
+            <Navbar/>
+            <Browse/>
           </Route>
           <PrivateRoute path="/home" component={Home}/>
           <PrivateRoute path="/newquestion" component={NewQuestion}/>

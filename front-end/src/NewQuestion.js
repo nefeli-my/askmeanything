@@ -2,7 +2,7 @@ import './css/NewQuestion.css';
 import { Form, Button } from "react-bootstrap";
 // import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
-import Navbar from './Navbar.js';
+import Navbar from './Navbar';
 
 const NewQuestion = () => {
   const [title, setTitle] = useState("");

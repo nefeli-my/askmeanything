@@ -14,26 +14,26 @@ const Login = () => {
   function handleSubmit(event) {
     event.preventDefault();
     const user = { username, password };
-
-    fetch('http://localhost:3000/login/', {
+    fetch('http://localhost:8001/login/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)
-    }).then(res => {
+      })
+    .then(res => {
       if(res.status === 200 ){
-          res.json()
-            .then( token => {
-              localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token));
-              localStorage.setItem('username', user.username)
-              history.push('/home');
-            })
+        res.json()
+        .then(token => {
+          localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token));
+          localStorage.setItem('username', user.username)
+          history.push('/home');
+        })
       }
       else{
         setError("The username or password you've inserted is incorrect. Please try again.");
         console.log("user invalid");
       }
     })
-        .catch(err => console.log(err))
+    .catch(err => console.log(err));
   }
   return (
     <div className="login">
