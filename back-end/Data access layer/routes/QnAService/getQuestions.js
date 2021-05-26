@@ -20,7 +20,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-//router.get('/:keyword', passport.authenticate('token',{session:false}), findFiltered);
+router.get('/filters'/*passport.authenticate('token',{session:false})*/, findFiltered);
 router.get('/:id'/*, passport.authenticate('token',{session:false})*/, findAll);
 
 module.exports = router;

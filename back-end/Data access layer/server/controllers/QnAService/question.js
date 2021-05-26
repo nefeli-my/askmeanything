@@ -1,4 +1,4 @@
-const models = require('../models');
+const models = require('../../models');
 const User = models.User;
 const Question = models.Question;
 const Keyword = models.Keyword;
@@ -41,7 +41,7 @@ module.exports = {
                     attributes: ['word'],
                 }
             );
-            createdQ = createdQ.dataValues
+            createdQ = createdQ.dataValues;
             createdQ.keywords = keyws;
             res.status(200).send(createdQ);
         }
@@ -55,57 +55,66 @@ module.exports = {
           offset: req.params.id,
           limit: 10,
           order: [['createdAt', 'DESC']],
-          include: [{
-            model: User,
-            as: 'Author',
-            attributes: ['username']
-          },
-              {
-                  model: Keyword,
-                  attributes: ['word'],
-                  through: {
-                      model: Keyword_Question,
-                      attributes: []
-                  }
-              }]
+          include: [
+            {
+              model: User,
+              as: 'Author',
+              attributes: ['username']
+            },
+            {
+                model: Keyword,
+                attributes: ['word'],
+                through: {
+                    model: Keyword_Question,
+                    attributes: []
+                }
+            }]
         })
           .catch(err => next(err))
       res.status(200).send(questions)
     },
-
     async findFiltered(req, res, next){
-      console.log('findFiltered');
-      console.log(req.params.author);
-      //let author = typeof req.params.author !== 'undefined';
-      //let keyword = typeof req.params.keyword !== 'undefined';
-      //let start_date = typeof req.params.start_date !== 'undefined';
-      //let end_date = typeof req.params.end_date !== 'undefined';
-      //console.log(author)
-    /*
+      let author = req.query.author !== undefined;
+      let keyword = req.query.keyword !== undefined;
+      let start_date = req.query.start_date !== undefined;
+      /*
       if (!author && !keyword && start_date) {
-        console.log('1')
-        var query = {
-          where: {
-            createdAt: {
-              // params may need some modification
-              // to fit the Date() type
-              [Op.lte]: req.params.end_date,
-              [Op.gte]: req.params.start_date
-            }
-          }
-        }
+        const questions =
+          await Question.findAll({
+              where: {
+                createdAt: {
+                  $lte: req.query.end_date,
+                  $gte: req.params.start_date
+                }
+              }
+          })
+            .catch(err => next(err))
+        res.status(200).send(questions)
       }
+      */
       if (!author && keyword && !start_date) {
-        console.log('2')
-        var query = {
-          where: {
-            include: [{
-              model: Keyword,
-              where: { word: req.params.keyword  }
-            }]
-          }
-        }
+        const questions =
+          await Question.findAll({
+            include: [
+              {
+                model: User,
+                as: 'Author',
+                attributes: ['username']
+              },
+              {
+                model: Keyword,
+                attributes: ['word'],
+                where: { word: req.query.keyword },
+                through: {
+                    model: Keyword_Question,
+                    attributes: []
+                  }
+              }]
+          })
+            .catch(err => next(err))
+        res.status(200).send(questions)
       }
+      /*
       if (!author && keyword && start_date) {
         console.log('3')
         var query = {
@@ -123,38 +132,58 @@ module.exports = {
           }
         }
       }
+      */
       if (author && !keyword && !start_date) {
-        console.log('4');
-        var query = {
-          where: {
-            author: req.params.author
-          }
-        }
-      }
-      if (author && !keyword && start_date) {
-        console.log('5')
-        var query = {
-          where: {
-            author: req.params.author,
-            createdAt: {
-              [Op.lte]: req.params.end_date,
-              [Op.gte]: req.params.start_date
-            }
-          }
-        }
-      }
-      if (author && keyword && !start_date) {
-        console.log('6')
-        var query = {
-          where: {
-            author: req.params.author,
-            include: [{
+      const questions =
+        await Question.findAll({
+          include: [
+            {
+              model: User,
+              as: 'Author',
+              attributes: ['username'],
+              where: { username: req.query.author },
+            },
+            {
               model: Keyword,
-              where: { word: req.params.keyword  }
+              attributes: ['word'],
+              through: {
+                  model: Keyword_Question,
+                  attributes: []
+              }
             }]
-          }
-        }
+        })
+          .catch(err => next(err))
+      res.status(200).send(questions)
       }
+      /*
+      if if (author && !keyword && start_date) {
+
+      }
+      */
+      if (author && keyword && !start_date) {
+        const questions =
+          await Question.findAll({
+            include: [
+              {
+                model: User,
+                as: 'Author',
+                attributes: ['username'],
+                where: { username: req.query.author },
+              },
+              {
+                model: Keyword,
+                attributes: ['word'],
+                where: { word: req.query.keyword },
+                through: {
+                    model: Keyword_Question,
+                    attributes: []
+                }
+              }]
+          })
+            .catch(err => next(err))
+        res.status(200).send(questions)
+      }
+      /*
       if (author && keyword && start_date) {
         console.log('7')
         var query = {
@@ -171,32 +200,9 @@ module.exports = {
           }
         }
       }
-
-      // query for author
-      var query = {
-        include: [{
-          model: User,
-          as: 'Author',
-          where: {
-            username: req.params.author
-          },
-          attributes: []
-        }]
-      }
       */
-
-      // query for given keyword
-      var query = {
-        include: [{
-          model: Keyword,
-          where: {
-            word: req.params.keyword
-          },
-          attributes: []
-        }]
-      }
       await Question.findAll(query)
-          .then(data => res.status(200).send(data))
-          .catch(err => next(err))
+        .catch(err => next(err));
+      res.status(200).send(data);
     }
   }

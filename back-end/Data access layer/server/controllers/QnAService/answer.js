@@ -1,4 +1,4 @@
-const models = require('../models');
+const models = require('../../models');
 const Answer = models.Answer;
 const User = models.User;
 const Question = models.Question;
