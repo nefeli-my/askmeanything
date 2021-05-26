@@ -10,7 +10,7 @@ module.exports = {
             let question = {};
             question.title = req.body.title;
             question.body = req.body.body;
-            const keywords = req.body.keywords.split(",")
+            const keywords = req.body.keywords.substring(1,req.body.keywords.length -1).split(",")
             const user = await User.findOne({
                 where: {
                     username: req.body.user.username

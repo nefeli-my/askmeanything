@@ -4,9 +4,15 @@ dotenv.config();
 const DataLayerUrl = 'http://localhost:' + process.env.DATA_PORT;
 
 module.exports = {
-    async Tokencreate(user){
+    async questionsPerDay(user){
         try {
-            let result = await axios.post(DataLayerUrl +'/token'+'/create',{user: user});
+            let result = {};
+            if(user){
+                result = await axios.get(DataLayerUrl +'/analytics'+`/user/questions/${user}`);
+            }
+            else {
+                result = await axios.get(DataLayerUrl + '/analytics' + '/general/questions');
+            }
             return {success: true, body: result.data};
         }
         catch (err) {
@@ -14,30 +20,15 @@ module.exports = {
             return {success: false, error: err};
         }
     },
-    async Tokenvalidate(user){
+    async answersPerDay(user){
         try {
-            const result = await axios.post(DataLayerUrl +'/token'+'/validate',user);
-            return {success: true, body: result.data};
-        }
-        catch(err) {
-            //console.log(err);
-            err.status = err.response.status;
-            return {success: false, error: err};
-        }
-    },
-    async Tokendelete(user){
-        try {
-            const result = await axios.post(DataLayerUrl +'/token'+'/delete', user);
-            return {success: true, body: result};
-        }
-        catch (err){
-            return {success: false, error: err};
-        }
-    },
-    async Usercreate(user){
-        try {
-
-            let result = await axios.post(DataLayerUrl +'/user'+'/create',user);
+            let result = {};
+            if(user){
+                result = await axios.get(DataLayerUrl +'/analytics'+`/user/answers/${user}`);
+            }
+            else {
+                result = await axios.get(DataLayerUrl + '/analytics' + '/general/answers');
+            }
             return {success: true, body: result.data};
         }
         catch (err) {
@@ -45,24 +36,20 @@ module.exports = {
             return {success: false, error: err};
         }
     },
-    async Uservalidate(user){
+    async questionsPerKeyword(user){
         try {
-            const result = await axios.post(DataLayerUrl +'/user'+'/validate',user);
+            let result = {};
+            if(user){
+                result = await axios.get(DataLayerUrl +'/analytics'+`/user/keywords/${user}`);
+            }
+            else {
+                result = await axios.get(DataLayerUrl + '/analytics' + '/general/keywords');
+            }
             return {success: true, body: result.data};
         }
-        catch(err) {
-            //console.log(err);
+        catch (err) {
             err.status = err.response.status;
-            return {success: false, body: false};
-        }
-    },
-    async Userupdate(user){
-        try {
-            const result = await axios.post(DataLayerUrl +'/user'+'/update', user);
-            return {success: true, body: result};
-        }
-        catch (err){
             return {success: false, error: err};
         }
-    }
+    },
 }

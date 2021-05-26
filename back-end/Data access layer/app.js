@@ -9,6 +9,7 @@ const getQuestionRouter = require('./routes/QnAService/getQuestions');
 const getAnswerRouter = require('./routes/QnAService/getAnswers');
 const answerRouter = require('./routes/QnAService/createAnswer');
 const questionRouter = require('./routes/QnAService/createQuestion');
+const analyticsRouter = require('./routes/Analytics');
 const passport = require('passport');
 const app = express();
 const dotenv = require('dotenv');
@@ -36,6 +37,7 @@ app.use('/question/create',questionRouter);
 app.use('/answer/create', answerRouter);
 app.use('/answer/get', getAnswerRouter);
 app.use('/question/get', getQuestionRouter);
+app.use('/analytics/', analyticsRouter);
 
 
 // catch 404 and forward to error handler

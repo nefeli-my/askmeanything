@@ -23,14 +23,12 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.TEXT,
       allowNull:false,
       validate: {
-        isAlphanumeric: true
       }
     },
     body: {
       type:DataTypes.TEXT,
       allowNull:false,
       validate: {
-        isAlphanumeric: true
       }
     },
     createdAt:{
