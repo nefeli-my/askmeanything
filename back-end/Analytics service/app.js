@@ -3,10 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const getQuestionRouter = require('./routes/getQuestions')
-const getAnswerRouter = require('./routes/getAnswers')
-const answerRouter = require('./routes/answerQuestion')
-const questionRouter = require('./routes/createQuestion');
+const generalRouter = require('./routes/general')
+const userRouter = require('./routes/user')
 const passport = require('passport');
 const app = express();
 const dotenv = require('dotenv');
@@ -27,10 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 
-app.use('/createquestion',questionRouter);
-app.use('/createanswer', answerRouter);
-app.use('/getanswers', getAnswerRouter);
-app.use('/getquestions', getQuestionRouter);
+app.use('/general/',generalRouter)
+app.use('/user/', userRouter);
 
 
 // catch 404 and forward to error handler
