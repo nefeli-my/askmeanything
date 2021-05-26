@@ -16,6 +16,7 @@ module.exports = {
     },
     async Qgetall(params){
       try {
+        console.log("all");
         const result = await axios.get(DataLayerUrl + '/question' +`/get/${params.id}`);
         return {success: true, body: result.data};
       }
@@ -25,10 +26,19 @@ module.exports = {
         return {success: false, error: err};
       }
     },
-    async Qgetfiltered(params){
+    async Qgetfiltered(qparams){
       try {
-        const result = await axios.get(DataLayerUrl + '/question' + '/getfiltered', { params: { params } });
-        return {success: true, body: result};
+        const result =
+          await axios.get(DataLayerUrl + '/question/get/filters',
+                      {
+                        params: {
+                          author: qparams.author,
+                          keyword: qparams.keyword,
+                          start_date: qparams.start_date,
+                          end_date: qparams.end_date
+                        }
+                      });
+        return {success: true, body: result.data};
       }
       catch (err){
         return {success: false, error: err};
@@ -45,7 +55,7 @@ module.exports = {
     },
     async Aget(question_id){
       try {
-        const result = await axios.get(DataLayerUrl + '/answer' + '/get', { params: { question_id } });
+        const result = await axios.get(DataLayerUrl + '/answer' + +`/get/${question_id}`);
         return {success: true, body: result};
       }
       catch {

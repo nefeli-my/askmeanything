@@ -31,8 +31,8 @@ module.exports = {
       },
     async getfiltered(req, res, next){
       try {
-        const returnedQues = await Qgetfiltered(req.params);
-        return res.send(returnedQues);
+        const returnedQues = await Qgetfiltered(req.query);
+        return res.send(returnedQues.body);
       }
       catch (err) {
           next(err);
