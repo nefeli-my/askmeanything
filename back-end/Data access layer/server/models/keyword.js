@@ -22,8 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       unique:true,
       validate: {
-        isAlphanumeric: true,
-        notContains: ' '
+        is: /^[a-zA-Z0-9]+[\-]+[a-zA-Z0-9]+$/i //TODO: fix this
       }
     },
     createdAt:{
