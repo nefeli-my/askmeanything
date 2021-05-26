@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.TEXT,
       allowNull:false,
       validate: {
-        isText: true
       }
     },
     createdAt:{

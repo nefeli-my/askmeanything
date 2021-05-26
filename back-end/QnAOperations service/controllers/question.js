@@ -3,6 +3,7 @@ const {Qcreate, Qgetall, Qgetfiltered} = require( "../QnAService" );
 module.exports = {
     async create(req, res, next) {
       try {
+        req.body.user = req.user;
         const createdQues = await Qcreate(req.body);
         if(createdQues.error) {
             let err = new Error(createdQues.error.response.data.msg);

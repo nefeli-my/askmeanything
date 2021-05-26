@@ -13,13 +13,13 @@ module.exports = {
             const keywords = req.body.keywords.split(",")
             const user = await User.findOne({
                 where: {
-                    username: 'ilianaxn'//req.user.username
+                    username: req.body.user.username
                 }
             })
                 .catch(err => next(err))
             question.author = user.getDataValue('id')
             let createdQ = await Question.create(
-                question
+                question,
             )
             for (x of keywords) {
                 const keyw = await Keyword.findOrCreate(
@@ -39,6 +39,10 @@ module.exports = {
             const keyws = await createdQ.getKeywords(
                 {
                     attributes: ['word'],
+                    through: {
+                        model: Keyword_Question,
+                        attributes: []
+                            }
                 }
             );
             createdQ = createdQ.dataValues;
@@ -79,17 +83,7 @@ module.exports = {
       let start_date = req.query.start_date !== undefined;
       /*
       if (!author && !keyword && start_date) {
-        const questions =
-          await Question.findAll({
-              where: {
-                createdAt: {
-                  $lte: req.query.end_date,
-                  $gte: req.params.start_date
-                }
-              }
-          })
-            .catch(err => next(err))
-        res.status(200).send(questions)
+
       }
       */
       if (!author && keyword && !start_date) {
@@ -116,21 +110,7 @@ module.exports = {
       }
       /*
       if (!author && keyword && start_date) {
-        console.log('3')
-        var query = {
-          where: {
-            include: [{
-              model: Keyword,
-              where: { word: req.params.keyword  }
-            }],
-            createdAt: {
-              // params may need some modification
-              // to fit the Date() type
-              [Op.lte]: req.params.end_date,
-              [Op.gte]: req.params.start_date
-            }
-          }
-        }
+
       }
       */
       if (author && !keyword && !start_date) {
@@ -156,7 +136,7 @@ module.exports = {
       res.status(200).send(questions)
       }
       /*
-      if if (author && !keyword && start_date) {
+      if (author && !keyword && start_date) {
 
       }
       */
@@ -185,24 +165,8 @@ module.exports = {
       }
       /*
       if (author && keyword && start_date) {
-        console.log('7')
-        var query = {
-          where: {
-            author: req.params.author,
-            createdAt: {
-              [Op.lte]: req.params.end_date,
-              [Op.gte]: req.params.start_date
-            },
-            include: [{
-              model: Keyword,
-              where: { word: req.params.keyword  }
-            }]
-          }
-        }
+
       }
       */
-      await Question.findAll(query)
-        .catch(err => next(err));
-      res.status(200).send(data);
     }
   }
