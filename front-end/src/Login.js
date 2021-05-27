@@ -42,7 +42,7 @@ const Login = () => {
           <img src={login} alt="talk bubble"/>
           <h3><b> Sign In </b></h3>
           <Form.Group size="lg" controlId="username">
-            <Form.Label>Username</Form.Label>
+            <Form.Label className="label">Username</Form.Label>
             <Form.Control
               autoFocus
               type="text"
@@ -52,7 +52,7 @@ const Login = () => {
             />
           </Form.Group>
           <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
+            <Form.Label className="label">Password</Form.Label>
             <Form.Control
               type="password"
               required
@@ -60,12 +60,12 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-          <Button className="b1" block variant="outline-primary" type="submit">
+          <Button className="btn-1" block variant="outline-primary" type="submit">
             Sign In
           </Button>
           <hr/>
           <Link to ="/register">
-            <Button className="b2" block variant="outline-secondary">
+            <Button className="btn-2" block variant="outline-secondary">
               Create a New Account
             </Button>
           </Link>

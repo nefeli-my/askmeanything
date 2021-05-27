@@ -25,29 +25,33 @@
   background-color: white;
 }
 
+.question-body p {
+  font-size: 14px;
+}
+
 .titles {
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
+  width: 70%;
   padding: 0.5%;
   border-radius: 5px;
   background-color: #e8e8e4;
 }
 
 .titles h3, .title {
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
-  margin-top: 0.5%;
+  margin-top: 1%;
 }
 
 .titles h2 {
-  font-size: 22px;
+  font-size: 18px;
   text-align: center;
   margin-top: 0.5%;
 }
 
-.author, .posted-at {
-  font-size: 15px;
+.author-on {
+  font-size: 14px;
   margin-left: 3%;
 }
 
@@ -59,6 +63,6 @@
 }
 
 #show-more-btn {
+  font-size: 14px;
   margin-left: 45%;
-  margin-top: 2%;
 }

@@ -12,7 +12,7 @@ const LandingPage = () => {
         <h2> Welcome to <b>ask</b>me<b>anything</b>! </h2>
         <p className="p-lg">
            A place to ask and answer questions freely.  Discuss, learn
-           and bloom along with people <br/> from all over the world. 🌎
+           and bloom along with people from all over the world. 🌎
         </p>
         <hr/>
         <div className="options-div">

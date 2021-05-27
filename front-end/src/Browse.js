@@ -1,7 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import './css/Browse.css';
-import Navbar from './Navbar';
-import Footer from './Footer';
 
 const Browse = () => {
   const [questions, setQuestions] = useState([]);
@@ -22,29 +20,27 @@ const Browse = () => {
       console.log(data);
     });
   }, [limit]);
-  let show_button = isLoggedIn && (limit == questions.length);
+  let show_button = isLoggedIn && (limit === questions.length);
+
   const listQuestions = questions.map((question) =>
     <li className="single-question">
       <h3 className="title"><b> {question.title} </b></h3>
-      <h3 className="author"> author: {question.Author.username} </h3>
-      <h3 className="posted-at"> posted at: {question.createdAt.substring(0,10)} </h3>
+      <h3 className="author-on"> posted by user {question.Author.username} on {question.createdAt.substring(0,10)} </h3>
       <div className="question-body">
-        <text> {question.body} </text>
+        <p> {question.body} </p>
       </div>
     </li>
   );
 
   return (
-    <div>
-      <div className="browse">
-        <div className="titles">
-          <h2><b> Most recent questions posted: </b></h2>
-          <h3> (questions currently displayed: {questions.length}) </h3>
-        </div>
-        <ul className="question-list">
-          { listQuestions }
-        </ul>
+    <div className="browse">
+      <div className="titles">
+        <h2><b> Most recent questions posted: </b></h2>
+        <h3> (questions currently displayed: {questions.length}) </h3>
       </div>
+      <ul className="question-list">
+        { listQuestions }
+      </ul>
       { show_button &&
       <button
         id="show-more-btn"

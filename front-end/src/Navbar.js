@@ -11,6 +11,7 @@ const Navbar = () => {
         <a href="/myprofile">My Profile</a>
         <a href="/browse">Browse Questions & Answers</a>
         <a href="/newquestion" style={{
+          padding: '0.5%',
           color: 'black',
           backgroundColor: '#87bdd8',
           borderRadius: '8px'
