@@ -11,28 +11,22 @@
   max-width: 85%;
   padding: 3%;
 }
-.register .b1 {
-  margin-top: 1.5%;
-  margin-left: 42%;
+.register .label {
+  font-size: 15px;
 }
-.register h1 {
-  padding: 0.5%;
-  width: 70%;
-  margin: 1% auto;
-  border-bottom: 1px solid #ccc;
-  font-size: 30px;
+.register .btn-1 {
+  font-size: 15px;
+  margin-top: 1.5%;
+  margin-left: 41%;
 }
 .register h3 {
   margin-top: 2%;
   margin-bottom: 2%;
-  font-size: 25px;
+  font-size: 20px;
 }
 .error {
   text-align: center;
   margin-top: 2%;
   font-size: 14px;
   color: red;
-}
-.back-login {
-  font-size: 14px;
 }

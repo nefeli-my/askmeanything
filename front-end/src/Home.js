@@ -1,10 +1,10 @@
 import './css/Home.css';
 import { useHistory } from "react-router-dom"
-import Navbar from './Navbar.js';
-import Footer from './Footer.js';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import myaccount from './assets/myaccount.jpg'
 import newquestion from './assets/newquestion.jpg'
-import answer from './assets/answer.jpg'
+import answer from './assets/puzzle.jpg'
 
 const Home = () => {
   const history = useHistory();

@@ -7,26 +7,20 @@
   padding: 1%;
   border-radius: 1.5%;
 }
-.landing-page nav {
-  padding: 1%;
-  width: 70%;
-  margin: 1.5% auto;
-  border-bottom: 1px solid #ccc;
-}
 .landing-main h2 {
-  font-size: 25px;
+  font-size: 22px;
   margin-top: 1.5%;
   margin-left: 3.5%
 }
 .landing-main h4 {
-  font-size: 20px;
+  font-size: 17px;
   text-align: center;
   margin-top: 1%;
 }
 .p-lg {
-  font-size: 18px;
-  margin-top: 2.5%;
-  margin-left: 3.5%;
+  font-size: 17px;
+  margin-top: 2%;
+  margin-left: 3%;
 }
 .landing-main hr {
   background-color: #ccc;
@@ -55,7 +49,7 @@
   margin-left: 0.75%;
   margin-right: 0.75%;
   margin-top: 2%;
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
 }
 .landing-main .col-sm img {

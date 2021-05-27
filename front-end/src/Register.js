@@ -43,7 +43,7 @@ const Register = () => {
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>First Name</Form.Label>
-            <Form.Control
+            <Form.Control className="label"
             required
             placeholder="Enter first name"
             value={first_name}
@@ -53,7 +53,7 @@ const Register = () => {
 
           <Form.Group as={Col}>
             <Form.Label>Last Name</Form.Label>
-            <Form.Control
+            <Form.Control className="label"
             required
             placeholder="Enter last name"
             value={last_name}
@@ -65,7 +65,7 @@ const Register = () => {
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Username</Form.Label>
-            <Form.Control
+            <Form.Control className="label"
             required
             placeholder="Enter username"
             value={username}
@@ -75,7 +75,7 @@ const Register = () => {
 
           <Form.Group as={Col}>
             <Form.Label>Email Address</Form.Label>
-            <Form.Control
+            <Form.Control className="label"
             type="email" required
             placeholder="example: user@email.com"
             value={email}
@@ -83,27 +83,30 @@ const Register = () => {
             />
           </Form.Group>
         </Form.Row>
-        <Form.Group as={Col}>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-          type="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
 
-        <Form.Group as={Col}>
-          <Form.Label>Confirm password</Form.Label>
-          <Form.Control
-          type="password"
-          required
-          value={password_reset}
-          onChange={(e) => setPassReset(e.target.value)}
-          />
-        </Form.Group>
+        <Form.Row>
+          <Form.Group as={Col}>
+            <Form.Label>Password</Form.Label>
+            <Form.Control className="label"
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
 
-        <Button variant="outline-primary" className="b1" type="submit">
+          <Form.Group as={Col}>
+            <Form.Label>Confirm password</Form.Label>
+            <Form.Control className="label"
+            type="password"
+            required
+            value={password_reset}
+            onChange={(e) => setPassReset(e.target.value)}
+            />
+          </Form.Group>
+        </Form.Row>
+
+        <Button variant="outline-primary" className="btn-1" type="submit">
           Sign Up
         </Button>
       </Form>

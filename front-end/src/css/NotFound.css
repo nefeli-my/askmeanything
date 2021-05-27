@@ -7,11 +7,20 @@
   padding: 2%;
   border-radius: 2.5%;
 }
+
+.not-found h2 {
+  font-size: 24px;
+}
+
+.not-found h3 {
+  font-size: 22px;
+}
+
 .not-found Link {
   margin-top: 2%;
 }
 .not-found img {
   margin-top: 4%;
-  margin-left: 24%;
-  width: 42%;
+  margin-left: 28%;
+  width: 40%;
 }

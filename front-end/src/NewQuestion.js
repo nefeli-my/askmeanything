@@ -2,7 +2,7 @@ import './css/NewQuestion.css';
 import { Form, Button } from "react-bootstrap";
 // import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
-import Navbar from './Navbar.js';
+import Navbar from './Navbar';
 
 const NewQuestion = () => {
   const [title, setTitle] = useState("");
@@ -29,7 +29,7 @@ const NewQuestion = () => {
         </p>
         <Form>
           <Form.Group>
-            <Form.Label> Question Title: </Form.Label>
+            <Form.Label className="label"> Question Title: </Form.Label>
             <Form.Control
             placeholder="Enter title"
             value={title}
@@ -41,7 +41,7 @@ const NewQuestion = () => {
             </Form.Text>
           </Form.Group>
           <Form.Group>
-            <Form.Label> Question Text: </Form.Label>
+            <Form.Label className="label"> Question Text: </Form.Label>
             <textarea id="text-box"
             rows="8" cols="100"
             value={body}
@@ -55,7 +55,7 @@ const NewQuestion = () => {
               ))}
           </ul>
           <div className="input-group">
-            <label id="label-kw"> Keyword: </label>
+            <label className="label"> Keyword: </label>
             <input
             placeholder="  Enter keyword"
             id= "keyword-box"
@@ -70,12 +70,13 @@ const NewQuestion = () => {
             </button>
             <button
               className="btn btn-outline-dark btn-sm"
+              id="btn-keyword"
               onClick={() => {setKeyword(""); setKeywords([])}}
             >
               clear all keywords
             </button>
           </div>
-          <Button id="btn-nq" variant="dark" type="submit"> Submit </Button>
+          <Button id="btn-submit" variant="dark" type="submit"> Submit </Button>
         </Form>
       </div>
     </div>

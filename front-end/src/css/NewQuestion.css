@@ -3,15 +3,21 @@
   margin-left: auto;
   margin-right: auto;
   background-color: #d8e2dc;
-  padding: 2%;
+  padding: 1.5%;
   border-radius: 4%;
 }
 .new-question h3 {
-  font-size: 20px;
+  font-size: 18px;
 }
 .new-question p {
   margin-top: 2%;
-  font-size: 16px;
+  font-size: 15px;
+}
+.label {
+  font-size: 15px;
+}
+::placeholder {
+  font-size: 13px;
 }
 #text-box {
   width: 100%;
@@ -21,9 +27,13 @@
   margin-left: 1%;
   margin-right: 3%;
 }
-#btn-nq {
+#btn-submit {
   margin-left: 45%;
-  margin-top: 3%;
+  margin-top: 2%;
+  font-size: 14px;
+}
+#btn-keyword {
+  font-size: 12px;
 }
 .input-group button {
   margin-left: 1%;
@@ -39,5 +49,5 @@
   border-radius: 5px;
   background: #303030;
   color: white;
-  font-size: 13px;
+  font-size: 12px;
 }
