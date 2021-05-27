@@ -1,4 +1,4 @@
-const {Acreate, Aget} = require( "../QnAService" );
+const {Acreate, Aget, AgetRestricted} = require( "../QnAService" );
 
 module.exports = {
     async create(req,res,next){
@@ -19,6 +19,19 @@ module.exports = {
     async getall(req,res,next) {
         try {
             const returnedAns = await Aget(req.params.questionId);
+            if (returnedAns.error) {
+                let err = new Error(returnedAns.error.response.data.msg);
+                err.status = returnedAns.error.response.status;
+                throw err;
+            }
+            return res.send(returnedAns.body.data);
+        } catch (err) {
+            next(err);
+        }
+    },
+    async getallRestricted(req,res,next) {
+        try {
+            const returnedAns = await AgetRestricted(req.params.questionId);
             if (returnedAns.error) {
                 let err = new Error(returnedAns.error.response.data.msg);
                 err.status = returnedAns.error.response.status;

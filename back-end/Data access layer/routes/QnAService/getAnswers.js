@@ -4,7 +4,7 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 const JWTstrategy = require('passport-jwt').Strategy
 const passport = require('passport');
 const dotenv = require('dotenv')
-const {findAll} = require('../../server/controllers/QnAService/answer');
+const {findAll, findAllRestricted} = require('../../server/controllers/QnAService/answer');
 
 
 dotenv.config()
@@ -20,6 +20,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-router.get('/', findAll);
+router.get('/:id', findAll);
+router.get('/unassigned/:id', findAllRestricted);
 
 module.exports = router;

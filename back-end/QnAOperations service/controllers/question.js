@@ -1,4 +1,4 @@
-const {Qcreate, Qgetall, Qgetfiltered} = require( "../QnAService" );
+const {Qcreate, Qgetall, QgetallRestricted,Qgetfiltered} = require( "../QnAService" );
 
 module.exports = {
     async create(req, res, next) {
@@ -30,6 +30,20 @@ module.exports = {
           next(err);
       }
       },
+    async getallRestricted(req, res, next){
+        try {
+            const returnedQues = await QgetallRestricted();
+            if(returnedQues.error) {
+                let err = new Error(returnedQues.error.response.data.msg);
+                err.status = returnedQues.error.status;
+                throw err;
+            }
+            return res.send(returnedQues.body);
+        }
+        catch (err) {
+            next(err);
+        }
+    },
     async getfiltered(req, res, next){
       try {
         const returnedQues = await Qgetfiltered(req.query);

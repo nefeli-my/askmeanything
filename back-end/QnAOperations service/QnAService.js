@@ -26,6 +26,18 @@ module.exports = {
         return {success: false, error: err};
       }
     },
+    async QgetallRestricted(){
+        try {
+            console.log("EDW");
+            const result = await axios.get(DataLayerUrl + '/question' +`/get/unassigned`);
+            return {success: true, body: result.data};
+        }
+        catch(err) {
+            //console.log(err);
+            err.status = err.response.status;
+            return {success: false, error: err};
+        }
+    },
     async Qgetfiltered(qparams){
       try {
         const result =
@@ -55,11 +67,20 @@ module.exports = {
     },
     async Aget(questionId){
       try {
-        const result = await axios.get(DataLayerUrl + '/answer' + +`/get/${question_id}`);
+        const result = await axios.get(DataLayerUrl + '/answer'  +`/get/${questionId}`);
         return {success: true, body: result};
       }
       catch(err) {
         return {success: false, error: err};
       }
+    },
+    async AgetRestricted(questionId){
+        try {
+            const result = await axios.get(DataLayerUrl + '/answer'  +`/get/unassigned/${questionId}`);
+            return {success: true, body: result};
+        }
+        catch(err) {
+            return {success: false, error: err};
+        }
     }
 }
