@@ -19,13 +19,10 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-<<<<<<< HEAD
+
 router.get('/filters' , passport.authenticate('token',{session:false}), getfiltered);
 router.get('/unassigned', getallRestricted)
 router.get('/:id',passport.authenticate('token',{session:false}), getall);
-=======
-router.get('/filters' /*, passport.authenticate('token',{session:false})*/, getfiltered);
-router.get('/:id',/*passport.authenticate('token',{session:false}),*/ getall);
->>>>>>> c7a69da3864f6c226651e283514e4bef92969075
+
 
 module.exports = router;
