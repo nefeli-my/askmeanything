@@ -1,8 +1,8 @@
-import '../css/NewQuestion.css';
 import { Form, Button } from "react-bootstrap";
 import React, { useState } from "react";
 import Navbar from './Navbar';
 import { useHistory } from "react-router-dom";
+import '../css/NewQuestion.css';
 
 const NewQuestion = () => {
   const [title, setTitle] = useState("");

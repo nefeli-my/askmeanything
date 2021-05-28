@@ -4,8 +4,8 @@ import '../css/Browse.css';
 
 const Browse = () => {
   const [questions, setQuestions] = useState([]);
-  const [show_button, setShow_Button] = useState(true);
   const [offset, setOffset] = useState(10);
+  const [show_button, setShow_Button] = useState(true);
   const [author, setAuthor] = useState("");
   const [keyword, setKeyword] = useState("");
 
