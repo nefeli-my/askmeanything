@@ -3,9 +3,8 @@ const router = express.Router();
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 const JWTstrategy = require('passport-jwt').Strategy
 const passport = require('passport');
-const dotenv = require('dotenv')
-const {findAll} = require('../../server/controllers/QnAService/question');
-const {findFiltered} = require('../../server/controllers/QnAService/question');
+const dotenv = require('dotenv');
+const {findFiltered, findAll, findAllRestricted} = require('../../server/controllers/QnAService/question');
 
 dotenv.config()
 
@@ -20,7 +19,9 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-router.get('/filters'/*passport.authenticate('token',{session:false})*/, findFiltered);
-router.get('/:id'/*, passport.authenticate('token',{session:false})*/, findAll);
+router.get('/filters', findFiltered);
+router.get('/unassigned', findAllRestricted);
+router.get('/:id', findAll);
+
 
 module.exports = router;

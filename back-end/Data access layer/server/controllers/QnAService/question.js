@@ -77,6 +77,29 @@ module.exports = {
           .catch(err => next(err))
       res.status(200).send(questions)
     },
+    async findAllRestricted(req, res, next){
+        const questions =
+            await Question.findAll({
+                limit: 10,
+                order: [['createdAt', 'DESC']],
+                include: [
+                    {
+                        model: User,
+                        as: 'Author',
+                        attributes: ['username']
+                    },
+                    {
+                        model: Keyword,
+                        attributes: ['word'],
+                        through: {
+                            model: Keyword_Question,
+                            attributes: []
+                        }
+                    }]
+            })
+                .catch(err => next(err))
+        res.status(200).send(questions)
+    },
     async findFiltered(req, res, next){
       let author = req.query.author !== undefined;
       let keyword = req.query.keyword !== undefined;
