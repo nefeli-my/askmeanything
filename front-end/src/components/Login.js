@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"
 import { Form, Button } from "react-bootstrap";
-import './css/Login.css';
-import login from './assets/login.png'
+import '../css/Login.css';
+import login from '../assets/login.png'
 import { useHistory } from "react-router-dom";
 
 const Login = () => {

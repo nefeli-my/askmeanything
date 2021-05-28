@@ -1,13 +1,14 @@
-import Browse from './Browse';
-import Footer from './Footer';
-import Home from './Home';
-import LandingPage from './LandingPage';
-import Login from './Login';
-import Navbar from './Navbar';
-import NotFound from './NotFound';
-import NewQuestion from './NewQuestion';
-import PrivateRoute from './PrivateRoute'
-import Register from './Register';
+import Browse from './components/Browse';
+import BrowseUnassigned from './components/BrowseUnassigned';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import LandingPage from './components/LandingPage';
+import Login from './components/Login';
+import Navbar from './components/Navbar';
+import NotFound from './components/NotFound';
+import NewQuestion from './components/NewQuestion';
+import PrivateRoute from './components/PrivateRoute'
+import Register from './components/Register';
 import { BrowserRouter as Router,  Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -30,11 +31,12 @@ function App() {
             <Register/>
             <Footer/>
           </Route>
-          <Route path="/browse">
+          <Route path="/browse-unassigned">
             <Navbar/>
-            <Browse/>
+            <BrowseUnassigned/>
           </Route>
           <PrivateRoute path="/home" component={Home}/>
+          <PrivateRoute path="/browse" component={Browse}/>
           <PrivateRoute path="/newquestion" component={NewQuestion}/>
           <Route path="*">
             <NotFound/>

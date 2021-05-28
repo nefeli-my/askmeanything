@@ -1,4 +1,4 @@
-import './css/Navbar.css';
+import '../css/Navbar.css';
 
 const Navbar = () => {
   const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
@@ -24,7 +24,7 @@ const Navbar = () => {
         <a href="/">Home</a>
         <a href="/login">Login</a>
         <a href="/register">Create an Account</a>
-        <a href="/browse">Browse Questions & Answers</a>
+        <a href="/browse-unassigned">Browse Questions & Answers</a>
       </div>
       }
     </nav>

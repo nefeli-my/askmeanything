@@ -3,8 +3,8 @@
   margin-left: auto;
   margin-right: auto;
   background-color: #d8e2dc;
-  padding: 1.5%;
-  border-radius: 4%;
+  padding: 1%;
+  border-radius: 10px;
 }
 .new-question h3 {
   font-size: 18px;
@@ -12,6 +12,11 @@
 .new-question p {
   margin-top: 2%;
   font-size: 15px;
+}
+.new-question-form, .description {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .Form.Label {
   font-size: 15px;
@@ -35,7 +40,7 @@
 #btn-keyword {
   font-size: 12px;
 }
-.input-group {
+.new-question .input-group {
   margin-left: 0%;
 }
 .input-group button {

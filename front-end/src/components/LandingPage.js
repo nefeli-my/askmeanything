@@ -1,8 +1,8 @@
-import './css/LandingPage.css';
+import '../css/LandingPage.css';
 import { useHistory } from "react-router-dom"
-import newquestion from './assets/newquestion.jpg'
-import unlock from './assets/unlock.jpg'
-import stats from './assets/stats.jpg'
+import newquestion from '../assets/newquestion.jpg'
+import unlock from '../assets/unlock.jpg'
+import stats from '../assets/stats.jpg'
 
 const LandingPage = () => {
   const history = useHistory();
@@ -37,7 +37,7 @@ const LandingPage = () => {
                 <img src={stats} alt="stats"/>
               </div>
             </div>
-            <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/browse')}}>
+            <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/browse-unassigned')}}>
               <h4><b>Browse questions & answers</b></h4>
               <p> <b>Browse the existing questions</b> <br/>and <b>answers. </b>
               Apply <b> searching  <br/> filters</b> to find exactly what <br/> you're looking for!

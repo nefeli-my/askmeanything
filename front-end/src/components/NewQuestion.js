@@ -1,14 +1,15 @@
-import './css/NewQuestion.css';
+import '../css/NewQuestion.css';
 import { Form, Button } from "react-bootstrap";
-// import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import Navbar from './Navbar';
+import { useHistory } from "react-router-dom";
 
 const NewQuestion = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [keyword, setKeyword] = useState("");
   const [keywords, setKeywords] = useState([]);
+  const history = useHistory();
 
   function updateKeywords() {
     if (!keywords.includes(keyword.toLowerCase())) {
@@ -17,17 +18,30 @@ const NewQuestion = () => {
     setKeyword("");
   }
 
+  const question = { title, body, keywords };
+  function submitQuestion() {
+    fetch('http://localhost:8002/createquestion/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(question)
+      })
+    .then(() => history.push('/home'))
+    .catch(err => console.log(err));
+  }
+
   return (
     <div>
       <Navbar/>
       <div className="new-question">
-        <h3> <b>  Make your own question! 💬 </b> </h3>
-        <p>
-          Here you can ask your own questions to get all the answers you need.
-          Don't forget to <b>add a title to your question</b>, <br/> as well as the necessary <b>keywords </b>
-          to make sure your question gets all the attention it deserves!
-        </p>
-        <Form>
+        <div className="description">
+          <h3> <b>  Make your own question! 💬 </b> </h3>
+          <p>
+            Here you can ask your own questions to get all the answers you need.
+            Don't forget to <b>add a title to your question</b>, as well as <br/>the necessary <b>keywords </b>
+            to make sure your question gets all the attention it deserves!
+          </p>
+        </div>
+        <Form className="new-question-form">
           <Form.Group>
             <Form.Label className="label"> Question Title: </Form.Label>
             <Form.Control
@@ -41,7 +55,7 @@ const NewQuestion = () => {
             </Form.Text>
           </Form.Group>
           <Form.Group>
-            <Form.Label className="label"> Question Text: </Form.Label>
+            <Form.Label> Question Text: </Form.Label>
             <textarea id="text-box"
             rows="8" cols="100"
             value={body}
@@ -76,7 +90,9 @@ const NewQuestion = () => {
               clear all keywords
             </button>
           </div>
-          <Button id="btn-submit" variant="dark" type="submit"> Submit </Button>
+          <Button id="btn-submit" variant="dark" onClick={() => submitQuestion()}>
+            Submit
+          </Button>
         </Form>
       </div>
     </div>

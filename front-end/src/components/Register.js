@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Col } from "react-bootstrap";
-import './css/Register.css';
+import '../css/Register.css';
 import { useHistory } from "react-router-dom";
 
 const Register = () => {

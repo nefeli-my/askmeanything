@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import './css/Browse.css';
+import Navbar from './Navbar';
+import '../css/Browse.css';
 
 const Browse = () => {
   const [questions, setQuestions] = useState([]);
   const [show_button, setShow_Button] = useState(true);
-  const [offset, setOffset] = useState(10)
+  const [offset, setOffset] = useState(10);
   const [author, setAuthor] = useState("");
   const [keyword, setKeyword] = useState("");
 
@@ -66,7 +67,6 @@ const Browse = () => {
           return res.json();
         })
         .then(function(data) {
-          console.log('hi')
           setQuestions(data);
           if (data.length === 0)
             setShow_Button(false);
@@ -101,54 +101,57 @@ const Browse = () => {
   );
 
   return (
-    <div className="browse">
-      <div className="titles">
-        <h2><b> Most recent questions posted: </b></h2>
-        <h3> (questions currently displayed: {questions.length}) </h3>
-      </div>
-      <div className="inline-divs">
-        <div className="input-group">
-          <input type="search"
-                 className="form-control rounded"
-                 placeholder="Search by author"
-                 value={author}
-                 onChange={(e) => setAuthor(e.target.value)}
-          />
-          <button type="button"
-                  className="btn btn-outline-primary btn-sm"
-                  onClick={() => {setShow_Button(false); getQuestions();}}>
-                  search
-          </button>
+    <div>
+      <Navbar/>
+      <div className="browse">
+        <div className="titles">
+          <h2><b> Most recent questions posted: </b></h2>
+          <h3> (questions currently displayed: {questions.length}) </h3>
         </div>
-        <div className="input-group">
-          <input type="search"
-                 className="form-control rounded"
-                 placeholder="Search by keyword"
-                 value={keyword}
-                 onChange={(e) => setKeyword(e.target.value)}
-          />
-          <button type="button"
-                  className="btn btn-outline-primary btn-sm"
-                  onClick={() => {setShow_Button(false); getQuestions();}}>
-                  search
-          </button>
+        <div className="inline-divs">
+          <div className="input-group">
+            <input type="search"
+                   className="form-control rounded"
+                   placeholder="Search by author"
+                   value={author}
+                   onChange={(e) => setAuthor(e.target.value)}
+            />
+            <button type="button"
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={() => {setShow_Button(false); getQuestions();}}>
+                    search
+            </button>
+          </div>
+          <div className="input-group">
+            <input type="search"
+                   className="form-control rounded"
+                   placeholder="Search by keyword"
+                   value={keyword}
+                   onChange={(e) => setKeyword(e.target.value)}
+            />
+            <button type="button"
+                    className="btn btn-outline-primary btn-sm"
+                    onClick={() => {setShow_Button(false); getQuestions();}}>
+                    search
+            </button>
+          </div>
         </div>
+        <div className="inline-divs">
+          { author && <p className="filters"> <b>author:</b> {author} </p> }
+          { keyword && <p className="filters"> <b>keyword:</b> {keyword} </p> }
+        </div>
+        <ul className="question-list">
+          { listQuestions }
+        </ul>
+        { show_button &&
+        <button
+          id="show-more-btn"
+          onClick={() => {setOffset(offset+10); getQuestions();}}
+          className="btn btn-outline-primary">
+          show more
+        </button>
+        }
       </div>
-      <div className="inline-divs">
-        { author && <p className="filters"> <b>author:</b> {author} </p> }
-        { keyword && <p className="filters"> <b>keyword:</b> {keyword} </p> }
-      </div>
-      <ul className="question-list">
-        { listQuestions }
-      </ul>
-      { show_button &&
-      <button
-        id="show-more-btn"
-        onClick={() => {setOffset(offset+10); getQuestions();}}
-        className="btn btn-outline-primary">
-        show more
-      </button>
-      }
     </div>
   );
 }
