@@ -13,7 +13,7 @@
   margin-top: 2%;
   font-size: 15px;
 }
-.label {
+.Form.Label {
   font-size: 15px;
 }
 ::placeholder {
@@ -34,6 +34,9 @@
 }
 #btn-keyword {
   font-size: 12px;
+}
+.input-group {
+  margin-left: 0%;
 }
 .input-group button {
   margin-left: 1%;

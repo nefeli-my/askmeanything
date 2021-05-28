@@ -55,8 +55,8 @@ const NewQuestion = () => {
               ))}
           </ul>
           <div className="input-group">
-            <label className="label"> Keyword: </label>
-            <input
+            <Form.Label className="label"> Keyword: </Form.Label>
+            <Form.Control
             placeholder="  Enter keyword"
             id= "keyword-box"
             value={keyword}

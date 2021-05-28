@@ -56,9 +56,9 @@ module.exports = {
     async findAll(req, res, next){
       const questions =
         await Question.findAll({
-          //offset: req.params.id,
-          limit: req.params.id,
           order: [['createdAt', 'DESC']],
+          offset: req.params.id,
+          limit: 10,
           include: [
             {
               model: User,
