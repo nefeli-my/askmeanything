@@ -1,6 +1,6 @@
 import '../css/NotFound.css';
 import { Link } from "react-router-dom"
-import error404 from '../assets/error2.png'
+import error404 from '../assets/error.png'
 
 const NotFound = () => {
   const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
