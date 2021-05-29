@@ -83,6 +83,23 @@
   padding: 2%;
 }
 
+.keyword-list {
+  list-style-type: none;
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+}
+
+.single-keyword {
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 1.5%;
+  margin-right: 0.75%;
+  border: 1px solid #3B3C36;
+  padding: 0.25%;
+  border-radius: 3px;
+}
+
 #show-more-btn {
   font-size: 14px;
   margin-left: 45%;

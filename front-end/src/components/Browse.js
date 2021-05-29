@@ -90,16 +90,6 @@ const Browse = () => {
     }
   }
 
-  const listQuestions = questions.map((question) =>
-    <li key={question.id} className="single-question">
-      <h3 className="title"><b> {question.title} </b></h3>
-      <h3 className="author-on"> posted by user {question.Author.username} on {question.createdAt.substring(0,10)} </h3>
-      <div className="question-body">
-        <p> {question.body} </p>
-      </div>
-    </li>
-  );
-
   return (
     <div>
       <Navbar/>
@@ -141,7 +131,22 @@ const Browse = () => {
           { keyword && <p className="filters"> <b>keyword:</b> {keyword} </p> }
         </div>
         <ul className="question-list">
-          { listQuestions }
+          {questions.map((question) =>
+            <li key={question.id} className="single-question">
+              <h3 className="title"><b> {question.title} </b></h3>
+              <h3 className="author-on"> posted by user {question.Author.username} on {question.createdAt.substring(0,10)} </h3>
+              <div className="question-body">
+                <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
+              </div>
+              <ul className="keyword-list">
+                {question.Keywords.map((keyword) =>
+                  <li key={keyword.index} className="single-keyword">
+                     {keyword.word}
+                  </li>
+                )}
+              </ul>
+            </li>
+          )}
         </ul>
         { show_button &&
         <button
