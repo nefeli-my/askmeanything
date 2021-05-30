@@ -9,7 +9,8 @@ import NotFound from './components/NotFound';
 import NewQuestion from './components/NewQuestion';
 import PrivateRoute from './components/PrivateRoute'
 import Register from './components/Register';
-import { BrowserRouter as Router,  Route, Switch } from 'react-router-dom';
+import ViewQuestion from './components/ViewQuestion';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <PrivateRoute path="/browse" component={Browse}/>
           <PrivateRoute path="/home" component={Home}/>
           <PrivateRoute path="/newquestion" component={NewQuestion}/>
+          <PrivateRoute path="/viewquestion" component={ViewQuestion}/>
           <Route path="*">
             <NotFound/>
           </Route>

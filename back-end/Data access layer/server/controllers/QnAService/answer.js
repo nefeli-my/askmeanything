@@ -48,13 +48,6 @@ module.exports = {
                       attributes: ['id', 'username']
                     }
                   ]
-                },
-                {
-                  model: Keyword,
-                  attributes: ['id', 'word'],
-                  through: {
-                    attributes: []
-                  }
                 }
               ],
             });

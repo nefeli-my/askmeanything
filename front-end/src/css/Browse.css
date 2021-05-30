@@ -5,28 +5,29 @@
   padding: 0.5%;
 }
 
-.titles {
+.browse .titles {
   margin-left: auto;
   margin-right: auto;
   width: 70%;
   padding: 0.5%;
   border-radius: 5px;
-  background-color: #e8e8e4;
+  background-color: #f5efff;
 }
 
-.titles h3, .title {
+.browse .titles h3, .browse .title {
   font-size: 15px;
   text-align: center;
   margin-top: 1%;
+  text-decoration: none;
 }
 
-.titles h2 {
+.browse .titles h2 {
   font-size: 18px;
   text-align: center;
   margin-top: 0.5%;
 }
 
-.inline-divs {
+.browse .inline-divs {
   display: flex;
 }
 
@@ -47,8 +48,8 @@
   border-radius: 5px;
 }
 
-.single-question {
-  background-color: #e8e8e4;
+.browse .single-question {
+  background-color: #f5efff;
   padding: 0.5%;
   border-radius: 5px;
   margin-bottom: 1%;
@@ -56,7 +57,7 @@
   margin-right: auto;
 }
 
-.question-body {
+.browse .question-body {
   padding: 0.25%;
   margin-top: 1%;
   margin-left: auto;
@@ -67,11 +68,11 @@
   background-color: white;
 }
 
-.question-body p {
+.browse .question-body p {
   font-size: 14px;
 }
 
-.author-on {
+.browse .author-on {
   font-size: 14px;
   margin-left: 3%;
 }
@@ -83,14 +84,14 @@
   padding: 2%;
 }
 
-.keyword-list {
+.browse .keyword-list {
   list-style-type: none;
   margin-left: 1%;
   margin-top: 1%;
   margin-bottom: 0.5%;
 }
 
-.single-keyword {
+.browse .single-keyword {
   display: inline-block;
   font-size: 12px;
   margin-left: 1.5%;

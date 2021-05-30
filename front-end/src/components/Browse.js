@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from "react-router-dom";
 import Navbar from './Navbar';
 import '../css/Browse.css';
 
@@ -133,7 +134,9 @@ const Browse = () => {
         <ul className="question-list">
           {questions.map((question) =>
             <li key={question.id} className="single-question">
-              <h3 className="title"><b> {question.title} </b></h3>
+              <Link to={{pathname: "/viewquestion", state: {question},}} style={{textDecoration: 'inherit', color: 'inherit'}}>
+                <h3 className="title"><b> {question.title} </b></h3>
+              </Link>
               <h3 className="author-on"> posted by user {question.Author.username} on {question.createdAt.substring(0,10)} </h3>
               <div className="question-body">
                 <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
