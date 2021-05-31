@@ -36,10 +36,13 @@ function App() {
             <Navbar/>
             <BrowseUnassigned/>
           </Route>
+          <Route path="/viewquestion">
+            <Navbar/>
+            <ViewQuestion/>
+          </Route>
           <PrivateRoute path="/browse" component={Browse}/>
           <PrivateRoute path="/home" component={Home}/>
           <PrivateRoute path="/newquestion" component={NewQuestion}/>
-          <PrivateRoute path="/viewquestion" component={ViewQuestion}/>
           <Route path="*">
             <NotFound/>
           </Route>

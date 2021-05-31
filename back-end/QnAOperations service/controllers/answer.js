@@ -3,7 +3,7 @@ const {Acreate, Aget, AgetRestricted} = require( "../QnAService" );
 module.exports = {
     async create(req,res,next){
       try {
-        req.body.user = req.user;
+        req.body.answer = req.answer;
         const createdAns = await Acreate(req.body);
         if (createdAns.error) {
             let err = new Error(createdAns.error.response.data.msg);

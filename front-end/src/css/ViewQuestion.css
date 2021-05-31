@@ -58,11 +58,6 @@
   text-decoration: none;
 }
 
-#btn-show-answers {
-  margin-top: 1%;
-  margin-left: 43%;
-}
-
 .answer-list {
   list-style-type: none;
   padding: 0;
@@ -87,4 +82,18 @@
 .num-answers {
   font-size: 20px;
   margin-bottom: 1%;
+}
+
+.your-answer {
+  /*border: 1px solid red;*/
+}
+
+.your-answer textarea {
+  margin-top: 1%;
+  margin-left: 5%;
+}
+
+#btn-post-answer {
+  margin-top: 1%;
+  margin-left: 38%;
 }

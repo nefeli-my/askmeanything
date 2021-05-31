@@ -1,13 +1,14 @@
 import '../css/ViewQuestion.css';
 import React, {useState, useEffect} from 'react';
 import {useLocation} from "react-router-dom";
-import Navbar from './Navbar';
 
 const ViewQuestion = () => {
   const location = useLocation();
   const { question } = location.state;
   const [answers, setAnswers] = useState([]);
   const [noanswers, SetNoAnswers] = useState(false);
+  const [body, setAnsBody] = useState("");
+  const username = localStorage.getItem('username');
   // const [ansdisplay, setAnsDisplay] = useState(false);
 
   useEffect(() => {
@@ -29,9 +30,20 @@ const ViewQuestion = () => {
     });
   }, []);
 
+  function postAnswer() {
+    // needs fixing
+    let answer = {body, username};
+    fetch('http://localhost:8002/createanswer/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(answer)
+      })
+    .then(() => console.log("answer successfully posted"))
+    .catch(err => console.log(err));
+  }
+
   return (
     <div>
-      <Navbar/>
       <div className="view-question">
         <div className="question">
           <h3 className="title"><b> {question.title} </b></h3>
@@ -57,19 +69,32 @@ const ViewQuestion = () => {
           }
         */}
         { (!noanswers /*&& ansdisplay*/) &&
-          <ul className="answer-list">
-            <h3 className="num-answers"> { answers.length } Answers </h3>
-            {answers.map((answer) =>
-              <li key={answer.id} className="single-answer">
-                <h3 className="author-on"> posted by user {answer.User.username} on {answer.createdAt.substring(0,10)} </h3>
-                <div className="question-body">
-                  <p> {answer.body} </p>
-                </div>
-              </li>
-            )}
-          </ul>
+          <div>
+            <ul className="answer-list">
+              <h3 className="num-answers"> { answers.length } Answers </h3>
+              {answers.map((answer) =>
+                <li key={answer.id} className="single-answer">
+                  <h3 className="author-on"> posted by user {answer.User.username} on {answer.createdAt.substring(0,10)} </h3>
+                  <div className="question-body">
+                    <p> {answer.body} </p>
+                  </div>
+                </li>
+              )}
+            </ul>
+            <hr/>
+          </div>
         }
         { (/*ansdisplay &&*/ noanswers) && <h3 className="no-answers-msg"> { noanswers } </h3> }
+        <div className="your-answer">
+          <h3 className="num-answers"> Your Answer: </h3>
+          <textarea rows="8" cols="100" value={body} onChange={(e) => setAnsBody(e.target.value)}>
+          </textarea>
+        </div>
+        <button className="btn btn-outline-primary btn-sm"
+                id="btn-post-answer"
+                onClick={() => postAnswer()}>
+          Post Your Answer
+        </button>
       </div>
     </div>
   );

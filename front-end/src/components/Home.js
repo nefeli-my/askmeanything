@@ -8,7 +8,7 @@ import answer from '../assets/puzzle.jpg'
 
 const Home = () => {
   const history = useHistory();
-  const username = localStorage.getItem('username')
+  const username = localStorage.getItem('username');
   return (
     <div>
       <Navbar/>
