@@ -17,7 +17,7 @@ const LandingPage = () => {
         <hr/>
         <div className="options-div">
           <div className="row">
-            <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/login')}}>
+            <div className="col-sm" onClick={() => {history.push('/login')}}>
               <h4><b>Login or sign up</b></h4>
               <p> <b>Create an account</b> (or <b>login</b>),<br/>
               to gain access to useful <br/> features as <b>asking </b>
@@ -27,7 +27,7 @@ const LandingPage = () => {
                 <img src={unlock} alt="unlock"/>
               </div>
             </div>
-            <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/stats')}}>
+            <div className="col-sm" onClick={() => {history.push('/stats')}}>
               <h4><b>General statistics</b></h4>
               <p> Do you want to know about what the world is curious about? <br/>
               View askmeanything's <b> general <br/> statistics </b>
@@ -37,7 +37,7 @@ const LandingPage = () => {
                 <img src={stats} alt="stats"/>
               </div>
             </div>
-            <div className="col-sm" style={{cursor: "pointer"}} onClick={() => {history.push('/browse-unassigned')}}>
+            <div className="col-sm" onClick={() => {history.push('/browse-unassigned')}}>
               <h4><b>Browse questions & answers</b></h4>
               <p> <b>Browse the existing questions</b> <br/>and <b>answers. </b>
               Apply <b> searching  <br/> filters</b> to find exactly what <br/> you're looking for!

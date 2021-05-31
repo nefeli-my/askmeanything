@@ -41,6 +41,7 @@
   padding: 0.5%;
   background-color: white;
   border-radius: 1.5%;
+  cursor: pointer;
 }
 .landing-main .col-sm:hover {
   transform: scale(1.1);

@@ -18,7 +18,7 @@ const NewQuestion = () => {
     setKeyword("");
   }
 
-  const question = { title, body, keywords };
+  const question = { title: title, body: body, keywords: keywords };
   function submitQuestion() {
     fetch('http://localhost:8002/createquestion/', {
       method: 'POST',

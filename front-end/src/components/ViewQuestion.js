@@ -8,8 +8,7 @@ const ViewQuestion = () => {
   const [answers, setAnswers] = useState([]);
   const [noanswers, SetNoAnswers] = useState(false);
   const [body, setAnsBody] = useState("");
-  const username = localStorage.getItem('username');
-  // const [ansdisplay, setAnsDisplay] = useState(false);
+  const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
 
   useEffect(() => {
     fetch('http://localhost:8002/getanswers/'+question.id,
@@ -28,11 +27,10 @@ const ViewQuestion = () => {
         setAnswers(data.Answers);
       }
     });
-  }, []);
+  }, [question.id]);
 
   function postAnswer() {
-    // needs fixing
-    let answer = {body, username};
+    let answer = {questionId: question.id, body: body};
     fetch('http://localhost:8002/createanswer/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
@@ -59,16 +57,7 @@ const ViewQuestion = () => {
             )}
           </ul>
         </div>
-        {/*
-          { !ansdisplay &&
-          <button className="btn btn-outline-primary btn-sm"
-                  id="btn-show-answers"
-                  onClick={() => setAnsDisplay(true)}>
-                  show answers
-          </button>
-          }
-        */}
-        { (!noanswers /*&& ansdisplay*/) &&
+        { !noanswers &&
           <div>
             <ul className="answer-list">
               <h3 className="num-answers"> { answers.length } Answers </h3>
@@ -81,20 +70,24 @@ const ViewQuestion = () => {
                 </li>
               )}
             </ul>
-            <hr/>
+            { isLoggedIn && <hr/> }
           </div>
         }
-        { (/*ansdisplay &&*/ noanswers) && <h3 className="no-answers-msg"> { noanswers } </h3> }
-        <div className="your-answer">
-          <h3 className="num-answers"> Your Answer: </h3>
-          <textarea rows="8" cols="100" value={body} onChange={(e) => setAnsBody(e.target.value)}>
-          </textarea>
+        { noanswers && <h3 className="no-answers-msg"> { noanswers } </h3> }
+        { isLoggedIn &&
+        <div>
+          <div className="your-answer">
+            <h3 className="num-answers"> Your Answer: </h3>
+            <textarea rows="8" cols="100" value={body} onChange={(e) => setAnsBody(e.target.value)}>
+            </textarea>
+          </div>
+          <button className="btn btn-outline-primary btn-sm"
+                  id="btn-post-answer"
+                  onClick={() => postAnswer()}>
+            Post Your Answer
+          </button>
         </div>
-        <button className="btn btn-outline-primary btn-sm"
-                id="btn-post-answer"
-                onClick={() => postAnswer()}>
-          Post Your Answer
-        </button>
+      }
       </div>
     </div>
   );

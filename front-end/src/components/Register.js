@@ -19,22 +19,26 @@ const Register = () => {
       setError("Password confirmation failed.");
       return;
     }
-    const user = { username, password, firstName: first_name, lastName: last_name, email };
-    fetch('http://localhost:3000/register/', {
+
+    const user = { username: username, password: password, firstName: first_name, lastName: last_name, email: email };
+    fetch('http://localhost:8001/register/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)
-    }).then(res => {
-      if(res.status === 201 ){
-        history.push('/login');
-      }
-      else{
-        setError("User already exists. Please enter a different username or e-mail address to create a new account.");
-        console.log("user exists");
-      }
     })
-        .catch(err => console.log(err))
-  }
+    .then(function(res) {
+        return res.json();
+      })
+      .then(function(data) {
+        console.log(data);
+        // history.push('/login');
+        })
+    .catch(err => {
+      console.log(err);
+      setError("User already exists. Please enter a different username or e-mail address to create a new account.");
+      })
+    }
+    
   return (
     <div className="register">
       <div className="register-form">

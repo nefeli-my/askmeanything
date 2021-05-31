@@ -23,3 +23,9 @@
 .navbar a:hover {
   text-decoration: none;
 }
+#newquestion-link {
+  padding: 0.5%;
+  color: black;
+  background-color: #87bdd8;
+  border-radius: 8px;
+}
