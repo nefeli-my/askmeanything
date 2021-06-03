@@ -8,13 +8,13 @@ const ViewQuestion = () => {
   const [answers, setAnswers] = useState([]);
   const [noanswers, SetNoAnswers] = useState(false);
   const [body, setAnsBody] = useState("");
-  const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
+  const token = localStorage.getItem('REACT_TOKEN_AUTH');
 
   useEffect(() => {
     fetch('http://localhost:8002/getanswers/'+question.id,
     {
       method: 'GET',
-      headers: { "Content-Type": "application/json"}
+      headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
     })
     .then(function(res) {
       return res.json();
@@ -31,9 +31,10 @@ const ViewQuestion = () => {
 
   function postAnswer() {
     let answer = {questionId: question.id, body: body};
+    console.log(token);
     fetch('http://localhost:8002/createanswer/', {
       method: 'POST',
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) },
       body: JSON.stringify(answer)
       })
     .then(() => console.log("answer successfully posted"))
@@ -70,11 +71,11 @@ const ViewQuestion = () => {
                 </li>
               )}
             </ul>
-            { isLoggedIn && <hr/> }
+            { token && <hr/> }
           </div>
         }
         { noanswers && <h3 className="no-answers-msg"> { noanswers } </h3> }
-        { isLoggedIn &&
+        { token &&
         <div>
           <div className="your-answer">
             <h3 className="num-answers"> Your Answer: </h3>

@@ -20,9 +20,11 @@ const NewQuestion = () => {
 
   const question = { title: title, body: body, keywords: keywords };
   function submitQuestion() {
+    const token = localStorage.getItem('REACT_TOKEN_AUTH');
+    console.log(token);
     fetch('http://localhost:8002/createquestion/', {
       method: 'POST',
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer "+ JSON.parse(token) },
       body: JSON.stringify(question)
       })
     .then(() => history.push('/home'))

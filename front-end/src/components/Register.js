@@ -27,16 +27,19 @@ const Register = () => {
       body: JSON.stringify(user)
     })
     .then(function(res) {
-        return res.json();
+        if(res.status === 200)
+          history.push('/login');
+        else if (res.status === 400){
+          res.json()
+              .then(data =>
+              setError(data.msg))
+        }
+        else
+          setError("An internal error occurred.")
       })
-      .then(function(data) {
-        console.log(data);
-        // history.push('/login');
-        })
     .catch(err => {
-      console.log(err);
-      setError("User already exists. Please enter a different username or e-mail address to create a new account.");
-      })
+        setError(err.message)
+    })
     }
     
   return (
