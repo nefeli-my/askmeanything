@@ -59,7 +59,7 @@ app.use(function(err, req, res, next) {
   res.status(status);
   const message = status >= 500 ? "Something's wrong": err.message;
   const expose = status >= 500 && req.app.get('env') === 'development';
-  res.end(expose ? message + '\n\n' + err.stack : message);
+  res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
 
 //app.listen(8000);

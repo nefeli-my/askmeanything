@@ -6,7 +6,6 @@ const logger = require('morgan');
 const loginauthRouter = require('./routes/login')
 const authenticatorRouter = require('./routes/authenticator');
 const testRouter = require('./routes/test_cookie');
-const refreshRouter = require('./routes/refresh');
 const logoutRouter = require('./routes/logout');
 const updateRouter = require('./routes/updateUser');
 const passport = require('passport');
@@ -31,7 +30,6 @@ app.use(cors());
 app.use('/register', authenticatorRouter);
 app.use('/login', loginauthRouter);
 app.use('/safespace', testRouter);
-app.use('/refresh', refreshRouter);
 app.use('/update', updateRouter);
 app.use('/logout', logoutRouter);
 
@@ -63,9 +61,8 @@ app.use(function(err, req, res, next) {
   res.status(status);
   const message = status >= 500 ? "Something's wrong": err.message;
   const expose = status >= 500 && req.app.get('env') === 'development';
-  res.end(expose ? message + '\n\n' + err.stack : message);
+  res.send({msg: expose ? message + '\n\n' + err.stack : message});
 });
 
 
-//app.listen(8000);
 module.exports = app;

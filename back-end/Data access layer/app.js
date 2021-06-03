@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const tokenRouter = require('./routes/AuthService/token');
 const userRouter = require('./routes/AuthService/user');
 const getQuestionRouter = require('./routes/QnAService/getQuestions');
 const getAnswerRouter = require('./routes/QnAService/getAnswers');
@@ -32,7 +31,6 @@ app.use(cors());
 app.use(transaction({ sequelize: db.sequelize }));
 
 app.use('/user', userRouter);
-app.use('/token', tokenRouter);
 app.use('/question/create',questionRouter);
 app.use('/answer/create', answerRouter);
 app.use('/answer/get', getAnswerRouter);
@@ -68,7 +66,7 @@ app.use(function(err, req, res, next) {
   res.status(status);
   const message = status >= 500 ? "Something's wrong": err.message;
   const expose = status >= 500 && req.app.get('env') === 'development';
-  res.end(expose ? message + '\n\n' + err.stack : message);
+  res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
 
 

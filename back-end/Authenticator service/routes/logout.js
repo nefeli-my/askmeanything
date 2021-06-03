@@ -4,7 +4,6 @@ const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken')
-const {remove} = require('../controllers/authtoken')
 
 passport.use('token', new JWTstrategy(
     {
@@ -17,6 +16,8 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-router.delete('/',  passport.authenticate('token',{session:false}), remove);
+router.delete('/',  passport.authenticate('token',{session:false}),(req,res,next)=>{
+    res.send({message:`Bye, ${req.user}!`});
+});
 
 module.exports = router;

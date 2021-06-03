@@ -19,7 +19,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-router.get('/:questionId', /*passport.authenticate('token',{session:false}),*/ getall);
+router.get('/:questionId', passport.authenticate('token',{session:false}), getall);
 router.get('/unassigned/:questionId', getallRestricted);
 
 
