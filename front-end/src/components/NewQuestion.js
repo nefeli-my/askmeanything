@@ -15,7 +15,7 @@ const NewQuestion = () => {
     if (!keywords.includes(keyword.toLowerCase())) {
       keywords.push(keyword.toLowerCase());
     }
-    setKeyword("");
+    //setKeyword("");
   }
 
   const question = { title: title, body: body, keywords: keywords };
@@ -25,7 +25,7 @@ const NewQuestion = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(question)
       })
-    .then(() => history.push('/home'))
+    .then(() => history.push('/'))
     .catch(err => console.log(err));
   }
 

@@ -1,0 +1,60 @@
+.general-statistics {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  padding: 0.5%;
+}
+
+.general-statistics #title {
+  font-size: 18px;
+}
+
+.diagrams {
+  display: flex;
+  margin-top: 4%;
+}
+
+.questions-diagram {
+  float: left;
+  width: 45%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.answers-diagram {
+  float: left;
+  width: 45%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.diagram-title {
+  font-size: 16px;
+}
+
+.top-keywords {
+  margin-top: 2%;
+}
+
+.top-keywords h3 {
+  font-size: 16px;
+}
+
+.top-keywords ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  padding: 2%;
+}
+
+.top-keywords .single-keyword {
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 1.5%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border: 1px solid #3B3C36;
+  background-color: #e9c46a;
+  padding: 0.25%;
+  border-radius: 3px;
+}

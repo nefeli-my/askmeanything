@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"
 import { Form, Button } from "react-bootstrap";
 import '../css/Login.css';
@@ -10,10 +10,18 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
+  const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
+
+  useEffect(() => {
+    if (isLoggedIn){
+      history.push('/');
+    }
+  }, [isLoggedIn, history]);
 
   function handleSubmit(event) {
     event.preventDefault();
     const user = { username, password };
+
     fetch('http://localhost:8001/login/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
@@ -24,8 +32,8 @@ const Login = () => {
         res.json()
         .then(token => {
           localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token));
-          localStorage.setItem('username', user.username)
-          history.push('/home');
+          localStorage.setItem('username', user.username);
+          history.push('/');
         })
       }
       else{
@@ -41,17 +49,15 @@ const Login = () => {
         <Form onSubmit={handleSubmit}>
           <img src={login} alt="talk bubble"/>
           <h3><b> Sign In </b></h3>
-          <Form.Group size="lg" controlId="username">
+          <Form.Group>
             <Form.Label className="label">Username</Form.Label>
             <Form.Control
-              autoFocus
-              type="text"
               required
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </Form.Group>
-          <Form.Group size="lg" controlId="password">
+          <Form.Group>
             <Form.Label className="label">Password</Form.Label>
             <Form.Control
               type="password"

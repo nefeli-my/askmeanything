@@ -30,15 +30,14 @@ const Register = () => {
         return res.json();
       })
       .then(function(data) {
-        console.log(data);
-        // history.push('/login');
+        history.push('/login');
         })
     .catch(err => {
       console.log(err);
       setError("User already exists. Please enter a different username or e-mail address to create a new account.");
       })
     }
-    
+
   return (
     <div className="register">
       <div className="register-form">

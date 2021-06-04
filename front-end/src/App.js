@@ -1,9 +1,10 @@
 import Browse from './components/Browse';
 import BrowseUnassigned from './components/BrowseUnassigned';
 import Footer from './components/Footer';
-import Home from './components/Home';
-import LandingPage from './components/LandingPage';
+import GeneralHome from './components/GeneralHome';
+import GeneralStatistics from './components/GeneralStatistics';
 import Login from './components/Login';
+import MyProfile from './components/MyProfile';
 import Navbar from './components/Navbar';
 import NotFound from './components/NotFound';
 import NewQuestion from './components/NewQuestion';
@@ -19,7 +20,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Navbar/>
-            <LandingPage/>
+            <GeneralHome/>
             <Footer/>
           </Route>
           <Route path="/login">
@@ -40,9 +41,13 @@ function App() {
             <Navbar/>
             <ViewQuestion/>
           </Route>
+          <Route path="/general-statistics">
+            <Navbar/>
+            <GeneralStatistics/>
+          </Route>
           <PrivateRoute path="/browse" component={Browse}/>
-          <PrivateRoute path="/home" component={Home}/>
           <PrivateRoute path="/newquestion" component={NewQuestion}/>
+          <PrivateRoute path="/profile" component={MyProfile}/>
           <Route path="*">
             <NotFound/>
           </Route>

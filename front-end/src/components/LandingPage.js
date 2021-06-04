@@ -18,7 +18,7 @@ const LandingPage = () => {
         <div className="options-div">
           <div className="row">
             <div className="col-sm" onClick={() => {history.push('/login')}}>
-              <h4><b>Login or sign up</b></h4>
+              <h4><b>Sign up or login</b></h4>
               <p> <b>Create an account</b> (or <b>login</b>),<br/>
               to gain access to useful <br/> features as <b>asking </b>
               and <b> <br/> answering  questions!</b>
@@ -27,7 +27,16 @@ const LandingPage = () => {
                 <img src={unlock} alt="unlock"/>
               </div>
             </div>
-            <div className="col-sm" onClick={() => {history.push('/stats')}}>
+            <div className="col-sm" onClick={() => {history.push('/browse-unassigned')}}>
+              <h4><b>Browse questions & answers</b></h4>
+              <p> Get a <b>sneak peak</b> of the <br/> <b>most recent questions</b> <br/> posted, as well
+              as of their <br/> answers. Login or sign up <br/> for more features!
+              </p>
+              <div>
+                <img src={newquestion} alt="new question"/>
+              </div>
+            </div>
+            <div className="col-sm" onClick={() => {history.push('/general-statistics')}}>
               <h4><b>General statistics</b></h4>
               <p> Do you want to know about what the world is curious about? <br/>
               View askmeanything's <b> general <br/> statistics </b>
@@ -35,15 +44,6 @@ const LandingPage = () => {
               </p>
               <div>
                 <img src={stats} alt="stats"/>
-              </div>
-            </div>
-            <div className="col-sm" onClick={() => {history.push('/browse-unassigned')}}>
-              <h4><b>Browse questions & answers</b></h4>
-              <p> <b>Browse the existing questions</b> <br/>and <b>answers. </b>
-              Apply <b> searching  <br/> filters</b> to find exactly what <br/> you're looking for!
-              </p>
-              <div>
-                <img src={newquestion} alt="new question"/>
               </div>
             </div>
           </div>
