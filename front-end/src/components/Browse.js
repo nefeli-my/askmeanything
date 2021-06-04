@@ -9,12 +9,13 @@ const Browse = () => {
   const [show_button, setShow_Button] = useState(true);
   const [author, setAuthor] = useState("");
   const [keyword, setKeyword] = useState("");
+  const token = localStorage.getItem('REACT_TOKEN_AUTH');
 
   useEffect(() => {
     fetch('http://localhost:8002/getquestions/0',
     {
       method: 'GET',
-      headers: { "Content-Type": "application/json"}
+      headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
     })
     .then(function(res) {
       return res.json();
@@ -30,7 +31,7 @@ const Browse = () => {
       fetch('http://localhost:8002/getquestions/' + offset,
       {
         method: 'GET',
-        headers: { "Content-Type": "application/json"}
+        headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token)}
       })
       .then(function(res) {
         return res.json();
@@ -47,7 +48,7 @@ const Browse = () => {
         fetch(`http://localhost:8002/getquestions/filters/?keyword=${keyword}`,
         {
           method: 'GET',
-          headers: { "Content-Type": "application/json"}
+          headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token)}
         })
         .then(function(res) {
           return res.json();
@@ -62,7 +63,7 @@ const Browse = () => {
         fetch(`http://localhost:8002/getquestions/filters/?author=${author}`,
         {
           method: 'GET',
-          headers: { "Content-Type": "application/json"}
+          headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token)}
         })
         .then(function(res) {
           return res.json();
@@ -77,7 +78,7 @@ const Browse = () => {
         fetch(`http://localhost:8002/getquestions/filters/?author=${author}&keyword=${keyword}`,
         {
           method: 'GET',
-          headers: { "Content-Type": "application/json"}
+          headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token)}
         })
         .then(function(res) {
           return res.json();

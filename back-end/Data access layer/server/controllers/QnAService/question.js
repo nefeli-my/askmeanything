@@ -26,13 +26,7 @@ module.exports = {
                     {
                         where: {
                             word: x
-                        }/*,
-                        include:[{
-                            model: Keyword_Question,
-                            attributes: []
                         }
-
-                        ]*/
                     })
                 await createdQ.addKeyword(keyw[0])
             }

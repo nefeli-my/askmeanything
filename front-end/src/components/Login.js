@@ -31,17 +31,19 @@ const Login = () => {
       if(res.status === 200 ){
         res.json()
         .then(token => {
-          localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token));
-          localStorage.setItem('username', user.username);
+          localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token.accessToken));
+          localStorage.setItem('username', user.username)
           history.push('/');
         })
       }
-      else{
+      else if (res.status === 401){
         setError("The username or password you've inserted is incorrect. Please try again.");
-        console.log("user invalid");
+      }
+      else{
+        setError(`An internal error occurred`)
       }
     })
-    .catch(err => console.log(err));
+    .catch(err => setError(err.message));
   }
   return (
     <div className="login">

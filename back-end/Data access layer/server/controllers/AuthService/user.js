@@ -36,7 +36,7 @@ module.exports = {
                         .catch(error => next(error))
                 }
                 else{
-                    return res.status(400).send('User already exists')
+                    return res.status(400).send({msg:'User already exists'})
                 }
             })
             .catch(err => next(err))
@@ -64,7 +64,7 @@ module.exports = {
     async update(req, res,next) {
         try {
             if (req.body.username || req.body.email) {
-                res.status(400).send({message: 'Username and email can not be changed!'})
+                res.status(400).send({msg: 'Username and email can not be changed!'})
             } else {
                 if (req.password)
                     req.password = getHashedPassword(req.password)
@@ -78,7 +78,7 @@ module.exports = {
                         plain: true
                     }
                 );
-                if(data[0] === 0 ) res.status(200).send({message: 'Nothing was updated'})
+                if(data[0] === 0 ) res.status(200).send({msg: 'Nothing was updated'})
                 else {
                     let {username, firstName, lastName, email, updatedAt} = data[1];
                     let user = {username, firstName, lastName, email, updatedAt: updatedAt.toString()};

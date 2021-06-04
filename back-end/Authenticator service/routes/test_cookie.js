@@ -17,7 +17,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-router.get('/',  passport.authenticate('token',{session:false}),
+router.get('/', passport.authenticate('token',{session:false}),
     (req, res) => {
         res.send({
             message: 'access-token ok',

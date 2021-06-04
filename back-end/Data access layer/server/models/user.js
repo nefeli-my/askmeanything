@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasMany(models.Question, {foreignKey: { name: 'author', allowNull: false}})
       User.hasMany(models.Answer, {foreignKey: {name: 'userId', allowNull: false}})
-      User.hasOne(models.AuthToken, {foreignKey: { name: 'userId', allowNull: false}})
     }
   };
   User.init({

@@ -4,6 +4,7 @@ module.exports = {
     async create(req,res,next){
       try {
         req.body.answer = req.answer;
+        req.body.user = req.user;
         const createdAns = await Acreate(req.body);
         if (createdAns.error) {
             let err = new Error(createdAns.error.response.data.msg);

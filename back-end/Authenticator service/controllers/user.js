@@ -5,11 +5,11 @@ module.exports = {
         try {
             const createdUser = await Usercreate(req.body);
             if(createdUser.error) {
-                let err = new Error(createdUser.error.response.data);
+                let err = new Error(createdUser.error.response.data.msg);
                 err.status = createdUser.error.status;
                 throw err;
             }
-            return res.send(createdUser.body);
+            return res.status(createdUser.status).send(createdUser.body);
         }
         catch (err) {
             next(err);
@@ -35,11 +35,11 @@ module.exports = {
             const updatedUser = await Userupdate(req.body);
             if(updatedUser.error) {
 
-                let err = new Error(updatedUser.error.response.data.message);
+                let err = new Error(updatedUser.error.response.data.msg);
                 err.status = updatedUser.error.response.status;
                 throw err;
             }
-            return res.send(updatedUser.body.data);
+            return res.status(updatedUser.status).send(updatedUser.body.data);
         }
         catch (err) {
             next(err);

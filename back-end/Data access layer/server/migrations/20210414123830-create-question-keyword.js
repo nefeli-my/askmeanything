@@ -10,13 +10,6 @@ module.exports = {
           model: 'Questions',
           key: 'id'
         }
-      },createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
       },
       keywordId: {
         primaryKey: true,

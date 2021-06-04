@@ -1,5 +1,4 @@
 const {validate} = require('../controllers/user')
-const {create} = require('../controllers/authtoken')
 const express = require('express');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
@@ -12,5 +11,9 @@ passport.use('signin', new LocalStrategy((async function (username, password, do
         .then(data => done(null,data))
 })))
 
-router.post('/', passport.authenticate('signin',{session:false}),create);
+router.post('/', passport.authenticate('signin',{session:false}),(req,res,next)=>{
+    let username = req.user;
+    let accessToken = jwt.sign({username}, process.env.SECRET, {expiresIn: '12h'});
+    res.send({accessToken})
+});
 module.exports = router;
