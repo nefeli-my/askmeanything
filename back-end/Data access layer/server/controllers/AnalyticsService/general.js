@@ -29,7 +29,7 @@ module.exports = {
                 if(xMoment > criticalMoment && xMoment < nowMoment){
 
                     const index = xMoment.diff(criticalMoment,'days');
-                    result[index] = x;
+                    result[index] = x.count;
                 }
             }
             res.status(200).send(result);
@@ -59,7 +59,7 @@ module.exports = {
                 if(xMoment > criticalMoment && xMoment < nowMoment){
 
                     const index = xMoment.diff(criticalMoment,'days');
-                    result[index] = x;
+                    result[index] = x.count;
                 }
             }
             res.status(200).send(result);
@@ -70,15 +70,16 @@ module.exports = {
     async questionsPerKeyword(req, res, next) {
         try {
             const questions = await Keyword_Question.findAll({
-                attributes: [
-                    'keywordId',
-                    [Sequelize.literal(`COUNT(*)`), 'count']
-                ],
                 include: [
                     {
                         model: Keyword,
                         attributes: ['word']
                     }
+                ],
+                attributes: [
+                    'keywordId',
+                    [Sequelize.literal(`COUNT(*)`), 'count'],
+                    [Sequelize.literal(`"Keyword"."word"`), 'word']
                 ],
                 group: ['keywordId','id'],
                 limit: 20,

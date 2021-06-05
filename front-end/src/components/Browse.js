@@ -23,7 +23,7 @@ const Browse = () => {
     .then(function(data) {
       setQuestions(data);
     });
-  }, []);
+  }, [token]);
 
   function getQuestions() {
     // unfiltered seach

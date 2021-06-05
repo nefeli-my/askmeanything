@@ -27,18 +27,14 @@ const ViewQuestion = () => {
         setAnswers(data.Answers);
       }
     });
-  }, [question.id]);
+  }, [question.id, token]);
 
   function postAnswer() {
     let answer = {questionId: question.id, body: body};
     console.log(token);
     fetch('http://localhost:8002/createanswer/', {
       method: 'POST',
-<<<<<<< HEAD
-      headers: { "Content-Type": "application/json", "Authorization" : `Bearer ${token}` },
-=======
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) },
->>>>>>> 8fcb23a1a1534592b50eb50072edf13d68804d63
       body: JSON.stringify(answer)
       })
     .then(() => console.log("answer successfully posted"))

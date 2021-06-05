@@ -39,7 +39,7 @@ module.exports = {
 
                 if(xMoment > criticalMoment && xMoment < nowMoment){
                     const index = xMoment.diff(criticalMoment,'days');
-                    result[index] = x;
+                    result[index] = x.count;
                 }
             }
             res.status(200).send(result);
@@ -78,7 +78,7 @@ module.exports = {
 
                 if(xMoment > criticalMoment && xMoment < nowMoment){
                     const index = xMoment.diff(criticalMoment,'days');
-                    result[index] = x;
+                    result[index] = x.count;
                 }
             }
             res.status(200).send(result);

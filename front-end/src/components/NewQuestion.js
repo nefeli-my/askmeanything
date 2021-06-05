@@ -15,13 +15,12 @@ const NewQuestion = () => {
     if (!keywords.includes(keyword.toLowerCase())) {
       keywords.push(keyword.toLowerCase());
     }
-    //setKeyword("");
+    setKeyword("");
   }
 
   const question = { title: title, body: body, keywords: keywords };
   function submitQuestion() {
     const token = localStorage.getItem('REACT_TOKEN_AUTH');
-    console.log(token);
     fetch('http://localhost:8002/createquestion/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer "+ JSON.parse(token) },
@@ -57,7 +56,7 @@ const NewQuestion = () => {
             </Form.Text>
           </Form.Group>
           <Form.Group>
-            <Form.Label> Question Text: </Form.Label>
+            <Form.Label> Question Body: </Form.Label>
             <textarea id="text-box"
             rows="8" cols="100"
             value={body}
