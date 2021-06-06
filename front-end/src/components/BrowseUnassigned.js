@@ -12,11 +12,16 @@ const BrowseUnassigned = () => {
       headers: { "Content-Type": "application/json"}
     })
     .then(function(res) {
-      return res.json();
+      if(res.status === 200)
+          res.json()
+              .then(function(data) {
+                  setQuestions(data);
+              });
+      else {
+          //TODO: error handling for 500
+      }
     })
-    .then(function(data) {
-      setQuestions(data);
-    });
+
   }, []);
 
   return (
@@ -31,7 +36,7 @@ const BrowseUnassigned = () => {
             <Link to={{pathname: "/viewquestion", state: {question},}} style={{textDecoration: 'inherit', color: 'inherit'}}>
               <h3 className="title"><b> {question.title} </b></h3>
             </Link>
-            <h3 className="author-on"> posted by user {question.Author.username} on {question.createdAt.substring(0,10)} </h3>
+            <h3 className="author-on"> posted by user {question.Author.username} on {(new Date(question.createdAt)).toLocaleString()} </h3>
             <div className="question-body">
               <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
             </div>

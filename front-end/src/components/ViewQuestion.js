@@ -48,7 +48,7 @@ const ViewQuestion = () => {
       <div className="view-question">
         <div className="question">
           <h3 className="title"><b> {question.title} </b></h3>
-          <h3 className="author-on"> posted by user {question.Author.username} on {question.createdAt.substring(0,10)} </h3>
+          <h3 className="author-on"> posted by user {question.Author.username} on {(new Date(question.createdAt)).toLocaleString()} </h3>
           <div className="question-body">
             <p> {question.body} </p>
           </div>
@@ -66,7 +66,7 @@ const ViewQuestion = () => {
               <h3 className="num-answers"> { answers.length } Answers </h3>
               {answers.map((answer) =>
                 <li key={answer.id} className="single-answer">
-                  <h3 className="author-on"> posted by user {answer.User.username} on {answer.createdAt.substring(0,10)} </h3>
+                  <h3 className="author-on"> posted by user {answer.User.username} on {(new Date(answer.createdAt)).toLocaleString()} </h3>
                   <div className="question-body">
                     <p> {answer.body} </p>
                   </div>
