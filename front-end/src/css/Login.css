@@ -43,7 +43,7 @@
   width: 35%;
   height: 15%;
 }
-.error {
+.login .error {
   text-align: center;
   margin-top: 2%;
   font-size: 14px;

@@ -112,7 +112,7 @@ module.exports = {
             [Op.gte]: Date.parse(req.query.start_date),
             [Op.lte] : Date.parse(req.query.end_date)
           }
-
+          
       const questions =
           await Question.findAll({
             include: [

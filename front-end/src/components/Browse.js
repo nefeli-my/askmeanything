@@ -3,10 +3,7 @@ import {Link, useHistory} from "react-router-dom";
 import Navbar from './Navbar';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import '../css/Datepicker.css'
 import '../css/Browse.css';
-import '../css/Browse.css';
-
 
 const Browse = () => {
   const [questions, setQuestions] = useState([]);
@@ -18,6 +15,20 @@ const Browse = () => {
   const [endDate, setEndDate] = useState(null);
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
   const history = useHistory();
+  // dates being displayed when applying date filter search
+  let displayed_sd = "";
+  let displayed_ed = "";
+
+  if (startDate) {
+    let offset = startDate.getTimezoneOffset();
+    displayed_sd = new Date(startDate.getTime() - (offset * 60000));
+    displayed_sd = displayed_sd.toISOString().split('T')[0];
+  }
+  if (endDate) {
+    let offset = endDate.getTimezoneOffset();
+    displayed_ed = new Date(endDate.getTime() - (offset * 60000));
+    displayed_ed = displayed_ed.toISOString().split('T')[0];
+  }
 
   useEffect(() => {
     fetch('http://localhost:8002/getquestions/0',
@@ -26,12 +37,24 @@ const Browse = () => {
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}
         })
         .then(function (res) {
-          return res.json();
-        })
-        .then(function (data) {
-          setQuestions(data);
-        });
-  }, [token]);
+              if (res.status === 200) {
+                res.json()
+                    .then(function (data) {
+                      setQuestions(data);
+                    })
+              } else if (res.status === 401) {
+                console.log('401 Unauthorized Error');
+                alert('Your session expired. Please login again.');
+                history.push('/login');
+              } else if (res.status === 400) {
+                console.log('400 Bad Request');
+              } else {
+                console.log('500 Internal Server Error');
+                history.push('/error-500');
+              }
+            }
+        );
+  }, [token, history]);
 
   function getQuestions() {
     // unfiltered seach
@@ -45,15 +68,20 @@ const Browse = () => {
                 if (res.status === 200) {
                   res.json()
                       .then(function (data) {
-                        setQuestions(data);
+                        setQuestions(questions.concat(data));
                         if (data.length === 0)
                           setShow_Button(false);
                       })
                 } else if (res.status === 401) {
+                  console.log('401 Unauthorized Error');
+                  alert('Your session expired. Please login again.');
                   history.push('/login');
-                } else
-                    //TODO: implement error displaying for status 500
-                  history.push('/error')
+                } else if (res.status === 400) {
+                  console.log('400 Bad Request');
+                } else {
+                  console.log('500 Internal Server Error');
+                  history.push('/error-500');
+                }
               }
           );
     }
@@ -82,10 +110,15 @@ const Browse = () => {
                           setShow_Button(false);
                       })
                 } else if (res.status === 401) {
+                  console.log('401 Unauthorized Error');
+                  alert('Your session expired. Please login again.');
                   history.push('/login');
-                } else
-                  //TODO: implement error displaying for status 500
-                  history.push('/error')
+                } else if (res.status === 400) {
+                  console.log('400 Bad Request');
+                } else {
+                  console.log('500 Internal Server Error');
+                  history.push('/error-500');
+                }
               }
           );
     }
@@ -108,6 +141,7 @@ const Browse = () => {
                 />
                 <button type="button"
                         className="btn btn-outline-primary btn-sm"
+                        disabled={!author}
                         onClick={() => {
                           setShow_Button(false);
                           getQuestions();
@@ -124,6 +158,7 @@ const Browse = () => {
                 />
                 <button type="button"
                         className="btn btn-outline-primary btn-sm"
+                        disabled={!keyword}
                         onClick={() => {
                           setShow_Button(false);
                           getQuestions();
@@ -131,65 +166,68 @@ const Browse = () => {
                   search
                 </button>
               </div>
-              <div className="input-group">
-                <div className="datepicker">
-                  <DatePicker
-                      filterDate={d => {
-                        return new Date() > d;
-                      }}
-                      isClearable
-                      placeholderText="Select Start Date"
-                      selected={startDate}
-                      selectsStart
-                      startDate={startDate}
-                      endDate={endDate}
-                      onChange={date => setStartDate(date)}
-                  />
-                  <DatePicker
-                      filterDate={d => {
-                        return new Date() > d;
-                      }}
-                      isClearable
-                      placeholderText="Select End Date"
-                      selected={endDate}
-                      selectsEnd
-                      startDate={startDate}
-                      endDate={endDate}
-                      minDate={startDate}
-                      onChange={date => setEndDate(date)}
-                  />
-                </div>
-                <button type="button"
-                        className="btn btn-outline-primary btn-sm"
-                        onClick={() => {
-                          setShow_Button(false);
-                          getQuestions();
-                        }}>
-                  search
-                </button>
-              </div>
+            </div>
+            <div className="date-search">
+              <DatePicker
+                  filterDate={d => {
+                    return new Date() > d;
+                  }}
+                  isClearable
+                  placeholderText="Select start date"
+                  selected={startDate}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  onChange={date => setStartDate(date)}
+              />
+              <DatePicker
+                  filterDate={d => {
+                    return new Date() > d;
+                  }}
+                  isClearable
+                  placeholderText="Select end date"
+                  selected={endDate}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                  onChange={date => setEndDate(date)}
+              />
+              <button type="button"
+                      className="btn btn-outline-primary btn-sm"
+                      disabled={!startDate || !endDate}
+                      onClick={() => {
+                        setShow_Button(false);
+                        getQuestions();
+                      }}>
+                search
+              </button>
             </div>
             <div className="inline-divs">
               {author && <p className="filters"><b>author:</b> {author} </p>}
               {keyword && <p className="filters"><b>keyword:</b> {keyword} </p>}
+              {startDate && <p className="filters"><b>start date:</b> {displayed_sd} </p>}
+              {endDate && <p className="filters"><b>end date:</b> {displayed_ed} </p>}
             </div>
             <ul className="question-list">
               {questions.map((question) =>
                   <li key={question.id} className="single-question">
-                    <Link to={{pathname: "/viewquestion", state: {question},}}
+                    <Link to={{pathname: "/view-question", state: {question},}}
                           style={{textDecoration: 'inherit', color: 'inherit'}}>
                       <h3 className="title"><b> {question.title} </b></h3>
                     </Link>
-                    <h3 className="author-on"> posted by
-                      user {question.Author.username} on {(new Date(question.createdAt)).toLocaleString()} </h3>
+                    <h3 className="author-on">
+                      posted by user {question.Author.username} on
+                      {(new Date(question.createdAt)).toLocaleString('en-US')}
+                    </h3>
                     <div className="question-body">
                       <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
                     </div>
                     <ul className="keyword-list">
                       {question.Keywords.map((keyword) =>
-                          <li key={keyword.index} className="single-keyword">
-                            {keyword.word}
-                          </li>
+                        <li key={keyword.index} className="single-keyword">
+                          {keyword.word}
+                        </li>
                       )}
                     </ul>
                   </li>

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { LineChart } from 'react-chartkick';
-import { Link } from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
+import {LineChart} from 'react-chartkick';
 import Navbar from "./Navbar";
 import 'chartkick/chart.js';
 import moment from 'moment';
@@ -11,6 +11,7 @@ const MyStatistics = () => {
   const [aperday, setAperDay] = useState([]);
   const [mytopkeywords, setMyTopKeywords] = useState([]);
   const [topkeywords, setTopKeywords] = useState([]);
+  const history = useHistory();
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
   const dates = [moment().subtract(6, 'days').format("MMM Do YYYY"),
                  moment().subtract(5, 'days').format("MMM Do YYYY"),
@@ -26,46 +27,94 @@ const MyStatistics = () => {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
     })
-    .then(function(res) {
-      return res.json();
-    })
-    .then(function(data) {
-      setQperDay(data);
-    });
+    .then(function (res) {
+          if (res.status === 200) {
+            res.json()
+                .then(function (data) {
+                  setQperDay(data);
+                })
+          } else if (res.status === 401) {
+            console.log('401 Unauthorized Error');
+            alert('Your session expired. Please login again.');
+            history.push('/login');
+          } else if (res.status === 400) {
+            console.log('400 Bad Request');
+          } else {
+            console.log('500 Internal Server Error');
+            history.push('/error-500');
+          }
+        }
+    );
     fetch('http://localhost:8003/user/answers',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
     })
-    .then(function(res) {
-      return res.json();
-    })
-    .then(function(data) {
-      setAperDay(data);
-    });
+    .then(function (res) {
+          if (res.status === 200) {
+            res.json()
+                .then(function (data) {
+                  setAperDay(data);
+                })
+          } else if (res.status === 401) {
+            console.log('401 Unauthorized Error');
+            alert('Your session expired. Please login again.');
+            history.push('/login');
+          } else if (res.status === 400) {
+            console.log('400 Bad Request');
+          } else {
+            console.log('500 Internal Server Error');
+            history.push('/error-500');
+          }
+        }
+    );
     fetch('http://localhost:8003/user/keywords',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
     })
-    .then(function(res) {
-      return res.json();
-    })
-    .then(function(data) {
-      setMyTopKeywords(data);
-    });
+    .then(function (res) {
+          if (res.status === 200) {
+            res.json()
+                .then(function (data) {
+                  setMyTopKeywords(data);
+                })
+          } else if (res.status === 401) {
+            console.log('401 Unauthorized Error');
+            alert('Your session expired. Please login again.');
+            history.push('/login');
+          } else if (res.status === 400) {
+            console.log('400 Bad Request');
+          } else {
+            console.log('500 Internal Server Error');
+            history.push('/error-500');
+          }
+        }
+    );
     fetch('http://localhost:8003/general/keywords',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json" }
     })
-    .then(function(res) {
-      return res.json();
-    })
-    .then(function(data) {
-      setTopKeywords(data);
-    });
-  }, [token]);
+    .then(function (res) {
+          if (res.status === 200) {
+            res.json()
+                .then(function (data) {
+                  setTopKeywords(data);
+                })
+          } else if (res.status === 401) {
+            console.log('401 Unauthorized Error');
+            alert('Your session expired. Please login again.');
+            history.push('/login');
+          } else if (res.status === 400) {
+            console.log('400 Bad Request');
+          } else {
+            console.log('500 Internal Server Error');
+            history.push('/error-500');
+          }
+        }
+    );
+  }, [token, history]);
 
   return (
     <div>

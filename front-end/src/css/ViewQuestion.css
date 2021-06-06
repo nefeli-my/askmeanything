@@ -58,14 +58,14 @@
   text-decoration: none;
 }
 
-.answer-list {
+.view-question .answer-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
   padding: 2%;
 }
 
-.single-answer {
+.view-question .single-answer {
   background-color: #f5efff;
   padding: 0.5%;
   border-radius: 5px;
@@ -74,26 +74,29 @@
   margin-right: auto;
 }
 
-.no-answers-msg {
+.view-question .no-answers-msg {
   margin-top: 3%;
   font-size: 15px;
 }
 
-.num-answers {
+.view-question .num-answers, .your-answer h3 {
   font-size: 20px;
   margin-bottom: 1%;
 }
 
-.your-answer {
-  /*border: 1px solid red;*/
-}
-
-.your-answer textarea {
+.view-question .your-answer textarea {
   margin-top: 1%;
   margin-left: 5%;
 }
 
 #btn-post-answer {
   margin-top: 1%;
-  margin-left: 39%;
+  margin-left: 40%;
+}
+
+.view-question .error {
+  font-size: 16px;
+  margin-top: 2%;
+  margin-left: 5%;
+  color: red;
 }

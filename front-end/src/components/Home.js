@@ -37,7 +37,7 @@ const Home = () => {
               <img src={answer} alt="puzzle piece"/>
             </div>
           </div>
-          <div className="col-sm" onClick={() => history.push('/newquestion')}>
+          <div className="col-sm" onClick={() => history.push('/new-question')}>
             <h4><b>Make a new question</b></h4>
             <p> Don't be shy to make <br/> your own question! Try to pose <br/>your questions
             in a <b>simple</b> and<br/> <b>clear way</b> and don't forget to <br/>add the necessary <b>keywords</b>.

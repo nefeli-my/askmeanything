@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="links">
-        <a href="https://github.com/IlianaXn/SaaS-25">
+        <a href="https://github.com/nefeli-my/askmeanythingv2">
           link on github
         </a>
         <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34">

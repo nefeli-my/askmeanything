@@ -1,16 +1,17 @@
 import Browse from './components/Browse';
 import BrowseUnassigned from './components/BrowseUnassigned';
+import Error500 from './components/Error500';
 import Footer from './components/Footer';
 import GeneralHome from './components/GeneralHome';
 import GeneralStatistics from './components/GeneralStatistics';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
+import MyProfile from './components/MyProfile';
 import MyStatistics from './components/MyStatistics';
 import NotFound from './components/NotFound';
 import NewQuestion from './components/NewQuestion';
-import PrivateRoute from './components/PrivateRoute'
+import PrivateRoute from './components/PrivateRoute';
 import Register from './components/Register';
-import UpdateAccountInfo from './components/UpdateAccountInfo';
 import ViewQuestion from './components/ViewQuestion';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -38,7 +39,10 @@ function App() {
             <Navbar/>
             <BrowseUnassigned/>
           </Route>
-          <Route path="/viewquestion">
+          <Route path="/error-500">
+            <Error500/>
+          </Route>
+          <Route path="/view-question">
             <Navbar/>
             <ViewQuestion/>
           </Route>
@@ -47,8 +51,8 @@ function App() {
             <GeneralStatistics/>
           </Route>
           <PrivateRoute path="/browse" component={Browse}/>
-          <PrivateRoute path="/newquestion" component={NewQuestion}/>
-          <PrivateRoute path="/profile" component={UpdateAccountInfo}/>
+          <PrivateRoute path="/new-question" component={NewQuestion}/>
+          <PrivateRoute path="/profile" component={MyProfile}/>
           <PrivateRoute path="/my-statistics" component={MyStatistics}/>
           <Route path="*">
             <NotFound/>

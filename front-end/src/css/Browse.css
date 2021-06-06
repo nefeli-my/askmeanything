@@ -31,13 +31,30 @@
   display: flex;
 }
 
-.browse .input-group {
-  margin-top: 1.5%;
-  margin-left: 5%;
-  margin-right: 5%;
+.browse .inline-divs button {
+  margin-left: 2%;
 }
 
-.browse .input-group
+.browse .input-group {
+  margin-top: 1.5%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.browse .date-search {
+  display: flex;
+  margin-top: 2%;
+  margin-left: 29.5%;
+}
+
+.browse .date-search button {
+  margin-left: 2%;
+}
+
+.browse .date-search .datepicker {
+  margin-left: 2%;
+  margin-right: 2%;
+}
 
 .filters {
   margin-top: 2%;
@@ -106,4 +123,10 @@
 #show-more-btn {
   font-size: 14px;
   margin-left: 45%;
+}
+
+.browse .error {
+  font-size: 20px;
+  text-align: center;
+  color: red;
 }

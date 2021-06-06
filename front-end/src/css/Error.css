@@ -1,0 +1,44 @@
+.not-found {
+  width: 70%;
+  margin-top: 3%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: #baf19c;
+  padding: 2%;
+  border-radius: 2.5%;
+}
+
+.error500 {
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: #e9ecef;
+  padding: 2%;
+  border-radius: 2.5%;
+}
+
+.not-found h2, .error500 h2 {
+  font-size: 24px;
+}
+
+.not-found h3, .error500 h3 {
+  font-size: 22px;
+}
+
+.not-found Link {
+  margin-top: 2%;
+}
+
+.not-found img {
+  margin-top: 4%;
+  margin-left: 25.5%;
+  width: 45%;
+}
+
+.error500 img {
+  margin-top: 4%;
+  margin-bottom: 10%;
+  margin-left: 30%;
+  width: 40%;
+}

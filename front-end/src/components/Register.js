@@ -19,27 +19,25 @@ const Register = () => {
       setError("Password confirmation failed.");
       return;
     }
-
     const user = { username: username, password: password, firstName: first_name, lastName: last_name, email: email };
     fetch('http://localhost:8001/register/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)
     })
-    .then(function(res) {
-        if(res.status === 200)
-          history.push('/login');
-        else if (res.status === 400){
-          res.json()
-              .then(data =>
-              setError(data.msg))
-        }
-        else
-          setError("An internal error occurred.")
-      })
-    .catch(err => {
-        setError(err.message)
-    })
+    .then(res => {
+      if(res.status === 200 ){
+        history.push('/login');
+      }
+      else if (res.status === 400){
+        console.log('400 Bad Request Error');
+        setError("Please make sure you have filled in all required fields.");
+      }
+      else {
+        console.log('500 Internal Server Error');
+        history.push('/error-500');
+      }
+    });
     }
 
   return (
@@ -50,21 +48,23 @@ const Register = () => {
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>First Name</Form.Label>
-            <Form.Control className="label"
-            required
-            placeholder="Enter first name"
-            value={first_name}
-            onChange={(e) => setFirstName(e.target.value)}
+            <Form.Control
+              className="label"
+              required
+              placeholder="Enter first name"
+              value={first_name}
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group as={Col}>
             <Form.Label>Last Name</Form.Label>
-            <Form.Control className="label"
-            required
-            placeholder="Enter last name"
-            value={last_name}
-            onChange={(e) => setLastName(e.target.value)}
+            <Form.Control
+              className="label"
+              required
+              placeholder="Enter last name"
+              value={last_name}
+              onChange={(e) => setLastName(e.target.value)}
           />
           </Form.Group>
         </Form.Row>
@@ -72,21 +72,23 @@ const Register = () => {
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Username</Form.Label>
-            <Form.Control className="label"
-            required
-            placeholder="Enter username"
-            value={username}
-            onChange={(e) => setUsename(e.target.value)}
+            <Form.Control
+              className="label"
+              required
+              placeholder="Enter username"
+              value={username}
+              onChange={(e) => setUsename(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group as={Col}>
             <Form.Label>Email Address</Form.Label>
-            <Form.Control className="label"
-            type="email" required
-            placeholder="example: user@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            <Form.Control
+              className="label"
+              type="email" required
+              placeholder="example: user@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
         </Form.Row>
@@ -94,21 +96,22 @@ const Register = () => {
         <Form.Row>
           <Form.Group as={Col}>
             <Form.Label>Password</Form.Label>
-            <Form.Control className="label"
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            <Form.Control
+              className="label"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group as={Col}>
             <Form.Label>Confirm password</Form.Label>
             <Form.Control className="label"
-            type="password"
-            required
-            value={password_reset}
-            onChange={(e) => setPassReset(e.target.value)}
+              type="password"
+              required
+              value={password_reset}
+              onChange={(e) => setPassReset(e.target.value)}
             />
           </Form.Group>
         </Form.Row>

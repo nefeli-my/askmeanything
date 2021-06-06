@@ -18,10 +18,10 @@
   margin-left: auto;
   margin-right: auto;
 }
-.Form.Label {
+.newquestion .Form.Label {
   font-size: 15px;
 }
-::placeholder {
+.newquestion ::placeholder {
   font-size: 13px;
 }
 #text-box {
@@ -43,7 +43,7 @@
 .new-question .input-group {
   margin-left: 0%;
 }
-.input-group button {
+.new-question .input-group button {
   margin-left: 1%;
   margin-right: 1%;
 }
@@ -58,4 +58,10 @@
   background: #303030;
   color: white;
   font-size: 12px;
+}
+.new-question .success-message {
+
+}
+.new-question .error {
+
 }

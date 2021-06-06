@@ -9,8 +9,8 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const history = useHistory();
   const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
+  const history = useHistory();
 
   useEffect(() => {
     if (isLoggedIn){
@@ -21,7 +21,6 @@ const Login = () => {
   function handleSubmit(event) {
     event.preventDefault();
     const user = { username, password };
-
     fetch('http://localhost:8001/login/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
@@ -37,13 +36,18 @@ const Login = () => {
         })
       }
       else if (res.status === 401){
+        console.log('401 Unauthorized Error');
         setError("The username or password you've inserted is incorrect. Please try again.");
       }
-      else{
-        setError(`An internal error occurred`)
+      else if (res.status === 400){
+        console.log('400 Bad Request Error');
+        setError("Please make sure you have filled in all required fields (username and password).");
       }
-    })
-    .catch(err => setError(err.message));
+      else {
+        console.log('500 Internal Server Error');
+        history.push('/error-500');
+      }
+    });
   }
   return (
     <div className="login">

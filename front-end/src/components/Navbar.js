@@ -10,7 +10,7 @@ const Navbar = () => {
         <a href="/">Home</a>
         <a href="/profile">My Profile</a>
         <a href="/browse">Browse Questions & Answers</a>
-        <a href="/newquestion" id="newquestion-link">New Question</a>
+        <a href="/new-question" id="newquestion-link">New Question</a>
         <a href="/" onClick={() => localStorage.clear()}>Logout </a>
       </div>
       }

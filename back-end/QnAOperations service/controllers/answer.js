@@ -29,7 +29,8 @@ module.exports = {
         } catch (err) {
             next(err);
         }
-    },
+    }
+    /*
     async getallRestricted(req,res,next) {
         try {
             const returnedAns = await AgetRestricted(req.params.questionId);
@@ -43,4 +44,5 @@ module.exports = {
             next(err);
         }
     }
+    */
 }

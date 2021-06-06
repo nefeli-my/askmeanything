@@ -1,7 +1,7 @@
-import '../css/UpdateAccountInfo.css';
+import '../css/MyProfile.css';
 import Navbar from './Navbar';
 
-const UpdateAccountInfo = () => {
+const MyProfile = () => {
   return (
     <div>
       <Navbar/>
@@ -10,11 +10,9 @@ const UpdateAccountInfo = () => {
           <a href="/profile">Account information</a>
           <a href="/my-statistics">My askmeanything statistics</a>
         </nav>
-        <div>
-        </div>
       </div>
     </div>
   );
 }
 
-export default UpdateAccountInfo;
+export default MyProfile;
