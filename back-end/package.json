@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./AuthenticatorService/bin/www",
-    "dev": "nodemon ./AuthenticatorService/bin/www"
+    "dev": "nodemon ./\"Analytics service\"/bin/www && nodemon ./\"Authenticator service\"/bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

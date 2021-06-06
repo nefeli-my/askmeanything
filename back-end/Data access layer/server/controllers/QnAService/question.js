@@ -1,4 +1,5 @@
 const models = require('../../models');
+const {Op} = require("sequelize");
 const User = models.User;
 const Question = models.Question;
 const Keyword = models.Keyword;
@@ -7,11 +8,10 @@ const Keyword_Question = models.Question_Keyword;
 module.exports = {
     async create(req, res, next) {
         try {
-            let question = req.body;
+            let question = {};
             question.title = req.body.title;
             question.body = req.body.body;
             const keywords = req.body.keywords;
-            //keywords = keywords.substring(1,keywords.length -1).split(",")
             const user = await User.findOne({
                 where: {
                     username: req.body.user.username
@@ -99,92 +99,41 @@ module.exports = {
       let author = req.query.author !== undefined;
       let keyword = req.query.keyword !== undefined;
       let start_date = req.query.start_date !== undefined;
-      /*
-      if (!author && !keyword && start_date) {
+      //format where object
+      let whereObjU = {};
+      let whereObjK = {};
+      let whereObjD = {};
+      if(author)
+          whereObjU.username = req.query.author;
+      if(keyword)
+          whereObjK.word = req.query.keyword;
+      if(start_date)
+          whereObjD.createdAt = {
+            [Op.gte]: Date.parse(req.query.start_date),
+            [Op.lte] : Date.parse(req.query.end_date)
+          }
 
-      }
-      */
-      if (!author && keyword && !start_date) {
-        const questions =
-          await Question.findAll({
-            include: [
-              {
-                model: User,
-                as: 'Author',
-                attributes: ['username']
-              },
-              {
-                model: Keyword,
-                attributes: ['word'],
-                where: { word: req.query.keyword },
-                through: {
-                    model: Keyword_Question,
-                    attributes: []
-                  }
-              }]
-          })
-            .catch(err => next(err))
-        res.status(200).send(questions)
-      }
-      /*
-      if (!author && keyword && start_date) {
-
-      }
-      */
-      if (author && !keyword && !start_date) {
       const questions =
-        await Question.findAll({
-          include: [
-            {
-              model: User,
-              as: 'Author',
-              attributes: ['username'],
-              where: { username: req.query.author },
-            },
-            {
-              model: Keyword,
-              attributes: ['word'],
-              through: {
-                  model: Keyword_Question,
-                  attributes: []
-              }
-            }]
-        })
-          .catch(err => next(err))
-      res.status(200).send(questions)
-      }
-      /*
-      if (author && !keyword && start_date) {
-
-      }
-      */
-      if (author && keyword && !start_date) {
-        const questions =
           await Question.findAll({
             include: [
               {
                 model: User,
                 as: 'Author',
                 attributes: ['username'],
-                where: { username: req.query.author },
+                where: whereObjU
               },
               {
                 model: Keyword,
                 attributes: ['word'],
-                where: { word: req.query.keyword },
                 through: {
                     model: Keyword_Question,
                     attributes: []
-                }
-              }]
+                },
+                where: whereObjK
+              }],
+              where: whereObjD
           })
             .catch(err => next(err))
         res.status(200).send(questions)
       }
-      /*
-      if (author && keyword && start_date) {
-
-      }
-      */
-    }
   }
