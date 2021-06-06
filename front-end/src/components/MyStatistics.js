@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { LineChart } from 'react-chartkick';
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 import 'chartkick/chart.js';
 import moment from 'moment';
-import Navbar from './Navbar';
 import '../css/Statistics.css';
 
-const MyProfile = () => {
+const MyStatistics = () => {
   const [qperday, setQperDay] = useState([]);
   const [aperday, setAperDay] = useState([]);
   const [mytopkeywords, setMyTopKeywords] = useState([]);
@@ -70,7 +70,11 @@ const MyProfile = () => {
   return (
     <div>
       <Navbar/>
-      <div className="my-profile">
+      <div className="my-statistics">
+        <nav>
+          <a href="/profile">Account information</a>
+          <a href="/my-statistics">My askmeanything statistics</a>
+        </nav>
         <h3 id="title"> In this page you can find information about your <b>ask</b>me<b>anything</b> activity.
         You can view more general information <Link to="/general-statistics"> here</Link>. </h3>
         <div className="diagrams">
@@ -93,11 +97,11 @@ const MyProfile = () => {
           <div className="my-keywords">
             <h3>The topics that interest you the most:</h3>
             <ul>
-            {mytopkeywords.map((keyword) =>
-              <li key={keyword.keywordId} className="single-keyword">
-                {keyword.word}
-              </li>
-            )}
+              {mytopkeywords.map((keyword) =>
+                <li key={keyword.keywordId} className="single-keyword">
+                  {keyword.word}
+                </li>
+              )}
             </ul>
           </div>
         }
@@ -106,11 +110,11 @@ const MyProfile = () => {
               <h3> It seems you haven't made enough questions yet for us to get to know what interests you!
               However, here are the most popular topics in the community right now: </h3>
               <ul>
-              {topkeywords.map((keyword) =>
-                <li key={keyword.keywordId} className="single-keyword">
-                  {keyword.word}
-                </li>
-              )}
+                {topkeywords.map((keyword) =>
+                  <li key={keyword.keywordId} className="single-keyword">
+                    {keyword.word}
+                  </li>
+                )}
               </ul>
             </div>
         }
@@ -119,4 +123,4 @@ const MyProfile = () => {
   );
 }
 
-export default MyProfile;
+export default MyStatistics;

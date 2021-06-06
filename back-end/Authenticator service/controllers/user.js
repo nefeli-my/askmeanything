@@ -1,4 +1,4 @@
-const {Usercreate, Uservalidate, Userupdate} = require('../AuthService');
+const {Usercreate, Uservalidate, Userupdate, Userget} = require('../AuthService');
 
 module.exports = {
     async create(req, res,next) {
@@ -10,6 +10,21 @@ module.exports = {
                 throw err;
             }
             return res.status(createdUser.status).send(createdUser.body);
+        }
+        catch (err) {
+            next(err);
+        }
+    },
+    async get(req,res,next) {
+        try {
+            console.log(req.query.username)
+            const returnedUser = await Userget(req.query.username);
+            if(returnedUser.error) {
+                let err = new Error(returnedUser.error.response.data.msg);
+                err.status = returnedUser.error.status;
+                throw err;
+            }
+            return res.status(returnedUser.status).send(returnedUser.body);
         }
         catch (err) {
             next(err);

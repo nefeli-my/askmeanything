@@ -3,7 +3,6 @@ const User = models.User;
 const bcrypt = require('bcryptjs');
 const { Op } = require("sequelize");
 
-
 function getHashedPassword (password) {
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     return hash;
@@ -41,9 +40,23 @@ module.exports = {
             })
             .catch(err => next(err))
     },
+    async get(req, res,next) {
+        console.log(req.body);
+        const username = req.body;
+        try {
+            const user = await User.findAll({
+              where:
+                  {
+                      username: username,
+                  }
+            });
+            return res.status(200).send(user);
+        } catch (err) {
+            next(err)
+        }
+    },
     validate(req,res,next){
         const {username, password} = req.body;
-
         return User.findAll({
             where:
                 {
@@ -89,5 +102,5 @@ module.exports = {
         catch(err){
             next(err)
         }
-    }
+      }
 };

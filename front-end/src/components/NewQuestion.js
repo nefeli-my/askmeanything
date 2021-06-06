@@ -11,15 +11,23 @@ const NewQuestion = () => {
   const [keywords, setKeywords] = useState([]);
   const history = useHistory();
 
-  function updateKeywords() {
+  function updateKeywords(e) {
+    e.preventDefault();
     if (!keywords.includes(keyword.toLowerCase())) {
       keywords.push(keyword.toLowerCase());
     }
     setKeyword("");
   }
 
-  const question = { title: title, body: body, keywords: keywords };
+  function clearKeywords(e) {
+    e.preventDefault();
+    setKeywords([]);
+    setKeyword("");
+  }
+
   function submitQuestion() {
+    const question = { title: title, body: body, keywords: keywords };
+    console.log(question);
     const token = localStorage.getItem('REACT_TOKEN_AUTH');
     fetch('http://localhost:8002/createquestion/', {
       method: 'POST',
@@ -79,14 +87,14 @@ const NewQuestion = () => {
             />
             <button
               className="btn btn-outline-dark btn-sm"
-              onClick={updateKeywords}
+              onClick={(e) => updateKeywords(e)}
             >
               add keyword
             </button>
             <button
               className="btn btn-outline-dark btn-sm"
               id="btn-keyword"
-              onClick={() => {setKeyword(""); setKeywords([])}}
+              onClick={(e) => clearKeywords(e)}
             >
               clear all keywords
             </button>

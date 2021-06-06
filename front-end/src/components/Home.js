@@ -17,7 +17,7 @@ const Home = () => {
       <hr/>
       <div className="options-div">
         <div className="row">
-          <div className="col-sm" onClick={() => history.push('/myprofile')}>
+          <div className="col-sm" onClick={() => history.push('/profile')}>
             <h4><b>My askmeanything</b></h4>
             <p> View the questions you've made<br/> and the answers
             you have given,<br/> as well as <b>statistics</b> and <b>general information </b>

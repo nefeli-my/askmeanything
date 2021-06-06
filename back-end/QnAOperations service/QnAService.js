@@ -16,19 +16,16 @@ module.exports = {
     },
     async Qgetall(params){
       try {
-        console.log("all");
         const result = await axios.get(DataLayerUrl + '/question' +`/get/${params.id}`);
         return {success: true, body: result.data};
       }
       catch(err) {
-        //console.log(err);
         err.status = err.response.status;
         return {success: false, error: err};
       }
     },
     async QgetallRestricted(){
         try {
-            console.log("EDW");
             const result = await axios.get(DataLayerUrl + '/question' +`/get/unassigned`);
             return {success: true, body: result.data};
         }

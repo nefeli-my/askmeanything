@@ -4,12 +4,13 @@ import Footer from './components/Footer';
 import GeneralHome from './components/GeneralHome';
 import GeneralStatistics from './components/GeneralStatistics';
 import Login from './components/Login';
-import MyProfile from './components/MyProfile';
 import Navbar from './components/Navbar';
+import MyStatistics from './components/MyStatistics';
 import NotFound from './components/NotFound';
 import NewQuestion from './components/NewQuestion';
 import PrivateRoute from './components/PrivateRoute'
 import Register from './components/Register';
+import UpdateAccountInfo from './components/UpdateAccountInfo';
 import ViewQuestion from './components/ViewQuestion';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -47,7 +48,8 @@ function App() {
           </Route>
           <PrivateRoute path="/browse" component={Browse}/>
           <PrivateRoute path="/newquestion" component={NewQuestion}/>
-          <PrivateRoute path="/profile" component={MyProfile}/>
+          <PrivateRoute path="/profile" component={UpdateAccountInfo}/>
+          <PrivateRoute path="/my-statistics" component={MyStatistics}/>
           <Route path="*">
             <NotFound/>
           </Route>

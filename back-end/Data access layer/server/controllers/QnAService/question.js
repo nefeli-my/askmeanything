@@ -7,11 +7,12 @@ const Keyword_Question = models.Question_Keyword;
 module.exports = {
     async create(req, res, next) {
         try {
-            let question = req.body;
+            let question = {};
             question.title = req.body.title;
             question.body = req.body.body;
+            console.log(typeof req.body.keywords);
             const keywords = req.body.keywords;
-            //keywords = keywords.substring(1,keywords.length -1).split(",")
+            // postman: const keywords = req.body.keywords.substring(1,req.body.keywords.length -1).split(",");
             const user = await User.findOne({
                 where: {
                     username: req.body.user.username

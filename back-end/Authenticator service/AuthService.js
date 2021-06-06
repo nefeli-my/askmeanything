@@ -6,9 +6,18 @@ const DataLayerUrl = 'http://localhost:' + process.env.DATA_PORT;
 module.exports = {
     async Usercreate(user){
         try {
-
             let result = await axios.post(DataLayerUrl +'/user'+'/create',user);
             return {success: true, body: result.data, status: result.status};
+        }
+        catch (err) {
+            err.status = err.response.status;
+            return {success: false, error: err};
+        }
+    },
+    async Userget(user){
+        try {
+            let result = await axios.get(DataLayerUrl +'/user'+'/get',user);
+            return {success: true, body: result.data};
         }
         catch (err) {
             err.status = err.response.status;
@@ -21,7 +30,6 @@ module.exports = {
             return {success: true, body: result.data, status: result.status};
         }
         catch(err) {
-            //console.log(err);
             err.status = err.response.status;
             return {success: false, body: false};
         }

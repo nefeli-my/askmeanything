@@ -96,10 +96,6 @@ module.exports = {
             })
             const author = user.id;
             const questions = await Keyword_Question.findAll({
-                attributes: [
-                    'keywordId',
-                    [Sequelize.literal(`COUNT(*)`), 'count']
-                ],
                 include: [
                     {
                         model: Keyword,
@@ -112,6 +108,11 @@ module.exports = {
                         },
                         attributes: []
                     }
+                ],
+                attributes: [
+                    'keywordId',
+                    [Sequelize.literal(`COUNT(*)`), 'count'],
+                    [Sequelize.literal(`"Keyword"."word"`), 'word']
                 ],
                 group: ['keywordId','Keyword.id'],
                 limit: 20,
