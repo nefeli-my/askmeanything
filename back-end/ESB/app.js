@@ -1,19 +1,15 @@
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const passport = require('passport');
 const dotenv = require('dotenv');
-const cors = require('cors')
+const express = require('express');
+const logger = require('morgan');
+const path = require('path');
+const passport = require('passport');
 const redis = require('redis');
 
 const app = express();
-const getQuestionRouter = require('./routes/question/get')
-const getAnswerRouter = require('./routes/answer/get')
-const answerRouter = require('./routes/answer/create')
-const questionRouter = require('./routes/question/create');
 
 dotenv.config();
 // view engine setup
@@ -27,12 +23,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors())
-
-app.use('/createquestion',questionRouter);
-app.use('/createanswer', answerRouter);
-app.use('/getanswers', getAnswerRouter);
-app.use('/getquestions', getQuestionRouter);
+app.use(cors());
+app.use(bodyParser.json());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -53,7 +45,7 @@ app.use(function (err, req, res, next ){
   else {
     next(err)
   }
-})
+});
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -74,24 +66,51 @@ const pool = require('redis-connection-pool')('myRedisPool', {
 });
 console.log('Connected to Redis');
 
-// check if service subscribed to channel2 and if not subscribe
-// channel1: for authenticator - analytics services communication
-// channel2: for authenticator -qnaoperations services communication
-pool.hget('subscribers', 'channel2', async (err, data) => {
-    let currentSubscribers = JSON.parse(data);
-    let alreadySubscribed = false;
-    let myAddress = process.env.OPERATIONS_PORT + '/bus';
-    for (let i=0; i<currentSubscribers.length; i++) {
-      if (currentSubscribers[i] == myAddress) {
-        alreadySubscribed = true;
-      }
-    }
-    if (alreadySubscribed == false) {
-      currentSubscribers.push(myAddress);
-      pool.hset('subscribers', 'channel2', JSON.stringify(currentSubscribers),()=>{})
-      console.log('The qnaoperations service was subscribed to channel 2.');
-    }
-})
+// initialize message queue and channels to empty
+pool.hset('bus', 'messages', JSON.stringify([]), ()=>{});
+pool.hset('channel1', 'subscribers', JSON.stringify([]), ()=>{});
+pool.hset('channel2', 'subscribers', JSON.stringify([]), ()=>{});
 
-//app.listen(8000);
+// endpoints
+app.post('/bus', async (req, res) => {
+  const event = req.body.event;
+  // accepted message's destination channel
+  // (channel1 or channel2)
+  const channel = req.body.channel;
+  let currentMessages;
+  let newMessage = {};
+  // save message to shared message queue
+  pool.hget('bus', 'messages', async (err, data) => {
+    currentMessages = JSON.parse(data);
+    newMessage = {
+      'id': currentMessages.length + 1,
+       req.body, // store whole object (event + destination channel)
+      'timestamp': Date.now()
+    }
+    currentMessages.push(newMessage);
+    pool.hset('bus', 'messages', JSON.stringify(currentMessages), () => {
+      // broadcast new message only to the appropriate subscribers
+      pool.hget('subscribers', channel, (err, data) => {
+        let subscribers = json.parse(data);
+        for (let i=0; i<subscribers.length; i++) {
+          axios.post(subscribers[i], newMessage).then(resp => {
+            console.log(subscribers[i], resp["data"]);
+          }).catch(e => {
+            console.log(subscribers[i], {"status", "lost connection"});
+          });
+        }
+        res.send({"status": "ok"})
+      });
+    });
+  });
+});
+
+app.get('/', (req,res) => {
+  res.send({'serverStatus':'running'});
+});
+
+app.listen(4200, () => {
+  console.log('HTTP Server running on port 4200');
+});
+
 module.exports = app;
