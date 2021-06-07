@@ -5,6 +5,7 @@ import unlock from '../assets/unlock.jpg'
 import stats from '../assets/stats.jpg'
 
 const LandingPage = () => {
+  // homepage for not signed users (path: '/')
   const history = useHistory();
   return (
     <div className="landing-page">
@@ -16,8 +17,11 @@ const LandingPage = () => {
         </p>
         <hr/>
         <div className="options-div">
+          {/* 3 (clickable) option boxes make up the landing page. each presents a *
+            * different feature with a small description and accompanying image    */}
           <div className="row">
             <div className="col-sm" onClick={() => {history.push('/login')}}>
+              {/* sign up or login */}
               <h4><b>Sign up or login</b></h4>
               <p> <b>Create an account</b> (or <b>login</b>),<br/>
               to gain access to useful <br/> features as <b>asking </b>
@@ -28,6 +32,7 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="col-sm" onClick={() => {history.push('/browse-unassigned')}}>
+              {/* browse for unassigned users */}
               <h4><b>Browse questions & answers</b></h4>
               <p> Get a <b>sneak peak</b> of the <br/> <b>most recent questions</b> <br/> posted, as well
               as of their <br/> answers. Login or sign up <br/> for more features!
@@ -37,6 +42,7 @@ const LandingPage = () => {
               </div>
             </div>
             <div className="col-sm" onClick={() => {history.push('/general-statistics')}}>
+              {/* general statistics */}
               <h4><b>General statistics</b></h4>
               <p> Do you want to know about what the world is curious about? <br/>
               View askmeanything's <b> general <br/> statistics </b>

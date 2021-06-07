@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"
 import { Form, Button } from "react-bootstrap";
 import '../css/Login.css';
 import login from '../assets/login.png'
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  // login form page
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -13,12 +13,15 @@ const Login = () => {
   const history = useHistory();
 
   useEffect(() => {
+    // in case the user is already logged in and somehow
+    // accessed the '/login' path, redirect to his homepage
     if (isLoggedIn){
       history.push('/');
     }
   }, [isLoggedIn, history]);
 
   function handleSubmit(event) {
+    // post request to login endpoint of authenticator service
     event.preventDefault();
     const user = { username, password };
     fetch('http://localhost:8001/login/', {
@@ -30,11 +33,14 @@ const Login = () => {
       if(res.status === 200 ){
         res.json()
         .then(token => {
+          // store token and username in local storage in case of
+          // successful login, and then redirect to homepage
           localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token.accessToken));
           localStorage.setItem('username', user.username)
           history.push('/');
         })
       }
+      // error handling
       else if (res.status === 401){
         console.log('401 Unauthorized Error');
         setError("The username or password you've inserted is incorrect. Please try again.");
@@ -50,6 +56,7 @@ const Login = () => {
     });
   }
   return (
+    {/* login form */}
     <div className="login">
       <div className="login-form">
         <Form onSubmit={handleSubmit}>
@@ -63,6 +70,7 @@ const Login = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </Form.Group>
+
           <Form.Group>
             <Form.Label className="label">Password</Form.Label>
             <Form.Control
@@ -72,15 +80,24 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
-          <Button className="btn-1" block variant="outline-primary" type="submit">
+
+          <Button
+            className="btn-1"
+            block variant="outline-primary"
+            type="submit"
+          >
             Sign In
           </Button>
+
           <hr/>
-          <Link to ="/register">
-            <Button className="btn-2" block variant="outline-secondary">
-              Create a New Account
-            </Button>
-          </Link>
+
+          <Button
+            className="btn-2"
+            block variant="outline-secondary"
+            onClick={() => history.push('/register')}
+          >
+            Create a New Account
+          </Button>
         </Form>
       </div>
       {error && <p className="error"> {error} </p>}

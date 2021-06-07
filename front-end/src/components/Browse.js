@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import '../css/Browse.css';
 
 const Browse = () => {
+  // browse page for signed in users (private route used)
   const [questions, setQuestions] = useState([]);
   const [offset, setOffset] = useState(10);
   const [show_button, setShow_Button] = useState(true);
@@ -20,17 +21,24 @@ const Browse = () => {
   let displayed_ed = "";
 
   if (startDate) {
+    // taking into account the time zone difference
     let offset = startDate.getTimezoneOffset();
     displayed_sd = new Date(startDate.getTime() - (offset * 60000));
+    // keep only the 'MM-DD-YYYY' part of the date
     displayed_sd = displayed_sd.toISOString().split('T')[0];
   }
   if (endDate) {
+    // taking into account the time zone difference
     let offset = endDate.getTimezoneOffset();
     displayed_ed = new Date(endDate.getTime() - (offset * 60000));
+    // keep only the 'MM-DD-YYYY' part of the date
     displayed_ed = displayed_ed.toISOString().split('T')[0];
   }
 
   useEffect(() => {
+    // show the first 10 (most recent) questions right after the page is mounted
+    // offset used: 0 (reminder: sequelize query limit is set to 10)
+    // get request to qnaoperations service endpoint
     fetch('http://localhost:8002/getquestions/0',
         {
           method: 'GET',
@@ -40,8 +48,10 @@ const Browse = () => {
               if (res.status === 200) {
                 res.json()
                     .then(function (data) {
+                      // set questions to acquired data
                       setQuestions(data);
                     })
+              // error handling
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
                 alert('Your session expired. Please login again.');
@@ -59,6 +69,9 @@ const Browse = () => {
   function getQuestions() {
     // unfiltered seach
     if (!author && !keyword && !startDate) {
+      // when the user clicks the 'show more' button at the end of the page
+      // the offset is increased by 10, thus loading more questions
+      // in a gradual way. (10 questions loaded per request)
       fetch('http://localhost:8002/getquestions/' + offset,
           {
             method: 'GET',
@@ -68,10 +81,15 @@ const Browse = () => {
                 if (res.status === 200) {
                   res.json()
                       .then(function (data) {
+                        // concat returned questions to the ones
+                        // already displayed
                         setQuestions(questions.concat(data));
+                        // stop showing the 'show more' button
+                        // if there aren't any questions left to fetch
                         if (data.length === 0)
                           setShow_Button(false);
                       })
+                // error handling
                 } else if (res.status === 401) {
                   console.log('401 Unauthorized Error');
                   alert('Your session expired. Please login again.');
@@ -105,10 +123,12 @@ const Browse = () => {
                 if (res.status === 200) {
                   res.json()
                       .then(function (data) {
+                        // 'show more' button not used in filtered search
+                        // all relative questions are returned in the first req
+                        // (no offset and limit used)
                         setQuestions(data);
-                        if (data.length === 0)
-                          setShow_Button(false);
                       })
+                //  error handling
                 } else if (res.status === 401) {
                   console.log('401 Unauthorized Error');
                   alert('Your session expired. Please login again.');
@@ -131,6 +151,7 @@ const Browse = () => {
               <h2><b> Most recent questions posted: </b></h2>
               <h3> (questions currently displayed: {questions.length}) </h3>
             </div>
+            {/* search boxes for filtered search */}
             <div className="inline-divs">
               <div className="input-group">
                 <input type="search"
@@ -203,15 +224,21 @@ const Browse = () => {
                 search
               </button>
             </div>
+            {/* show the user the filters being applied */}
             <div className="inline-divs">
               {author && <p className="filters"><b>author:</b> {author} </p>}
               {keyword && <p className="filters"><b>keyword:</b> {keyword} </p>}
               {startDate && <p className="filters"><b>start date:</b> {displayed_sd} </p>}
               {endDate && <p className="filters"><b>end date:</b> {displayed_ed} </p>}
             </div>
+            {/* display list of questions                           *
+              * for each question show title, half of its body,     *
+              * author's username, keywords and when it was created */}
             <ul className="question-list">
               {questions.map((question) =>
                   <li key={question.id} className="single-question">
+                    {/* when question's title is clicked, redirect to         *
+                      * ViewQuestion component with the question obj as state */}
                     <Link to={{pathname: "/view-question", state: {question},}}
                           style={{textDecoration: 'inherit', color: 'inherit'}}>
                       <h3 className="title"><b> {question.title} </b></h3>
@@ -223,6 +250,7 @@ const Browse = () => {
                     <div className="question-body">
                       <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
                     </div>
+                    {/* keywords displayed for each question */}
                     <ul className="keyword-list">
                       {question.Keywords.map((keyword) =>
                         <li key={keyword.index} className="single-keyword">
@@ -233,6 +261,8 @@ const Browse = () => {
                   </li>
               )}
             </ul>
+            {/* load more questions button, *
+              * (for unfiltered search)     */}
             {show_button &&
             <button
                 id="show-more-btn"

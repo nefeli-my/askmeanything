@@ -1,6 +1,8 @@
 import '../css/Navbar.css';
 
 const Navbar = () => {
+  // navigation bar is different depending on if the user
+  // is signed in or not
   const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
   return (
     <nav className="navbar">

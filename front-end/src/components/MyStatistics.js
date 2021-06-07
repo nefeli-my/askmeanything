@@ -7,12 +7,15 @@ import moment from 'moment';
 import '../css/Statistics.css';
 
 const MyStatistics = () => {
+  // personalized statistics
   const [qperday, setQperDay] = useState([]);
   const [aperday, setAperDay] = useState([]);
   const [mytopkeywords, setMyTopKeywords] = useState([]);
   const [topkeywords, setTopKeywords] = useState([]);
   const history = useHistory();
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
+  // 'dates' array contains last week's dates (today's date is also included)
+  // format example: to add
   const dates = [moment().subtract(6, 'days').format("MMM Do YYYY"),
                  moment().subtract(5, 'days').format("MMM Do YYYY"),
                  moment().subtract(4, 'days').format("MMM Do YYYY"),
@@ -22,6 +25,8 @@ const MyStatistics = () => {
                  moment().format("MMM Do YYYY")];
 
   useEffect(() => {
+    // fetch number of questions per day (only last weeks's
+    // and user's data), when component is mounted
     fetch('http://localhost:8003/user/questions',
     {
       method: 'GET',
@@ -33,6 +38,7 @@ const MyStatistics = () => {
                 .then(function (data) {
                   setQperDay(data);
                 })
+          // error handling
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
             alert('Your session expired. Please login again.');
@@ -45,6 +51,8 @@ const MyStatistics = () => {
           }
         }
     );
+    // fetch number of answers per day (only last weeks's
+    // and user's data), when component is mounted
     fetch('http://localhost:8003/user/answers',
     {
       method: 'GET',
@@ -68,6 +76,8 @@ const MyStatistics = () => {
           }
         }
     );
+    // fetch the user's most used keywords (when posting questions)
+    // limit: 20
     fetch('http://localhost:8003/user/keywords',
     {
       method: 'GET',
@@ -91,6 +101,8 @@ const MyStatistics = () => {
           }
         }
     );
+    // if the user hasn't asked any questions yet, show
+    // most popular keywords in general instead
     fetch('http://localhost:8003/general/keywords',
     {
       method: 'GET',
@@ -127,6 +139,7 @@ const MyStatistics = () => {
         <h3 id="title"> In this page you can find information about your <b>ask</b>me<b>anything</b> activity.
         You can view more general information <Link to="/general-statistics"> here</Link>. </h3>
         <div className="diagrams">
+          {/* question diagram */}
           <div className="questions-diagram">
             <h3 className="diagram-title"> Number of <b>questions</b> you've posted during the last week: </h3>
             <LineChart data={[[dates[0], qperday[0]], [dates[1], qperday[1]],
@@ -135,6 +148,7 @@ const MyStatistics = () => {
                              [dates[6], qperday[6]]]} xtitle="date" ytitle="questions posted" />
           </div>
           <div className="answers-diagram">
+            {/* answer diagram */}
             <h3 className="diagram-title"> Number of <b>answers</b> you've posted during the last week: </h3>
             <LineChart data={[[dates[0], aperday[0]], [dates[1], aperday[1]],
                              [dates[2], aperday[2]], [dates[3], aperday[3]],
@@ -142,6 +156,7 @@ const MyStatistics = () => {
                              [dates[6], aperday[6]]]} xtitle="date" ytitle="answers posted" colors={["#f4a261"]} />
           </div>
         </div>
+        {/* user's most frequently used keywords */}
         { (mytopkeywords.length !==0) &&
           <div className="my-keywords">
             <h3>The topics that interest you the most:</h3>
@@ -154,6 +169,7 @@ const MyStatistics = () => {
             </ul>
           </div>
         }
+        {/* or most popular keywords (in general) */}
         { (mytopkeywords.length === 0) &&
             <div className="my-keywords">
               <h3> It seems you haven't made enough questions yet for us to get to know what interests you!

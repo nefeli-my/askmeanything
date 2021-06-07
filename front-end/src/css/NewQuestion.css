@@ -1,3 +1,5 @@
+/* css sheet for NewQuestion component */
+
 .new-question {
   width: 70%;
   margin-left: auto;
@@ -58,10 +60,4 @@
   background: #303030;
   color: white;
   font-size: 12px;
-}
-.new-question .success-message {
-
-}
-.new-question .error {
-
 }

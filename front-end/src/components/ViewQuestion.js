@@ -3,7 +3,11 @@ import React, {useState, useEffect} from 'react';
 import {useLocation, useHistory} from "react-router-dom";
 
 const ViewQuestion = () => {
+  // view a question + all of its current answers
+  // post new answer functionality for signed in users
   const location = useLocation();
+  // get question object using useLocation from Browse
+  // or BrowseUnassigned components through click
   const { question } = location.state;
   const [answers, setAnswers] = useState([]);
   const [noanswers, SetNoAnswers] = useState(false);
@@ -12,6 +16,8 @@ const ViewQuestion = () => {
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
 
   useEffect(() => {
+    // get all answers of chosen question when component is mounted
+    // through qnaoperations service
     fetch('http://localhost:8002/getanswers/'+question.id,
     {
       method: 'GET',
@@ -21,11 +27,13 @@ const ViewQuestion = () => {
           if (res.status === 200) {
             res.json()
                 .then(function (data) {
+                  // in case no answers exist, show relative message instead
                   if (data.Answers.length === 0)
                     SetNoAnswers("This question hasn't been answered yet.");
                   else
                     setAnswers(data.Answers);
                 })
+          // error handling
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
             alert('Your session expired. Please login again.');
@@ -41,8 +49,8 @@ const ViewQuestion = () => {
   }, [question.id, token, history]);
 
   function postAnswer() {
+    // post new answer (for logged in users only, private route)
     let answer = {questionId: question.id, body: body};
-    console.log(token);
     fetch('http://localhost:8002/createanswer/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) },
@@ -51,6 +59,7 @@ const ViewQuestion = () => {
       .then(function (res) {
             if (res.status === 200) {
               console.log('answer successfully uploaded');
+            // error handling
             } else if (res.status === 401) {
               alert('Your session expired. Please login again.');
               history.push('/login');
@@ -64,6 +73,7 @@ const ViewQuestion = () => {
           }
       );
     setAnsBody("");
+    // reload component after new answer submission
     window.location.reload(false);
   }
 
@@ -76,6 +86,7 @@ const ViewQuestion = () => {
             posted by user {question.Author.username} on
             {(new Date(question.createdAt)).toLocaleString('en-US')}
           </h3>
+          {/* full question body is shown here */}
           <div className="question-body">
             <p> {question.body} </p>
           </div>
@@ -87,6 +98,7 @@ const ViewQuestion = () => {
             )}
           </ul>
         </div>
+        {/* display question's answers (if there are any) */}
         { !noanswers &&
           <ul className="answer-list">
             <h3 className="num-answers"> { answers.length } Answers </h3>
@@ -103,7 +115,9 @@ const ViewQuestion = () => {
             )}
           </ul>
         }
+        {/* in case no answers exist */}
         { noanswers && <h3 className="no-answers-msg"> { noanswers } </h3> }
+        {/* post new answer form is only shown to logged in users */}
         { token &&
         <div>
           <div className="your-answer">
@@ -114,6 +128,7 @@ const ViewQuestion = () => {
                       onChange={(e) => setAnsBody(e.target.value)}>
             </textarea>
           </div>
+          {/* submit button is disabled for empty answer body */}
           <button className="btn btn-primary btn-sm"
                   id="btn-post-answer"
                   disabled={!body}

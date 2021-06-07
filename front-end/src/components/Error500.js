@@ -3,6 +3,7 @@ import error500 from '../assets/error500.png'
 import '../css/Error.css';
 
 const Error500 = () => {
+  // user is redirected here if an 500 internal server error occurs
   return (
     <div className="error500">
       <h2>Shoot! </h2>
@@ -13,6 +14,7 @@ const Error500 = () => {
         We'll be up and running shortly.
       </p>
       <div>
+        {/* redirect to home/landing page */}
         <p> Back to your <Link to = "/"> homepage </Link> </p>
       </div>
       <img src={error500} alt="error 500"/>

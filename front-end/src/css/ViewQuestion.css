@@ -1,3 +1,5 @@
+/* css sheet for ViewQuestion component */
+
 .view-question {
   margin-left: auto;
   margin-right: auto;
@@ -86,12 +88,12 @@
 
 .view-question .your-answer textarea {
   margin-top: 1%;
-  margin-left: 5%;
+  margin-left: 7%;
 }
 
 #btn-post-answer {
   margin-top: 1%;
-  margin-left: 40%;
+  margin-left: 41%;
 }
 
 .view-question .error {

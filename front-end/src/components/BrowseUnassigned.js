@@ -3,9 +3,14 @@ import { Link, useHistory } from "react-router-dom";
 import '../css/Browse.css';
 
 const BrowseUnassigned = () => {
+  // browse questions for unassigned users
   const [questions, setQuestions] = useState([]);
   const history = useHistory();
 
+  // fetch the 10 most recent questions
+  // when the component is mounted.
+  // unassigned users can view only 10 questions
+  // and cannot make filtered searches
   useEffect(() => {
     fetch('http://localhost:8002/getquestions/unassigned',
     {
@@ -18,6 +23,7 @@ const BrowseUnassigned = () => {
               .then(function(data) {
                   setQuestions(data);
               })
+      // error handling
       } else if (res.status === 401) {
         console.log('401 Unauthorized Error');
         alert('Your session expired. Please login again.');
@@ -36,18 +42,23 @@ const BrowseUnassigned = () => {
     <div className="browse">
       <div className="titles">
         <h2><b> Most recent questions posted: </b></h2>
-        <h3> (questions currently displayed: {questions.length}) </h3>
+        <h3> Login or signup to view more! </h3>
       </div>
       <ul className="question-list">
+        {/* display of fetched questions using map function.    *
+          * for each question show title, half of its body,     *
+          * author's username, keywords and when it was created */}
         {questions.map((question) =>
           <li key={question.id} className="single-question">
+            {/* when question's title is clicked, redirect to         *
+              * ViewQuestion component with the question obj as state */}
             <Link to={{pathname: "/view-question", state: {question},}}
                   style={{textDecoration: 'inherit', color: 'inherit'}}>
               <h3 className="title"><b> {question.title} </b></h3>
             </Link>
             <h3 className="author-on">
-              posted by user {question.Author.username}
-              on {(new Date(question.createdAt)).toLocaleString('en-US')}
+              posted by user {question.Author.username} on
+              {(new Date(question.createdAt)).toLocaleString('en-US')}
             </h3>
             <div className="question-body">
               <p> {question.body.substring(0, question.body.length / 2)} [...] </p>

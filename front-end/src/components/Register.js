@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { Form, Button, Col } from "react-bootstrap";
+import React, {useState} from "react";
+import {Form, Button, Col} from "react-bootstrap";
 import '../css/Register.css';
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 const Register = () => {
+  // register page
   const [username, setUsename] = useState("");
   const [password, setPassword] = useState("");
   const [password_reset, setPassReset] = useState("");
@@ -15,10 +16,12 @@ const Register = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
+    // compare password and confirmation password
     if (password !== password_reset) {
       setError("Password confirmation failed.");
       return;
     }
+    // user registration through the authenticator service
     const user = { username: username, password: password, firstName: first_name, lastName: last_name, email: email };
     fetch('http://localhost:8001/register/', {
       method: 'POST',
@@ -27,8 +30,10 @@ const Register = () => {
     })
     .then(res => {
       if(res.status === 200 ){
+        // push to login page right after successful user registration
         history.push('/login');
       }
+      // error handling
       else if (res.status === 400){
         console.log('400 Bad Request Error');
         setError("Please make sure you have filled in all required fields.");
@@ -42,6 +47,9 @@ const Register = () => {
 
   return (
     <div className="register">
+      {/* register form                             *
+        * username, email, first name, last name    *
+        * password and confirmation password needed */}
       <div className="register-form">
       <Form  onSubmit={handleSubmit}>
         <h3><b> Sign Up. It's free! </b></h3>

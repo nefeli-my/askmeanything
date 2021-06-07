@@ -2,6 +2,8 @@ import '../css/MyProfile.css';
 import Navbar from './Navbar';
 
 const MyProfile = () => {
+  // ! UNDER CONSTRUCTION !
+  // ! Safety helmets must be worn in this component at all times !
   return (
     <div>
       <Navbar/>
