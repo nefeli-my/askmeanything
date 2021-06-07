@@ -64,8 +64,8 @@ const BrowseUnassigned = () => {
               <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
             </div>
             <ul className="keyword-list">
-              {question.Keywords.map((keyword) =>
-                <li key={keyword.index} className="single-keyword">
+              {question.Keywords.map((keyword, index) =>
+                <li key={index} className="single-keyword">
                    {keyword.word}
                 </li>
               )}
