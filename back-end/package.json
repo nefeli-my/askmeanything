@@ -6,6 +6,9 @@
     "start": "node ./AuthenticatorService/bin/www",
     "dev": "nodemon ./\"Analytics service\"/bin/www && nodemon ./\"Authenticator service\"/bin/www"
   },
+  "engines": {
+    "node": "14.16.0"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
