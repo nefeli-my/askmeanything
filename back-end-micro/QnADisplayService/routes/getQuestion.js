@@ -19,10 +19,10 @@ passport.use('token', new JWTstrategy(
     )
 )
 
-router.get('/filters', findFiltered);
-router.get('/unassigned', findAllRestricted);
-router.get('/user',findByUser);
-router.get('/:id', findAll);
+router.get('/filters', passport.authenticate('token',{session:false}), findFiltered);
+router.get('/unassigned',  findAllRestricted);
+router.get('/user',passport.authenticate('token',{session:false}),findByUser);
+router.get('/:id',passport.authenticate('token',{session:false}), findAll);
 
 
 
