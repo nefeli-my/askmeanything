@@ -1,4 +1,4 @@
-const {Qcreate, Qgetall, QgetallRestricted,Qgetfiltered} = require( "../QnAService" );
+const {Qcreate, Qgetall, QgetallRestricted,Qgetfiltered, Qgetbyuser} = require( "../QnAService" );
 
 module.exports = {
     async create(req, res, next) {
@@ -52,5 +52,15 @@ module.exports = {
       catch (err) {
           next(err);
       }
+    },
+    async getbyuser(req, res, next){
+        try {
+            const returnedQues = await Qgetbyuser(req.user.username);
+            return res.send(returnedQues.body);
+        }
+        catch (err) {
+            next(err);
+        }
     }
+
   }

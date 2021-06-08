@@ -53,6 +53,16 @@ module.exports = {
         return {success: false, error: err};
       }
     },
+    async Qgetbyuser(user){
+        try {
+            const result =
+                await axios.get(DataLayerUrl + `/question/get/user/${user}`);
+            return {success: true, body: result.data};
+        }
+        catch (err){
+            return {success: false, error: err};
+        }
+    },
     async Acreate(answer){
       try {
         const result = await axios.post(DataLayerUrl + '/answer' + '/create', answer);

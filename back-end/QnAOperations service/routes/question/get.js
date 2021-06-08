@@ -4,7 +4,7 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 const JWTstrategy = require('passport-jwt').Strategy;
 const passport = require('passport');
 const dotenv = require('dotenv');
-const {getall, getfiltered, getallRestricted} = require('../../controllers/question');
+const {getall, getfiltered, getallRestricted,getbyuser} = require('../../controllers/question');
 
 dotenv.config()
 
@@ -22,7 +22,9 @@ passport.use('token', new JWTstrategy(
 
 router.get('/filters' , passport.authenticate('token',{session:false}), getfiltered);
 router.get('/unassigned', getallRestricted);
+router.get('/user',  passport.authenticate('token',{session:false}), getbyuser)
 router.get('/:id', passport.authenticate('token',{session:false}), getall);
+
 
 
 module.exports = router;
