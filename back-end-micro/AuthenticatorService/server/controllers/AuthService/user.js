@@ -1,7 +1,9 @@
 const models = require('../../models');
 const User = models.User;
 const bcrypt = require('bcryptjs');
+const axios = require("axios");
 const { Op } = require("sequelize");
+const busURL = 'http://localhost:8006/bus'
 
 function getHashedPassword (password) {
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
@@ -31,8 +33,25 @@ module.exports = {
                         password: getHashedPassword(password),
                         email: email
                     })
-                        .then(user => res.status(201).send({username:user.username,createdOn:user.updatedAt.toString()}))
+                        .then(user => {
+                            res.status(201).send({username:user.username,createdOn:user.updatedAt.toString()});
+                            return user;
+                        })
                         .catch(error => next(error))
+                        .then(user =>
+                            axios.post(busURL,{
+                                event : {
+                                    action: 'createUser'
+                                    ,
+                                    user: {
+                                        id: user.id,
+                                        username: user.username
+                                    }
+                                },
+                                channel: 'channel_users'
+                            })
+                        )
+                        .catch(error => console.log(error))
                 }
                 else{
                     return res.status(400).send({msg:'User already exists'})

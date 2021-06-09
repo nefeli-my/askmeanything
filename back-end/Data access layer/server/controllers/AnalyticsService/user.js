@@ -35,8 +35,8 @@ module.exports = {
             const result = new Array(7).fill(0);
             const nowMoment = moment();
             for (x of questions){
-                const xMoment = moment(x.date)
-                console.log(xMoment, nowMoment, criticalMoment)
+                const xMoment = moment(x.date);
+
                 if(xMoment > criticalMoment && xMoment < nowMoment){
 
                     const index = xMoment.diff(criticalMoment,'days');

@@ -8,6 +8,7 @@ const logger = require('morgan');
 const path = require('path');
 const passport = require('passport');
 const redis = require('redis');
+const redis_pool = require('redis-connection-pool');
 
 const app = express();
 
@@ -59,7 +60,7 @@ app.use(function(err, req, res, next) {
 
 // Redis connection
 const TotalConnections = 10;
-const pool = require('redis-connection-pool')('myRedisPool', {
+const pool = redis_pool('myRedisPool', {
   host: process.env.REDIS_HOST,   // localhost
   port: process.env.REDIS_PORT,   // Redis Port: 6379
   maxclients: TotalConnections,
@@ -84,7 +85,7 @@ app.post('/bus', async (req, res) => {
     currentMessages = JSON.parse(data);
     newMessage = {
       'id': currentMessages.length + 1,
-       event, 
+       event, // store whole object (event + destination channel)
       'timestamp': Date.now()
     }
     currentMessages.push(newMessage);
@@ -96,7 +97,7 @@ app.post('/bus', async (req, res) => {
           axios.post(subscribers[i], newMessage).then(resp => {
             console.log(subscribers[i], resp["data"]);
           }).catch(e => {
-            console.log(subscribers[i], "status: lost connection");
+            console.log(subscribers[i], {"status" : "lost connection"});
           });
         }
         res.send({"status": "ok"})

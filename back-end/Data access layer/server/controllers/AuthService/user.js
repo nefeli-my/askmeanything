@@ -77,8 +77,8 @@ module.exports = {
             if (req.body.username || req.body.email) {
                 res.status(400).send({msg: 'Username and email can not be changed!'})
             } else {
-                if (req.password)
-                    req.password = getHashedPassword(req.password)
+                if (req.body.password)
+                    req.body.password = getHashedPassword(req.body.password)
                 const data = await User.update(
                     req.body,
                     {

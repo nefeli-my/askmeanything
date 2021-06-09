@@ -26,12 +26,28 @@ const ViewQuestion = () => {
   }
 
   useEffect(() => {
+<<<<<<< HEAD
     // get all answers of a chosen question
     // when component is mounted, through qnaoperations service
     fetch(url,
     {
       method: 'GET',
       headers: headers
+=======
+    // get all answers of chosen question when component is mounted
+    // through qnaoperations service
+    let url;
+    if(token){
+       url =  'http://localhost:8002/getanswers/'
+    }
+    else{
+        url =  'http://localhost:8002/getanswers/unassigned'
+    }
+    fetch(url+question.id,
+    {
+      method: 'GET',
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + (token? JSON.parse(token): '') }
+>>>>>>> 9c9f6c849360ffa46bd14329392bb00c624b17e6
     })
     .then(function (res) {
           if (res.status === 200) {
@@ -46,7 +62,11 @@ const ViewQuestion = () => {
           // error handling
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
-            alert('Your session expired. Please login again.');
+            if(token)
+                alert('Your session expired. Please login again.');
+            else
+                alert('You must be logged in to view this question and its answers!')
+            localStorage.removeItem('REACT_TOKEN_AUTH')
             history.push('/login');
           } else if (res.status === 400) {
             console.log('400 Bad Request Error');

@@ -5,10 +5,12 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const generalRouter = require('./routes/general')
 const userRouter = require('./routes/user')
+const busRouter = require('./routes/bus')
 const passport = require('passport');
 const app = express();
 const dotenv = require('dotenv');
 const cors = require('cors');
+const redis_pool = require('redis-connection-pool');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
 
@@ -26,8 +28,34 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(transaction({ sequelize: db.sequelize }));
 
+// Redis connection
+const TotalConnections = 10;
+const pool = redis_pool('myRedisPool', {
+  host: process.env.REDIS_HOST,   // localhost
+  port: process.env.REDIS_PORT,   // Redis Port: 6379
+  maxclients: TotalConnections,
+});
+console.log('Connected to Redis');
+
+pool.hget('subscribers', 'channel_users', async (err, data) => {
+  let currentSubscribers = JSON.parse(data);
+  let alreadySubscribed = false;
+  let myAddress = 'http://localhost:8002/bus';
+  for (let i=0; i<currentSubscribers.length; i++) {
+    if (currentSubscribers[i] == myAddress) {
+      alreadySubscribed = true;
+    }
+  }
+  if (alreadySubscribed == false) {
+    currentSubscribers.push(myAddress);
+    pool.hset('subscribers', 'channel_users', JSON.stringify(currentSubscribers),()=>{})
+    console.log('The StatisticsService service was subscribed to channel_users.');
+  }
+})
+
 app.use('/general/',generalRouter)
 app.use('/user/', userRouter);
+app.use('/bus', busRouter);
 
 
 // catch 404 and forward to error handler
