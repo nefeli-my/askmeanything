@@ -1,0 +1,14 @@
+.documentation {
+  width: 70%;
+  margin-top: 3%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: #d8f3dc;
+  padding: 2%;
+  border-radius: 10px;
+  margin-bottom: 2%;
+}
+
+.documentation h3 {
+  font-size: 16px;
+}

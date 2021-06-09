@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-modal';
 import {Form} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
@@ -80,7 +80,9 @@ const UpdatePassword = () => {
           <Form>
             <h3><b> Reset Password: </b></h3>
             <Form.Group>
-              <Form.Label>New Password:</Form.Label>
+              <Form.Label className="formLabel">
+                New Password:
+              </Form.Label>
               <Form.Control
                 className="label"
                 type="password"
@@ -90,7 +92,9 @@ const UpdatePassword = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Confirm new password:</Form.Label>
+              <Form.Label className="formLabel">
+                Confirm new password:
+              </Form.Label>
               <Form.Control
                 className="label"
                 type="password"

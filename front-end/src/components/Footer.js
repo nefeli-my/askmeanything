@@ -1,15 +1,18 @@
 import '../css/Footer.css';
 
 const Footer = () => {
-  // footer with github and course links 
+  // footer with github and course links
   return (
     <div className="footer">
       <div className="links">
         <a href="https://github.com/nefeli-my/askmeanythingv2">
-          link on github
+          github
         </a>
         <a href="https://courses.pclab.ece.ntua.gr/course/view.php?id=34">
           course materials
+        </a>
+        <a href="/documentation">
+          documentation
         </a>
       </div>
       <div className = "our-names">

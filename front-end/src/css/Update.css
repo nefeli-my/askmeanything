@@ -1,5 +1,5 @@
 .content h3 {
-  font-size: 20px;
+  font-size: 18px;
   margin-bottom: 3%;
 }
 
@@ -7,10 +7,14 @@
   display: inline-block;
   margin-top: 1%;
   width: 35%;
-  margin-left: 35%;
+  margin-left: 36%;
 }
 
 .content button {
   margin-left: 5%;
   margin-right: 5%;
+}
+
+.content .formLabel {
+  font-size: 16px;
 }

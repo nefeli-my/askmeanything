@@ -14,7 +14,7 @@ const Home = () => {
       <h2> Welcome to <b>ask</b>me<b>anything</b> {username}! </h2>
       <div className="p-lg">
          A place to ask and answer questions freely.  Discuss, learn
-         and bloom along with people <br/> from all over the world. 🌎
+         and bloom along with people from all over the world. 🌎
       </div>
       <hr/>
       <div className="options-div">

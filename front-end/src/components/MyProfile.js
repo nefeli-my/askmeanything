@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from "react-router-dom";
 import Navbar from './Navbar';
+import Footer from './Footer';
 import '../css/MyProfile.css';
 
 const MyProfile = () => {
@@ -19,7 +20,7 @@ const MyProfile = () => {
   }
 
   useEffect(() => {
-    // fetch user's account information on component mount
+    // fetch user's account information when component is mounted
     // authenticator service endpoint accessed
     fetch('http://localhost:8001/get',
         {
@@ -49,7 +50,7 @@ const MyProfile = () => {
               }
             }
         );
-  }, [token]);
+  }, [token, history]);
 
   return (
     <div>
@@ -57,8 +58,8 @@ const MyProfile = () => {
       <div className="my-profile">
         {/* small navigation bar */}
         <nav>
-          <a href="/profile">Account Information</a>
-          <a href="/my-statistics">My askmeanything Statistics</a>
+          <a href="/profile">Account information</a>
+          <a href="/my-statistics">My askmeanything statistics</a>
         </nav>
         {/* display user's current account information */}
         <div className="account-info">
@@ -79,14 +80,21 @@ const MyProfile = () => {
         </div>
         {/* links to update components */}
         <div className="update-links">
-          <Link to={{pathname: "/update-password", state: {username},}}>
+          <Link to="/update-password" className="link">
             Reset password
           </Link> <br/>
-          <Link to={{pathname: "/update-name", state: {username},}}>
-            Change first name and / or last name
+          <Link to="/update-name" className="link">
+            Change first and last name
+          </Link> <br/>
+          <Link to="/my-questions" className="link">
+            View the questions you have posted
+          </Link> <br/>
+          <Link to="/my-answers" className="link">
+            View the questions to which you have contributed to
           </Link>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Browse from './components/Browse';
 import BrowseUnassigned from './components/BrowseUnassigned';
+import Documentation from './components/Documentation';
 import Error500 from './components/Error500';
 import Footer from './components/Footer';
 import GeneralHome from './components/GeneralHome';
@@ -8,6 +9,8 @@ import Login from './components/Login';
 import Navbar from './components/Navbar';
 import MyProfile from './components/MyProfile';
 import MyStatistics from './components/MyStatistics';
+import MyQuestions from './components/MyQuestions';
+import MyAnswers from './components/MyAnswers';
 import NotFound from './components/NotFound';
 import NewQuestion from './components/NewQuestion';
 import PrivateRoute from './components/PrivateRoute';
@@ -51,6 +54,11 @@ function App() {
           <Route path="/general-statistics">
             <Navbar/>
             <GeneralStatistics/>
+            <Footer/>
+          </Route>
+          <Route path="/documentation">
+            <Navbar/>
+            <Documentation/>
           </Route>
           <PrivateRoute path="/browse" component={Browse}/>
           <PrivateRoute path="/new-question" component={NewQuestion}/>
@@ -58,6 +66,8 @@ function App() {
           <PrivateRoute path="/my-statistics" component={MyStatistics}/>
           <PrivateRoute path="/update-password" component={UpdatePw}/>
           <PrivateRoute path="/update-name" component={UpdateName}/>
+          <PrivateRoute path="/my-questions" component={MyQuestions}/>
+          <PrivateRoute path="/my-answers" component={MyAnswers}/>
           <Route path="*">
             <NotFound/>
           </Route>

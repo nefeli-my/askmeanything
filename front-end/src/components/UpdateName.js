@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Modal from 'react-modal';
 import {Form} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
@@ -33,7 +33,7 @@ const UpdateName = () => {
     history.push('/profile');
   }
 
-  // update password
+  // update name
   function handleSubmit() {
     fetch('http://localhost:8001/update',
         {
@@ -72,11 +72,13 @@ const UpdateName = () => {
         ariaHideApp={false}
       >
         <div class="content">
-          {/* new password submission form */}
+          {/* new full name submission form */}
           <Form>
-            <h3><b> Reset your name: </b></h3>
+            <h3><b> Reset your full name: </b></h3>
             <Form.Group>
-              <Form.Label>First Name:</Form.Label>
+              <Form.Label className="formLabel">
+                First Name:
+              </Form.Label>
               <Form.Control
                 className="label"
                 required
@@ -85,7 +87,9 @@ const UpdateName = () => {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Last Name:</Form.Label>
+              <Form.Label className="formLabel">
+                Last Name:
+              </Form.Label>
               <Form.Control
                 className="label"
                 required
@@ -98,7 +102,8 @@ const UpdateName = () => {
           <div class="buttons">
             <button
               className="btn btn-primary btn-sm"
-              onClick={handleSubmit}>
+              onClick={handleSubmit}
+              disabled={!newfn || !newln}>
                 update
             </button>
             <button

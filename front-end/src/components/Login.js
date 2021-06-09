@@ -8,7 +8,6 @@ const Login = () => {
   // login form page
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
   const history = useHistory();
 
@@ -36,18 +35,19 @@ const Login = () => {
           // store token and username in local storage in case of
           // successful login, and then redirect to homepage
           localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token.accessToken));
-          localStorage.setItem('username', user.username)
+          localStorage.setItem('username', user.username);
           history.push('/');
+          alert('Successful login!');
         })
       }
       // error handling
       else if (res.status === 401){
         console.log('401 Unauthorized Error');
-        setError("The username or password you've inserted is incorrect. Please try again.");
+        alert("The username or password you've inserted is incorrect. Please try again.");
       }
       else if (res.status === 400){
         console.log('400 Bad Request Error');
-        setError("Please make sure you have filled in all required fields (username and password).");
+        alert("Please make sure you have filled in all required fields (username and password).");
       }
       else {
         console.log('500 Internal Server Error');
@@ -100,7 +100,6 @@ const Login = () => {
           </Button>
         </Form>
       </div>
-      {error && <p className="error"> {error} </p>}
     </div>
   );
 }

@@ -67,3 +67,8 @@
   margin-right: auto;
   padding: 0.5%;
 }
+
+.my-profile .link {
+  text-decoration: inherit;
+  font-size: 15px;
+}
