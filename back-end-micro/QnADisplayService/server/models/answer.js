@@ -14,28 +14,10 @@ module.exports = (sequelize, DataTypes) => {
       Answer.belongsTo(models.User,{foreignKey:{name:'userId', allowNull: false}})
     }
   };
-  Answer.init({
-    createdAt:{
-      type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-        isDate: true
-      }
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-        isDate: true,
-        isAfter(value) {
-          if (Date.parse(value) < Date.parse(this.createdAt)) {
-            throw new Error('UpdatedAt should not be earlier than CreatedAt');
-          }
-        }
-      }
-    }
-  }, {
+  Answer.init({}
+  , {
     sequelize,
+    timestamps:false,
     modelName: 'Answer',
   });
   return Answer;

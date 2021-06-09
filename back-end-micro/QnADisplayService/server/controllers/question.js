@@ -71,27 +71,51 @@ module.exports = {
             [Op.gte]: Date.parse(req.query.start_date),
             [Op.lte] : Date.parse(req.query.end_date)
           }
-          
-      const questions =
+
+      const questions_initial =
           await Question.findAll({
             include: [
               {
                 model: User,
                 as: 'Author',
-                attributes: ['username'],
+                attributes: [],
                 where: whereObjU
               },
               {
                 model: Keyword,
-                attributes: ['word'],
+                attributes: [],
                 through: {
                     model: Keyword_Question,
                     attributes: []
                 },
-                where: whereObjK
-              }],
-              where: whereObjD
+                where: whereObjK.word !== undefined ? whereObjK : null
+              }
+              ],
+              where: whereObjD,
+              attributes: ['id'],
           })
+            .catch(err => next(err))
+        let array_ids = questions_initial.map(x => x.id);
+        const questions = await Question.findAll({
+            where: {
+                id: array_ids
+            },
+            include: [
+                {
+                    model: User,
+                    as: 'Author',
+                    attributes: ['username'],
+                },
+                {
+                    model: Keyword,
+                    attributes: ['word'],
+                    through: {
+                        model: Keyword_Question,
+                        attributes: []
+                    }
+                }
+            ]
+        } )
             .catch(err => next(err))
         res.status(200).send(questions)
       },

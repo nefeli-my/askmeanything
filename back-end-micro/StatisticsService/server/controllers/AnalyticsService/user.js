@@ -31,7 +31,7 @@ module.exports = {
                 order: [[Sequelize.literal(`DATE("createdAt")`), 'DESC']],
                 raw: true
             });
-            const criticalMoment =  moment().subtract(7, 'days');
+            const criticalMoment =  moment().startOf('day').subtract(7, 'days');
             const result = new Array(7).fill(0);
             const nowMoment = moment();
             for (x of questions){
@@ -70,7 +70,7 @@ module.exports = {
                 order: [[Sequelize.literal(`DATE("createdAt")`), 'DESC']],
                 raw: true
             });
-            const criticalMoment =  moment().subtract(7, 'days');
+            const criticalMoment =  moment().startOf('day').subtract(7, 'days');
             const result = new Array(7).fill(0);
             const nowMoment = moment();
             for (x of answers ){

@@ -23,27 +23,9 @@ module.exports = (sequelize, DataTypes) => {
         notContains: ' ',
         isAlphanumeric: true
       }
-    },
-    createdAt:{
-      type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-        isDate: true
-      }
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      validate: {
-        isDate: true,
-        isAfter(value) {
-          if (Date.parse(value) < Date.parse(this.createdAt)) {
-            throw new Error('UpdatedAt should not be earlier than CreatedAt');
-          }
-        }
-      }
     }
   }, {
+    timestamps: false,
     sequelize,
     modelName: 'User',
   });

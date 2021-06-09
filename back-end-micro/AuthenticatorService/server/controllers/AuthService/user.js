@@ -41,8 +41,7 @@ module.exports = {
             .catch(err => next(err))
     },
     async get(req, res,next) {
-        console.log(req.body);
-        const username = req.body;
+        const username = req.user;
         try {
             const user = await User.findAll({
                 where:

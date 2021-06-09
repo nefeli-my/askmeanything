@@ -61,7 +61,7 @@ app.use(function(err, req, res, next) {
   const expose = status >= 500 && req.app.get('env') === 'development';
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
-
+/*
 // Redis connection
 const TotalConnections = 10;
 const pool = require('redis-connection-pool')('myRedisPool', {
@@ -89,5 +89,5 @@ pool.hget('subscribers', 'channel1', async (err, data) => {
       console.log('The analytics service was subscribed to channel 1.');
     }
 })
-
+*/
 module.exports = app;
