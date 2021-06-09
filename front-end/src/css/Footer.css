@@ -3,12 +3,15 @@
 .footer {
   position: fixed;
   bottom: 0%;
-  width: 70%;
-  right: 15%;
-  background-color: #e8e8e4;
+  width: 100%;
+  background-color: #f8f9fa;
   text-align: center;
 }
 .footer .links {
+  display: inline-block;
+  width: 18%;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 1%;
   margin-bottom: 1%;
 }
@@ -23,5 +26,5 @@
   text-decoration: none;
 }
 .our-names p {
-  font-size: 13px;
+  font-size: 14px;
 }

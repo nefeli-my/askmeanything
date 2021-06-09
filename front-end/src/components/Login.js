@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
+import React, {useState, useEffect} from "react";
+import {Form, Button} from "react-bootstrap";
 import '../css/Login.css';
 import login from '../assets/login.png'
 import { useHistory } from "react-router-dom";
@@ -56,8 +56,8 @@ const Login = () => {
     });
   }
   return (
-    {/* login form */}
     <div className="login">
+      {/* login form */}
       <div className="login-form">
         <Form onSubmit={handleSubmit}>
           <img src={login} alt="talk bubble"/>

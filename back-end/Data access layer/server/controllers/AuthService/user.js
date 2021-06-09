@@ -40,14 +40,12 @@ module.exports = {
             })
             .catch(err => next(err))
     },
-    async get(req, res,next) {
-        console.log(req.body);
-        const username = req.body;
+    async get(req,res,next) {
         try {
             const user = await User.findAll({
               where:
                   {
-                      username: username,
+                      username: req.params.id
                   }
             });
             return res.status(200).send(user);

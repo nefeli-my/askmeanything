@@ -29,7 +29,7 @@ const Register = () => {
       body: JSON.stringify(user)
     })
     .then(res => {
-      if(res.status === 200 ){
+      if(res.status === 201){
         // push to login page right after successful user registration
         history.push('/login');
       }
@@ -51,7 +51,7 @@ const Register = () => {
         * username, email, first name, last name    *
         * password and confirmation password needed */}
       <div className="register-form">
-      <Form  onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <h3><b> Sign Up. It's free! </b></h3>
         <Form.Row>
           <Form.Group as={Col}>

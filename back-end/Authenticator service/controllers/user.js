@@ -17,14 +17,13 @@ module.exports = {
     },
     async get(req,res,next) {
         try {
-            console.log(req.query.username)
-            const returnedUser = await Userget(req.query.username);
+            const returnedUser = await Userget(req.user);
             if(returnedUser.error) {
                 let err = new Error(returnedUser.error.response.data.msg);
                 err.status = returnedUser.error.status;
                 throw err;
             }
-            return res.status(returnedUser.status).send(returnedUser.body);
+            return res.send(returnedUser.body);
         }
         catch (err) {
             next(err);
@@ -49,7 +48,6 @@ module.exports = {
             req.body.user = req.user;
             const updatedUser = await Userupdate(req.body);
             if(updatedUser.error) {
-
                 let err = new Error(updatedUser.error.response.data.msg);
                 err.status = updatedUser.error.response.status;
                 throw err;

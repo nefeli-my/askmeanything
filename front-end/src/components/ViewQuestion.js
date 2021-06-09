@@ -82,14 +82,16 @@ const ViewQuestion = () => {
       <div className="view-question">
         <div className="question">
           <h3 className="title"><b> {question.title} </b></h3>
+          {/* &nbsp; used to create empty space */}
           <h3 className="author-on">
-            posted by user {question.Author.username} on
-            {(new Date(question.createdAt)).toLocaleString('en-US')}
+            posted by user {question.Author.username} on &nbsp;
+            {(new Date(question.createdAt)).toLocaleString('en-GB')}
           </h3>
           {/* full question body is shown here */}
           <div className="question-body">
             <p> {question.body} </p>
           </div>
+          {/* keywords display */}
           <ul className="keyword-list">
             {question.Keywords.map((keyword,index) =>
               <li key={index} className="single-keyword">
@@ -104,9 +106,10 @@ const ViewQuestion = () => {
             <h3 className="num-answers"> { answers.length } Answers </h3>
             {answers.map((answer) =>
               <li key={answer.id} className="single-answer">
+                {/* &nbsp; used to create empty space */}
                 <h3 className="author-on">
-                  posted by user {answer.User.username} on
-                  {(new Date(answer.createdAt)).toLocaleString('en-US')}
+                  posted by user {answer.User.username} on &nbsp;
+                  {(new Date(answer.createdAt)).toLocaleString('en-GB')}
                 </h3>
                 <div className="question-body">
                   <p> {answer.body} </p>

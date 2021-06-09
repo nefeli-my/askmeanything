@@ -69,7 +69,7 @@ app.use(function(err, req, res, next) {
   res.send({msg: expose ? message + '\n\n' + err.stack : message});
 });
 
-/*
+
 // Redis connection
 const TotalConnections = 10;
 const pool = require('redis-connection-pool')('myRedisPool', {
@@ -113,7 +113,5 @@ pool.hget('subscribers', 'channel2', async (err, data) => {
       console.log('The authenticator service was subscribed to channel 2.');
     }
 })
-
- */
 
 module.exports = app;

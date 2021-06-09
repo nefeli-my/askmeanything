@@ -13,6 +13,8 @@ import NewQuestion from './components/NewQuestion';
 import PrivateRoute from './components/PrivateRoute';
 import Register from './components/Register';
 import ViewQuestion from './components/ViewQuestion';
+import UpdateName from './components/UpdateName';
+import UpdatePw from './components/UpdatePassword';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -54,6 +56,8 @@ function App() {
           <PrivateRoute path="/new-question" component={NewQuestion}/>
           <PrivateRoute path="/profile" component={MyProfile}/>
           <PrivateRoute path="/my-statistics" component={MyStatistics}/>
+          <PrivateRoute path="/update-password" component={UpdatePw}/>
+          <PrivateRoute path="/update-name" component={UpdateName}/>
           <Route path="*">
             <NotFound/>
           </Route>

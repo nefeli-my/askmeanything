@@ -1,6 +1,14 @@
 /* css sheet for Statistics component */
 
-.general-statistics, .my-statistics {
+.general-statistics {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  width: 70%;
+  padding: 0.5%;
+}
+
+.my-statistics {
   margin-left: auto;
   margin-right: auto;
   width: 70%;
@@ -78,7 +86,7 @@
 }
 
 .my-statistics nav {
-  width: 40.5%;
+  width: 41%;
   margin-bottom: 2%;
   margin-left: auto;
   margin-right: auto;
@@ -88,4 +96,8 @@
   margin-left: 2%;
   margin-right: 2%;
   text-decoration: none;
+}
+
+.column-chart {
+  margin-top: 2%;
 }
