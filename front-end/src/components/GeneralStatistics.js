@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from "react-router-dom";
-import { LineChart } from 'react-chartkick';
+import {LineChart, ColumnChart} from 'react-chartkick';
 import 'chartkick/chart.js';
 import moment from 'moment';
 import '../css/Statistics.css';
@@ -23,7 +23,7 @@ const GeneralStatistics = () => {
 
   useEffect(() => {
     // endpoints of the analytics service accessed for all following requests
-    
+
     // fetch number of questions per day (only last weeks's data),
     // when component is mounted
     fetch('http://localhost:8003/general/questions',
@@ -87,7 +87,9 @@ const GeneralStatistics = () => {
           if (res.status === 200) {
             res.json()
                 .then(function (data) {
-                  setTopKeywords(data);
+                  let keywords = data.map(o=>[o.word,o.count]);
+                  // keywords: array[20][2]
+                  setTopKeywords(keywords);
                 })
           // error handling
           } else if (res.status === 401) {
@@ -128,12 +130,18 @@ const GeneralStatistics = () => {
         {/* 20 most popular keywords */}
         <h3>Trending topics based on keyword popularity:</h3>
         <ul>
-        {topkeywords.map((keyword) =>
-          <li key={keyword.keywordId} className="single-keyword">
-              {keyword.word}
+        {topkeywords.map(keyword =>
+          <li key={keyword[0]} className="single-keyword">
+              {keyword[0]}
           </li>
         )}
         </ul>
+        {/* number of questions per keyword column chart */}
+        <h3> Top {topkeywords.length} <b>keywords</b> appearance <b>frequency</b> in posted questions: </h3>
+        <div className="column-chart">
+          <ColumnChart data={topkeywords} xtitle="keyword" ytitle="frequency"
+                       colors={["#e5989b"]}/>
+        </div>
       </div>
     </div>
   );

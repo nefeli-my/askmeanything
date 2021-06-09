@@ -35,7 +35,6 @@ const BrowseUnassigned = () => {
         history.push('/error-500');
       }
     })
-
   }, [history]);
 
   return (
@@ -56,9 +55,10 @@ const BrowseUnassigned = () => {
                   style={{textDecoration: 'inherit', color: 'inherit'}}>
               <h3 className="title"><b> {question.title} </b></h3>
             </Link>
+            {/* &nbsp; used to create empty space */}
             <h3 className="author-on">
-              posted by user {question.Author.username} on
-              {(new Date(question.createdAt)).toLocaleString('en-US')}
+              posted by user {question.Author.username} on &nbsp;
+              {(new Date(question.createdAt)).toLocaleString('en-GB')}
             </h3>
             <div className="question-body">
               <p> {question.body.substring(0, question.body.length / 2)} [...] </p>

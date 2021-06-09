@@ -84,7 +84,7 @@ app.post('/bus', async (req, res) => {
     currentMessages = JSON.parse(data);
     newMessage = {
       'id': currentMessages.length + 1,
-       req.body, // store whole object (event + destination channel)
+       event, 
       'timestamp': Date.now()
     }
     currentMessages.push(newMessage);
@@ -96,7 +96,7 @@ app.post('/bus', async (req, res) => {
           axios.post(subscribers[i], newMessage).then(resp => {
             console.log(subscribers[i], resp["data"]);
           }).catch(e => {
-            console.log(subscribers[i], {"status", "lost connection"});
+            console.log(subscribers[i], "status: lost connection");
           });
         }
         res.send({"status": "ok"})

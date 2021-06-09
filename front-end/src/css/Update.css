@@ -1,0 +1,16 @@
+.content h3 {
+  font-size: 20px;
+  margin-bottom: 3%;
+}
+
+.content .buttons {
+  display: inline-block;
+  margin-top: 1%;
+  width: 35%;
+  margin-left: 35%;
+}
+
+.content button {
+  margin-left: 5%;
+  margin-right: 5%;
+}

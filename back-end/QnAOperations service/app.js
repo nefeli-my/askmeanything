@@ -65,6 +65,7 @@ app.use(function(err, req, res, next) {
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
 
+/*
 // Redis connection
 const TotalConnections = 10;
 const pool = require('redis-connection-pool')('myRedisPool', {
@@ -92,6 +93,6 @@ pool.hget('subscribers', 'channel2', async (err, data) => {
       console.log('The qnaoperations service was subscribed to channel 2.');
     }
 })
+*/
 
-//app.listen(8000);
 module.exports = app;

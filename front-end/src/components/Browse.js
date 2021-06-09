@@ -153,6 +153,7 @@ const Browse = () => {
             </div>
             {/* search boxes for filtered search */}
             <div className="inline-divs">
+              {/* user search */}
               <div className="input-group">
                 <input type="search"
                        className="form-control rounded"
@@ -170,6 +171,7 @@ const Browse = () => {
                   search
                 </button>
               </div>
+              {/* keyword search */}
               <div className="input-group">
                 <input type="search"
                        className="form-control rounded"
@@ -188,32 +190,38 @@ const Browse = () => {
                 </button>
               </div>
             </div>
+            {/* dates search */}
             <div className="date-search">
-              <DatePicker
-                  filterDate={d => {
-                    return new Date() > d;
-                  }}
-                  isClearable
-                  placeholderText="Select start date"
-                  selected={startDate}
-                  selectsStart
-                  startDate={startDate}
-                  endDate={endDate}
-                  onChange={date => setStartDate(date)}
-              />
-              <DatePicker
-                  filterDate={d => {
-                    return new Date() > d;
-                  }}
-                  isClearable
-                  placeholderText="Select end date"
-                  selected={endDate}
-                  selectsEnd
-                  startDate={startDate}
-                  endDate={endDate}
-                  minDate={startDate}
-                  onChange={date => setEndDate(date)}
-              />
+              <div className="datepicker">
+                <DatePicker
+                    filterDate={d => {
+                      return new Date() > d;
+                    }}
+                    isClearable
+                    placeholderText="Select start date"
+                    selected={startDate}
+                    selectsStart
+                    startDate={startDate}
+                    endDate={endDate}
+                    onChange={date => setStartDate(date)}
+                />
+              </div>
+              <div className="datepicker">
+                <DatePicker
+                    filterDate={d => {
+                      return new Date() > d;
+                    }}
+                    isClearable
+                    placeholderText="Select end date"
+                    selected={endDate}
+                    selectsEnd
+                    startDate={startDate}
+                    endDate={endDate}
+                    minDate={startDate}
+                    onChange={date => setEndDate(date)}
+                    className="datepicker"
+                />
+              </div>
               <button type="button"
                       className="btn btn-outline-primary btn-sm"
                       disabled={!startDate || !endDate}
@@ -243,9 +251,10 @@ const Browse = () => {
                           style={{textDecoration: 'inherit', color: 'inherit'}}>
                       <h3 className="title"><b> {question.title} </b></h3>
                     </Link>
+                    {/* &nbsp; used to create empty space */}
                     <h3 className="author-on">
-                      posted by user {question.Author.username} on
-                      {(new Date(question.createdAt)).toLocaleString('en-US')}
+                      posted by user {question.Author.username} on &nbsp;
+                      {(new Date(question.createdAt)).toLocaleString('en-GB')}
                     </h3>
                     <div className="question-body">
                       <p> {question.body.substring(0, question.body.length / 2)} [...] </p>

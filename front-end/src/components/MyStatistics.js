@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from "react-router-dom";
-import {LineChart} from 'react-chartkick';
+import {LineChart, ColumnChart} from 'react-chartkick';
 import Navbar from "./Navbar";
 import 'chartkick/chart.js';
 import moment from 'moment';
@@ -87,7 +87,9 @@ const MyStatistics = () => {
           if (res.status === 200) {
             res.json()
                 .then(function (data) {
-                  setMyTopKeywords(data);
+                  let keywords = data.map(o=>[o.word,o.count]);
+                  // keywords: array[20][2]
+                  setMyTopKeywords(keywords);
                 })
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
@@ -112,7 +114,9 @@ const MyStatistics = () => {
           if (res.status === 200) {
             res.json()
                 .then(function (data) {
-                  setTopKeywords(data);
+                  let keywords = data.map(o=>[o.word,o.count]);
+                  // keywords: array[20][2]
+                  setTopKeywords(keywords);
                 })
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
@@ -162,11 +166,19 @@ const MyStatistics = () => {
             <h3>The topics that interest you the most:</h3>
             <ul>
               {mytopkeywords.map((keyword) =>
-                <li key={keyword.keywordId} className="single-keyword">
-                  {keyword.word}
+                <li key={keyword[0]} className="single-keyword">
+                  {keyword[0]}
                 </li>
               )}
             </ul>
+            {/* number of questions per keyword column chart */}
+            <h3> Your top <b>keywords</b> appearance <b>frequency</b>:
+                (only the questions you have posted are taken into consideration)
+            </h3>
+            <div className="column-chart">
+              <ColumnChart data={mytopkeywords} xtitle="keyword" ytitle="frequency"
+                           colors={["#48cae4"]}/>
+            </div>
           </div>
         }
         {/* or most popular keywords (in general) */}
@@ -176,11 +188,17 @@ const MyStatistics = () => {
               However, here are the most popular topics in the community right now: </h3>
               <ul>
                 {topkeywords.map((keyword) =>
-                  <li key={keyword.keywordId} className="single-keyword">
-                    {keyword.word}
+                  <li key={keyword[0]} className="single-keyword">
+                    {keyword[0]}
                   </li>
                 )}
               </ul>
+              {/* number of questions per keyword column chart */}
+              <h3> Top {topkeywords.length} <b>keywords</b> appearance <b>frequency</b> in posted questions: </h3>
+              <div className="column-chart">
+                <ColumnChart data={topkeywords} xtitle="keyword" ytitle="frequency"
+                             colors={["#48cae4"]}/>
+              </div>
             </div>
         }
       </div>

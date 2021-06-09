@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-app.use('/general/',generalRouter)
+app.use('/general/',generalRouter);
 app.use('/user/', userRouter);
 
 
@@ -62,6 +62,7 @@ app.use(function(err, req, res, next) {
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
 
+/*
 // Redis connection
 const TotalConnections = 10;
 const pool = require('redis-connection-pool')('myRedisPool', {
@@ -89,5 +90,6 @@ pool.hget('subscribers', 'channel1', async (err, data) => {
       console.log('The analytics service was subscribed to channel 1.');
     }
 })
+*/
 
 module.exports = app;

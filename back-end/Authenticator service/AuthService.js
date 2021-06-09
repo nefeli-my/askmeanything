@@ -14,9 +14,9 @@ module.exports = {
             return {success: false, error: err};
         }
     },
-    async Userget(user){
+    async Userget(username){
         try {
-            let result = await axios.get(DataLayerUrl +'/user'+'/get',user);
+            let result = await axios.get(DataLayerUrl +'/user'+`/get/${username}`);
             return {success: true, body: result.data};
         }
         catch (err) {
