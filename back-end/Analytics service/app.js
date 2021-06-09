@@ -8,6 +8,7 @@ const logger = require('morgan');
 const path = require('path');
 const passport = require('passport');
 const redis = require('redis');
+const redis_pool = require('redis-connection-pool');
 
 const generalRouter = require('./routes/general');
 const userRouter = require('./routes/user');
@@ -64,7 +65,7 @@ app.use(function(err, req, res, next) {
 /*
 // Redis connection
 const TotalConnections = 10;
-const pool = require('redis-connection-pool')('myRedisPool', {
+const pool = redis_pool('myRedisPool', {
   host: process.env.REDIS_HOST,   // localhost
   port: process.env.REDIS_PORT,   // Redis Port: 6379
   maxclients: TotalConnections,

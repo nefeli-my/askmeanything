@@ -15,3 +15,5 @@ back-end-micro/AnswerService/.env
 back-end-micro/AnswerService/node_modules
 back-end-micro/QuestionService/.env
 back-end-micro/QuestionService/node_modules
+back-end-micro/Choreographer/.env
+back-end-micro/Choreographer/node_modules
