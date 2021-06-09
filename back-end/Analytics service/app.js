@@ -61,7 +61,10 @@ app.use(function(err, req, res, next) {
   const expose = status >= 500 && req.app.get('env') === 'development';
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 187ed2178ca44403d1b603cdb4f064b5553652c2
 /*
 // Redis connection
 const TotalConnections = 10;
@@ -91,5 +94,8 @@ pool.hget('subscribers', 'channel1', async (err, data) => {
     }
 })
 */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 187ed2178ca44403d1b603cdb4f064b5553652c2
 module.exports = app;
