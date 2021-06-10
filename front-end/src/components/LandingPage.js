@@ -5,7 +5,7 @@ import unlock from '../assets/unlock.jpg'
 import stats from '../assets/stats.jpg'
 
 const LandingPage = () => {
-  // homepage for not signed users (path: '/')
+  // homepage for not signed users 
   const history = useHistory();
   return (
     <div className="landing-page">

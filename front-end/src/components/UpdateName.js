@@ -49,8 +49,8 @@ const UpdateName = () => {
               // error handling
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
+                localStorage.removeItem('REACT_TOKEN_AUTH');
                 alert('Your session expired. Please login again.');
-                localStorage.removeItem('REACT_TOKEN_AUTH')
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');

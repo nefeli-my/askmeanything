@@ -18,7 +18,7 @@ import Register from './components/Register';
 import ViewQuestion from './components/ViewQuestion';
 import UpdateName from './components/UpdateName';
 import UpdatePw from './components/UpdatePassword';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
   return (

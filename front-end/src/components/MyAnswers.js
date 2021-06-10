@@ -4,11 +4,15 @@ import Navbar from './Navbar';
 import '../css/Browse.css';
 
 const MyAnswers = () => {
+  // this component displays the questions to which a certain
+  // signed in user has contributed to (answered)
+  // the user is redirected here through the MyProfile component
   const [questions, setQuestions] = useState('');
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
   const history = useHistory();
 
   useEffect(() => {
+    // fetch questions when component is loaded
     fetch('http://localhost:8002/getquestions/user',
         {
           method: 'GET',
@@ -18,12 +22,15 @@ const MyAnswers = () => {
               if (res.status === 200) {
                 res.json()
                     .then(function (data) {
+                      // 'data' also includes the questions the user
+                      //  has made, keep only the ones he/she has answered to
                       setQuestions(data.answered);
                     })
               // error handling
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
                 alert('Your session expired. Please login again.');
+                localStorage.removeItem('REACT_TOKEN_AUTH');
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
@@ -38,10 +45,11 @@ const MyAnswers = () => {
     <div>
       <Navbar/>
       <div className="my-qna">
+        {/* display questions */}
         { (questions.length !== 0) &&
         <div>
           <div className="titles">
-            <h2><b> Questions to which you have contributed to: </b></h2>
+            <h2><b> Questions which you have contributed to: </b></h2>
           </div>
           <ul className="question-list">
             {/* display of fetched questions using map function.    *
@@ -75,6 +83,8 @@ const MyAnswers = () => {
           </ul>
         </div>
         }
+        {/* in case the user hasn't answered any *
+          *   questions show relative message    */}
         { (questions.length === 0) &&
           <p>
             It seems you have't made any contributions!

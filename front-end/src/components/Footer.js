@@ -1,7 +1,7 @@
 import '../css/Footer.css';
 
 const Footer = () => {
-  // footer with github and course links
+  // footer with github, documentation and course links
   return (
     <div className="footer">
       <div className="links">

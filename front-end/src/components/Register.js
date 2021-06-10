@@ -30,6 +30,7 @@ const Register = () => {
     .then(res => {
       if(res.status === 201){
         // push to login page right after successful user registration
+        alert("Account successfully created!");
         history.push('/login');
       }
       // error handling

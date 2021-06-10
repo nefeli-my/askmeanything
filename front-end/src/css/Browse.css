@@ -26,16 +26,22 @@
   background-color: #f5efff;
 }
 
-.browse .titles h3, .browse .title {
+.browse .titles h3, .browse .title,
+.my-qna .title {
   font-size: 15px;
   text-align: center;
   margin-top: 1%;
   text-decoration: none;
 }
 
-.browse .titles h2,
-.my-qna .titles h2 {
+.browse .titles h2 {
   font-size: 18px;
+  text-align: center;
+  margin-top: 0.5%;
+}
+
+.my-qna .titles h2 {
+  font-size: 17px;
   text-align: center;
   margin-top: 0.5%;
 }
@@ -154,7 +160,8 @@
   font-size: 14px;
 }
 
-.browse .link {
+.browse .link,
+.my-qna .link {
   color: inherit;
   text-decoration: inherit;
 }

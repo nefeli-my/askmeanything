@@ -4,11 +4,14 @@ import Navbar from './Navbar';
 import '../css/Browse.css';
 
 const MyQuestions = () => {
+  // this component displays the questions a certain signed in user has made
+  // the user is redirected here through the MyProfile component
   const [questions, setQuestions] = useState('');
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
   const history = useHistory();
 
   useEffect(() => {
+    // fetch questions when component is loaded
     fetch('http://localhost:8002/getquestions/user',
         {
           method: 'GET',
@@ -24,6 +27,7 @@ const MyQuestions = () => {
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
                 alert('Your session expired. Please login again.');
+                localStorage.removeItem('REACT_TOKEN_AUTH');
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
@@ -75,6 +79,8 @@ const MyQuestions = () => {
           </ul>
         </div>
         }
+        {/* in case the user hasn't made any   *
+          *   questions show relative message  */}
         { (questions.length === 0) &&
           <p>
             It seems you have't posted any questions yet.

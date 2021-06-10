@@ -41,7 +41,7 @@ const MyProfile = () => {
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
                 alert('Your session expired. Please login again.');
-                localStorage.removeItem('REACT_TOKEN_AUTH')
+                localStorage.removeItem('REACT_TOKEN_AUTH');
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
@@ -87,11 +87,12 @@ const MyProfile = () => {
           <Link to="/update-name" className="link">
             Change first and last name
           </Link> <br/>
+          {/* links to my qna components */}
           <Link to="/my-questions" className="link">
             View the questions you have posted
           </Link> <br/>
           <Link to="/my-answers" className="link">
-            View the questions to which you have contributed to
+            View the questions which you have contributed to
           </Link>
         </div>
       </div>
