@@ -10,9 +10,9 @@ const cors = require('cors')
 const redis = require('redis');
 
 const app = express();
-const getQuestionRouter = require('./routes/question/get')
-const getAnswerRouter = require('./routes/answer/get')
-const answerRouter = require('./routes/answer/create')
+const getQuestionRouter = require('./routes/question/get');
+const getAnswerRouter = require('./routes/answer/get');
+const answerRouter = require('./routes/answer/create');
 const questionRouter = require('./routes/question/create');
 
 dotenv.config();
@@ -64,6 +64,7 @@ app.use(function(err, req, res, next) {
   const expose = status >= 500 && req.app.get('env') === 'development';
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
+
 /*
 // Redis connection
 const TotalConnections = 10;
@@ -91,6 +92,7 @@ pool.hget('subscribers', 'channel2', async (err, data) => {
       pool.hset('subscribers', 'channel2', JSON.stringify(currentSubscribers),()=>{})
       console.log('The qnaoperations service was subscribed to channel 2.');
     }
-})*/
+})
+*/
 
 module.exports = app;

@@ -112,7 +112,7 @@ const NewQuestion = () => {
           <div className="input-group">
             <Form.Label className="label"> Keyword: </Form.Label>
             <Form.Control
-              placeholder="  Enter keyword"
+              placeholder="Enter keyword"
               id= "keyword-box"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}

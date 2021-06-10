@@ -7,15 +7,33 @@ const ViewQuestion = () => {
   // post new answer functionality for signed in users
   const location = useLocation();
   // get question object using useLocation from Browse
-  // or BrowseUnassigned components through click
-  const { question } = location.state;
+  // or BrowseUnassigned components through Link state
+  const {question} = location.state;
+  console.log(question)
   const [answers, setAnswers] = useState([]);
   const [noanswers, SetNoAnswers] = useState(false);
   const [body, setAnsBody] = useState("");
   const history = useHistory();
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
+  let url, headers;
+
+  if (token) {
+    url = 'http://localhost:8002/getanswers/' + question.id;
+    headers = {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)};
+  } else {
+    url = 'http://localhost:8002/getanswers/unassigned/' + question.id;
+    headers = {"Content-Type": "application/json"};
+  }
 
   useEffect(() => {
+<<<<<<< HEAD
+    // get all answers of a chosen question
+    // when component is mounted, through qnaoperations service
+    fetch(url,
+    {
+      method: 'GET',
+      headers: headers
+=======
     // get all answers of chosen question when component is mounted
     // through qnaoperations service
     let url;
@@ -29,6 +47,7 @@ const ViewQuestion = () => {
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + (token? JSON.parse(token): '') }
+>>>>>>> 9c9f6c849360ffa46bd14329392bb00c624b17e6
     })
     .then(function (res) {
           if (res.status === 200) {
@@ -57,9 +76,10 @@ const ViewQuestion = () => {
           }
         }
     );
-  }, [question.id, token, history]);
+  }, [history]);
 
   function postAnswer() {
+    console.log('hi')
     // post new answer (for logged in users only, private route)
     let answer = {questionId: question.id, body: body};
     fetch('http://localhost:8002/createanswer/', {

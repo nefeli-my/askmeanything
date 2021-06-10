@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from "react-router-dom";
 import {LineChart, ColumnChart} from 'react-chartkick';
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import 'chartkick/chart.js';
 import moment from 'moment';
 import '../css/Statistics.css';
@@ -203,6 +204,7 @@ const MyStatistics = () => {
             </div>
         }
       </div>
+      <Footer/>
     </div>
   );
 }

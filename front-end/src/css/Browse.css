@@ -1,6 +1,6 @@
-/* css sheet for Browse and BrowseUnassigned components */
+/* css sheet for Browse, BrowseUnassigned, MyQuestions and MyAnswers components */
 
-.browse {
+.browse, .my-qna {
   margin-left: auto;
   margin-right: auto;
   margin-top: 2%;
@@ -17,6 +17,15 @@
   background-color: #f5efff;
 }
 
+.my-qna .titles {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  padding: 0.5%;
+  border-radius: 5px;
+  background-color: #f5efff;
+}
+
 .browse .titles h3, .browse .title {
   font-size: 15px;
   text-align: center;
@@ -24,7 +33,8 @@
   text-decoration: none;
 }
 
-.browse .titles h2 {
+.browse .titles h2,
+.my-qna .titles h2 {
   font-size: 18px;
   text-align: center;
   margin-top: 0.5%;
@@ -77,7 +87,17 @@
   margin-right: auto;
 }
 
-.browse .question-body {
+.my-qna .single-question {
+  background-color: #f5efff;
+  padding: 0.5%;
+  border-radius: 5px;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.browse .question-body,
+.my-qna .question-body {
   padding: 0.25%;
   margin-top: 1%;
   margin-left: auto;
@@ -88,11 +108,13 @@
   background-color: white;
 }
 
-.browse .question-body p {
+.browse .question-body p,
+.my-qna .question-body p {
   font-size: 14px;
 }
 
-.browse .author-on {
+.browse .author-on,
+.my-qna .author-on {
   font-size: 14px;
   margin-left: 3%;
 }
@@ -104,14 +126,16 @@
   padding: 2%;
 }
 
-.browse .keyword-list {
+.browse .keyword-list,
+.my-qna .keyword-list {
   list-style-type: none;
   margin-left: 1%;
   margin-top: 1%;
   margin-bottom: 0.5%;
 }
 
-.browse .single-keyword {
+.browse .single-keyword,
+.my-qna .single-keyword {
   display: inline-block;
   font-size: 12px;
   margin-left: 1.5%;
@@ -126,12 +150,11 @@
   margin-left: 45%;
 }
 
-.browse .error {
-  font-size: 20px;
-  text-align: center;
-  color: red;
-}
-
 .browse ::placeholder {
   font-size: 14px;
+}
+
+.browse .link {
+  color: inherit;
+  text-decoration: inherit;
 }

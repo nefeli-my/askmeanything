@@ -1,5 +1,5 @@
 import '../css/LandingPage.css';
-import { useHistory } from "react-router-dom"
+import {useHistory} from "react-router-dom"
 import newquestion from '../assets/newquestion.jpg'
 import unlock from '../assets/unlock.jpg'
 import stats from '../assets/stats.jpg'

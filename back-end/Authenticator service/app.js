@@ -69,6 +69,7 @@ app.use(function(err, req, res, next) {
   res.send({msg: expose ? message + '\n\n' + err.stack : message});
 });
 
+
 /*
 // Redis connection
 const TotalConnections = 10;
@@ -112,6 +113,7 @@ pool.hget('subscribers', 'channel2', async (err, data) => {
       pool.hset('subscribers', 'channel2', JSON.stringify(currentSubscribers),()=>{})
       console.log('The authenticator service was subscribed to channel 2.');
     }
-})*/
+})
+*/
 
 module.exports = app;

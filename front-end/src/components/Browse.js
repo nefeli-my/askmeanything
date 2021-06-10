@@ -152,7 +152,6 @@ const Browse = () => {
           <div className="browse">
             <div className="titles">
               <h2><b> Most recent questions posted: </b></h2>
-              <h3> (questions currently displayed: {questions.length}) </h3>
             </div>
             {/* search boxes for filtered search */}
             <div className="inline-divs">
@@ -250,8 +249,8 @@ const Browse = () => {
                   <li key={question.id} className="single-question">
                     {/* when question's title is clicked, redirect to         *
                       * ViewQuestion component with the question obj as state */}
-                    <Link to={{pathname: "/view-question", state: {question},}}
-                          style={{textDecoration: 'inherit', color: 'inherit'}}>
+                    <Link to={{pathname: "/view-question", state: {question: question}}}
+                          className="link">
                       <h3 className="title"><b> {question.title} </b></h3>
                     </Link>
                     {/* &nbsp; used to create empty space */}
