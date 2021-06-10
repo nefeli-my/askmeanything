@@ -3,6 +3,9 @@ const Answer = models.Answer;
 const User = models.User;
 const Question = models.Question;
 const Keyword = models.Keyword;
+const axios = require("axios");
+const busURL = 'http://localhost:8006/bus'
+
 
 module.exports = {
     async create(req,res,next){
@@ -30,8 +33,22 @@ module.exports = {
                 ]
             }
         )
-            .then(answer => res.status(200).send(answer))
+            .then(answer => {
+                res.status(200).send(answer);
+                return answer;
+            })
             .catch(err => next(err))
+            .then(answer => {
+                axios.post(busURL,{
+                    event : {
+                        action: 'createAnswer',
+                        answer: answer
+                    },
+                    channel: 'channel_answers'
+                })
+
+            })
+            .catch(err => console.log(err))
     },
     async findAll(req,res,next){
         try {

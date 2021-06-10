@@ -3,6 +3,8 @@ const User = models.User;
 const Question = models.Question;
 const Keyword = models.Keyword;
 const Keyword_Question = models.Question_Keyword;
+const axios = require("axios");
+const busURL = 'http://localhost:8006/bus'
 
 module.exports = {
     async create(req, res, next) {
@@ -42,6 +44,14 @@ module.exports = {
             createdQ = createdQ.dataValues;
             createdQ.keywords = keyws;
             res.status(200).send(createdQ);
+            await axios.post(busURL,{
+                    event : {
+                        action: 'createQuestion',
+                        question: createdQ
+                    },
+                    channel: 'channel_questions'
+                })
+                .catch(error => console.log(error))
         }
         catch(err){
             next(err)

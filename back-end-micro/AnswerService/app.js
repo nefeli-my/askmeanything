@@ -53,6 +53,22 @@ pool.hget('subscribers', 'channel_users', async (err, data) => {
   }
 })
 
+pool.hget('subscribers', 'channel_questions', async (err, data) => {
+  let currentSubscribers = JSON.parse(data);
+  let alreadySubscribed = false;
+  let myAddress = 'http://localhost:8004/bus';
+  for (let i=0; i<currentSubscribers.length; i++) {
+    if (currentSubscribers[i] == myAddress) {
+      alreadySubscribed = true;
+    }
+  }
+  if (alreadySubscribed == false) {
+    currentSubscribers.push(myAddress);
+    pool.hset('subscribers', 'channel_questions', JSON.stringify(currentSubscribers),()=>{})
+    console.log('The AnswerService service was subscribed to channel_questions.');
+  }
+})
+
 app.use('/create',createRouter);
 app.use('/getquestion', getRouter);
 app.use('/bus', busRouter);

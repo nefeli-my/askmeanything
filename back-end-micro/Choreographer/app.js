@@ -40,8 +40,18 @@ pool.hget('subscribers', 'channel_users', async (err, data) => {
   }
 })
 
+pool.hget('subscribers', 'channel_questions', async (err, data) => {
+  if(!data){
+    pool.hset('subscribers', 'channel_questions', JSON.stringify([]), ()=>{});
+  }
+})
 
-//pool.hset('channel2', 'subscribers', JSON.stringify([]), ()=>{});
+pool.hget('subscribers', 'channel_answers', async (err, data) => {
+  if(!data){
+    pool.hset('subscribers', 'channel_answers', JSON.stringify([]), ()=>{});
+  }
+})
+
 
 // endpoints
 
