@@ -10,14 +10,19 @@ module.exports = function({ sequelize }) {
     if (Sequelize.cls) {
         namespace = Sequelize.cls;
     } else {
-        namespace = cls.createNamespace('transaction_forAskMeAnything');
+        namespace = cls.createNamespace('express-sequelize-transaction');
         Sequelize.cls = namespace;
     }
-
+    sequelize.constructor.useCLS(namespace);
     return function(req, res, next) {
-        sequelize.transaction(async function(t) {
+        sequelize.transaction({autocommit:false})
+            .then( async function(t) {
             next();
             await new Promise((resolve) => res.on('finish', resolve));
+            if(res.statusCode === 500 || res.statusCode === 400)
+                t.rollback();
+            else
+                t.commit();
         })
             .catch(next)
     }
