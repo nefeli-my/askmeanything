@@ -93,8 +93,8 @@ const Browse = () => {
                 // error handling
                 } else if (res.status === 401) {
                   console.log('401 Unauthorized Error');
+                  localStorage.removeItem('REACT_TOKEN_AUTH');
                   alert('Your session expired. Please login again.');
-                  localStorage.removeItem('REACT_TOKEN_AUTH')
                   history.push('/login');
                 } else if (res.status === 400) {
                   console.log('400 Bad Request');
@@ -155,7 +155,7 @@ const Browse = () => {
             </div>
             {/* search boxes for filtered search */}
             <div className="inline-divs">
-              {/* user search */}
+              {/* =search by username */}
               <div className="input-group">
                 <input type="search"
                        className="form-control rounded"
@@ -173,7 +173,7 @@ const Browse = () => {
                   search
                 </button>
               </div>
-              {/* keyword search */}
+              {/* search by keyword */}
               <div className="input-group">
                 <input type="search"
                        className="form-control rounded"
@@ -192,7 +192,7 @@ const Browse = () => {
                 </button>
               </div>
             </div>
-            {/* dates search */}
+            {/* search by time period */}
             <div className="date-search">
               <div className="datepicker">
                 <DatePicker
@@ -241,7 +241,7 @@ const Browse = () => {
               {startDate && <p className="filters"><b>start date:</b> {displayed_sd} </p>}
               {endDate && <p className="filters"><b>end date:</b> {displayed_ed} </p>}
             </div>
-            {/* display list of questions                           *
+            {/* display list of  fetched questions                  *
               * for each question show title, half of its body,     *
               * author's username, keywords and when it was created */}
             <ul className="question-list">
@@ -258,13 +258,14 @@ const Browse = () => {
                       posted by user {question.Author.username} on &nbsp;
                       {(new Date(question.createdAt)).toLocaleString('en-GB')}
                     </h3>
+                    {/* show only half of the question's body */}
                     <div className="question-body">
                       <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
                     </div>
                     {/* keywords displayed for each question */}
                     <ul className="keyword-list">
                       {question.Keywords.map((keyword,index) =>
-                        <li key={ index } className="single-keyword">
+                        <li key={index} className="single-keyword">
                           {keyword.word}
                         </li>
                       )}

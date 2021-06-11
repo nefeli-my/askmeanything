@@ -21,13 +21,10 @@ const BrowseUnassigned = () => {
       if(res.status === 200) {
           res.json()
               .then(function(data) {
+                  // set questions to acquired data
                   setQuestions(data);
               })
       // error handling
-      } else if (res.status === 401) {
-        console.log('401 Unauthorized Error');
-        alert('Your session expired. Please login again.');
-        history.push('/login');
       } else if (res.status === 400) {
         console.log('400 Bad Request');
       } else {

@@ -6,48 +6,29 @@ const ViewQuestion = () => {
   // view a question + all of its current answers
   // post new answer functionality for signed in users
   const location = useLocation();
-  // get question object using useLocation from Browse
-  // or BrowseUnassigned components through Link state
+  // get question object using useLocation from Browse, BrowseUnassigned
+  // MyQuestions or MyAnswers components through Link state
   const {question} = location.state;
-  console.log(question)
   const [answers, setAnswers] = useState([]);
   const [noanswers, SetNoAnswers] = useState(false);
   const [body, setAnsBody] = useState("");
   const history = useHistory();
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
-  let url, headers;
-
-  if (token) {
-    url = 'http://localhost:8002/getanswers/' + question.id;
-    headers = {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)};
-  } else {
-    url = 'http://localhost:8002/getanswers/unassigned/' + question.id;
-    headers = {"Content-Type": "application/json"};
-  }
 
   useEffect(() => {
-<<<<<<< HEAD
-    // get all answers of a chosen question
-    // when component is mounted, through qnaoperations service
-    fetch(url,
-    {
-      method: 'GET',
-      headers: headers
-=======
-    // get all answers of chosen question when component is mounted
-    // through qnaoperations service
+    // get all answers of a chosen question when component
+    //  is mounted, through the qnaoperations service
     let url;
     if(token){
-       url =  'http://localhost:8002/getanswers/'
+      url = 'http://localhost:8002/getanswers/'
     }
     else{
-        url =  'http://localhost:8002/getanswers/unassigned'
+      url = 'http://localhost:8002/getanswers/unassigned/'
     }
     fetch(url+question.id,
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + (token? JSON.parse(token): '') }
->>>>>>> 9c9f6c849360ffa46bd14329392bb00c624b17e6
     })
     .then(function (res) {
           if (res.status === 200) {
@@ -63,10 +44,10 @@ const ViewQuestion = () => {
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
             if(token)
-                alert('Your session expired. Please login again.');
+              alert('Your session expired. Please login again.');
             else
-                alert('You must be logged in to view this question and its answers!')
-            localStorage.removeItem('REACT_TOKEN_AUTH')
+              alert('You must be logged in to view this question and its answers!');
+            localStorage.removeItem('REACT_TOKEN_AUTH');
             history.push('/login');
           } else if (res.status === 400) {
             console.log('400 Bad Request Error');
@@ -76,11 +57,10 @@ const ViewQuestion = () => {
           }
         }
     );
-  }, [history]);
+  }, [history, token, question.id]);
 
   function postAnswer() {
-    console.log('hi')
-    // post new answer (for logged in users only, private route)
+    // post new answer (for logged in users only, private route used)
     let answer = {questionId: question.id, body: body};
     fetch('http://localhost:8002/createanswer/', {
       method: 'POST',
@@ -92,6 +72,7 @@ const ViewQuestion = () => {
               console.log('answer successfully uploaded');
             // error handling
             } else if (res.status === 401) {
+              localStorage.removeItem('REACT_TOKEN_AUTH');
               alert('Your session expired. Please login again.');
               history.push('/login');
             } else if (res.status === 400) {
@@ -111,6 +92,7 @@ const ViewQuestion = () => {
   return (
     <div>
       <div className="view-question">
+        {/* display question */}
         <div className="question">
           <h3 className="title"><b> {question.title} </b></h3>
           {/* &nbsp; used to create empty space */}

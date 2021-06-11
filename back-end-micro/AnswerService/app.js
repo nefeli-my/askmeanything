@@ -70,7 +70,7 @@ pool.hget('subscribers', 'channel_questions', async (err, data) => {
 })
 
 app.use('/create',createRouter);
-app.use('/getquestion', getRouter);
+app.use('/getanswers', getRouter);
 app.use('/bus', busRouter);
 
 // catch 404 and forward to error handler

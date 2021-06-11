@@ -1,0 +1,63 @@
+/* css sheet for Landing Page component */
+
+.landing-main {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  width: 70%;
+  background-color: #c0d6df;
+  padding: 1%;
+  border-radius: 1.5%;
+}
+.landing-main h2 {
+  font-size: 22px;
+  margin-top: 1.5%;
+  margin-left: 3.5%
+}
+.landing-main h4 {
+  font-size: 17px;
+  text-align: center;
+  margin-top: 1%;
+}
+.p-lg {
+  font-size: 17px;
+  margin-top: 2%;
+  margin-left: 3%;
+}
+.landing-main hr {
+  background-color: #ccc;
+  width: 45%;
+  margin-top: 1.5%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.landing-main .options-div {
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.landing-main .col-sm {
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-bottom: 2%;
+  padding: 0.5%;
+  background-color: white;
+  border-radius: 1.5%;
+  cursor: pointer;
+}
+.landing-main .col-sm:hover {
+  transform: scale(1.1);
+}
+.landing-main .col-sm p {
+  margin-left: 0.75%;
+  margin-right: 0.75%;
+  margin-top: 2%;
+  font-size: 15px;
+  text-align: center;
+}
+.landing-main .col-sm img {
+  margin-left: 32%;
+  margin-top: 3%;
+  width: 35%;
+  height: 10%;
+}

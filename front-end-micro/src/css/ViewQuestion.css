@@ -1,0 +1,105 @@
+/* css sheet for ViewQuestion component */
+
+.view-question {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  width: 70%;
+  padding: 0.5%;
+}
+
+.view-question .question {
+  background-color: #f5efff;
+  padding: 0.5%;
+  border-radius: 5px;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.view-question .question-body {
+  padding: 0.25%;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  border: 1px solid #606060;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.view-question .question-body p {
+  font-size: 14px;
+}
+
+.view-question .author-on {
+  font-size: 14px;
+  margin-left: 3%;
+}
+
+.view-question .keyword-list {
+  list-style-type: none;
+  margin-left: 1%;
+  margin-top: 1%;
+  margin-bottom: 0.5%;
+}
+
+.view-question .single-keyword {
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 1.5%;
+  margin-right: 0.75%;
+  border: 1px solid #3B3C36;
+  padding: 0.25%;
+  border-radius: 3px;
+}
+
+.view-question .titles h3, .view-question .title {
+  font-size: 15px;
+  text-align: center;
+  margin-top: 1%;
+  text-decoration: none;
+}
+
+.view-question .answer-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  padding: 2%;
+}
+
+.view-question .single-answer {
+  background-color: #f5efff;
+  padding: 0.5%;
+  border-radius: 5px;
+  margin-bottom: 1%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.view-question .no-answers-msg {
+  margin-top: 3%;
+  font-size: 15px;
+}
+
+.view-question .num-answers, .your-answer h3 {
+  font-size: 20px;
+  margin-bottom: 1%;
+}
+
+.view-question .your-answer textarea {
+  margin-top: 1%;
+  margin-left: 7%;
+}
+
+#btn-post-answer {
+  margin-top: 1%;
+  margin-left: 41%;
+}
+
+.view-question .error {
+  font-size: 16px;
+  margin-top: 2%;
+  margin-left: 5%;
+  color: red;
+}

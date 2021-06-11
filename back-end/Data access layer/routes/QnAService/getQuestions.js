@@ -6,7 +6,7 @@ const {findFiltered, findAll, findAllRestricted, findByUser} = require('../../se
 router.get('/filters', findFiltered);
 router.get('/unassigned', findAllRestricted);
 router.get('/user/:user',findByUser);
-router.get('/:id', findAll);
+router.get('/:offset', findAll);
 
 
 

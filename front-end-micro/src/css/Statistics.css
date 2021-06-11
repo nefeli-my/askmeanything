@@ -1,0 +1,104 @@
+/* css sheet for Statistics component */
+
+.general-statistics {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  width: 70%;
+  padding: 0.5%;
+}
+
+.my-statistics {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  padding: 0.5%;
+}
+
+.general-statistics #title {
+  font-size: 18px;
+}
+
+.my-statistics #title {
+  font-size: 17px;
+}
+
+.diagrams {
+  display: flex;
+  margin-top: 2%;
+}
+
+.questions-diagram {
+  float: left;
+  width: 45%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.answers-diagram {
+  float: left;
+  width: 45%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.diagram-title {
+  font-size: 16px;
+}
+
+.top-keywords, .my-keywords {
+  margin-top: 3%;
+}
+
+.top-keywords h3, .my-keywords h3 {
+  font-size: 16px;
+}
+
+.top-keywords ul, .my-keywords ul  {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  padding: 2%;
+}
+
+.top-keywords .single-keyword {
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 1.5%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border: 1px solid #3B3C36;
+  background-color: #e9c46a;
+  padding: 0.25%;
+  border-radius: 3px;
+}
+
+.my-keywords .single-keyword {
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 1.5%;
+  margin-left: 1%;
+  margin-right: 1%;
+  border: 1px solid #3B3C36;
+  background-color: #c0d6df;
+  padding: 0.25%;
+  border-radius: 3px;
+}
+
+.my-statistics nav {
+  width: 41%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-statistics nav a {
+  margin-left: 2%;
+  margin-right: 2%;
+  text-decoration: none;
+}
+
+.column-chart {
+  margin-top: 2%;
+  margin-bottom: 10%;
+}

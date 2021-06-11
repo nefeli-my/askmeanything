@@ -16,8 +16,9 @@ const MyStatistics = () => {
   const history = useHistory();
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
   // 'dates' array contains last week's dates (today's date is also included)
-  // format example: to add
-  const dates = [moment().subtract(6, 'days').format("MMM Do YYYY"),
+  // format example: Jun 10th 2021
+  const dates = [moment().subtract(7, 'days').format("MMM Do YYYY"),
+                 moment().subtract(6, 'days').format("MMM Do YYYY"),
                  moment().subtract(5, 'days').format("MMM Do YYYY"),
                  moment().subtract(4, 'days').format("MMM Do YYYY"),
                  moment().subtract(3, 'days').format("MMM Do YYYY"),
@@ -43,7 +44,7 @@ const MyStatistics = () => {
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
             alert('Your session expired. Please login again.');
-            localStorage.removeItem('REACT_TOKEN_AUTH')
+            localStorage.removeItem('REACT_TOKEN_AUTH');
             history.push('/login');
           } else if (res.status === 400) {
             console.log('400 Bad Request');
@@ -145,21 +146,23 @@ const MyStatistics = () => {
         <h3 id="title"> In this page you can find information about your <b>ask</b>me<b>anything</b> activity.
         You can view more general information <Link to="/general-statistics"> here</Link>. </h3>
         <div className="diagrams">
-          {/* question diagram */}
+          {/* question line diagram */}
           <div className="questions-diagram">
             <h3 className="diagram-title"> Number of <b>questions</b> you've posted during the last week: </h3>
             <LineChart data={[[dates[0], qperday[0]], [dates[1], qperday[1]],
                              [dates[2], qperday[2]], [dates[3], qperday[3]],
                              [dates[4], qperday[4]], [dates[5], qperday[5]],
-                             [dates[6], qperday[6]]]} xtitle="date" ytitle="questions posted" />
+                             [dates[6], qperday[6]], [dates[7], qperday[7]]]}
+                             xtitle="date" ytitle="questions posted" />
           </div>
           <div className="answers-diagram">
-            {/* answer diagram */}
+            {/* answer line diagram */}
             <h3 className="diagram-title"> Number of <b>answers</b> you've posted during the last week: </h3>
             <LineChart data={[[dates[0], aperday[0]], [dates[1], aperday[1]],
                              [dates[2], aperday[2]], [dates[3], aperday[3]],
                              [dates[4], aperday[4]], [dates[5], aperday[5]],
-                             [dates[6], aperday[6]]]} xtitle="date" ytitle="answers posted" colors={["#f4a261"]} />
+                             [dates[6], aperday[6]], [dates[7], aperday[7]]]}
+                             xtitle="date" ytitle="answers posted" colors={["#f4a261"]} />
           </div>
         </div>
         {/* user's most frequently used keywords */}
@@ -167,7 +170,7 @@ const MyStatistics = () => {
           <div className="my-keywords">
             <h3>The topics that interest you the most:</h3>
             <ul>
-              {mytopkeywords.map((keyword) =>
+              {topkeywords.map((keyword) =>
                 <li key={keyword[0]} className="single-keyword">
                   {keyword[0]}
                 </li>

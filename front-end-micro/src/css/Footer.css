@@ -1,0 +1,30 @@
+/* css sheet for Footer component */
+
+.footer {
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  background-color: #f8f9fa;
+  text-align: center;
+}
+.footer .links {
+  display: inline-block;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.footer a {
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+  text-decoration: none;
+  color: black;
+  font-size: 15px;
+}
+.footer a:hover {
+  text-decoration: none;
+}
+.our-names p {
+  font-size: 14px;
+}
