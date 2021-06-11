@@ -9,7 +9,6 @@ const ViewQuestion = () => {
   // get question object using useLocation from Browse, BrowseUnassigned
   // MyQuestions or MyAnswers components through Link state
   const {question} = location.state;
-  console.log(question)
   const [answers, setAnswers] = useState([]);
   const [noanswers, SetNoAnswers] = useState(false);
   const [body, setAnsBody] = useState("");
@@ -21,12 +20,10 @@ const ViewQuestion = () => {
     //  is mounted, through the qnaoperations service
     let url;
     if(token){
-      console.log('signed in');
-       url =  'http://localhost:8002/getanswers/'
+      url = 'http://localhost:8002/getanswers/'
     }
     else{
-        console.log('unassigned');
-        url =  'http://localhost:8002/getanswers/unassigned/'
+      url = 'http://localhost:8002/getanswers/unassigned/'
     }
     fetch(url+question.id,
     {
@@ -60,7 +57,7 @@ const ViewQuestion = () => {
           }
         }
     );
-  }, [history]);
+  }, [history, token, question.id]);
 
   function postAnswer() {
     // post new answer (for logged in users only, private route used)

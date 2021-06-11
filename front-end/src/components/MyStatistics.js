@@ -170,7 +170,7 @@ const MyStatistics = () => {
           <div className="my-keywords">
             <h3>The topics that interest you the most:</h3>
             <ul>
-              {mytopkeywords.map((keyword) =>
+              {topkeywords.map((keyword) =>
                 <li key={keyword[0]} className="single-keyword">
                   {keyword[0]}
                 </li>

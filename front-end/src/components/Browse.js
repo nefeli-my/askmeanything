@@ -265,7 +265,7 @@ const Browse = () => {
                     {/* keywords displayed for each question */}
                     <ul className="keyword-list">
                       {question.Keywords.map((keyword,index) =>
-                        <li key={ index } className="single-keyword">
+                        <li key={index} className="single-keyword">
                           {keyword.word}
                         </li>
                       )}

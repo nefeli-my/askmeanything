@@ -122,7 +122,4 @@ app.use(function(err, req, res, next) {
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
 
-
-
-
 module.exports = app;

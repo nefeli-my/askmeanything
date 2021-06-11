@@ -16,7 +16,7 @@ module.exports = {
     },
     async Qgetall(params){
       try {
-        const result = await axios.get(DataLayerUrl + '/question' +`/get/${params.id}`);
+        const result = await axios.get(DataLayerUrl + '/question' +`/get/${params.offset}`);
         return {success: true, body: result.data};
       }
       catch(err) {

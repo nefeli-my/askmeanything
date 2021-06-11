@@ -31,7 +31,7 @@ module.exports = {
       const questions =
         await Question.findAll({
           order: [['createdAt', 'DESC']],
-          offset: req.params.id,
+          offset: req.params.offset,
           limit: 10,
           include: [
             {
