@@ -10,6 +10,9 @@ module.exports = {
                 let currentMessages = JSON.parse(data);
                 let last_message = await getLast()
                     .catch(err => console.log(err))
+                if( !last_message) {
+                    last_message = {id:-1};
+                }
                 for (let message of currentMessages) {
                     if (message.id > last_message.id) {
                         if (message.event.action === 'createUser') {

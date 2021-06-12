@@ -1,19 +1,7 @@
 back-end/node_modules
 back-end/.env
-back-end/Authenticator service/.env
-back-end/Analytics service/.env
-back-end/Data access layer/.env
-back-end/QnAOperations service/.env
-back-end-micro/AuthenticatorService/node_modules
-back-end-micro/AuthenticatorService/.env
-back-end-micro/StatisticsService/.env
-back-end-micro/StatisticsService/node_modules
+back-end/*/.env
 back-end-micro/kati.js
-back-end-micro/QnADisplayService/node_modules
-back-end-micro/QnADisplayService/.env
-back-end-micro/AnswerService/.env
-back-end-micro/AnswerService/node_modules
-back-end-micro/QuestionService/.env
-back-end-micro/QuestionService/node_modules
-back-end-micro/Choreographer/.env
-back-end-micro/Choreographer/node_modules
+back-end-micro/*/.env
+back-end-micro/*/node_modules
+back-end-micro/*/server/.env

@@ -7,9 +7,8 @@ router.post('/', (req,res, next) => {
     let action = req.body.event.action;
     if(action === 'createUser'){
         create(req.body.event.user)
+           .then(() => createM(req.body.id))
             .then(() => res.send({'status':'ok'}))
-            .catch(err => next(err))
-            .then(() => createM(req.body.id))
             .catch(err => next(err))
     }
 });
