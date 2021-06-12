@@ -12,6 +12,7 @@ const cors = require('cors');
 const redis_pool = require('redis-connection-pool');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
+const {sync_messages} = require('./startup');
 
 dotenv.config();
 // view engine setup
@@ -54,7 +55,7 @@ pool.hget('publishers', 'channel_questions', async (err, data) => {
   }
   if (alreadySubscribed == false) {
     currentSubscribers.push(myAddress);
-    pool.hset('publishers', 'channel_users', JSON.stringify(currentSubscribers),()=>{})
+    pool.hset('publishers', 'channel_questions', JSON.stringify(currentSubscribers),()=>{})
     console.log('The QuestionService service is publisher to channel_questions.');
   }
 })
@@ -74,6 +75,8 @@ pool.hget('subscribers', 'channel_users', async (err, data) => {
     console.log('The QuestionService service was subscribed to channel_users.');
   }
 })
+
+sync_messages(pool);
 
 app.use('/create',createRouter);
 app.use('/bus', busRouter);

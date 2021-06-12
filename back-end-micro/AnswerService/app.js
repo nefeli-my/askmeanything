@@ -13,6 +13,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
+const {sync_messages} = require('./startup');
 
 dotenv.config();
 // view engine setup
@@ -50,7 +51,7 @@ pool.hget('publishers', 'channel_answers', async (err, data) => {
   }
   if (alreadySubscribed == false) {
     currentSubscribers.push(myAddress);
-    pool.hset('publishers', 'channel_users', JSON.stringify(currentSubscribers),()=>{})
+    pool.hset('publishers', 'channel_answers', JSON.stringify(currentSubscribers),()=>{})
     console.log('The AnswerService service is publisher to channel_answers.');
   }
 })
@@ -86,6 +87,8 @@ pool.hget('subscribers', 'channel_questions', async (err, data) => {
     console.log('The AnswerService service was subscribed to channel_questions.');
   }
 })
+
+sync_messages(pool);
 
 app.use('/create',createRouter);
 app.use('/getanswers', getRouter);

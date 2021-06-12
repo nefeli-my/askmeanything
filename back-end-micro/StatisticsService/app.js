@@ -13,6 +13,7 @@ const cors = require('cors');
 const redis_pool = require('redis-connection-pool');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
+const {sync_messages} = require('./startup');
 
 dotenv.config();
 // view engine setup
@@ -88,6 +89,8 @@ pool.hget('subscribers', 'channel_answers', async (err, data) => {
     console.log('The StatisticsService service was subscribed to channel_questions.');
   }
 })
+
+sync_messages(pool);
 
 app.use('/general/',generalRouter)
 app.use('/user/', userRouter);
