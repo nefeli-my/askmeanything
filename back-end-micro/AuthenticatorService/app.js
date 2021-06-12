@@ -29,6 +29,38 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(transaction({ sequelize: db.sequelize }));
+const redis_pool = require('redis-connection-pool');
+
+// Redis connection
+const TotalConnections = 10;
+const pool = redis_pool('myRedisPool', {
+  host: process.env.REDIS_HOST,   // localhost
+  port: process.env.REDIS_PORT,   // Redis Port: 6379
+  maxclients: TotalConnections,
+});
+console.log('Connected to Redis');
+
+pool.hset('services', 'AuthenticatorService', JSON.stringify(['Create a new user','Authenticate a user',
+                                                                              'Get information of user', 'Update information of existing user']),
+                                                                              ()=>{});
+
+
+pool.hget('publishers', 'channel_users', async (err, data) => {
+  let currentSubscribers = JSON.parse(data);
+  let alreadySubscribed = false;
+  let myAddress = 'http://localhost:8001/bus';
+  for (let i=0; i<currentSubscribers.length; i++) {
+    if (currentSubscribers[i] == myAddress) {
+      alreadySubscribed = true;
+    }
+  }
+  if (alreadySubscribed == false) {
+    currentSubscribers.push(myAddress);
+    pool.hset('publishers', 'channel_users', JSON.stringify(currentSubscribers),()=>{})
+    console.log('The AuthenticatorService service is publisher to channel_users.');
+  }
+})
+
 
 app.use('/register', authenticatorRouter);
 app.use('/login', loginauthRouter);

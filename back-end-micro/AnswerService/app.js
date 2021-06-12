@@ -37,6 +37,24 @@ const pool = redis_pool('myRedisPool', {
 });
 console.log('Connected to Redis');
 
+pool.hset('services', 'AnswerService', JSON.stringify(['Create an answer to a specific question.']), ()=>{});
+
+pool.hget('publishers', 'channel_answers', async (err, data) => {
+  let currentSubscribers = JSON.parse(data);
+  let alreadySubscribed = false;
+  let myAddress = 'http://localhost:8004/bus';
+  for (let i=0; i<currentSubscribers.length; i++) {
+    if (currentSubscribers[i] == myAddress) {
+      alreadySubscribed = true;
+    }
+  }
+  if (alreadySubscribed == false) {
+    currentSubscribers.push(myAddress);
+    pool.hset('publishers', 'channel_users', JSON.stringify(currentSubscribers),()=>{})
+    console.log('The AnswerService service is publisher to channel_answers.');
+  }
+})
+
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;

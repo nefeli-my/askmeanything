@@ -37,6 +37,28 @@ const pool = redis_pool('myRedisPool', {
 });
 console.log('Connected to Redis');
 
+pool.hset('services', 'QuestionService', JSON.stringify(['Get questions based on date, author and keyword',
+                                                                        'Get question associated with a user.',
+                                                                        'Get questions after a specific offset',
+                                                                        'Get questions visible to visitors.']), ()=>{});
+
+
+pool.hget('publishers', 'channel_questions', async (err, data) => {
+  let currentSubscribers = JSON.parse(data);
+  let alreadySubscribed = false;
+  let myAddress = 'http://localhost:8003/bus';
+  for (let i=0; i<currentSubscribers.length; i++) {
+    if (currentSubscribers[i] == myAddress) {
+      alreadySubscribed = true;
+    }
+  }
+  if (alreadySubscribed == false) {
+    currentSubscribers.push(myAddress);
+    pool.hset('publishers', 'channel_users', JSON.stringify(currentSubscribers),()=>{})
+    console.log('The QuestionService service is publisher to channel_questions.');
+  }
+})
+
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;

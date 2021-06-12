@@ -37,6 +37,10 @@ const pool = redis_pool('myRedisPool', {
 });
 console.log('Connected to Redis');
 
+pool.hset('services', 'StatisticsService', JSON.stringify(['Get questions per day', 'Get answers per day',
+                                                                          'Get most used keywords','Get questions per day by a user',
+                                                                          'Get answers per day by a user','Get most used keywords by a user']), ()=>{});
+
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;

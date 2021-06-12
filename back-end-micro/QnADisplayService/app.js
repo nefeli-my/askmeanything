@@ -37,6 +37,8 @@ const pool = redis_pool('myRedisPool', {
 });
 console.log('Connected to Redis');
 
+pool.hset('services', 'QnaDisplayService', JSON.stringify(['Create a new question.']), ()=>{});
+
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
