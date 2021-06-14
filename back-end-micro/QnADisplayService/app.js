@@ -12,6 +12,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
+const {sync_messages} = require('./startup');
 
 dotenv.config();
 // view engine setup
@@ -36,6 +37,8 @@ const pool = redis_pool('myRedisPool', {
   maxclients: TotalConnections,
 });
 console.log('Connected to Redis');
+
+pool.hset('services', 'QnaDisplayService', JSON.stringify(['Create a new question.']), ()=>{});
 
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
@@ -84,6 +87,8 @@ pool.hget('subscribers', 'channel_answers', async (err, data) => {
     console.log('The QnADisplayService service was subscribed to channel_answers.');
   }
 })
+
+sync_messages(pool);
 
 app.use('/getquestions', getQuestionRouter);
 app.use('/bus', busRouter);

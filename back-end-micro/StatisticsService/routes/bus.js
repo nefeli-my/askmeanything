@@ -9,23 +9,20 @@ router.post('/', (req,res, next) => {
     let action = req.body.event.action;
     if(action === 'createUser'){
         create(req.body.event.user)
+           .then(() => createM(req.body.id))
             .then(() => res.send({'status':'ok'}))
-            .catch(err => next(err))
-            .then(() => createM(req.body.id))
             .catch(err => next(err))
     }
     else if(action === 'createQuestion'){
         createQ(req.body.event.question)
+           .then(() => createM(req.body.id))
             .then(() => res.send({'status':'ok'}))
-            .catch(err => next(err))
-            .then(() => createM(req.body.id))
             .catch(err => next(err))
     }
     else if(action === 'createAnswer'){
         createA(req.body.event.answer)
+           .then(() => createM(req.body.id))
             .then(() => res.send({'status':'ok'}))
-            .catch(err => next(err))
-            .then(() => createM(req.body.id))
             .catch(err => next(err))
     }
 });

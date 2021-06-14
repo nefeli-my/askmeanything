@@ -13,6 +13,7 @@ const cors = require('cors');
 const redis_pool = require('redis-connection-pool');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
+const {sync_messages} = require('./startup');
 
 dotenv.config();
 // view engine setup
@@ -36,6 +37,10 @@ const pool = redis_pool('myRedisPool', {
   maxclients: TotalConnections,
 });
 console.log('Connected to Redis');
+
+pool.hset('services', 'StatisticsService', JSON.stringify(['Get questions per day', 'Get answers per day',
+                                                                          'Get most used keywords','Get questions per day by a user',
+                                                                          'Get answers per day by a user','Get most used keywords by a user']), ()=>{});
 
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
@@ -84,6 +89,8 @@ pool.hget('subscribers', 'channel_answers', async (err, data) => {
     console.log('The StatisticsService service was subscribed to channel_answers.');
   }
 })
+
+sync_messages(pool);
 
 app.use('/general/',generalRouter)
 app.use('/user/', userRouter);

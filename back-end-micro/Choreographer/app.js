@@ -34,6 +34,26 @@ pool.hget('bus', 'messages', async (err, data) => {
     pool.hset('bus', 'messages', JSON.stringify([]), ()=>{});
   }
 })
+
+pool.hget('publishers', 'channel_users', async (err, data) => {
+  if(!data){
+    pool.hset('publishers', 'channel_users', JSON.stringify([]), ()=>{});
+  }
+})
+
+pool.hget('publishers', 'channel_questions', async (err, data) => {
+  if(!data){
+    pool.hset('publishers', 'channel_questions', JSON.stringify([]), ()=>{});
+  }
+})
+
+pool.hget('publishers', 'channel_answers', async (err, data) => {
+  if(!data){
+    pool.hset('publishers', 'channel_answers', JSON.stringify([]), ()=>{});
+  }
+})
+
+
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   if(!data){
     pool.hset('subscribers', 'channel_users', JSON.stringify([]), ()=>{});

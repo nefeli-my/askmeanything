@@ -13,6 +13,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
+const {sync_messages} = require('./startup');
 
 dotenv.config();
 // view engine setup
@@ -36,6 +37,24 @@ const pool = redis_pool('myRedisPool', {
   maxclients: TotalConnections,
 });
 console.log('Connected to Redis');
+
+pool.hset('services', 'AnswerService', JSON.stringify(['Create an answer to a specific question.']), ()=>{});
+
+pool.hget('publishers', 'channel_answers', async (err, data) => {
+  let currentSubscribers = JSON.parse(data);
+  let alreadySubscribed = false;
+  let myAddress = 'http://localhost:8004/bus';
+  for (let i=0; i<currentSubscribers.length; i++) {
+    if (currentSubscribers[i] == myAddress) {
+      alreadySubscribed = true;
+    }
+  }
+  if (alreadySubscribed == false) {
+    currentSubscribers.push(myAddress);
+    pool.hset('publishers', 'channel_answers', JSON.stringify(currentSubscribers),()=>{})
+    console.log('The AnswerService service is publisher to channel_answers.');
+  }
+})
 
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
@@ -68,6 +87,8 @@ pool.hget('subscribers', 'channel_questions', async (err, data) => {
     console.log('The AnswerService service was subscribed to channel_questions.');
   }
 })
+
+sync_messages(pool);
 
 app.use('/create',createRouter);
 app.use('/getanswers', getRouter);
