@@ -81,7 +81,7 @@ pool.hget('subscribers', 'channel_answers', async (err, data) => {
   if (alreadySubscribed == false) {
     currentSubscribers.push(myAddress);
     pool.hset('subscribers', 'channel_answers', JSON.stringify(currentSubscribers),()=>{})
-    console.log('The StatisticsService service was subscribed to channel_questions.');
+    console.log('The StatisticsService service was subscribed to channel_answers.');
   }
 })
 
