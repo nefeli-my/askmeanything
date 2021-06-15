@@ -57,7 +57,7 @@ const ViewQuestion = () => {
           }
         }
     );
-  }, [history]);
+  }, [history, question.id, token]);
 
   function postAnswer() {
     // post new answer (for logged in users only, token required)
@@ -82,11 +82,11 @@ const ViewQuestion = () => {
               console.log('500 Internal Server Error');
               history.push('/error-500');
             }
+            setAnsBody("");
+            // reload component after new answer submission
+            window.location.reload(false);
           }
       );
-    setAnsBody("");
-    // reload component after new answer submission
-    window.location.reload(false);
   }
 
   return (

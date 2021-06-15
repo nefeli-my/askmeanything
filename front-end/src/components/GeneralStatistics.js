@@ -37,7 +37,6 @@ const GeneralStatistics = () => {
             res.json()
                 .then(function (data) {
                   setQperDay(data);
-                  console.log(data);
                 })
           // error handling
           } else if (res.status === 401) {

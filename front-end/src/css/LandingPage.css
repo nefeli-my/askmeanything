@@ -12,17 +12,15 @@
 .landing-main h2 {
   font-size: 22px;
   margin-top: 1.5%;
-  margin-left: 3.5%
 }
 .landing-main h4 {
   font-size: 17px;
   text-align: center;
   margin-top: 1%;
 }
-.p-lg {
+.landing-main .p-lg {
   font-size: 17px;
   margin-top: 2%;
-  margin-left: 3%;
 }
 .landing-main hr {
   background-color: #ccc;

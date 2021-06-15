@@ -5,7 +5,7 @@ import newquestion from '../assets/newquestion.jpg'
 import answer from '../assets/puzzle.jpg'
 
 const Home = () => {
-  // Home page for signed in users 
+  // Home page for signed in users
   const history = useHistory();
   const username = localStorage.getItem('username');
   return (

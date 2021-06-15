@@ -13,6 +13,9 @@ const UpdateName = () => {
   const [modalIsOpen,setIsOpen] = useState(true);
   const token = localStorage.getItem('REACT_TOKEN_AUTH');
   const history = useHistory();
+  let error = "Update failed. Please make sure you have inserted only one word "
+              + "as first and last name accordingly, and have used only " 
+              + "alphabetic characters.";
 
   const modalStyles = {
     content : {
@@ -54,6 +57,8 @@ const UpdateName = () => {
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
+                alert(error );
+                history.push('/profile');
               } else {
                 console.log('500 Internal Server Error');
                 history.push('/error-500');

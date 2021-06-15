@@ -58,6 +58,8 @@ const UpdatePassword = () => {
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
+                alert('Update failed, please try again');
+                history.push('/profile');
               } else {
                 console.log('500 Internal Server Error');
                 history.push('/error-500');
