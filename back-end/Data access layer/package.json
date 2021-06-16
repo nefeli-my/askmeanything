@@ -1,10 +1,9 @@
 {
-  "name": "back-end",
+  "name": "DataAccessLayer-SOA",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./AuthenticatorService/bin/www",
-    "dev": "nodemon ./\"Analytics service\"/bin/www && nodemon ./\"Authenticator service\"/bin/www"
+    "start": "node bin/www"
   },
   "engines": {
     "node": "14.16.0"
@@ -15,24 +14,17 @@
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
-    "redis": "^3.1.2",
-    "redis-connection-pool": "^1.7.4"
-  },
-  "devDependencies": {
     "axios": "^0.21.1",
     "cls-hooked": "^4.2.2",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "http-errors": "^1.8.0",
-    "jsonwebtoken": "^8.5.1",
-    "nodemon": "^2.0.7",
-    "passport-jwt": "^4.0.0",
     "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

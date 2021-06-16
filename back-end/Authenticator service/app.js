@@ -11,7 +11,6 @@ const logoutRouter = require('./routes/logout');
 const updateRouter = require('./routes/updateUser');
 const getRouter = require('./routes/getUser');
 const passport = require('passport');
-const redis = require('redis');
 
 const app = express();
 const dotenv = require('dotenv');
@@ -68,52 +67,5 @@ app.use(function(err, req, res, next) {
   const expose = status >= 500 && req.app.get('env') === 'development';
   res.send({msg: expose ? message + '\n\n' + err.stack : message});
 });
-
-
-/*
-// Redis connection
-const TotalConnections = 10;
-const pool = require('redis-connection-pool')('myRedisPool', {
-  host: process.env.REDIS_HOST,   // localhost
-  port: process.env.REDIS_PORT,   // Redis Port: 6379
-  maxclients: TotalConnections,
-});
-console.log('Connected to Redis');
-
-// check if service subscribed to channel1 and channel2 and if not subscribe
-// channel1: for authenticator - analytics services communication
-// channel2: for authenticator -qnaoperations services communication
-pool.hget('subscribers', 'channel1', async (err, data) => {
-    let currentSubscribers = JSON.parse(data);
-    let alreadySubscribed = false;
-    let myAddress = process.env.AUTH_PORT + '/bus' + '/channel1';
-    for (let i=0; i<currentSubscribers.length; i++) {
-      if (currentSubscribers[i] == myAddress) {
-        alreadySubscribed = true;
-      }
-    }
-    if (alreadySubscribed == false) {
-      currentSubscribers.push(myAddress);
-      pool.hset('subscribers', 'channel1', JSON.stringify(currentSubscribers),()=>{})
-      console.log('The authenticator service was subscribed to channel 1.');
-    }
-})
-
-pool.hget('subscribers', 'channel2', async (err, data) => {
-    let currentSubscribers = JSON.parse(data);
-    let alreadySubscribed = false;
-    let myAddress = process.env.AUTH_PORT + '/bus' + '/channel2';
-    for (let i=0; i<currentSubscribers.length; i++) {
-      if (currentSubscribers[i] == myAddress) {
-        alreadySubscribed = true;
-      }
-    }
-    if (alreadySubscribed == false) {
-      currentSubscribers.push(myAddress);
-      pool.hset('subscribers', 'channel2', JSON.stringify(currentSubscribers),()=>{})
-      console.log('The authenticator service was subscribed to channel 2.');
-    }
-})
-*/
 
 module.exports = app;

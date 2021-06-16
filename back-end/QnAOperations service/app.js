@@ -7,8 +7,6 @@ const logger = require('morgan');
 const passport = require('passport');
 const dotenv = require('dotenv');
 const cors = require('cors')
-const redis = require('redis');
-
 const app = express();
 const getQuestionRouter = require('./routes/question/get');
 const getAnswerRouter = require('./routes/answer/get');
@@ -64,35 +62,5 @@ app.use(function(err, req, res, next) {
   const expose = status >= 500 && req.app.get('env') === 'development';
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
-
-/*
-// Redis connection
-const TotalConnections = 10;
-const pool = require('redis-connection-pool')('myRedisPool', {
-  host: process.env.REDIS_HOST,   // localhost
-  port: process.env.REDIS_PORT,   // Redis Port: 6379
-  maxclients: TotalConnections,
-});
-console.log('Connected to Redis');
-
-// check if service subscribed to channel2 and if not subscribe
-// channel1: for authenticator - analytics services communication
-// channel2: for authenticator -qnaoperations services communication
-pool.hget('subscribers', 'channel2', async (err, data) => {
-    let currentSubscribers = JSON.parse(data);
-    let alreadySubscribed = false;
-    let myAddress = process.env.OPERATIONS_PORT + '/bus';
-    for (let i=0; i<currentSubscribers.length; i++) {
-      if (currentSubscribers[i] == myAddress) {
-        alreadySubscribed = true;
-      }
-    }
-    if (alreadySubscribed == false) {
-      currentSubscribers.push(myAddress);
-      pool.hset('subscribers', 'channel2', JSON.stringify(currentSubscribers),()=>{})
-      console.log('The qnaoperations service was subscribed to channel 2.');
-    }
-})
-*/
 
 module.exports = app;

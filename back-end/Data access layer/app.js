@@ -9,7 +9,6 @@ const getAnswerRouter = require('./routes/QnAService/getAnswers');
 const answerRouter = require('./routes/QnAService/createAnswer');
 const questionRouter = require('./routes/QnAService/createQuestion');
 const analyticsRouter = require('./routes/Analytics');
-const passport = require('passport');
 const app = express();
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -21,7 +20,7 @@ dotenv.config();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(passport.initialize())
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
