@@ -3,10 +3,11 @@ const dotenv = require('dotenv');
 dotenv.config()
 const BusURL = 'http://localhost:' + process.env.BUS_PORT;
 
-
 module.exports = function(req,res,next) {
     axios.get(BusURL + '/authenticate', {
-        headers: req.headers
+        headers: {
+            'authorization': req.headers.authorization
+        }
     })
     .then(response => {
         req.user = response.data.username;

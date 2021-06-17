@@ -9,7 +9,7 @@ module.exports = {
         let answer = req.body;
         const user = await User.findOne({
             where:{
-                username: req.body.user.username
+                username: req.body.user
             }
         })
             .catch(err => next(err))

@@ -25,7 +25,7 @@ module.exports = {
             for (x of questions){
                 const xMoment = moment(x.date);
 
-                if(xMoment > criticalMoment && xMoment < nowMoment){
+                if(xMoment >= criticalMoment && xMoment < nowMoment){
 
                     const index = xMoment.diff(criticalMoment,'days');
                     result[index] = x.count;
@@ -55,7 +55,7 @@ module.exports = {
             for (x of answers){
                 const xMoment = moment(x.date);
 
-                if(xMoment > criticalMoment && xMoment < nowMoment){
+                if(xMoment >= criticalMoment && xMoment < nowMoment){
 
                     const index = xMoment.diff(criticalMoment,'days');
                     result[index] = x.count;

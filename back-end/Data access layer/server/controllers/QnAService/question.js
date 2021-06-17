@@ -15,7 +15,7 @@ module.exports = {
             const keywords =  req.body.keywords;
             const user = await User.findOne({
                 where: {
-                    username: req.body.user.username
+                    username: req.body.user
                 }
             })
                 .catch(err => next(err))

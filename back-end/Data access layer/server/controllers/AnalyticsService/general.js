@@ -19,13 +19,14 @@ module.exports = {
                 order: [[Sequelize.literal(`DATE("createdAt")`), 'DESC']],
                 raw: true
             });
+
             const criticalMoment =  moment().startOf('day').subtract(7, 'days');
             const result = new Array(8).fill(0);
             const nowMoment = moment();
+
             for (x of questions){
                 const xMoment = moment(x.date);
-
-                if(xMoment > criticalMoment && xMoment < nowMoment){
+                if(xMoment >= criticalMoment && xMoment < nowMoment){
 
                     const index = xMoment.diff(criticalMoment,'days');
                     result[index] = x.count;
@@ -55,7 +56,7 @@ module.exports = {
             for (x of answers){
                 const xMoment = moment(x.date);
 
-                if(xMoment > criticalMoment && xMoment < nowMoment){
+                if(xMoment >= criticalMoment && xMoment < nowMoment){
 
                     const index = xMoment.diff(criticalMoment,'days');
                     result[index] = x.count;

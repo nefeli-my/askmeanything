@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const loginauthRouter = require('./routes/login')
 const authenticatorRouter = require('./routes/authenticator');
-const testRouter = require('./routes/test_cookie');
+const testRouter = require('./routes/check');
 const logoutRouter = require('./routes/logout');
 const updateRouter = require('./routes/updateUser');
 const getRouter = require('./routes/getUser');
@@ -32,7 +32,7 @@ app.use(cors());
 
 app.use('/register', authenticatorRouter);
 app.use('/login', loginauthRouter);
-app.use('/safespace', testRouter);
+app.use('/check', testRouter);
 app.use('/update', updateRouter);
 app.use('/get', getRouter);
 app.use('/logout', logoutRouter);
