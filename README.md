@@ -1,7 +1,7 @@
 # SaaS-25
 ask**me**anything is a project developed by two undergraduate students, [Nefeli Myropoulou](https://github.com/nefeli-my) and [Iliana Xigkou](https://github.com/IlianaXn) for the course SaaS 2021 [NTUA ECE](https://www.ece.ntua.gr/gr).   
 
-##Purpose
+## Purpose
 ask**me**anything gives its users the opportunity to:
 
 * View posted questions 
@@ -19,7 +19,7 @@ or date that they were created
 * View statistical diagrams stated as above based on their activity
 * Update the account information
 
-##Technology Stack
+## Technology Stack
 During the development of this app these technologies are used:
 * [PostgreSQL](https://www.postgresql.org/) as the DBMS.
 * [Sequelize](https://sequelize.org/) as the ORM for the communication with the DBMS.
@@ -30,8 +30,8 @@ of the services in SOA and Microservices architecture.
 * [Redis](https://redis.io/) as the in-memory key–value database and message broker for 
 the implementation of the Choreographer in MicroServices architecture.
 
-##Architectures
-###Service-Oriented Architecture (SOA)
+## Architectures
+### Service-Oriented Architecture (SOA)
 Regarding the implementation of the app based on SOA, it is broken down into 3 services 
 containing business logic:
 * Authenticator service:
@@ -60,12 +60,12 @@ containing business logic:
     per day for the last week
   - View statistic data regarding the most used keywords by the signed-in user
 
-####Data access layer
+#### Data access layer
 The above services communicate with the Data access layer via its provided interfaces (API)
 in order to obtain the corresponding data from the database. Thus, this layer is implemented 
 as a different app, the only one with the ability to communicate directly with the database.
 
-####Enterprise Service Bus (ESB)
+#### Enterprise Service Bus (ESB)
 The ESB is implemented as a different app for the inter-service communication and specifically
 for the authentication of a user.
 
@@ -73,7 +73,7 @@ for the authentication of a user.
 
 **QnAOperations service** ⟷ **ESB** ⟷ **Authenticator service**
 
-###Microservices
+### Microservices
 Regarding the implementation of the app based on Microservices, it is broken down into 
 5 microservices:
 * Authenticator service:
@@ -104,7 +104,7 @@ Regarding the implementation of the app based on Microservices, it is broken dow
     per day for the last week
   - View statistic data regarding the most used keywords by the signed-in user
   
-####Choreographer
+#### Choreographer
 The Choreographer is implemented as a different app responsible for the notification
 of the appropriate services upon an occurring event. For this purpose, Redis is used with 
 the below configuration:
@@ -138,11 +138,11 @@ Moreover, in case a service is down and an amount of messages is created and ign
 by this service, it is ensured that once it is functional again, it can obtain the
 missing messages from the `bus messages` field.
 
-##Deployment
+## Deployment
 Information about the deployment of ask**me**anything is available on the branch 
 `production`.
 
-##Documentation
+## Documentation
 During the development of this app diagrams are created with [Visual Paradigm](https://www.visual-paradigm.com/) and used as a guide. 
 These diagrams can be found in the VPP project `askmeanything.vpp` in the directory `documentation` following this structure:
 1. Entity Relationship diagram: `ER diagram`
