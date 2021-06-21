@@ -19,6 +19,7 @@ import ViewQuestion from './components/ViewQuestion';
 import UpdateName from './components/UpdateName';
 import UpdatePw from './components/UpdatePassword';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import ContactForm from "./components/ContactForm";
 
 function App() {
   return (
@@ -38,6 +39,11 @@ function App() {
           <Route path="/register">
             <Navbar/>
             <Register/>
+            <Footer/>
+          </Route>
+          <Route path="/contactus">
+            <Navbar/>
+            <ContactForm/>
             <Footer/>
           </Route>
           <Route path="/browse-unassigned">

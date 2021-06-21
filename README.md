@@ -28,6 +28,7 @@ During the development of this app these technologies are used:
 of the services in SOA and Microservices architecture.
 * [React](https://reactjs.org/) as the [JavaScript](https://www.javascript.com/) library for the front-end.
 * [Redis](https://redis.io/) as the in-memory key–value database and message broker for 
+* [EmailJS](https://www.emailjs.com/) as the third-party service for sending mail
 the implementation of the Choreographer in MicroServices architecture.
 
 ## Architectures
@@ -139,8 +140,46 @@ by this service, it is ensured that once it is functional again, it can obtain t
 missing messages from the `bus messages` field.
 
 ## Deployment
-Information about the deployment of ask**me**anything is available on the branch 
-`production`.
+For the deployment of the app ask**me**anything the cloud application platform
+[Heroku](https://www.heroku.com/) is used.
+
+The version of the app according to SOA can be found [here]().
+
+The version of the app according to Microservices architecture can be found [here]().
+
+The code of both above versions adjusted to the deployment configuration
+is located on the branch `production`.
+
+For the deployment of the app the instructions as stated below are executed given
+that one has installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):
+1.
+``` 
+heroku login
+```
+2.
+```
+heroku create <app-name>
+```
+3.
+```
+heroku git:remote --app <app-name>
+```
+4.
+```
+git subtree push --prefix path/to/project heroku main
+```
+
+For the connection of the [Heroku Postgres](https://elements.heroku.com/addons/heroku-postgresql) and [Heroku Redis](https://elements.heroku.com/addons/heroku-redis) these instructions
+are executed:
+* Heroku Postgres:
+```
+heroku addons:create heroku-postgresql:hobby-dev
+```
+* Heroku Redis:
+```
+heroku addons:create heroku-redis:hobby-dev 
+heroku addons:attach <app-name-with-redis>::REDIS --app <app-name-to-share-redis>
+```
 
 ## Documentation
 During the development of this app diagrams are created with [Visual Paradigm](https://www.visual-paradigm.com/) and used as a guide. 

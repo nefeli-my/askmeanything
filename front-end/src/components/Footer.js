@@ -5,6 +5,9 @@ const Footer = () => {
   return (
     <div className="footer">
       <div className="links">
+        <a href="/contactus">
+          contact us
+        </a>
         <a href="https://github.com/nefeli-my/askmeanythingv2">
           github
         </a>
