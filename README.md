@@ -1,5 +1,6 @@
 # SaaS-25
-ask**me**anything is a project developed by two undergraduate students, [Nefeli Myropoulou](https://github.com/nefeli-my) and [Iliana Xigkou](https://github.com/IlianaXn) for the course SaaS 2021 [NTUA ECE](https://www.ece.ntua.gr/gr).   
+ask**me**anything is a project developed by two undergraduate students, [Nefeli Myropoulou](https://github.com/nefeli-my) and [Iliana Xigkou](https://github.com/IlianaXn) 
+for the course SaaS 2021 [NTUA ECE](https://www.ece.ntua.gr/gr).   
 
 ## Purpose
 ask**me**anything gives its users the opportunity to:
@@ -27,39 +28,43 @@ During the development of this app these technologies are used:
 * [Express](https://expressjs.com/) as the web application framework for the implementation
 of the services in SOA and Microservices architecture.
 * [React](https://reactjs.org/) as the [JavaScript](https://www.javascript.com/) library for the front-end.
-* [Redis](https://redis.io/) as the in-memory key–value database and message broker for 
-* [EmailJS](https://www.emailjs.com/) as the third-party service for sending mail
-the implementation of the Choreographer in MicroServices architecture.
+* [Redis](https://redis.io/) as the in-memory key–value database and message broker for the 
+implementation of the Choreographer in MicroServices architecture.
+* [EmailJS](https://www.emailjs.com/) as the third-party service for sending emails to users 
+after they have contacted us via the corresponding 'contact us' form. 
+
 
 ## Architectures
 ### Service-Oriented Architecture (SOA)
-Regarding the implementation of the app based on SOA, it is broken down into 3 services 
-containing business logic:
+Regarding the implementation of the app based on SOA, it was broken down into 3 services 
+containing the following business logic:
 * Authenticator service:
-  - Registration of new user
-  - Sign in of existing user
-  - Sign out of signed-in user
-  - Get info of existing user
-  - Update of info of existing user
-  - Validation of token of signed-in user
+  - Register a new user
+  - Sign in an existing user
+  - Sign out a signed-in user
+  - Get the account information of an existing user
+  - Update the account information of an existing user
+  - Validate the token of a signed-in user
 * QnAOperations service:
-  - View questions available to a user who is not signed-in
-  - View all questions
-  - Filter questions based on the author, the attached keywords and the posting date
-  - View questions which the signed-in user has posted or contributed to
-  - Create a new question
-  - View all the answers to an existing question available to a user who is not signed-in
+  - View all questions (*)
+  - View the 10 most recent questions (available to not signed-in users instead of the 
+    'view all questions' functionality)
+  - Filter questions based on the author, the attached keywords and the posting date (*)
+  - View all the questions the signed-in user has posted or contributed to (*)
+  - Create a new question (*)
   - View all the answers to an existing question
-  - Create an answer to an existing question
+  - Answer an existing question (*)
 * Analytics service:
-  - View statistic data regarding the amount of questions posted per day for the last week
-  - View statistic data regarding the amount of answers posted per day for the last week
+  - View statistic data regarding the amount of questions posted per day, during the last week
+  - View statistic data regarding the amount of answers posted per day, during the last week
   - View statistic data regarding the most used keywords 
   - View statistic data regarding the amount of questions posted by the signed-in user 
-    per day for the last week
+    per day, during the last week (*)
   - View statistic data regarding the amount of answers posted by the signed-in
-    per day for the last week
-  - View statistic data regarding the most used keywords by the signed-in user
+    per day, during the last week (*)
+  - View statistic data regarding the most used keywords by the signed-in user (*)
+ 
+ *The functionalities noted with an asterisk are only available to signed-in users.*
 
 #### Data access layer
 The above services communicate with the Data access layer via its provided interfaces (API)
@@ -75,40 +80,43 @@ for the authentication of a user.
 **QnAOperations service** ⟷ **ESB** ⟷ **Authenticator service**
 
 ### Microservices
-Regarding the implementation of the app based on Microservices, it is broken down into 
+Regarding the implementation of the app based on Microservices, it was broken down into 
 5 microservices:
 * Authenticator service:
-  - Registration of new user
-  - Sign in of existing user
-  - Sign out of signed-in user
-  - Get info of existing user
-  - Update of info of existing user
-  - Validation of token of signed-in user
+  - Register a new user
+  - Sign in an existing user
+  - Sign out a signed-in user
+  - Get the account information of an existing user
+  - Update the account information of an existing user
+  - Validate the token of a signed-in user
 * Question service:
-  - Create a new question
+  - Create a new question (*)
 * Answer service:
-  - View an existing question and all of its answers available to a user who is not signed-in
   - View an existing question and all of its answers 
-  - Create an answer to an existing question
+  - Answer an existing question (*)
 * QnADisplay service: 
-  - View questions available to a user who is not signed-in
-  - View all questions
-  - Filter questions based on the author, the attached keywords and the posting date
-  - View questions which the signed-in user has posted or contributed to
+  - View all questions (*)
+  - View the 10 most recent questions (available to not signed-in users instead of the 
+    'view all questions' functionality)
+  - Filter questions based on the author, the attached keywords and the posting date (*)
+  - View questions which the signed-in user has posted or contributed to (*)
 * Statistics service:
   - View statistic data regarding the amount of questions posted per day for the last week
   - View statistic data regarding the amount of answers posted per day for the last week
   - View statistic data regarding the most used keywords
   - View statistic data regarding the amount of questions posted by the signed-in user
-    per day for the last week
+    per day for the last week (*)
   - View statistic data regarding the amount of answers posted by the signed-in
-    per day for the last week
-  - View statistic data regarding the most used keywords by the signed-in user
+    per day for the last week (*)
+  - View statistic data regarding the most used keywords by the signed-in user (*)
+  
+*The functionalities noted with an asterisk are only available to signed-in users.*
   
 #### Choreographer
 The Choreographer is implemented as a different app responsible for the notification
-of the appropriate services upon an occurring event. For this purpose, Redis is used with 
-the below configuration:
+of the appropriate services upon an occurring event (new user creation, new 
+question, or new answer submission). 
+For this purpose, Redis is used with the below configuration:
 * 4 keys:
   - `bus`
      - Field `messages`, with all the messages that the 
