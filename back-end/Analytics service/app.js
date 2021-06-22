@@ -6,7 +6,6 @@ const dotenv = require('dotenv');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
-const passport = require('passport');
 const generalRouter = require('./routes/general');
 const userRouter = require('./routes/user');
 
@@ -18,7 +17,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // middlewares
-app.use(passport.initialize())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

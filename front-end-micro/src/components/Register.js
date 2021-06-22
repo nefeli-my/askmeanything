@@ -42,6 +42,10 @@ const Register = () => {
         console.log('500 Internal Server Error');
         history.push('/error-500');
       }
+    })
+    .catch(err => {
+        console.log(err);
+        history.push('/error-500');
     });
     }
 

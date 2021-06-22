@@ -55,7 +55,7 @@ module.exports = {
     },
     async getbyuser(req, res, next){
         try {
-            const returnedQues = await Qgetbyuser(req.user.username);
+            const returnedQues = await Qgetbyuser(req.user);
             return res.send(returnedQues.body);
         }
         catch (err) {

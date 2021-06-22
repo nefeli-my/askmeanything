@@ -142,6 +142,7 @@ module.exports = {
             where: {
                 id: array_ids
             },
+            order: [['createdAt', 'DESC']],
             include: [
                 {
                     model: User,
@@ -171,6 +172,7 @@ module.exports = {
         const id = user.getDataValue('id')
         let questions =
             await Question.findAll({
+                order: [['createdAt', 'DESC']],
                 include: [
                     {
                         model: User,
@@ -191,6 +193,7 @@ module.exports = {
             })
                 .catch(err => next(err))
         let quest_answ = await Question.findAll({
+            order: [['createdAt', 'DESC']],
             include: [
                 {
                     model: Answer,

@@ -55,6 +55,8 @@ module.exports = {
             const questionId = req.params.id;
             const question = await Question.findByPk(questionId,
             {
+              order: [
+                   [Answer, 'createdAt', 'desc']],
               include: [
                 {
                   model: Answer,
@@ -90,6 +92,7 @@ module.exports = {
             const questionId = req.params.id;
             const question = await Question.findByPk(questionId,
                 {
+                    order: [[Answer, 'createdAt', 'desc']],
                     include: [
                         {
                             model: Answer,

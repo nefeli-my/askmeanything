@@ -56,7 +56,11 @@ const ViewQuestion = () => {
             history.push('/error-500');
           }
         }
-    );
+    )
+    .catch(err => {
+          console.log(err);
+          history.push('/error-500');
+    });
   }, [history, question.id, token]);
 
   function postAnswer() {
@@ -86,7 +90,11 @@ const ViewQuestion = () => {
             // reload component after new answer submission
             window.location.reload(false);
           }
-      );
+      )
+      .catch(err => {
+          console.log(err);
+          history.push('/error-500');
+      });
   }
 
   return (

@@ -39,7 +39,11 @@ const MyAnswers = () => {
                 history.push('/error-500');
               }
             }
-        );
+        )
+        .catch(err => {
+            console.log(err);
+            history.push('/error-500');
+        });
   }, [token, history]);
   return (
     <div>

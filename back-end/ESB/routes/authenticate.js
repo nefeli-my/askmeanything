@@ -7,7 +7,6 @@ dotenv.config();
 const AuthenticatorURL = 'http://localhost:' + process.env.AUTH_PORT;
 
 router.get('/',(req, res, next) => {
-    console.log(req);
     axios.get(AuthenticatorURL + '/check', {
         headers: req.headers
     })

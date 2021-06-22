@@ -53,7 +53,11 @@ const MyStatistics = () => {
             history.push('/error-500');
           }
         }
-    );
+    )
+    .catch(err => {
+         console.log(err);
+         history.push('/error-500');
+    });
     // fetch number of answers per day (only last weeks's
     // and user's data), when component is mounted
     fetch('http://localhost:8003/user/answers',
@@ -78,7 +82,11 @@ const MyStatistics = () => {
             history.push('/error-500');
           }
         }
-    );
+    )
+    .catch(err => {
+         console.log(err);
+         history.push('/error-500');
+    });
     // fetch the user's most used keywords (when posting questions)
     // limit: 20
     fetch('http://localhost:8003/user/keywords',
@@ -105,7 +113,11 @@ const MyStatistics = () => {
             history.push('/error-500');
           }
         }
-    );
+    )
+    .catch(err => {
+         console.log(err);
+         history.push('/error-500');
+    });
     // if the user hasn't asked any questions yet, show
     // most popular keywords in general instead
     fetch('http://localhost:8003/general/keywords',
@@ -132,7 +144,11 @@ const MyStatistics = () => {
             history.push('/error-500');
           }
         }
-    );
+    )
+    .catch(err => {
+        console.log(err);
+        history.push('/error-500');
+    });
   }, [token, history]);
 
   return (

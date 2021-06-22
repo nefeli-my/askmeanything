@@ -65,7 +65,11 @@ const UpdatePassword = () => {
                 history.push('/error-500');
               }
             }
-        );
+        )
+        .catch(err => {
+            console.log(err);
+            history.push('/error-500');
+        });
   }
 
   return (

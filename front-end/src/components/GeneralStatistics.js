@@ -50,7 +50,11 @@ const GeneralStatistics = () => {
             history.push('/error-500');
           }
         }
-    );
+    )
+    .catch(err => {
+        console.log(err);
+        history.push('/error-500');
+    });
     // fetch number of answers per day (only last weeks's data),
     // when component is mounted
     fetch('http://localhost:8003/general/answers',
@@ -76,7 +80,11 @@ const GeneralStatistics = () => {
             history.push('/error-500');
           }
         }
-    );
+    )
+    .catch(err => {
+        console.log(err);
+        history.push('/error-500');
+    });
     // fetch the 20 most popular keywords (and the total number they
     // appear in questions), when component is mounted
     fetch('http://localhost:8003/general/keywords',
@@ -104,7 +112,11 @@ const GeneralStatistics = () => {
             history.push('/error-500');
           }
         }
-    );
+    )
+    .catch(err => {
+         console.log(err);
+         history.push('/error-500');
+    });
   }, [history]);
 
   return (

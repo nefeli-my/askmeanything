@@ -64,7 +64,11 @@ const Browse = () => {
                 history.push('/error-500');
               }
             }
-        );
+        )
+        .catch(err => {
+            console.log(err);
+            history.push('/error-500');
+        });
   }, [token, history]);
 
   function getQuestions() {
@@ -103,7 +107,11 @@ const Browse = () => {
                   history.push('/error-500');
                 }
               }
-          );
+          )
+          .catch(err => {
+              console.log(err);
+              history.push('/error-500');
+          });
     }
     // filtered search
     else {
@@ -143,7 +151,11 @@ const Browse = () => {
                   history.push('/error-500');
                 }
               }
-          );
+          )
+          .catch(err => {
+              console.log(err);
+              history.push('/error-500');
+          });
     }
   }
     return (
