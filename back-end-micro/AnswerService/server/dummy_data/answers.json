@@ -1,602 +1,314 @@
 [
 	{
-		"body": "fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet diam eu dolor egestas",
+		"body": "I don't know which is more traditional, but there's an important difference with the use of the verb \"to be\" conjugated as \"were.\" It can mean past tense, as in \"They were hungry before they ate,\" or it could also mean subjective mood such as in, \"I wish I were in San Francisco.\" In current spoken American English, many people may just say the latter as, \"I wish I was in San Francisco.\" But because the person may not be in San Francisco when they say it, the subjunctive mood, using \"were\" would be the proper choice.",
 		"createdAt": "01/09/2021",
 		"userId": 90,
-		"questionId": 59
-	},
-	{
-		"body": "placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem",
-		"createdAt": "05/05/2021",
-		"userId": 62,
-		"questionId": 24
-	},
-	{
-		"body": "nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget",
-		"createdAt": "03/06/2021",
-		"userId": 37,
-		"questionId": 25
-	},
-	{
-		"body": "Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae",
-		"createdAt": "01/02/2021",
-		"userId": 74,
-		"questionId": 82
-	},
-	{
-		"body": "Donec sollicitudin adipiscing ligula. Aenean gravida nunc sed pede. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio",
-		"createdAt": "12/15/2020",
-		"userId": 14,
-		"questionId": 85
-	},
-	{
-		"body": "eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum",
-		"createdAt": "10/07/2020",
-		"userId": 32,
-		"questionId": 65
-	},
-	{
-		"body": "Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis natoque penatibus",
-		"createdAt": "07/03/2020",
-		"userId": 94,
-		"questionId": 14
-	},
-	{
-		"body": "dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam gravida",
-		"createdAt": "10/08/2020",
-		"userId": 24,
-		"questionId": 43
-	},
-	{
-		"body": "tincidunt nibh. Phasellus nulla. Integer vulputate, risus a ultricies adipiscing, enim mi tempor lorem, eget mollis lectus pede",
-		"createdAt": "05/08/2021",
-		"userId": 100,
-		"questionId": 58
-	},
-	{
-		"body": "lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac,",
-		"createdAt": "02/13/2021",
-		"userId": 99,
-		"questionId": 44
-	},
-	{
-		"body": "Duis cursus, diam at pretium aliquet, metus urna convallis erat, eget tincidunt dui augue eu tellus. Phasellus elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec",
-		"createdAt": "04/08/2021",
-		"userId": 63,
-		"questionId": 42
-	},
-	{
-		"body": "diam eu dolor egestas rhoncus. Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras lorem lorem, luctus ut, pellentesque eget, dictum",
-		"createdAt": "12/04/2020",
-		"userId": 19,
-		"questionId": 26
-	},
-	{
-		"body": "nonummy ipsum non arcu. Vivamus sit amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est,",
-		"createdAt": "08/20/2020",
-		"userId": 60,
-		"questionId": 79
-	},
-	{
-		"body": "tempus risus. Donec egestas. Duis ac arcu. Nunc mauris. Morbi non sapien molestie orci tincidunt adipiscing.",
-		"createdAt": "05/18/2021",
-		"userId": 80,
-		"questionId": 84
-	},
-	{
-		"body": "lobortis mauris. Suspendisse aliquet molestie tellus. Aenean egestas hendrerit neque. In ornare sagittis felis. Donec tempor,",
-		"createdAt": "02/21/2021",
-		"userId": 89,
-		"questionId": 97
-	},
-	{
-		"body": "ligula. Donec luctus aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis a,",
-		"createdAt": "01/01/2021",
-		"userId": 1,
-		"questionId": 91
-	},
-	{
-		"body": "est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis",
-		"createdAt": "08/13/2020",
-		"userId": 43,
-		"questionId": 73
-	},
-	{
-		"body": "Curabitur dictum. Phasellus in felis. Nulla tempor augue ac ipsum. Phasellus vitae mauris sit amet lorem semper auctor. Mauris vel turpis. Aliquam adipiscing lobortis risus.",
-		"createdAt": "04/11/2021",
-		"userId": 35,
-		"questionId": 50
-	},
-	{
-		"body": "sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices",
-		"createdAt": "04/02/2021",
-		"userId": 74,
-		"questionId": 83
-	},
-	{
-		"body": "iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy",
-		"createdAt": "06/14/2020",
-		"userId": 75,
-		"questionId": 46
-	},
-	{
-		"body": "egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam.",
-		"createdAt": "09/01/2020",
-		"userId": 31,
-		"questionId": 94
-	},
-	{
-		"body": "justo sit amet nulla. Donec non justo. Proin non massa non ante",
-		"createdAt": "07/05/2020",
-		"userId": 87,
-		"questionId": 70
-	},
-	{
-		"body": "Suspendisse sagittis. Nullam vitae diam. Proin dolor. Nulla semper tellus id nunc",
-		"createdAt": "12/22/2020",
-		"userId": 98,
-		"questionId": 43
-	},
-	{
-		"body": "venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non, lacinia at, iaculis quis, pede. Praesent eu dui. Cum",
-		"createdAt": "05/30/2021",
-		"userId": 21,
-		"questionId": 14
-	},
-	{
-		"body": "ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque",
-		"createdAt": "11/11/2020",
-		"userId": 59,
-		"questionId": 11
-	},
-	{
-		"body": "arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque",
-		"createdAt": "07/18/2020",
-		"userId": 81,
-		"questionId": 30
-	},
-	{
-		"body": "est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam",
-		"createdAt": "03/29/2021",
-		"userId": 30,
-		"questionId": 29
-	},
-	{
-		"body": "diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit a, arcu. Sed et libero. Proin mi. Aliquam",
-		"createdAt": "05/06/2021",
-		"userId": 94,
-		"questionId": 45
-	},
-	{
-		"body": "magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu",
-		"createdAt": "12/26/2020",
-		"userId": 62,
-		"questionId": 6
-	},
-	{
-		"body": "aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas,",
-		"createdAt": "12/11/2020",
-		"userId": 35,
-		"questionId": 97
-	},
-	{
-		"body": "pede. Praesent eu dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean",
-		"createdAt": "08/27/2020",
-		"userId": 49,
-		"questionId": 82
-	},
-	{
-		"body": "rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis augue scelerisque mollis. Phasellus",
-		"createdAt": "10/20/2020",
-		"userId": 10,
-		"questionId": 82
-	},
-	{
-		"body": "Proin vel nisl. Quisque fringilla euismod enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum",
-		"createdAt": "02/14/2021",
-		"userId": 79,
-		"questionId": 61
-	},
-	{
-		"body": "eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum",
-		"createdAt": "12/02/2020",
-		"userId": 49,
-		"questionId": 43
-	},
-	{
-		"body": "amet ornare lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus pede, ultrices a, auctor non, feugiat nec, diam. Duis mi",
-		"createdAt": "04/28/2021",
-		"userId": 94,
-		"questionId": 67
-	},
-	{
-		"body": "velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non,",
-		"createdAt": "02/25/2021",
-		"userId": 87,
-		"questionId": 28
-	},
-	{
-		"body": "malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc",
-		"createdAt": "09/07/2020",
-		"userId": 57,
-		"questionId": 92
-	},
-	{
-		"body": "eros turpis non enim. Mauris quis turpis vitae purus gravida sagittis. Duis",
-		"createdAt": "12/20/2020",
-		"userId": 25,
-		"questionId": 95
-	},
-	{
-		"body": "In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia",
-		"createdAt": "09/13/2020",
-		"userId": 83,
-		"questionId": 78
-	},
-	{
-		"body": "montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean",
-		"createdAt": "09/27/2020",
-		"userId": 45,
-		"questionId": 35
-	},
-	{
-		"body": "ultrices sit amet, risus. Donec nibh enim, gravida sit amet, dapibus id, blandit at, nisi. Cum sociis natoque penatibus et magnis dis parturient",
-		"createdAt": "05/22/2021",
-		"userId": 59,
-		"questionId": 56
-	},
-	{
-		"body": "enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla",
-		"createdAt": "07/24/2020",
-		"userId": 7,
-		"questionId": 80
-	},
-	{
-		"body": "Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id,",
-		"createdAt": "03/20/2021",
-		"userId": 22,
-		"questionId": 43
-	},
-	{
-		"body": "at fringilla purus mauris a nunc. In at pede. Cras vulputate velit eu",
-		"createdAt": "02/01/2021",
-		"userId": 70,
-		"questionId": 18
-	},
-	{
-		"body": "nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est, congue a, aliquet vel, vulputate eu, odio.",
-		"createdAt": "07/09/2020",
-		"userId": 95,
-		"questionId": 71
-	},
-	{
-		"body": "lectus rutrum urna, nec luctus felis purus ac tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum",
-		"createdAt": "01/18/2021",
-		"userId": 64,
-		"questionId": 35
-	},
-	{
-		"body": "est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio.",
-		"createdAt": "04/26/2021",
-		"userId": 98,
-		"questionId": 76
-	},
-	{
-		"body": "eget nisi dictum augue malesuada malesuada. Integer id magna et ipsum cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut",
-		"createdAt": "01/05/2021",
-		"userId": 88,
-		"questionId": 54
-	},
-	{
-		"body": "Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa.",
-		"createdAt": "10/05/2020",
-		"userId": 35,
-		"questionId": 89
-	},
-	{
-		"body": "quam. Pellentesque habitant morbi tristique senectus et netus et malesuada",
-		"createdAt": "04/20/2021",
-		"userId": 97,
-		"questionId": 93
-	},
-	{
-		"body": "Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo.",
-		"createdAt": "06/10/2020",
-		"userId": 14,
-		"questionId": 2
-	},
-	{
-		"body": "nec, cursus a, enim. Suspendisse aliquet, sem ut cursus luctus, ipsum leo elementum sem, vitae aliquam eros turpis non enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent",
-		"createdAt": "07/17/2020",
-		"userId": 53,
-		"questionId": 92
-	},
-	{
-		"body": "scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna",
-		"createdAt": "11/20/2020",
-		"userId": 25,
-		"questionId": 97
-	},
-	{
-		"body": "eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam fringilla cursus purus. Nullam scelerisque neque sed",
-		"createdAt": "02/08/2021",
-		"userId": 23,
-		"questionId": 85
-	},
-	{
-		"body": "vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed",
-		"createdAt": "03/04/2021",
-		"userId": 48,
-		"questionId": 8
-	},
-	{
-		"body": "sit amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate",
-		"createdAt": "09/18/2020",
-		"userId": 34,
-		"questionId": 42
-	},
-	{
-		"body": "ac nulla. In tincidunt congue turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae",
-		"createdAt": "11/06/2020",
-		"userId": 4,
-		"questionId": 35
-	},
-	{
-		"body": "risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi sem semper",
-		"createdAt": "10/24/2020",
-		"userId": 14,
-		"questionId": 47
-	},
-	{
-		"body": "elit pede, malesuada vel, venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non,",
-		"createdAt": "06/22/2020",
-		"userId": 27,
 		"questionId": 1
 	},
 	{
-		"body": "interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo. Vivamus nibh",
-		"createdAt": "11/26/2020",
-		"userId": 89,
-		"questionId": 24
-	},
-	{
-		"body": "ut ipsum ac mi eleifend egestas. Sed pharetra, felis eget varius ultrices, mauris ipsum porta elit, a feugiat tellus lorem eu metus. In lorem.",
-		"createdAt": "08/14/2020",
-		"userId": 40,
-		"questionId": 6
-	},
-	{
-		"body": "elit. Curabitur sed tortor. Integer aliquam adipiscing lacus. Ut nec urna et arcu imperdiet ullamcorper. Duis at lacus.",
-		"createdAt": "10/25/2020",
-		"userId": 51,
-		"questionId": 47
-	},
-	{
-		"body": "a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis,",
-		"createdAt": "03/07/2021",
-		"userId": 97,
-		"questionId": 46
-	},
-	{
-		"body": "neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac",
-		"createdAt": "09/17/2020",
-		"userId": 34,
-		"questionId": 70
-	},
-	{
-		"body": "Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada",
-		"createdAt": "11/04/2020",
-		"userId": 49,
-		"questionId": 84
-	},
-	{
-		"body": "placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis natoque penatibus et magnis",
-		"createdAt": "02/22/2021",
-		"userId": 12,
-		"questionId": 46
-	},
-	{
-		"body": "Aliquam adipiscing lobortis risus. In mi pede, nonummy ut, molestie in, tempus eu, ligula. Aenean euismod mauris eu elit. Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec",
-		"createdAt": "08/07/2020",
-		"userId": 33,
-		"questionId": 13
-	},
-	{
-		"body": "Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui,",
-		"createdAt": "04/04/2021",
-		"userId": 52,
-		"questionId": 70
-	},
-	{
-		"body": "malesuada id, erat. Etiam vestibulum massa rutrum magna. Cras convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus",
-		"createdAt": "04/13/2021",
-		"userId": 100,
-		"questionId": 68
-	},
-	{
-		"body": "ligula tortor, dictum eu, placerat eget, venenatis a, magna. Lorem ipsum dolor sit amet, consectetuer",
-		"createdAt": "08/12/2020",
+		"body": "News reports typically say something like the government declares a public health emergency and orders certain businesses and workplaces to close. \"public health emergency\" is a rather vague phrase that doesn't necessarily mean closing businesses or schools but it might be as good as you get. Although in future, as this happens more often, there may be a more succinct form of words.",
+		"createdAt": "05/05/2021",
 		"userId": 2,
-		"questionId": 14
+		"questionId": 2
 	},
 	{
-		"body": "velit dui, semper et, lacinia vitae, sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna.",
-		"createdAt": "10/31/2020",
-		"userId": 14,
-		"questionId": 55
-	},
-	{
-		"body": "risus. Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper",
-		"createdAt": "05/15/2021",
-		"userId": 38,
-		"questionId": 27
-	},
-	{
-		"body": "sapien. Cras dolor dolor, tempus non, lacinia at, iaculis quis, pede. Praesent eu dui. Cum",
-		"createdAt": "03/24/2021",
-		"userId": 34,
-		"questionId": 60
-	},
-	{
-		"body": "turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem eget massa. Suspendisse eleifend. Cras sed",
-		"createdAt": "04/13/2021",
-		"userId": 43,
-		"questionId": 82
-	},
-	{
-		"body": "dolor dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla,",
-		"createdAt": "03/02/2021",
-		"userId": 79,
-		"questionId": 66
-	},
-	{
-		"body": "metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas",
-		"createdAt": "10/07/2020",
-		"userId": 100,
-		"questionId": 99
-	},
-	{
-		"body": "cursus vestibulum. Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim",
-		"createdAt": "04/01/2021",
-		"userId": 49,
-		"questionId": 78
-	},
-	{
-		"body": "fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel",
-		"createdAt": "09/28/2020",
-		"userId": 4,
-		"questionId": 92
-	},
-	{
-		"body": "eu arcu. Morbi sit amet massa. Quisque porttitor eros nec tellus. Nunc lectus pede, ultrices a, auctor non, feugiat nec, diam.",
-		"createdAt": "11/07/2020",
-		"userId": 18,
-		"questionId": 44
-	},
-	{
-		"body": "quis diam luctus lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris",
-		"createdAt": "05/09/2021",
-		"userId": 51,
-		"questionId": 12
-	},
-	{
-		"body": "neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla",
-		"createdAt": "12/08/2020",
-		"userId": 58,
-		"questionId": 45
-	},
-	{
-		"body": "at augue id ante dictum cursus. Nunc mauris elit, dictum eu, eleifend nec, malesuada ut,",
-		"createdAt": "10/28/2020",
-		"userId": 61,
-		"questionId": 12
-	},
-	{
-		"body": "venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum lorem, sit amet",
-		"createdAt": "11/24/2020",
-		"userId": 64,
-		"questionId": 67
-	},
-	{
-		"body": "Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed libero. Proin sed",
-		"createdAt": "02/03/2021",
-		"userId": 6,
-		"questionId": 4
-	},
-	{
-		"body": "mi eleifend egestas. Sed pharetra, felis eget varius ultrices, mauris ipsum porta elit, a feugiat",
-		"createdAt": "08/07/2020",
-		"userId": 33,
-		"questionId": 20
-	},
-	{
-		"body": "orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit congue. In scelerisque scelerisque dui. Suspendisse ac",
-		"createdAt": "01/31/2021",
-		"userId": 59,
-		"questionId": 66
-	},
-	{
-		"body": "elit erat vitae risus. Duis a mi fringilla mi lacinia mattis. Integer eu lacus. Quisque imperdiet, erat nonummy ultricies ornare,",
-		"createdAt": "09/11/2020",
-		"userId": 27,
-		"questionId": 18
-	},
-	{
-		"body": "dolor sit amet, consectetuer adipiscing elit. Etiam laoreet, libero et tristique pellentesque, tellus sem mollis dui, in sodales elit erat vitae risus.",
-		"createdAt": "07/21/2020",
-		"userId": 49,
-		"questionId": 55
-	},
-	{
-		"body": "non massa non ante bibendum ullamcorper. Duis cursus, diam at",
-		"createdAt": "05/13/2021",
-		"userId": 97,
-		"questionId": 54
-	},
-	{
-		"body": "suscipit, est ac facilisis facilisis, magna tellus faucibus leo, in lobortis tellus justo sit amet nulla.",
-		"createdAt": "02/25/2021",
-		"userId": 87,
-		"questionId": 90
-	},
-	{
-		"body": "Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat",
-		"createdAt": "10/09/2020",
-		"userId": 26,
-		"questionId": 85
-	},
-	{
-		"body": "tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices sit amet, risus. Donec nibh enim, gravida sit amet,",
-		"createdAt": "09/15/2020",
-		"userId": 47,
-		"questionId": 87
-	},
-	{
-		"body": "placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris",
-		"createdAt": "03/02/2021",
-		"userId": 94,
-		"questionId": 11
-	},
-	{
-		"body": "Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut, pharetra sed, hendrerit",
-		"createdAt": "09/04/2020",
-		"userId": 2,
-		"questionId": 25
-	},
-	{
-		"body": "non, dapibus rutrum, justo. Praesent luctus. Curabitur egestas nunc sed",
-		"createdAt": "04/25/2021",
-		"userId": 83,
+		"body": "I have heard the terms polytactical or polytactic applied to object-oriented methods. The tactics of methods are determined by the objects to which they are applied.\n\nGreek taktiki = tactic.\n\npolytactic shows up in google ngram but I cannot find dictionary definition or retrieve evidence of my own recollections of its OOP use.",
+		"createdAt": "03/06/2021",
+		"userId": 37,
 		"questionId": 3
 	},
 	{
-		"body": "natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel",
-		"createdAt": "11/27/2020",
-		"userId": 22,
-		"questionId": 96
+		"body": "Typecast(ing), perhaps?\n\nTo perceive or represent in reductive or stereotyped ways\n\n\"By relegating Goethe to classicism as strongly as he does, Nietzsche is able to typecast him, to reduce him to a singular role even as he elevates him for the strength and discipline required to adhere to classical standards.\" (Adrian Del Caro).\n\n[American Heritage Dictionary]",
+		"createdAt": "01/02/2021",
+		"userId": 74,
+		"questionId": 4
 	},
 	{
-		"body": "Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris nulla. Integer urna. Vivamus molestie dapibus ligula. Aliquam",
-		"createdAt": "12/25/2020",
+		"body": "In some Irish, Liverpool and West Indian dialects the voiced dental fricative (as in 'that') can sound like 'd'. (A song in Lionel Bart's Maggie May starts, \"Dey Don't Do Dat Today Den, Do Dey?\").\n\nBoth the voiced 'th' and the voiceless one (as in 'thin') are quite rare phonemes, existing in only 4% of the world's languages. Jamaican Patois has no voiced dental fricative, and in London it’s not unusual to hear younger Jamaican-Brits substituting 'v' for the voiced th ('Get anovver one') and ‘f’ for the voiceless one ('I’m in your barfroom.’) This is also what many Cockneys do. It's known as ‘Th-fronting’ and it appears in several dialects of English.\n\nIn London at least, ‘v’ is increasingly being used to replace ‘th’ at the start of a word - ‘these’ → ‘vese’ etc. - a trend first noticed in a survey in the early 90s.\n\nSo yes, your 'dat' would be noticed and maybe ascribed to a dialect. If you find it hard to say \"that\", you might try \"vat\".",
+		"createdAt": "12/15/2020",
+		"userId": 14,
+		"questionId": 5
+	},
+	{
+		"body": "The blown-out sound is called Plosive. It is normal for soft \"th\" to come out in the plosive \"d\" when the word is being run over when spoken in a rush. If speaking slowly then using the word \"dat\" would make one sound ignorant as if they have never heard \"that\" spoken correctly. I think the faster such words are used the less the listener would or could notice and so the less difference it would make.",
+		"createdAt": "10/07/2020",
+		"userId": 32,
+		"questionId": 5
+	},
+	{
+		"body": "It depends what you are trying to say. I assume you mean\n\nI woke up late [this morning] and had to take a taxi to attend the first lecture.\n\nWoken up late suggests I was woken up late (that is, someone else woke you up).",
+		"createdAt": "07/03/2020",
+		"userId": 94,
+		"questionId": 8
+	},
+	{
+		"body": "Woken up late would be a wrong phrase when referring to yourself, doing the action of waking up yourself. It would probably mean that somebody else was doing the task of waking you up, so woken up late would be the passive form of 'She/he woke me up late', which is I was 'woken' up late(i.e.somebody else was doing this). Had woken would also not be the best choice since your second statement is in the simple past tense, so it wouldn't be quite right to have your first one in past perfect tense. Hence the best way to say this according to me would be: Woke up late. I had to take a taxi to attend the first lecture.",
+		"createdAt": "10/08/2020",
+		"userId": 24,
+		"questionId": 8
+	},
+	{
+		"body": "You could say, “This object is conventionally stacked,” and I think the most common interpretation would be “by convention, people stack this object”. (However, watch out for the alternative interpretation, “this object has been stacked in a manner that I judge to be conventional”.)\n\n“Traditionally” can be used in somewhat the same way, although it is narrower in its connotations.",
+		"createdAt": "05/08/2021",
+		"userId": 100,
+		"questionId": 9
+	},
+	{
+		"body": "From the comments, I've concluded that this question can't really be answered as the logic of it is flawed. The problem is that \"X is supposed to be Y\" is\n\n[subject] + [auxillary to be] + [verb + to be] + [object].\n\nwhere as \"X is usually Y\" is actually\n\n[subject ] + [[adv...] to be] + [object].\n\nSupposed is a verb, not an adjective. The error becomes clear when I change the sentence to active.\n\nThe document is supposed (by them) to be read -> (They) suppose others to read the document\n\nThe document is usually read( by someone) -> Someone usually read the document\n\nI mistakenly thought that supposed could function as an adverb like \"The document is supposedly read\" but that actually unfolds to \"(They) suppose that others read the document\", not \"(They) suppose others to read the document.\"",
+		"createdAt": "02/13/2021",
+		"userId": 99,
+		"questionId": 9
+	},
+	{
+		"body": "The use of satisfied in this context is confusing.\n\nThe entire sequence being referenced is called a proof. The final statement in a proof is called a theorem:\n\n[Merriam-Webster]\n1 : a formula, proposition, or statement in mathematics or logic deduced or to be deduced from other formulas or propositions\n\nFrom Wikipedia (additional emphasis mine):\n\nIn logic and mathematics, a formal proof or derivation is a finite sequence of sentences (called well-formed formulas in the case of a formal language), each of which is an axiom, an assumption, or follows from the preceding sentences in the sequence by a rule of inference. It differs from a natural language argument in that it is rigorous, unambiguous and mechanically checkable …\n\nThe theorem is a syntactic consequence of all the well-formed formulas preceding it in the proof.\n\nIf anything is being satisfied in the proof, it's the set of axioms that precedes the theorem.",
+		"createdAt": "04/08/2021",
+		"userId": 63,
+		"questionId": 10
+	},
+	{
+		"body": "The usage of '[sic]' is well defined for quoting a passage that you believe has an error in it\n\nThis is not the actual meaning. The actual meaning is, that the text appears in the source exactly as quoted. It is used to draw attention to that fact, for whatever reason. An error on the side of the original author is a very common reason, but not the only one.\n\nIf I make the same error in every sentence, then a sentence where I do not make that error might just as well be worth a [sic].\n\nIf the author you quote from uses [sic] and you use it on his quote, it is not clear who introduced which [sic] (regardless of where you put yours). You cannot remove the [sic] of the original author, because that would distort the intent of the original author. I would therefore go for a footnote on the quoted [sic], that explains the details.",
+		"createdAt": "12/04/2020",
+		"userId": 19,
+		"questionId": 11
+	},
+	{
+		"body": "What about playing with the typeface?\n\n... suppose I write a letter from me [sic] [sic] to you.\n\nIn the example above, it's clear that italicised text is the original (2nd author) quote, and the non-italicised text is the 3rd author's addition.",
+		"createdAt": "08/20/2020",
+		"userId": 60,
+		"questionId": 11
+	},
+	{
+		"body": "In court documents it's common to write: (italics in original) So you would write ([sic] in original, but is incorrect).",
+		"createdAt": "05/18/2021",
+		"userId": 80,
+		"questionId": 11
+	},
+	{
+		"body": "Yes. As far as I know, you actually is the formal, originally plural version (ye/you/your) and thou was the informal version (thou/thee/thy/thine). Over time, thou became impolitely informal and is now no longer used, though interestingly enough nowadays it might even be perceived as more formal than you because it's archaic and survives almost exclusively in liturgical language.",
+		"createdAt": "02/21/2021",
+		"userId": 89,
+		"questionId": 12
+	},
+	{
+		"body": "It seems Middle English developed the distinction between formal (you) and informal (thou) versions: this distinction did not exist in Old English. The formal pronoun you was originally a plural form of thou; it can be seen in many languages that a plural form is seen as more polite, which is probably related to the Majestic Plural (\"we, King blah blah, grant...\"). German Sie comes from plural 3rd person sie; French vous comes from plural Latin 2nd person vos/vester.\n\nTherefore current formal pronouns seem to be relatively modern, convergent developments. I have never heard of formal pronouns in PIE. In classical Latin and Greek, no real formal pronouns were in use either; in Japanese, on the other hand, there are said to be more complex forms of formal pronouns and other words.",
+		"createdAt": "01/01/2021",
+		"userId": 1,
+		"questionId": 12
+	},
+	{
+		"body": "To round out the answers here, one is a very proper way to encompass both male and female antecedents.\n\nTo boldly go where no one has gone before",
+		"createdAt": "08/13/2020",
+		"userId": 43,
+		"questionId": 13
+	},
+	{
+		"body": "It is common to write, \"Each student should save his or her questions until the end\" or to vary his and her throughout your text. In speech you will often hear native speakers say, \"Each student should save their questions until the end.\"",
+		"createdAt": "04/11/2021",
+		"userId": 35,
+		"questionId": 13
+	},
+	{
+		"body": "The first is the correct usage, in my view. The third may be quite acceptable however, since the M in ATM could equally stand for 'machine' or 'machines', though I think pluralising the actual acronym is much clearer in speech.\n\nIn any case, never use an apostrophe. 's should only be appended to a word to create the posessive form (\"of ...\"), never for plurals.",
+		"createdAt": "04/02/2021",
+		"userId": 74,
+		"questionId": 14
+	},
+	{
+		"body": "I vote for the first, \"ATMs\". The second is just wrong (apostrophe is not used for plurals, ever). This is because ATM is a defined term for an AT machine, and using it as plural \"automatic teller machines\" would be a redefinition of a common abbreviation, which one should not be trigger-happy about.\n\nThe third, however, does not solve the real need to say there's more than one. It is though clear from the sentence, but might not be so in a general case.",
+		"createdAt": "06/14/2020",
+		"userId": 75,
+		"questionId": 14
+	},
+	{
+		"body": "The European Union distinguishes between \"Scottish Smoked Salmon\" and \"Smoked Scottish Salmon\", the former indicating where the fish was smoked, and the latter indicating where the fish was caught/bred.\n\nThe rule seems to be that the locative adjective directly precedes the noun or verb it refers to.",
+		"createdAt": "09/01/2020",
+		"userId": 31,
+		"questionId": 16
+	},
+	{
+		"body": "Page 974 of Garner's fourth edition reads\n\nTwo worst, not *worst two: the first, which is more logical than the second, has always predominated in print.\n\nI do not why the first one more logical though. According to Google ngrams, we say the two best/worst but the first/next/last two.",
+		"createdAt": "07/05/2020",
+		"userId": 87,
+		"questionId": 16
+	},
+	{
+		"body": "Best option is to not mention the word \"bed\" at all -- use \"stayed at\" or \"crashed at\" and include the word \"overnight\" if clarification is needed.",
+		"createdAt": "12/22/2020",
+		"userId": 98,
+		"questionId": 17
+	},
+	{
+		"body": "The only way to do this is to be explicit. Yes, you can phrase it to reduce the connotation but you cannot eliminate it. The only exception is where societal context would strongly suggest you weren't having sex - i.e. \"It was horrible, I had to share the bed with my mum\" or \"they're the kind of hippy household where the baby sleeps with them\".\n\nIf you want to talk about sleeping in the same bed but not having sex you need to spell it out, e.g. \"She only has a bedsit so we shared the bed; nothing funny happened though\".",
+		"createdAt": "05/30/2021",
 		"userId": 21,
-		"questionId": 93
+		"questionId": 17
 	},
 	{
-		"body": "magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam",
-		"createdAt": "02/15/2021",
+		"body": "Do you mean sleeping in the same bed, or just the same house?\n\nA colloquial (in the UK) for non-sexual sleeping in the same bed is \"topping and tailing\" where you sleep with heads at the opposite ends.",
+		"createdAt": "11/11/2020",
 		"userId": 59,
+		"questionId": 17
+	},
+	{
+		"body": "For the case where two people are sleeping in the bed, perhaps because there are no extra beds, I would say that they \"shared a bed.\" As in \"the two cousins shared a bed,\" or \"the house was so crowded that holiday weekend, four siblings shared a single bed.\"",
+		"createdAt": "07/18/2020",
+		"userId": 81,
+		"questionId": 17
+	},
+	{
+		"body": "LaTeX handles this in the most aesthetically pleasing way. This typesetting software uses somewhere between a space and a space and a half for intra-sentence spaces.",
+		"createdAt": "03/29/2021",
+		"userId": 30,
+		"questionId": 18
+	},
+	{
+		"body": "When using a word processor, my father inserts a line break after every line (and two between paragraphs). Needless to say, it messes up word wrapping. Two spaces after each period is similar -- a useless anachronism from the bad old typewriter days.",
+		"createdAt": "05/06/2021",
+		"userId": 94,
+		"questionId": 18
+	},
+	{
+		"body": "This is a fantastic question. I have often experienced that feeling. I doubt that there is a succinct word or phrase to describe it. I suggest you coin your own word and use it all over the place until it finds its way into a dictionary.\n\nIn general, when you say or look at a word too many times /too long the word loses the affiliation it has with its meaning. It starts to be nothing more than a group of noises coming out of your voice-box or a collection of alphabets arranged on a page. I had someone once describe the feeling to me as word-dissolution because to him the word simply dissolved. The brain has already understood and processed the word. Now it knows everything there is to know about the word, and has moved on.",
+		"createdAt": "12/26/2020",
+		"userId": 62,
+		"questionId": 19
+	},
+	{
+		"body": "This is probably a self-induced form of aphasia or dysphasia.",
+		"createdAt": "12/11/2020",
+		"userId": 35,
+		"questionId": 19
+	},
+	{
+		"body": "i.e. stands for id est (Latin), which means \"that is\". You use it to link in a deeper explanation about something. Pronounce it \"eye - ee\".\n\ne.g. stands for exempli gratia (also Latin), which means \"for example\". You use it to link in an example of a more generic term. Pronounce it \"ee - jee\"",
+		"createdAt": "08/27/2020",
+		"userId": 49,
+		"questionId": 20
+	},
+	{
+		"body": "I'm not sure, but the answer is probably in this book, the Pirate Primer, which uses real pirates, movies, literature, etc as sources.",
+		"createdAt": "10/20/2020",
+		"userId": 10,
+		"questionId": 21
+	},
+	{
+		"body": "It's all a matter of style and consistency. Some choose to capitalize only the first word, e.g. (using your example)\n\nThe title of this question\n\nOthers capitalize the key parts of speech in the title, excluding conjunctions, prepositions, and the like:\n\nThe Title of T/this Question\n\nIn some cases, all the words in the title are capitalized:\n\nThe Title Of This Question\n\nOne can usually observe how these conventions are employed by studying newspaper headlines, for instance.",
+		"createdAt": "02/14/2021",
+		"userId": 79,
+		"questionId": 22
+	},
+	{
+		"body": "There is no hard rule on that, you need to refer to the style guide for your target audience (newspaper, academia, etc.).",
+		"createdAt": "12/02/2020",
+		"userId": 49,
+		"questionId": 22
+	},
+	{
+		"body": "There is no universal standard, but various style guides generally state that prepositions (at, on, by, in, of, to, etc.) articles (a, an, the) and conjunctions (if, and, or, but) are not capitalized unless one is the first word.\n\nI have also heard of rules where all one and two-letter words are not capitalized, so a preposition like 'at' is not capitalized, but 'about' or 'under' would be.",
+		"createdAt": "04/28/2021",
+		"userId": 94,
+		"questionId": 22
+	},
+	{
+		"body": "There are some situations where status may be considered countable. In those cases, the plural form can be used as statuses. MacMillan dictionary gives 4 definitions for status, and 3 of them are referred to as countable. Personally, I would use status as the plural form instead of statuses.",
+		"createdAt": "02/25/2021",
+		"userId": 87,
+		"questionId": 23
+	},
+	{
+		"body": "In Latin, the nominative plural of status as a 4th declension noun is statūs. This would be uncomfortable in English, and so the English plural is statuses.\n\nThe Latin adjective has a different masculine nominative plural of statī, but then means something more like the English static.",
+		"createdAt": "09/07/2020",
+		"userId": 57,
+		"questionId": 23
+	},
+	{
+		"body": "Ironic that the instruction at the bottom of this page is 'Sign up or login'.\n\nI'm here because I'm torn between log in to and log into and looking for clarification. At this point in time, I suspect the prevailing opinion is correct - that log in to is preferable for purposes of clarity.\n\nHowever, I don't doubt that we will soon treat the process of logging in as a figurative point of entry, meaning that log into will make full conceptual sense (cf you don't physically delve into a problem or pile into an argument, yet both are correct grammatically because they are semantically [i.e. figuratively]).",
+		"createdAt": "12/20/2020",
+		"userId": 25,
+		"questionId": 25
+	},
+	{
+		"body": "Given that so much of the web environment isn't being written by writers who care, I'm increasingly seeing 'login' used as a verb. And to be honest, once it's normalised it will be the correct form.\n\nI'm a digital copywriter and have fought this battle on a few occasions. But I've decided to throw in my hand. 'Login to this site'. 'Enter your login details'. Fine, whatever. Is it clear? Absolutely. Only people like us care.",
+		"createdAt": "09/13/2020",
+		"userId": 83,
+		"questionId": 25
+	},
+	{
+		"body": "In French, it's an actual word that means something like performs effectively, efficiently, and well. So, French students use it regularly because it sounds like English, although I'd classify it as a false cognate.",
+		"createdAt": "09/27/2020",
+		"userId": 45,
+		"questionId": 26
+	},
+	{
+		"body": "There's not really anything inherently wrong with performant; its formation is regular enough and it seems to convey a meaning that no other single word conveys. If that is enough for you, then go ahead. But you ought to know that the word will be ill-regarded by many, who will consider it a pseudo-learned, affected, vulgar and pointless novelty. Of course, perhaps they are wrong about this, but even if so, they may well be people whose good opinion of your language is important to you.",
+		"createdAt": "05/22/2021",
+		"userId": 59,
+		"questionId": 26
+	},
+	{
+		"body": "I've only heard a few programmers use it. Generally in a buzzword context to imply that a piece of software or an algorithm is \"not slow.\"",
+		"createdAt": "07/24/2020",
+		"userId": 7,
+		"questionId": 26
+	},
+	{
+		"body": "I would suggest that unregistering is the undoing of some registration that should never have taken place, e.g. a license that should never have been issued, whereas deregistering is the removal of some registration that is, perhaps, no longer valid. In the latter case, there is an element that it was once a valid registration but its status has changed. The former case suggests there should be no record the registration ever existed.",
+		"createdAt": "03/20/2021",
+		"userId": 22,
+		"questionId": 27
+	},
+	{
+		"body": "\"Deregister\" carries more of an active connotation than \"unregister\". For example, while the \"unregistering\" might involve removing your name from the guest list for a conference, \"deregistering\" would also include cancellation of hotel reservations, travel plans, etc.",
+		"createdAt": "02/01/2021",
+		"userId": 70,
+		"questionId": 27
+	},
+	{
+		"body": "Younger people would never use 'were', here in Australia at least. From the point of view of grammar, both are OK nowadays. It's interesting to note, that IELTS would accept both while TOEFL would be very reluctant to accept 'was'.",
+		"createdAt": "07/09/2020",
+		"userId": 95,
+		"questionId": 28
+	},
+	{
+		"body": "The rule that I was taught is that was is for things that could be true but aren't, and were is for things that could never be true.\n\nSo, if I was an airline pilot is OK because conceivably I could retrain as a pilot, if I wanted.\n\nBut if I were you is right because I will never be you.",
+		"createdAt": "01/18/2021",
+		"userId": 64,
+		"questionId": 28
+	},
+	{
+		"body": "I've always heard and referred to this as \"comic cursing\" in the US Northeast, but I can't find a citation and also haven't discussed this particular topic very often.",
+		"createdAt": "04/26/2021",
+		"userId": 98,
+		"questionId": 29
+	},
+	{
+		"body": "I've always known it as symbolic substitution — but have no idea where I learned the phrase. Interestingly enough, the English language contains more descriptive words than any other language — completely negating the need for symbolic substitution in the first place.\n\nAnother word I've seen used for it is symtax, but I prefer symbolic substitution because it is self explanatory by definition.",
+		"createdAt": "01/05/2021",
+		"userId": 88,
+		"questionId": 29
+	},
+	{
+		"body": "Redactions? It would be more typical to use a verb — such as saying that the swear words had been censored or redacted.",
+		"createdAt": "10/05/2020",
+		"userId": 35,
+		"questionId": 29
+	},
+	{
+		"body": "A preposition is a perfectly reasonable word to end a sentence with. Admonitions against doing so are not something anyone needs pay heed to. It's the kind of made-up rule that is not based on the reality of the language and anguish over doing it is something no writer need suffer from. And if you don't believe me, look it up.",
+		"createdAt": "04/20/2021",
+		"userId": 97,
 		"questionId": 30
 	},
 	{
-		"body": "Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In",
-		"createdAt": "03/24/2021",
-		"userId": 44,
-		"questionId": 77
+		"body": "Any time you please. The \"rule\" against ending sentences with a preposition is pseudo-Latin piffle with no relevance to modern English in any register.",
+		"createdAt": "06/10/2020",
+		"userId": 14,
+		"questionId": 30
 	},
 	{
-		"body": "lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis",
-		"createdAt": "01/10/2021",
-		"userId": 82,
-		"questionId": 89
+		"body": "In my opinion this is one of those stuffy rules touted by grammarians who probably should have better things to do... When you can avoid it, don't end sentences with prepositions, but if rewriting the sentence will make it grammatically tortured, it's best to break the rule for the sake of clarity.",
+		"createdAt": "07/17/2020",
+		"userId": 53,
+		"questionId": 30
 	}
 ]
