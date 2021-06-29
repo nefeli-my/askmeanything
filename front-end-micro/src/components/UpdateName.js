@@ -4,6 +4,8 @@ import {Form} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
 import Navbar from './Navbar';
 import '../css/Update.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const UpdateName = () => {
   // update first and last name form component
@@ -47,8 +49,8 @@ const UpdateName = () => {
         .then(function (res) {
               setIsOpen(false);
               if (res.status === 200) {
-                alert('Account information successfully updated!');
-                history.push('/profile');
+                  NotificationManager.success('Account information successfully updated!','Success!', 1000);
+                  setTimeout(() => history.push('/profile'), 1000);
               // error handling
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
@@ -124,6 +126,7 @@ const UpdateName = () => {
           </div>
         </div>
       </Modal>
+      <NotificationContainer/>
     </div>
   );
 }

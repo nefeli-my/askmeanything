@@ -28,6 +28,8 @@ During the development of this app these technologies are used:
 * [Express](https://expressjs.com/) as the web application framework for the implementation
 of the services in SOA and Microservices architecture.
 * [React](https://reactjs.org/) as the [JavaScript](https://www.javascript.com/) library for the front-end.
+* [Bootstrap](https://getbootstrap.com/) as the tool for the design and customization of website's
+  front-end.
 * [Redis](https://redis.io/) as the in-memory key–value database and message broker for the 
 implementation of the Choreographer in MicroServices architecture.
 * [EmailJS](https://www.emailjs.com/) as the third-party service for sending emails to users 
@@ -36,7 +38,9 @@ after they have contacted us via the corresponding 'contact us' form.
 
 ## Architectures
 ### Service-Oriented Architecture (SOA)
-Regarding the implementation of the app based on SOA, it was broken down into 3 services 
+
+The implementation of the app based on SOA is located in the `back-end` and `front-end` directories.
+It was broken down into 3 services 
 containing the following business logic:
 * Authenticator service:
   - Register a new user
@@ -80,7 +84,9 @@ for the authentication of a user.
 **QnAOperations service** ⟷ **ESB** ⟷ **Authenticator service**
 
 ### Microservices
-Regarding the implementation of the app based on Microservices, it was broken down into 
+
+The implementation of the app based on Microservices is located in the `back-end-micro` and `front-end-micro` directories.
+It was broken down into 
 5 microservices:
 * Authenticator service:
   - Register a new user
@@ -151,15 +157,16 @@ missing messages from the `bus messages` field.
 For the deployment of the app ask**me**anything the cloud application platform
 [Heroku](https://www.heroku.com/) is used.
 
-The version of the app according to SOA can be found [here]().
+The version of the app according to SOA can be found [here](https://askmeanything25-soa.herokuapp.com/).
 
-The version of the app according to Microservices architecture can be found [here]().
+The version of the app according to Microservices architecture can be found [here](https://askmeanything25-ms.herokuapp.com/).
 
 The code of both above versions adjusted to the deployment configuration
 is located on the branch `production`.
 
 For the deployment of the app the instructions as stated below are executed given
 that one has installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):
+
 1.
 ``` 
 heroku login

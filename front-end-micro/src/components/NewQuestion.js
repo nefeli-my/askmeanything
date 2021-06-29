@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import Navbar from './Navbar';
 import {useHistory} from "react-router-dom";
 import '../css/NewQuestion.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const NewQuestion = () => {
   // new question form page
@@ -47,8 +49,8 @@ const NewQuestion = () => {
       .then(function (res) {
             if (res.status === 200) {
               // show message and redirect to browse page
-              alert('Question successfully uploaded!');
-              history.push('/browse');
+              NotificationManager.success('Question successfully uploaded!','Success!', 1000);
+              setTimeout(() => history.push('/browse'), 1000);
             // error handling
             } else if (res.status === 401) {
               console.log('401 Unauthorized Error');
@@ -57,7 +59,7 @@ const NewQuestion = () => {
               history.push('/login');
             } else if (res.status === 400) {
               console.log('400 Bad Request');
-              alert('Posting of question failed, please try again.');
+              NotificationManager.error('Posting of question failed, please try again.','Error');
             } else {
               console.log('500 Internal Server Error');
               history.push('/error-500');
@@ -116,7 +118,7 @@ const NewQuestion = () => {
           <div className="input-group">
             <Form.Label className="label"> Keyword: </Form.Label>
             <Form.Control
-              placeholder="Enter keyword"
+              placeholder="Enter keyword containing only numbers, letters and a hyphen"
               id= "keyword-box"
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
@@ -146,6 +148,7 @@ const NewQuestion = () => {
           </Button>
         </Form>
       </div>
+      <NotificationContainer/>
     </div>
   );
 }

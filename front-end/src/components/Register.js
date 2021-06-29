@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {Form, Button, Col} from "react-bootstrap";
 import '../css/Register.css';
 import {useHistory} from "react-router-dom";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const Register = () => {
   // register page
@@ -17,7 +19,7 @@ const Register = () => {
     event.preventDefault();
     // compare password and confirmation password
     if (password !== password_reset) {
-      alert("Password confirmation failed.");
+      NotificationManager.error('Password confirmation failed.','Error');
       return;
     }
     // user registration through the authenticator service
@@ -30,13 +32,13 @@ const Register = () => {
     .then(res => {
       if(res.status === 201){
         // push to login page right after successful user registration
-        alert("Account successfully created!");
-        history.push('/login');
+        NotificationManager.success('Account successfully created!','Success!', 1000);
+        setTimeout(() => history.push('/login'), 1000);
       }
       // error handling
       else if (res.status === 400){
         console.log('400 Bad Request Error');
-        alert("A user with the same email and/or username already exists. Please try again!");
+        NotificationManager.error('A user with the same email and/or username already exists. Please try again!','Error');
       }
       else {
         console.log('500 Internal Server Error');
@@ -133,6 +135,7 @@ const Register = () => {
           </Button>
         </Form>
       </div>
+      <NotificationContainer/>
     </div>
   );
 }

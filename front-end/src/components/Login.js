@@ -3,6 +3,8 @@ import {Form, Button} from "react-bootstrap";
 import '../css/Login.css';
 import login from '../assets/login.png'
 import { useHistory } from "react-router-dom";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const Login = () => {
   // login form page
@@ -36,18 +38,18 @@ const Login = () => {
           // successful login, and then redirect to homepage
           localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token.accessToken));
           localStorage.setItem('username', user.username);
-          history.push('/');
-          alert('Successful login!');
+          NotificationManager.success('Successful login', 'Success!', 1000);
+          setTimeout(() => history.push('/'), 1000);
         })
       }
       // error handling
       else if (res.status === 401){
         console.log('401 Unauthorized Error');
-        alert("The username or password you've inserted is incorrect. Please try again.");
+        NotificationManager.error('The username or password you\'ve inserted is incorrect. Please try again.','Error');
       }
       else if (res.status === 400){
         console.log('400 Bad Request Error');
-        alert("Please make sure you have filled in all required fields (username and password).");
+        NotificationManager.error('Please make sure you have filled in all required fields (username and password).','Error');
       }
       else {
         console.log('500 Internal Server Error');
@@ -104,6 +106,7 @@ const Login = () => {
           </Button>
         </Form>
       </div>
+      <NotificationContainer/>
     </div>
   );
 }

@@ -4,6 +4,8 @@ import {Button, Form} from "react-bootstrap";
 import '../css/ContactForm.css';
 import contact_us from '../assets/contact-us.png'
 import {useHistory} from "react-router-dom";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const ContactForm = () => {
     const [toSend, setToSend] = useState({
@@ -23,15 +25,12 @@ const ContactForm = () => {
             'user_6RYYMLMUvxyILBTlAHQxV'
         )
             .then((response) => {
-                console.log('SUCCESS!', response.status, response.text);
-                alert("Your message was sent successfully!");
-                history.push('/');
-
+                NotificationManager.success('Your message was sent successfully!','Success!', 1000);
+                setTimeout(() => history.push('/'), 1000);
             })
             .catch((err) => {
-                console.log('FAILED...', err);
-                alert("Your message was not sent!Please try again later!");
-                history.push('/error-500');
+                NotificationManager.error('Your message was not sent!Please try again later!','Error!', 1000);
+                //setTimeout(() => history.push('/'), 1000);
             });
     };
     const handleChange = (e) => {
@@ -84,6 +83,7 @@ const ContactForm = () => {
                 </Button>
             </form>
         </div>
+        <NotificationContainer/>
         </div>
     );
 }

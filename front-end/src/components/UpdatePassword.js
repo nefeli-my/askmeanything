@@ -4,6 +4,8 @@ import {Form} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
 import Navbar from './Navbar';
 import '../css/Update.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const UpdatePassword = () => {
   // update password form component
@@ -36,7 +38,7 @@ const UpdatePassword = () => {
   // update password
   function handleSubmit() {
     if (newpw !== confpw) {
-      alert('Password confirmation failed, please try again.');
+      NotificationManager.error('Password confirmation failed, please try again.','Error');
       return;
     }
     fetch('http://localhost:8001/update',
@@ -48,8 +50,8 @@ const UpdatePassword = () => {
         .then(function (res) {
               setIsOpen(false);
               if (res.status === 200) {
-                alert('Password successfully reset!');
-                history.push('/profile');
+                NotificationManager.success('Password successfully reset!','Success!', 1000);
+                setTimeout(() => history.push('/profile'), 1000);
               // error handling
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
@@ -124,6 +126,7 @@ const UpdatePassword = () => {
           </div>
         </div>
       </Modal>
+      <NotificationContainer/>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 import '../css/ViewQuestion.css';
 import React, {useState, useEffect} from 'react';
 import {useLocation, useHistory} from "react-router-dom";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 const ViewQuestion = () => {
   // view a question + all of its current answers
@@ -81,7 +83,7 @@ const ViewQuestion = () => {
               history.push('/login');
             } else if (res.status === 400) {
               console.log('400 Bad Request');
-              alert('Uploading of answer failed, please try again.');
+              NotificationManager.error('Uploading of answer failed, please try again.','Error');
             } else {
               console.log('500 Internal Server Error');
               history.push('/error-500');
@@ -163,6 +165,7 @@ const ViewQuestion = () => {
         </div>
       }
       </div>
+      <NotificationContainer/>
     </div>
   );
 }
