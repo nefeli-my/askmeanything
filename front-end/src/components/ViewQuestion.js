@@ -1,21 +1,19 @@
 import '../css/ViewQuestion.css';
 import React, {useState, useEffect} from 'react';
-import {useLocation, useHistory} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 const ViewQuestion = () => {
   // view a question + all of its current answers
   // post new answer functionality for signed in users
-  const location = useLocation();
-  // get question object using useLocation from Browse, BrowseUnassigned
-  // MyQuestions or MyAnswers components through Link state
-  const {question} = location.state;
+  const { id } = useParams();
+  const [question, setQuestion] = useState({Author:{},Keywords:[]});
   const [answers, setAnswers] = useState([]);
   const [noanswers, SetNoAnswers] = useState(false);
   const [body, setAnsBody] = useState("");
   const history = useHistory();
-  const token = localStorage.getItem('REACT_TOKEN_AUTH');
+  const token = localStorage.getItem('askmeanything_token');
 
   useEffect(() => {
     // get all answers of a chosen question when component
@@ -27,7 +25,7 @@ const ViewQuestion = () => {
     else{
       url = 'http://localhost:8002/getanswers/unassigned/'
     }
-    fetch(url+question.id,
+    fetch(url+id,
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + (token? JSON.parse(token): '') }
@@ -37,6 +35,9 @@ const ViewQuestion = () => {
             res.json()
                 .then(function (data) {
                   // in case no answers exist, show relative message instead
+                  let question = {...data};
+                  delete question.Answers;
+                  setQuestion(question);
                   if (data.Answers.length === 0)
                     SetNoAnswers("This question hasn't been answered yet.");
                   else
@@ -49,10 +50,15 @@ const ViewQuestion = () => {
               alert('Your session expired. Please login again.');
             else
               alert('You must be logged in to view this question and its answers!');
-            localStorage.removeItem('REACT_TOKEN_AUTH');
+            localStorage.removeItem('askmeanything_token');
             history.push('/login');
           } else if (res.status === 400) {
             console.log('400 Bad Request Error');
+            NotificationManager.error('You must be logged in to view this questions and its answers.','Error',2000);
+            setTimeout(() => history.push('/login'), 2000);
+          } else if(res.status === 404) {
+              NotificationManager.error('No question with given id exists', 'Error', 2000);
+              setTimeout(() => history.push('/'), 2000);
           } else {
             console.log('500 Internal Server Error');
             history.push('/error-500');
@@ -63,7 +69,7 @@ const ViewQuestion = () => {
         console.log(err);
         history.push('/error-500');
     });
-  }, [history, token, question.id]);
+  }, [history, token, id]);
 
   function postAnswer() {
     // post new answer (for logged in users only, private route used)
@@ -78,7 +84,7 @@ const ViewQuestion = () => {
               console.log('answer successfully uploaded');
             // error handling
             } else if (res.status === 401) {
-              localStorage.removeItem('REACT_TOKEN_AUTH');
+              localStorage.removeItem('askmeanything_token');
               alert('Your session expired. Please login again.');
               history.push('/login');
             } else if (res.status === 400) {

@@ -82,7 +82,10 @@ module.exports = {
                   }
               ],
             });
-            res.status(200).send(question)
+            if(question)
+                res.status(200).send(question)
+            else
+                res.status(404).send({msg:'Question with given id doesn\'t exist.'})
         }catch(err){
             next(err)
         }
@@ -124,11 +127,15 @@ module.exports = {
                 raw: true
             })
             let found = false;
-            for(x of questions){
-                if(x.id === question.id)
-                    found = true;
+            if(question) {
+                for (x of questions) {
+                    if (x.id === question.id)
+                        found = true;
+                }
             }
-            if(!found)
+            if(!question)
+                res.status(404).send({msg:'Question with given id doesn\'t exist.'})
+            else if(!found)
                 res.status(400).send({msg:'You must be logged in to view this questions and its answers!'});
             else
                 res.status(200).send(question)

@@ -40,7 +40,7 @@ const NewQuestion = () => {
   function submitQuestion() {
     // submit question
     const question = { title: title, body: body, keywords: keywords };
-    const token = localStorage.getItem('REACT_TOKEN_AUTH');
+    const token = localStorage.getItem('askmeanything_token');
     fetch('http://localhost:8002/createquestion/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer "+ JSON.parse(token) },
@@ -49,13 +49,13 @@ const NewQuestion = () => {
       .then(function (res) {
             if (res.status === 200) {
               // show message and redirect to browse page
-              NotificationManager.success('Question successfully uploaded!','Success!', 1000);
-              setTimeout(() => history.push('/browse'), 1000);
+              NotificationManager.success('Question successfully uploaded!','Success!', 2000);
+              setTimeout(() => history.push('/browse'), 2000);
               // error handling
             } else if (res.status === 401) {
               console.log('401 Unauthorized Error');
               alert('Your session expired. Please login again.');
-              localStorage.removeItem('REACT_TOKEN_AUTH');
+              localStorage.removeItem('askmeanything_token');
               history.push('/login');
             } else if (res.status === 400) {
               console.log('400 Bad Request');

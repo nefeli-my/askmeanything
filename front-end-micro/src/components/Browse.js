@@ -14,7 +14,7 @@ const Browse = () => {
   const [keyword, setKeyword] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const token = localStorage.getItem('REACT_TOKEN_AUTH');
+  const token = localStorage.getItem('askmeanything_token');
   const history = useHistory();
   // dates being displayed when applying date filter search
   let displayed_sd = "";
@@ -54,7 +54,7 @@ const Browse = () => {
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
                 alert('Your session expired. Please login again.');
-                localStorage.removeItem('REACT_TOKEN_AUTH')
+                localStorage.removeItem('askmeanything_token')
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
@@ -96,7 +96,7 @@ const Browse = () => {
                 // error handling
                 } else if (res.status === 401) {
                   console.log('401 Unauthorized Error');
-                  localStorage.removeItem('REACT_TOKEN_AUTH');
+                  localStorage.removeItem('askmeanything_token');
                   alert('Your session expired. Please login again.');
                   history.push('/login');
                 } else if (res.status === 400) {
@@ -141,7 +141,7 @@ const Browse = () => {
                 } else if (res.status === 401) {
                   console.log('401 Unauthorized Error');
                   alert('Your session expired. Please login again.');
-                  localStorage.removeItem('REACT_TOKEN_AUTH')
+                  localStorage.removeItem('askmeanything_token')
                   history.push('/login');
                 } else if (res.status === 400) {
                   console.log('400 Bad Request');
@@ -259,8 +259,8 @@ const Browse = () => {
               {questions.map((question) =>
                   <li key={question.id} className="single-question">
                     {/* when question's title is clicked, redirect to         *
-                      * ViewQuestion component with the question obj as state */}
-                    <Link to={{pathname: "/view-question", state: {question: question}}}
+                      * ViewQuestion component */}
+                      <Link to={{pathname: `/view-question/${question.id}`}}
                           className="link">
                       <h3 className="title"><b> {question.title} </b></h3>
                     </Link>
