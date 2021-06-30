@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:false,
       unique:true,
       validate: {
-        is: /^[a-zA-Z0-9]+[\-]?[a-zA-Z0-9]+$/i
+        is: /^[a-zA-Zα-ωΑ-Ωά-ώΆ-Ώ0-9]+[\-]?[a-zA-Zα-ωΑ-Ωά-ώΆ-Ώ0-9]+$/i
       }
     }
 

@@ -57,7 +57,7 @@ const ViewQuestion = () => {
             setTimeout(() => history.push('/login'), 2000);
           } else if(res.status === 404) {
              NotificationManager.error('No question with given id exists','Error', 2000);
-             setTimeout(() => history.push('/'), 2000);
+              setTimeout(() => history.push(token?'/browse':'/browse-unassigned'), 2000);
           } else {
             console.log('500 Internal Server Error');
             history.push('/error-500');

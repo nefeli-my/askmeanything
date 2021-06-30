@@ -49,8 +49,10 @@ const NewQuestion = () => {
       .then(function (res) {
             if (res.status === 200) {
               // show message and redirect to browse page
-              NotificationManager.success('Question successfully uploaded!','Success!', 2000);
-              setTimeout(() => history.push('/browse'), 2000);
+              res.json().then(data => {
+                NotificationManager.success('Question successfully uploaded!','Success!', 2000);
+                setTimeout(() => history.push(`/view-question/${data.id}`), 2000);
+              })
               // error handling
             } else if (res.status === 401) {
               console.log('401 Unauthorized Error');
