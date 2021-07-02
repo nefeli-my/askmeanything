@@ -1,0 +1,27 @@
+.about {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  width: 70%;
+  padding: 1%;
+  background-color: #e8e8e4;
+  border-radius: 5px;
+}
+
+.about h3 {
+  font-size: 18px;
+}
+
+.about p {
+  font-size: 15px;
+}
+
+.about a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}
+
+.about img {
+  margin-left: 35%;
+  margin-top: 3%;
+  width: 30%;
+}

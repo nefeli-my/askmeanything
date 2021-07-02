@@ -126,7 +126,7 @@ const GeneralStatistics = () => {
       <div className="diagrams">
         <div className="questions-diagram">
           <h3 className="diagram-title"> Number of <b>questions</b> posted during the last week: </h3>
-          <LineChart data={[[dates[0], qperday[0]], [dates[1], qperday[1]],
+          <LineChart loading="Loading..." data={[[dates[0], qperday[0]], [dates[1], qperday[1]],
                            [dates[2], qperday[2]], [dates[3], qperday[3]],
                            [dates[4], qperday[4]], [dates[5], qperday[5]],
                            [dates[6], qperday[6]], [dates[7], qperday[7]]]}
@@ -134,7 +134,7 @@ const GeneralStatistics = () => {
         </div>
         <div className="answers-diagram">
           <h3 className="diagram-title"> Number of <b>answers</b> posted during the last week: </h3>
-          <LineChart data={[[dates[0], aperday[0]], [dates[1], aperday[1]],
+          <LineChart loading="Loading..." data={[[dates[0], aperday[0]], [dates[1], aperday[1]],
                            [dates[2], aperday[2]], [dates[3], aperday[3]],
                            [dates[4], aperday[4]], [dates[5], aperday[5]],
                            [dates[6], aperday[6]], [dates[7], aperday[7]]]}

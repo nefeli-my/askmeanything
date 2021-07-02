@@ -5,7 +5,7 @@ const GeneralHome = () => {
   // the GeneralHome component mounts the 'Home' or the
   // 'LandingPage' component depending on if the user
   // is logged in or not
-  const isLoggedIn = localStorage.getItem('askmeanything_token');
+  const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
   return (
     <div>
     { isLoggedIn &&

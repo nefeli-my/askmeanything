@@ -14,7 +14,7 @@ const MyStatistics = () => {
   const [mytopkeywords, setMyTopKeywords] = useState([]);
   const [topkeywords, setTopKeywords] = useState([]);
   const history = useHistory();
-  const token = localStorage.getItem('askmeanything_token');
+  const token = localStorage.getItem('REACT_TOKEN_AUTH');
   // 'dates' array contains last week's dates (today's date is also included)
   // format example: Jun 10th 2021
   const dates = [moment().subtract(7, 'days').format("MMM Do YYYY"),
@@ -44,7 +44,7 @@ const MyStatistics = () => {
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
             alert('Your session expired. Please login again.');
-            localStorage.removeItem('askmeanything_token');
+            localStorage.removeItem('REACT_TOKEN_AUTH');
             history.push('/login');
           } else if (res.status === 400) {
             console.log('400 Bad Request');

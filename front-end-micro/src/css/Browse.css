@@ -8,15 +8,7 @@
   padding: 0.5%;
 }
 
-.browse .titles {
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
-  padding: 0.5%;
-  border-radius: 5px;
-  background-color: #f5efff;
-}
-
+.browse .titles,
 .my-qna .titles {
   margin-left: auto;
   margin-right: auto;
@@ -50,27 +42,34 @@
   display: flex;
 }
 
-.browse .inline-divs button {
-  margin-left: 2%;
-}
-
 .browse .input-group {
-  margin-top: 1.5%;
-  margin-left: 10%;
-  margin-right: 10%;
-}
-
-.browse .date-search {
-  display: flex;
   margin-top: 2%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
-.browse .date-search .datepicker {
-  margin-left: 2%;
-  margin-right: 2%;
+.browse .input-group input {
+  margin-left: 3%;
+}
+
+.browse .input-group p {
+  font-size: 15px;
+}
+
+.browse .input-group .datepicker {
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
+.browse .inline-buttons {
+    margin-top: 1.5%;
+    width: 22%;
+    margin-left: 39%;
+}
+
+.browse .inline-buttons button {
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .filters {
@@ -154,10 +153,6 @@
 #show-more-btn {
   font-size: 14px;
   margin-left: 45%;
-}
-
-.browse ::placeholder {
-  font-size: 14px;
 }
 
 .browse .link,

@@ -92,14 +92,21 @@
   margin-left: 7%;
 }
 
-#btn-post-answer {
-  margin-top: 1%;
-  margin-left: 41%;
-}
-
 .view-question .error {
   font-size: 16px;
   margin-top: 2%;
   margin-left: 5%;
   color: red;
+}
+
+.view-question .inline-buttons {
+  margin-top: 2%;
+  display: inline-block;
+  width: 26%;
+  margin-left: 37%;
+}
+
+.view-question .inline-buttons button {
+  margin-left: 2%;
+  margin-right: 2%;
 }

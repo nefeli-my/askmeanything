@@ -23,8 +23,8 @@
 .newquestion .Form.Label {
   font-size: 15px;
 }
-.newquestion ::placeholder {
-  font-size: 13px;
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 14px;
 }
 #text-box {
   width: 100%;
@@ -60,4 +60,14 @@
   background: #303030;
   color: white;
   font-size: 12px;
+}
+.new-question .inline-buttons {
+  margin-top: 2%;
+  display: inline-block;
+  margin-left: 36.75%;
+  width: 26.5%;
+}
+.new-question .inline-buttons button {
+  margin-left: 3%;
+  margin-right: 3%;
 }

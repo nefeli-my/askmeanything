@@ -1,4 +1,4 @@
-import {Form, Button} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import React, {useState} from "react";
 import Navbar from './Navbar';
 import {useHistory} from "react-router-dom";
@@ -22,7 +22,7 @@ const NewQuestion = () => {
     // check if keyword has already been added
     if (!keywords.includes(keyword.toLowerCase())) {
       // if not, push after converting to lower case to obliterate
-      // keyword differences due to lower case and upper case letters
+      //  keyword differences due to lower case and upper case letters
       // (better keyword filtered search)
       keywords.push(keyword.toLowerCase());
     }
@@ -37,11 +37,18 @@ const NewQuestion = () => {
     setKeyword("");
   }
 
+  function clearQuestion(e) {
+    e.preventDefault();
+    clearKeywords();
+    setBody("");
+    setTitle("");
+  }
+
   function submitQuestion() {
     // submit question
     const question = { title: title, body: body, keywords: keywords };
     const token = localStorage.getItem('askmeanything_token');
-    fetch('http://localhost:8003/create/', {
+    fetch('http://localhost:8002/createquestion/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer "+ JSON.parse(token) },
       body: JSON.stringify(question)
@@ -53,7 +60,7 @@ const NewQuestion = () => {
                 NotificationManager.success('Question successfully uploaded!','Success!', 2000);
                 setTimeout(() => history.push(`/view-question/${data.id}`), 2000);
               })
-            // error handling
+              // error handling
             } else if (res.status === 401) {
               console.log('401 Unauthorized Error');
               alert('Your session expired. Please login again.');
@@ -94,7 +101,6 @@ const NewQuestion = () => {
             <Form.Control
               placeholder="Enter title"
               value={title}
-              required
               onChange={(e) => setTitle(e.target.value)}
             />
             <Form.Text className="text-muted">
@@ -107,7 +113,6 @@ const NewQuestion = () => {
               id="text-box"
               rows="8" cols="100"
               value={body}
-              required
               onChange={(e) => setBody(e.target.value)}
             />
           </Form.Group>
@@ -140,14 +145,22 @@ const NewQuestion = () => {
               clear all keywords
             </button>
           </div>
-          {/* question submit button */}
-          <Button
-            id="btn-submit"
-            variant="dark"
-            onClick={() => submitQuestion()}
-          >
-            Submit
-          </Button>
+          {/* submit and clear buttons */}
+          <div className="inline-buttons">
+            <button
+              className="btn btn-dark btn-sm"
+              disabled={!body || !title}
+              onClick={() => submitQuestion()}
+            >
+              Submit
+            </button>
+            <button
+              className="btn btn-dark btn-sm"
+              onClick={() => clearQuestion()}
+            >
+              Clear Question
+            </button>
+          </div>
         </Form>
       </div>
       <NotificationContainer/>

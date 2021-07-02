@@ -1,5 +1,7 @@
+import About from './components/About';
 import Browse from './components/Browse';
 import BrowseUnassigned from './components/BrowseUnassigned';
+import ContactForm from "./components/ContactForm";
 import Documentation from './components/Documentation';
 import Error500 from './components/Error500';
 import Footer from './components/Footer';
@@ -18,7 +20,6 @@ import Register from './components/Register';
 import ViewQuestion from './components/ViewQuestion';
 import UpdateName from './components/UpdateName';
 import UpdatePw from './components/UpdatePassword';
-import ContactForm from "./components/ContactForm";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
           <Route path="/contactus">
             <Navbar/>
             <ContactForm/>
+          </Route>
+          <Route path="/about">
+            <Navbar/>
+            <About/>
             <Footer/>
           </Route>
           <Route path="/browse-unassigned">
@@ -53,7 +58,7 @@ function App() {
           <Route path="/error-500">
             <Error500/>
           </Route>
-          <Route path="/view-question/:id">
+          <Route path="/view-question">
             <Navbar/>
             <ViewQuestion/>
           </Route>

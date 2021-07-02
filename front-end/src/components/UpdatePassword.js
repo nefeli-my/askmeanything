@@ -13,7 +13,7 @@ const UpdatePassword = () => {
   const [confpw, setConfPw] =useState('');
   // to make it look like an pop-window use React-Modal
   const [modalIsOpen,setIsOpen] = useState(true);
-  const token = localStorage.getItem('askmeanything_token');
+  const token = localStorage.getItem('REACT_TOKEN_AUTH');
   const history = useHistory();
 
   const modalStyles = {
@@ -50,13 +50,13 @@ const UpdatePassword = () => {
         .then(function (res) {
               setIsOpen(false);
               if (res.status === 200) {
-                NotificationManager.success('Password successfully reset!','Success!', 2000);
-                setTimeout(() => history.push('/profile'), 2000);
+                NotificationManager.success('Password successfully reset!','Success!', 1000);
+                setTimeout(() => history.push('/profile'), 1000);
               // error handling
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
                 alert('Your session expired. Please login again.');
-                localStorage.removeItem('askmeanything_token');
+                localStorage.removeItem('REACT_TOKEN_AUTH');
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');

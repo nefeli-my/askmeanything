@@ -32,8 +32,8 @@ const Register = () => {
     .then(res => {
       if(res.status === 201){
         // push to login page right after successful user registration
-        NotificationManager.success('Account successfully created!','Success!', 2000);
-        setTimeout(() => history.push('/login'), 2000);
+        NotificationManager.success('Account successfully created!','Success!', 1000);
+        setTimeout(() => history.push('/login'), 1000);
       }
       // error handling
       else if (res.status === 400){

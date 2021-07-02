@@ -11,7 +11,7 @@ const MyProfile = () => {
   const [lastName, setLastName] = useState('');
   const [registeredAt, setRegisteredAt] = useState('');
   const username = localStorage.getItem('username');
-  const token = localStorage.getItem('askmeanything_token');
+  const token = localStorage.getItem('REACT_TOKEN_AUTH');
   const history = useHistory();
 
   function showRegDate() {
@@ -41,7 +41,7 @@ const MyProfile = () => {
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
                 alert('Your session expired. Please login again.');
-                localStorage.removeItem('askmeanything_token');
+                localStorage.removeItem('REACT_TOKEN_AUTH');
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');

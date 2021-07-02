@@ -1,3 +1,4 @@
+import About from './components/About';
 import Browse from './components/Browse';
 import BrowseUnassigned from './components/BrowseUnassigned';
 import Documentation from './components/Documentation';
@@ -41,6 +42,11 @@ function App() {
             <Register/>
             <Footer/>
           </Route>
+          <Route path="/about">
+            <Navbar/>
+            <About/>
+            <Footer/>
+          </Route>
           <Route path="/contactus">
             <Navbar/>
             <ContactForm/>
@@ -53,7 +59,7 @@ function App() {
           <Route path="/error-500">
             <Error500/>
           </Route>
-          <Route path="/view-question/:id">
+          <Route path="/view-question">
             <Navbar/>
             <ViewQuestion/>
           </Route>

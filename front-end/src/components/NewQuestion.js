@@ -1,4 +1,4 @@
-import {Form, Button} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import React, {useState} from "react";
 import Navbar from './Navbar';
 import {useHistory} from "react-router-dom";
@@ -35,6 +35,13 @@ const NewQuestion = () => {
     // clear keyword list
     setKeywords([]);
     setKeyword("");
+  }
+
+  function clearQuestion(e) {
+    e.preventDefault();
+    clearKeywords();
+    setBody("");
+    setTitle("");
   }
 
   function submitQuestion() {
@@ -94,7 +101,6 @@ const NewQuestion = () => {
             <Form.Control
               placeholder="Enter title"
               value={title}
-              required
               onChange={(e) => setTitle(e.target.value)}
             />
             <Form.Text className="text-muted">
@@ -107,7 +113,6 @@ const NewQuestion = () => {
               id="text-box"
               rows="8" cols="100"
               value={body}
-              required
               onChange={(e) => setBody(e.target.value)}
             />
           </Form.Group>
@@ -140,14 +145,22 @@ const NewQuestion = () => {
               clear all keywords
             </button>
           </div>
-          {/* question submit button */}
-          <Button
-            id="btn-submit"
-            variant="dark"
-            onClick={() => submitQuestion()}
-          >
-            Submit
-          </Button>
+          {/* submit and clear buttons */}
+          <div className="inline-buttons">
+            <button
+              className="btn btn-dark btn-sm"
+              disabled={!body || !title}
+              onClick={() => submitQuestion()}
+            >
+              Submit
+            </button>
+            <button
+              className="btn btn-dark btn-sm"
+              onClick={() => clearQuestion()}
+            >
+              Clear Question
+            </button>
+          </div>
         </Form>
       </div>
       <NotificationContainer/>

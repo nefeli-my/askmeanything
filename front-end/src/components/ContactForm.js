@@ -25,12 +25,12 @@ const ContactForm = () => {
             'user_6RYYMLMUvxyILBTlAHQxV'
         )
             .then((response) => {
-                NotificationManager.success('Your message was sent successfully!','Success!', 2000);
-                setTimeout(() => history.push('/'), 2000);
+                NotificationManager.success('Your message was sent successfully!','Success!', 1000);
+                setTimeout(() => history.push('/'), 1000);
             })
             .catch((err) => {
-                NotificationManager.error('Your message was not sent!Please try again later!','Error!', 2000);
-                //setTimeout(() => history.push('/'), 2000);
+                NotificationManager.error('Your message was not sent! Please try again later!','Error!', 1000);
+                //setTimeout(() => history.push('/'), 1000);
             });
     };
     const handleChange = (e) => {
@@ -44,7 +44,7 @@ const ContactForm = () => {
                 <img src={contact_us} alt="contact person"/>
                 <h3><b> Contact us! </b></h3>
                 <Form.Group>
-                    <Form.Label className="label">Your name</Form.Label>
+                    <Form.Label className="label">Your name:</Form.Label>
                     <Form.Control
                         name='from_name'
                         required
@@ -53,7 +53,7 @@ const ContactForm = () => {
                     />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label className="label">Your e-mail</Form.Label>
+                    <Form.Label className="label">Your e-mail:</Form.Label>
                     <Form.Control
                         type='email'
                         required
@@ -63,13 +63,12 @@ const ContactForm = () => {
                         onChange={handleChange}                    />
                 </Form.Group>
                 <Form.Group>
-                    <Form.Label className="label">Your message</Form.Label>
+                    <Form.Label className="label">Your message:</Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={5}
                         required
                         name='message'
-                        placeholder='Anything you wish...'
                         value={toSend.message}
                         onChange={handleChange}
                     />
