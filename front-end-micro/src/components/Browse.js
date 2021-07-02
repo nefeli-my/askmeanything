@@ -42,7 +42,7 @@ const Browse = () => {
     // show the first 10 (most recent) questions right after the page is mounted
     // offset used: 0 (reminder: sequelize query limit is set to 10)
     // get request to qnaoperations service endpoint
-    fetch('http://localhost:8002/getquestions/0',
+    fetch('http://localhost:8005/getquestions/0',
         {
           method: 'GET',
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}
@@ -89,7 +89,7 @@ const Browse = () => {
       // when the user clicks the 'show more' button at the end of the page
       // the offset is increased by 10, thus loading more questions
       // in a gradual way. (10 questions loaded per request)
-      fetch('http://localhost:8002/getquestions/' + offset,
+      fetch('http://localhost:8005/getquestions/' + offset,
           {
             method: 'GET',
             headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}
@@ -128,7 +128,7 @@ const Browse = () => {
     // filtered search
     else {
       //format url
-      let url = 'http://localhost:8002/getquestions/filters/?'
+      let url = 'http://localhost:8005/getquestions/filters/?'
       if (author)
         url = url + `author=${author}&`;
       if (keyword)

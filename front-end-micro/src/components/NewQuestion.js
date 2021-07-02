@@ -48,7 +48,7 @@ const NewQuestion = () => {
     // submit question
     const question = { title: title, body: body, keywords: keywords };
     const token = localStorage.getItem('askmeanything_token');
-    fetch('http://localhost:8002/createquestion/', {
+    fetch('http://localhost:8003/create/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer "+ JSON.parse(token) },
       body: JSON.stringify(question)
@@ -86,7 +86,7 @@ const NewQuestion = () => {
       <Navbar/>
       <div className="new-question">
         <div className="description">
-          <h3> <b>  Make your own question! 💬 </b> </h3>
+          <h3> <b> Make your own question! 💬</b> </h3>
           <p>
             Here you can ask your own questions to get all the answers you need.
             Don't forget to <b>add a title to your question</b>, as well as

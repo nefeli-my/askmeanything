@@ -19,13 +19,13 @@ const ViewQuestion = () => {
 
   useEffect(() => {
     // get all answers of a chosen question when component
-    //  is mounted, through the qnaoperations service
+    //  is mounted
     let url;
     if(token){
-      url = 'http://localhost:8002/getanswers/'
+      url = 'http://localhost:8004/getanswers/'
     }
     else{
-      url = 'http://localhost:8002/getanswers/unassigned/'
+      url = 'http://localhost:8004/getanswers/unassigned/'
     }
     fetch(url+question.id,
     {
@@ -68,7 +68,7 @@ const ViewQuestion = () => {
   function postAnswer() {
     // post new answer (for logged in users only, private route used)
     let answer = {questionId: question.id, body: body};
-    fetch('http://localhost:8002/createanswer/', {
+    fetch('http://localhost:8004/create/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) },
       body: JSON.stringify(answer)
