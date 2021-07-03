@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from "react-router-dom";
+import Loading from './Loading';
 import '../css/Browse.css';
 
 const BrowseUnassigned = () => {
   // browse questions for unassigned users
   const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   // fetch the 10 most recent questions
@@ -12,12 +14,14 @@ const BrowseUnassigned = () => {
   // unassigned users can view only 10 questions
   // and cannot make filtered searches
   useEffect(() => {
-    fetch('http://localhost:8002/getquestions/unassigned',
+    setLoading(true);
+    fetch('http://localhost:8002/getquestions/unsigned',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json"}
     })
     .then(function(res) {
+      setLoading(false);
       if(res.status === 200) {
           res.json()
               .then(function(data) {
@@ -39,41 +43,46 @@ const BrowseUnassigned = () => {
   }, [history]);
 
   return (
-    <div className="browse">
-      <div className="titles">
-        <h2><b> Most recent questions posted: </b></h2>
-        <h3> Login or signup to view more! </h3>
+    <div>
+      {loading && <Loading/>}
+      {!loading &&
+      <div className="browse">
+        <div className="titles">
+          <h2><b> Most recent questions posted: </b></h2>
+          <h3> Login or signup to view more! </h3>
+        </div>
+        <ul className="question-list">
+          {/* display of fetched questions using map function.    *
+            * for each question show title, half of its body,     *
+            * author's username, keywords and when it was created */}
+          {questions.map((question) =>
+            <li key={question.id} className="single-question">
+              {/* when question's title is clicked, redirect to         *
+                * ViewQuestion component */}
+                <Link to={{pathname: `/view-question/${question.id}`}}
+                    style={{textDecoration: 'inherit', color: 'inherit'}}>
+                <h3 className="title"><b> {question.title} </b></h3>
+              </Link>
+              {/* &nbsp; used to create empty space */}
+              <h3 className="author-on">
+                posted by user {question.Author.username} on &nbsp;
+                {(new Date(question.createdAt)).toLocaleString('en-GB')}
+              </h3>
+              <div className="question-body">
+                <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
+              </div>
+              <ul className="keyword-list">
+                {question.Keywords.map((keyword, index) =>
+                  <li key={index} className="single-keyword">
+                     {keyword.word}
+                  </li>
+                )}
+              </ul>
+            </li>
+          )}
+        </ul>
       </div>
-      <ul className="question-list">
-        {/* display of fetched questions using map function.    *
-          * for each question show title, half of its body,     *
-          * author's username, keywords and when it was created */}
-        {questions.map((question) =>
-          <li key={question.id} className="single-question">
-            {/* when question's title is clicked, redirect to         *
-              * ViewQuestion component */}
-              <Link to={{pathname: `/view-question/${question.id}`}}
-                  style={{textDecoration: 'inherit', color: 'inherit'}}>
-              <h3 className="title"><b> {question.title} </b></h3>
-            </Link>
-            {/* &nbsp; used to create empty space */}
-            <h3 className="author-on">
-              posted by user {question.Author.username} on &nbsp;
-              {(new Date(question.createdAt)).toLocaleString('en-GB')}
-            </h3>
-            <div className="question-body">
-              <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
-            </div>
-            <ul className="keyword-list">
-              {question.Keywords.map((keyword, index) =>
-                <li key={index} className="single-keyword">
-                   {keyword.word}
-                </li>
-              )}
-            </ul>
-          </li>
-        )}
-      </ul>
+      }
     </div>
   )
 }

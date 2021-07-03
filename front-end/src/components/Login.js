@@ -96,7 +96,6 @@ const Login = () => {
           </Button>
 
           <hr/>
-
           <Button
             className="btn-2"
             block variant="outline-secondary"

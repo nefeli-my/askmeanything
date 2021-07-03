@@ -75,7 +75,8 @@ const Browse = () => {
         });
   }, [token, history]);
 
-  function clearFilters() {
+  function clearFilters(e) {
+    e.preventDefault();
     setKeyword("");
     setAuthor("");
     setStartDate("");
@@ -83,8 +84,9 @@ const Browse = () => {
     window.location.reload(false);
   }
 
-  function getQuestions() {
+  function getQuestions(e) {
     // unfiltered seach
+    e.preventDefault();
     if (!author && !keyword && !startDate) {
       // when the user clicks the 'show more' button at the end of the page
       // the offset is increased by 10, thus loading more questions
@@ -240,14 +242,14 @@ const Browse = () => {
               </div>
               <div className="inline-buttons">
                 <button className="btn btn-outline-primary btn-sm"
-                        onClick={() => {
+                        onClick={(e) => {
                           setShow_Button(false);
-                          getQuestions();
+                          getQuestions(e);
                         }}>
                   search
                 </button>
                 <button className="btn btn-outline-primary  btn-sm"
-                        onClick={() => clearFilters()}>
+                        onClick={(e) => clearFilters(e)}>
                     clear all filters
                 </button>
               </div>
@@ -295,9 +297,9 @@ const Browse = () => {
               {show_button &&
               <button
                   id="show-more-btn"
-                  onClick={() => {
+                  onClick={(e) => {
                     setOffset(offset + 10);
-                    getQuestions();
+                    getQuestions(e);
                   }}
                   className="btn btn-outline-primary">
                 show more

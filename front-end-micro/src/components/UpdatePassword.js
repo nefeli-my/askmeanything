@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import {Form} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
 import Navbar from './Navbar';
+import Footer from './Footer';
 import '../css/Update.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
@@ -30,13 +31,15 @@ const UpdatePassword = () => {
   };
 
   // close pop-up
-  function closeModal(){
+  function closeModal(e){
+    e.preventDefault();
     setIsOpen(false);
     history.push('/profile');
   }
 
   // update password
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     if (newpw !== confpw) {
         NotificationManager.error('Password confirmation failed, please try again.','Error');
       return;
@@ -60,8 +63,8 @@ const UpdatePassword = () => {
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
-                alert('Update failed, please try again');
-                history.push('/profile');
+                NotificationManager.error('Update failed, please try again.','Error', 2000);
+                setTimeout(() => history.push('/profile'), 2000);
               } else {
                 console.log('500 Internal Server Error');
                 history.push('/error-500');
@@ -117,17 +120,18 @@ const UpdatePassword = () => {
           <div className="buttons">
             <button
               className="btn btn-primary btn-sm"
-              onClick={handleSubmit}>
+              onClick={(e) => handleSubmit(e)}>
                 update
             </button>
             <button
               className="btn btn-outline-primary btn-sm"
-              onClick={closeModal}>
+              onClick={(e) => closeModal(e)}>
                 nevermind
             </button>
           </div>
         </div>
       </Modal>
+      <Footer/>
       <NotificationContainer/>
     </div>
   );

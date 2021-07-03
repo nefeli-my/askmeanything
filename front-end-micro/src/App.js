@@ -50,7 +50,6 @@ function App() {
           <Route path="/contactus">
             <Navbar/>
             <ContactForm/>
-            <Footer/>
           </Route>
           <Route path="/browse-unsigned">
             <Navbar/>

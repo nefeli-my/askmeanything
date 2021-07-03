@@ -71,7 +71,8 @@ const ViewQuestion = () => {
     });
   }, [history, id, token]);
 
-  function postAnswer() {
+  function postAnswer(e) {
+    e.preventDefault();
     // post new answer (for logged in users only, private route used)
     let answer = {questionId: question.id, body: body};
     fetch('http://localhost:8004/create/', {
@@ -162,7 +163,7 @@ const ViewQuestion = () => {
             {/* submit button is disabled for empty answer body */}
             <button className="btn btn-primary btn-sm"
                     disabled={!body}
-                    onClick={() => postAnswer()}
+                    onClick={(e) => postAnswer(e)}
             >
               Post Your Answer
             </button>

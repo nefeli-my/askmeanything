@@ -1,6 +1,6 @@
 import '../css/ViewQuestion.css';
+import React, {useState, useEffect} from 'react';
 import {useHistory, useParams} from "react-router-dom";
-import {useLocation, useHistory} from "react-router-dom";
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
@@ -45,23 +45,23 @@ const ViewQuestion = () => {
                 })
           // error handling
           } else if (res.status === 401) {
-            console.log('401 Unauthorized Error');
-            if(token)
-              alert('Your session expired. Please login again.');
-            else
-              alert('You must be logged in to view this question and its answers!');
-            localStorage.removeItem('askmeanything_token');
-            history.push('/login');
+              console.log('401 Unauthorized Error');
+              if(token)
+                alert('Your session expired. Please login again.');
+              else
+                alert('You must be logged in to view this question and its answers!');
+              localStorage.removeItem('askmeanything_token');
+              history.push('/login');
           } else if (res.status === 400) {
-            console.log('400 Bad Request Error');
-            NotificationManager.error('You must be logged in to view this questions and its answers.','Error',2000);
-            setTimeout(() => history.push('/login'), 2000);
+              console.log('400 Bad Request Error');
+              NotificationManager.error('You must be logged in to view this questions and its answers.','Error',2000);
+              setTimeout(() => history.push('/login'), 2000);
           } else if(res.status === 404) {
               NotificationManager.error('No question with given id exists', 'Error', 2000);
               setTimeout(() => history.push(token?'/browse':'/browse-unsigned'), 2000);
           } else {
-            console.log('500 Internal Server Error');
-            history.push('/error-500');
+              console.log('500 Internal Server Error');
+              history.push('/error-500');
           }
         }
     )
@@ -71,7 +71,8 @@ const ViewQuestion = () => {
     });
   }, [history, token, id]);
 
-  function postAnswer() {
+  function postAnswer(e) {
+    e.preventDefault(e);
     // post new answer (for logged in users only, private route used)
     let answer = {questionId: question.id, body: body};
     fetch('http://localhost:8002/createanswer/', {
@@ -162,7 +163,7 @@ const ViewQuestion = () => {
             {/* submit button is disabled for empty answer body */}
             <button className="btn btn-primary btn-sm"
                     disabled={!body}
-                    onClick={() => postAnswer()}
+                    onClick={(e) => postAnswer(e)}
             >
               Post Your Answer
             </button>

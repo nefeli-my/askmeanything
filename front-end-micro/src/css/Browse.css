@@ -160,3 +160,7 @@
   color: inherit;
   text-decoration: inherit;
 }
+
+.browse, .my-qna a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+}

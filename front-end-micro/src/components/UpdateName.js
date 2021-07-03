@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import {Form} from "react-bootstrap";
 import {useHistory} from "react-router-dom";
 import Navbar from './Navbar';
+import Footer from './Footer';
 import '../css/Update.css';
 import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
@@ -15,9 +16,9 @@ const UpdateName = () => {
   const [modalIsOpen,setIsOpen] = useState(true);
   const token = localStorage.getItem('askmeanything_token');
   const history = useHistory();
-  let error = "Update failed. Please make sure you have inserted only one word "
-              + "as first and last name accordingly, and have used only " 
-              + "alphabetic characters.";
+  let error =   "Update failed. Please make sure you have inserted only "
+              + "one word as first and last name accordingly, and have used "
+              + "only alphabetic characters. No spaces are allowed.";
 
   const modalStyles = {
     content : {
@@ -33,13 +34,15 @@ const UpdateName = () => {
   };
 
   // close pop-up
-  function closeModal(){
+  function closeModal(e){
+    e.preventDefault();
     setIsOpen(false);
     history.push('/profile');
   }
 
   // update name
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     fetch('http://localhost:8001/update',
         {
           method: 'PATCH',
@@ -59,8 +62,8 @@ const UpdateName = () => {
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
-                alert(error );
-                history.push('/profile');
+                NotificationManager.error(error, "Error", 5000);
+                setTimeout(() => history.push('/profile'), 5000);
               } else {
                 console.log('500 Internal Server Error');
                 history.push('/error-500');
@@ -114,18 +117,19 @@ const UpdateName = () => {
           <div className="buttons">
             <button
               className="btn btn-primary btn-sm"
-              onClick={handleSubmit}
+              onClick={(e) => handleSubmit(e)}
               disabled={!newfn || !newln}>
                 update
             </button>
             <button
               className="btn btn-outline-primary btn-sm"
-              onClick={closeModal}>
+              onClick={(e) => closeModal(e)}>
                 nevermind
             </button>
           </div>
         </div>
       </Modal>
+      <Footer/>
       <NotificationContainer/>
     </div>
   );

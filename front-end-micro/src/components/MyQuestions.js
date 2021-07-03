@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from "react-router-dom";
 import Navbar from './Navbar';
+import Loading from './Loading';
 import '../css/Browse.css';
 
 const MyQuestions = () => {
@@ -8,16 +9,19 @@ const MyQuestions = () => {
   // the user is redirected here through the MyProfile component
   const [questions, setQuestions] = useState('');
   const token = localStorage.getItem('askmeanything_token');
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
     // fetch questions when component is loaded
+    setLoading(true);
     fetch('http://localhost:8005/getquestions/user',
         {
           method: 'GET',
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}
         })
         .then(function (res) {
+              setLoading(false);
               if (res.status === 200) {
                 res.json()
                     .then(function (data) {
@@ -44,55 +48,60 @@ const MyQuestions = () => {
   }, [token, history]);
   return (
     <div>
-      <Navbar/>
-      <div className="my-qna">
-        { (questions.length !== 0) &&
-        <div>
-          <div className="titles">
-            <h2><b> Questions you have posted: </b></h2>
+      {loading && <Loading/>}
+      {!loading &&
+      <div>
+        <Navbar/>
+        <div className="my-qna">
+          { (questions.length !== 0) &&
+          <div>
+            <div className="titles">
+              <h2><b> Questions you have posted: </b></h2>
+            </div>
+            <ul className="question-list">
+              {/* display of fetched questions using map function.    *
+                * for each question show title, half of its body,     *
+                * author's username, keywords and when it was created */}
+              {questions.map((question) =>
+                <li key={question.id} className="single-question">
+                  {/* when question's title is clicked, redirect to         *
+                    * ViewQuestion component */}
+                    <Link to={{pathname: `/view-question/${question.id}`}}
+                        className="link">
+                    <h3 className="title"><b> {question.title} </b></h3>
+                  </Link>
+                  {/* &nbsp; used to create empty space */}
+                  <h3 className="author-on">
+                    posted by user {question.Author.username} on &nbsp;
+                    {(new Date(question.createdAt)).toLocaleString('en-GB')}
+                  </h3>
+                  <div className="question-body">
+                    <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
+                  </div>
+                  <ul className="keyword-list">
+                    {question.Keywords.map((keyword, index) =>
+                      <li key={index} className="single-keyword">
+                         {keyword.word}
+                      </li>
+                    )}
+                  </ul>
+                </li>
+              )}
+            </ul>
           </div>
-          <ul className="question-list">
-            {/* display of fetched questions using map function.    *
-              * for each question show title, half of its body,     *
-              * author's username, keywords and when it was created */}
-            {questions.map((question) =>
-              <li key={question.id} className="single-question">
-                {/* when question's title is clicked, redirect to         *
-                  * ViewQuestion component */}
-                  <Link to={{pathname: `/view-question/${question.id}`}}
-                      className="link">
-                  <h3 className="title"><b> {question.title} </b></h3>
-                </Link>
-                {/* &nbsp; used to create empty space */}
-                <h3 className="author-on">
-                  posted by user {question.Author.username} on &nbsp;
-                  {(new Date(question.createdAt)).toLocaleString('en-GB')}
-                </h3>
-                <div className="question-body">
-                  <p> {question.body.substring(0, question.body.length / 2)} [...] </p>
-                </div>
-                <ul className="keyword-list">
-                  {question.Keywords.map((keyword, index) =>
-                    <li key={index} className="single-keyword">
-                       {keyword.word}
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-          </ul>
+          }
+          {/* in case the user hasn't made any   *
+            *   questions show relative message  */}
+          { (questions.length === 0) &&
+            <p>
+              It seems you have't posted any questions yet.
+              Head <Link to={'/new-question'}> here </Link> to
+              start making your own questions.
+            </p>
+          }
         </div>
-        }
-        {/* in case the user hasn't made any   *
-          *   questions show relative message  */}
-        { (questions.length === 0) &&
-          <p>
-            It seems you have't posted any questions yet.
-            Head <Link to={'/new-question'}> here </Link> to
-            start making your own questions.
-          </p>
-        }
       </div>
+      }
     </div>
   );
 }

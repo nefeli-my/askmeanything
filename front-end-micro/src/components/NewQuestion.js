@@ -30,6 +30,7 @@ const NewQuestion = () => {
     setKeyword("");
   }
 
+  // function to clear Question (all fields)
   function clearKeywords(e) {
     e.preventDefault();
     // clear keyword list
@@ -44,8 +45,9 @@ const NewQuestion = () => {
     setTitle("");
   }
 
-  function submitQuestion() {
+  function submitQuestion(e) {
     // submit question
+    e.preventDefault();
     const question = { title: title, body: body, keywords: keywords };
     const token = localStorage.getItem('askmeanything_token');
     fetch('http://localhost:8003/create/', {
@@ -150,13 +152,13 @@ const NewQuestion = () => {
             <button
               className="btn btn-dark btn-sm"
               disabled={!body || !title}
-              onClick={() => submitQuestion()}
+              onClick={(e) => submitQuestion(e)}
             >
               Submit
             </button>
             <button
               className="btn btn-dark btn-sm"
-              onClick={() => clearQuestion()}
+              onClick={(e) => clearQuestion(e)}
             >
               Clear Question
             </button>

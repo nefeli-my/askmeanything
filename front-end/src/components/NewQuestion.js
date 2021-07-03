@@ -44,8 +44,9 @@ const NewQuestion = () => {
     setTitle("");
   }
 
-  function submitQuestion() {
+  function submitQuestion(e) {
     // submit question
+    e.preventDefault();
     const question = { title: title, body: body, keywords: keywords };
     const token = localStorage.getItem('askmeanything_token');
     fetch('http://localhost:8002/createquestion/', {
@@ -150,13 +151,13 @@ const NewQuestion = () => {
             <button
               className="btn btn-dark btn-sm"
               disabled={!body || !title}
-              onClick={() => submitQuestion()}
+              onClick={(e) => submitQuestion(e)}
             >
               Submit
             </button>
             <button
               className="btn btn-dark btn-sm"
-              onClick={() => clearQuestion()}
+              onClick={(e) => clearQuestion(e)}
             >
               Clear Question
             </button>
