@@ -24,14 +24,16 @@ or date that they were created
 During the development of this app these technologies are used:
 * [PostgreSQL](https://www.postgresql.org/) as the DBMS.
 * [Sequelize](https://sequelize.org/) as the ORM for the communication with the DBMS.
-* [Nodejs](https://nodejs.org/en/) as the [JavaScript](https://www.javascript.com/) runtime.
-* [Express](https://expressjs.com/) as the web application framework for the implementation
+* [NodeJS](https://nodejs.org/en/) as the [JavaScript](https://www.javascript.com/) runtime.
+* [ExpressJS](https://expressjs.com/) as the web application framework for the implementation
 of the services in SOA and Microservices architecture.
-* [React](https://reactjs.org/) as the [JavaScript](https://www.javascript.com/) library for the front-end.
-* [Bootstrap](https://getbootstrap.com/) as the tool for the design and customization of website's
+* [ReactJS](https://reactjs.org/) as the [JavaScript](https://www.javascript.com/) library for the front-end.
+* [Bootstrap](https://getbootstrap.com/) as the tool for the design and customization of the website's
   front-end.
 * [Redis](https://redis.io/) as the in-memory key–value database and message broker for the 
-implementation of the Choreographer in MicroServices architecture.
+implementation of the Choreographer in the MicroServices architecture.
+* [PassportJS](http://www.passportjs.org/) as an authentication middleware for NodeJS.
+* [Heroku](https://www.heroku.com/) for the SOA and the Microservices apps' deployment. 
 * [EmailJS](https://www.emailjs.com/) as the third-party service for sending emails to users 
 after they have contacted us via the corresponding 'contact us' form. 
 
