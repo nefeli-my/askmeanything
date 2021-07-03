@@ -1,7 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const generalRouter = require('./routes/general')
 const userRouter = require('./routes/user')
@@ -16,15 +15,11 @@ const db = require('./server/models/index');
 const {sync_messages} = require('./startup');
 
 dotenv.config();
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 
 app.use(passport.initialize())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use(transaction({ sequelize: db.sequelize }));
@@ -128,6 +123,4 @@ app.use(function(err, req, res, next) {
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
 
-
-//app.listen(8000);
 module.exports = app;

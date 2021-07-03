@@ -1,28 +1,23 @@
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const generalRouter = require('./routes/general');
 const userRouter = require('./routes/user');
-
 const app = express();
 
 dotenv.config();
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 
-// middlewares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
+app.use(bodyParser.json());
+
 app.use('/general/',generalRouter);
 app.use('/user/', userRouter);
 
@@ -57,6 +52,5 @@ app.use(function(err, req, res, next) {
   const expose = status >= 500 && req.app.get('env') === 'development';
   res.send({message:expose ? message + '\n\n' + err.stack : message});
 });
-
 
 module.exports = app;

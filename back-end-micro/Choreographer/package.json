@@ -14,7 +14,6 @@
     "morgan": "^1.10.0",
     "redis-connection-pool": "^1.7.4",
     "axios": "^0.21.1",
-    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "http-errors": "^1.8.0"

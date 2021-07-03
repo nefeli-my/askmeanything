@@ -2,7 +2,6 @@ const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const loginauthRouter = require('./routes/login')
 const authenticatorRouter = require('./routes/authenticator');
@@ -17,18 +16,14 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 
 dotenv.config();
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 
 app.use(passport.initialize())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
-
+app.use(bodyParser.json());
 
 app.use('/register', authenticatorRouter);
 app.use('/login', loginauthRouter);
