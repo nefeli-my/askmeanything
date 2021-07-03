@@ -21,11 +21,13 @@ import ViewQuestion from './components/ViewQuestion';
 import UpdateName from './components/UpdateName';
 import UpdatePw from './components/UpdatePassword';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { NotificationContainer } from 'react-notifications';
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <NotificationContainer/>
         <Switch>
           <Route exact path="/">
             <Navbar/>

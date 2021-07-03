@@ -3,7 +3,7 @@ import {Form, Button} from "react-bootstrap";
 import '../css/Login.css';
 import login from '../assets/login.png'
 import { useHistory } from "react-router-dom";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 const Login = () => {
@@ -39,17 +39,17 @@ const Login = () => {
           localStorage.setItem('askmeanything_token', JSON.stringify(token.accessToken));
           localStorage.setItem('username', user.username);
           NotificationManager.success('Successful login', 'Success!', 2000);
-          setTimeout(() => history.push('/'), 2000);
+          history.push('/');
         })
       }
       // error handling
       else if (res.status === 401){
         console.log('401 Unauthorized Error');
-        NotificationManager.error('The username or password you\'ve inserted is incorrect. Please try again.','Error');
+        NotificationManager.error('The username or password you\'ve inserted is incorrect. Please try again.','Error', 2000);
       }
       else if (res.status === 400){
         console.log('400 Bad Request Error');
-        NotificationManager.error('Please make sure you have filled in all required fields (username and password).','Error');
+        NotificationManager.error('Please make sure you have filled in all required fields (username and password).','Error', 2000);
       }
       else {
         console.log('500 Internal Server Error');
@@ -105,7 +105,7 @@ const Login = () => {
           </Button>
         </Form>
       </div>
-      <NotificationContainer/>
+      
     </div>
   );
 }

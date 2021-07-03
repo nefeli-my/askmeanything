@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Form, Button, Col} from "react-bootstrap";
 import '../css/Register.css';
 import {useHistory} from "react-router-dom";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 const Register = () => {
@@ -33,7 +33,7 @@ const Register = () => {
       if(res.status === 201){
         // push to login page right after successful user registration
         NotificationManager.success('Account successfully created!','Success!', 2000);
-        setTimeout(() => history.push('/login'), 2000);
+        history.push('/login');
       }
       // error handling
       else if (res.status === 400){
@@ -135,7 +135,7 @@ const Register = () => {
           </Button>
         </Form>
       </div>
-      <NotificationContainer/>
+      
     </div>
   );
 }

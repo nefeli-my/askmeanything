@@ -1,5 +1,6 @@
 import '../css/Documentation.css';
 import {Container, Row, Col} from "react-bootstrap";
+//import { FileSaver } from 'file-saver';
 import nodejs from '../assets/nodejs.png';
 import expressjs from '../assets/expressjs.png';
 import sequelize from '../assets/sequelize.png';
@@ -19,7 +20,7 @@ const Documentation = () => {
         (This page does not, by any means, replace the required project's documentation
         using UML diagrams, only complements it. The project's documentation using Unified Modeling
         Language, can be found
-        <a href="https://github.com/nefeli-my/askmeanythingv2/tree/main/documentation"> here</a>.)
+        <a href="askmeanything_v2.vpp" download> here</a>.)
       </i></p>
       <b> Technologies used for the project: </b>
       <Container className="images">

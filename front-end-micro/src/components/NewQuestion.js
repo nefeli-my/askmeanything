@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import Navbar from './Navbar';
 import {useHistory} from "react-router-dom";
 import '../css/NewQuestion.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 const NewQuestion = () => {
@@ -40,7 +40,7 @@ const NewQuestion = () => {
 
   function clearQuestion(e) {
     e.preventDefault();
-    clearKeywords();
+    clearKeywords(e);
     setBody("");
     setTitle("");
   }
@@ -60,7 +60,7 @@ const NewQuestion = () => {
               // show message and redirect to browse page
               res.json().then(data => {
                 NotificationManager.success('Question successfully uploaded!','Success!', 2000);
-                setTimeout(() => history.push(`/view-question/${data.id}`), 2000);
+                history.push(`/view-question/${data.id}`);
               })
               // error handling
             } else if (res.status === 401) {
@@ -165,7 +165,7 @@ const NewQuestion = () => {
           </div>
         </Form>
       </div>
-      <NotificationContainer/>
+      
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import '../css/ViewQuestion.css';
 import React, {useState, useEffect} from 'react';
 import {useHistory, useParams} from "react-router-dom";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 const ViewQuestion = () => {
@@ -55,10 +55,10 @@ const ViewQuestion = () => {
           } else if (res.status === 400) {
               console.log('400 Bad Request Error');
               NotificationManager.error('You must be logged in to view this questions and its answers.','Error',2000);
-              setTimeout(() => history.push('/login'), 2000);
+              history.push('/login');
           } else if(res.status === 404) {
               NotificationManager.error('No question with given id exists', 'Error', 2000);
-              setTimeout(() => history.push(token?'/browse':'/browse-unsigned'), 2000);
+              history.push(token?'/browse':'/browse-unsigned');
           } else {
               console.log('500 Internal Server Error');
               history.push('/error-500');
@@ -176,7 +176,7 @@ const ViewQuestion = () => {
         </div>
       }
       </div>
-      <NotificationContainer/>
+      
     </div>
   );
 }

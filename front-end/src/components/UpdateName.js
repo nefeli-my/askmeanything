@@ -5,7 +5,7 @@ import {useHistory} from "react-router-dom";
 import Navbar from './Navbar';
 import Footer from './Footer';
 import '../css/Update.css';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 const UpdateName = () => {
@@ -53,7 +53,7 @@ const UpdateName = () => {
               setIsOpen(false);
               if (res.status === 200) {
                   NotificationManager.success('Account information successfully updated!','Success!', 2000);
-                  setTimeout(() => history.push('/profile'), 2000);
+                  history.push('/profile');
               // error handling
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
@@ -63,7 +63,7 @@ const UpdateName = () => {
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
                 NotificationManager.error(error, "Error", 5000);
-                setTimeout(() => history.push('/profile'), 5000);
+                history.push('/profile');
               } else {
                 console.log('500 Internal Server Error');
                 history.push('/error-500');
@@ -129,7 +129,7 @@ const UpdateName = () => {
           </div>
         </div>
       </Modal>
-      <NotificationContainer/>
+      
       <Footer/>
     </div>
   );
