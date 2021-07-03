@@ -10,6 +10,8 @@ import reactjs from '../assets/reactjs.png';
 import bootstrap from '../assets/bootstrap.png';
 import emailjs from '../assets/emailjs.png';
 import redis from '../assets/redis.png';
+import heroku from '../assets/heroku.png';
+import passportjs from '../assets/passportjs.png';
 
 const Documentation = () => {
   // Project Documentation
@@ -35,72 +37,90 @@ const Documentation = () => {
             </figure>
           </Col>
           <Col>
+              <figure>
+                <a href="https://expressjs.com/">
+                  <img src={expressjs} alt="expressjs"/>
+                </a>
+                <figcaption><b> Express JS </b></figcaption>
+              </figure>
+          </Col>
+          <Col>
             <figure>
-              <a href="https://expressjs.com/">
-                <img src={expressjs} alt="expressjs"/>
+              <a href="https://www.postgresql.org/">
+                <img src={postgresql} alt="postgresql"/>
               </a>
-              <figcaption><b> Express JS </b></figcaption>
+              <figcaption><b> PostgreSQL </b></figcaption>
+            </figure>
+          </Col>
+        </Row>
+        <Row id="row-1">
+          <Col>
+            <figure>
+              <a href="https://sequelize.org/">
+                <img src={sequelize} alt="sequelize"/>
+              </a>
+              <figcaption><b> Sequelize ORM </b></figcaption>
             </figure>
           </Col>
           <Col>
-          <figure>
-            <a href="https://www.postgresql.org/">
-              <img src={postgresql} alt="postgresql"/>
-            </a>
-            <figcaption><b> PostgreSQL </b></figcaption>
-          </figure>
+            <figure>
+              <a href="https://reactjs.org/">
+                <img src={reactjs} alt="reactjs"/>
+              </a>
+              <figcaption><b> React JS </b></figcaption>
+            </figure>
+          </Col>
+          <Col>
+            <figure>
+              <a href="https://github.com/">
+                <img src={github} alt="github"/>
+              </a>
+              <figcaption><b> GitHub </b></figcaption>
+            </figure>
           </Col>
         </Row>
         <Row id="row-1">
           <Col>
-          <figure>
-            <a href="https://sequelize.org/">
-              <img src={sequelize} alt="sequelize"/>
-            </a>
-            <figcaption><b> Sequelize ORM </b></figcaption>
-          </figure>
+            <figure>
+              <a href="https://getbootstrap.com/">
+                <img src={bootstrap} alt="bootstrap"/>
+              </a>
+              <figcaption><b> Bootstrap </b></figcaption>
+            </figure>
           </Col>
           <Col>
-          <figure>
-            <a href="https://reactjs.org/">
-              <img src={reactjs} alt="reactjs"/>
-            </a>
-            <figcaption><b> React JS </b></figcaption>
-          </figure>
+            <figure>
+              <a href="https://www.heroku.com/">
+                <img src={heroku} alt="heroku"/>
+              </a>
+              <figcaption><b> Heroku </b></figcaption>
+            </figure>
           </Col>
           <Col>
-          <figure>
-            <a href="https://github.com/">
-              <img src={github} alt="github"/>
-            </a>
-            <figcaption><b> GitHub </b></figcaption>
-          </figure>
+            <figure>
+              <a href="https://redis.io/">
+                <img src={redis} alt="redis"/>
+              </a>
+              <figcaption><b> Redis </b></figcaption>
+            </figure>
           </Col>
         </Row>
-        <Row id="row-1">
+        <Row id="row-2">
           <Col>
-          <figure>
-            <a href="https://getbootstrap.com/">
-              <img src={bootstrap} alt="bootstrap"/>
-            </a>
-            <figcaption><b> Bootstrap </b></figcaption>
-          </figure>
+            <figure>
+              <a href="http://www.passportjs.org/">
+                <img src={passportjs} alt="passportjs"/>
+              </a>
+              <figcaption><b> Passport JS </b></figcaption>
+            </figure>
           </Col>
           <Col>
-          <figure>
-            <a href="https://www.emailjs.com/">
-              <img src={emailjs} alt="emailjs"/>
-            </a>
-            <figcaption><b> Email JS </b></figcaption>
-          </figure>
-          </Col>
-          <Col>
-          <figure>
-            <a href="https://redis.io/">
-              <img src={redis} alt="redis"/>
-            </a>
-            <figcaption><b> Redis </b></figcaption>
-          </figure>
+            <figure>
+              <a href="https://www.emailjs.com/">
+                <img src={emailjs} alt="emailjs"/>
+              </a>
+              <figcaption><b> Email JS </b></figcaption>
+            </figure>
           </Col>
         </Row>
       </Container>
