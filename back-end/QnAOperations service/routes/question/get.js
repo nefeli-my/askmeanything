@@ -5,7 +5,7 @@ const {getall, getfiltered, getallRestricted,getbyuser} = require('../../control
 
 
 router.get('/filters' , authenticate, getfiltered);
-router.get('/unassigned', getallRestricted);
+router.get('/unsigned', getallRestricted);
 router.get('/user',  authenticate, getbyuser)
 router.get('/:offset', authenticate, getall);
 

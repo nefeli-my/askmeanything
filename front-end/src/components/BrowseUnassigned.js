@@ -51,8 +51,8 @@ const BrowseUnassigned = () => {
         {questions.map((question) =>
           <li key={question.id} className="single-question">
             {/* when question's title is clicked, redirect to         *
-              * ViewQuestion component with the question obj as state */}
-            <Link to={{pathname: "/view-question", state: {question},}}
+              * ViewQuestion component */}
+              <Link to={{pathname: `/view-question/${question.id}`}}
                   style={{textDecoration: 'inherit', color: 'inherit'}}>
               <h3 className="title"><b> {question.title} </b></h3>
             </Link>

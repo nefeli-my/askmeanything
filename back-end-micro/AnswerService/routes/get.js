@@ -18,7 +18,7 @@ passport.use('token', new JWTstrategy(
     }
     )
 )
-router.get('/unassigned/:id', findAllRestricted);
+router.get('/unsigned/:id', findAllRestricted);
 router.get('/:id',passport.authenticate('token',{session:false}), findAll);
 
 module.exports = router;

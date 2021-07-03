@@ -51,14 +51,14 @@ function App() {
             <About/>
             <Footer/>
           </Route>
-          <Route path="/browse-unassigned">
+          <Route path="/browse-unsigned">
             <Navbar/>
             <BrowseUnassigned/>
           </Route>
           <Route path="/error-500">
             <Error500/>
           </Route>
-          <Route path="/view-question">
+          <Route path="/view-question/:id">
             <Navbar/>
             <ViewQuestion/>
           </Route>

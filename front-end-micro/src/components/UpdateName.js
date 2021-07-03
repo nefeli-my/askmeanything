@@ -13,7 +13,7 @@ const UpdateName = () => {
   const [newln, setNewLN] =useState('');    // last name state
   // to make it look like an pop-window use React-Modal
   const [modalIsOpen,setIsOpen] = useState(true);
-  const token = localStorage.getItem('REACT_TOKEN_AUTH');
+  const token = localStorage.getItem('askmeanything_token');
   const history = useHistory();
   let error = "Update failed. Please make sure you have inserted only one word "
               + "as first and last name accordingly, and have used only " 
@@ -49,12 +49,12 @@ const UpdateName = () => {
         .then(function (res) {
               setIsOpen(false);
               if (res.status === 200) {
-                  NotificationManager.success('Account information successfully updated!','Success!', 1000);
-                  setTimeout(() => history.push('/profile'), 1000);
+                  NotificationManager.success('Account information successfully updated!','Success!', 2000);
+                  setTimeout(() => history.push('/profile'), 2000);
               // error handling
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
-                localStorage.removeItem('REACT_TOKEN_AUTH');
+                localStorage.removeItem('askmeanything_token');
                 alert('Your session expired. Please login again.');
                 history.push('/login');
               } else if (res.status === 400) {

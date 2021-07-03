@@ -31,8 +31,8 @@ const LandingPage = () => {
                 <img src={unlock} alt="unlock"/>
               </div>
             </div>
-            <div className="col-sm" onClick={() => {history.push('/browse-unassigned')}}>
-              {/* browse for unassigned users */}
+            <div className="col-sm" onClick={() => {history.push('/browse-unsigned')}}>
+              {/* browse for unsigned users */}
               <h4><b>Browse questions & answers</b></h4>
               <p> Get a <b>sneak peak</b> of the <br/> <b>most recent questions</b> <br/> posted, as well
               as of their <br/> answers. Login or sign up <br/> for more features!

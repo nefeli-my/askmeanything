@@ -5,6 +5,6 @@ const {getall, getallRestricted} = require('../../controllers/answer');
 
 
 router.get('/:questionId', authenticate, getall);
-router.get('/unassigned/:questionId', getallRestricted);
+router.get('/unsigned/:questionId', getallRestricted);
 
 module.exports = router;

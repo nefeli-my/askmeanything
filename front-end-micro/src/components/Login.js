@@ -10,7 +10,7 @@ const Login = () => {
   // login form page
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const isLoggedIn = localStorage.getItem('REACT_TOKEN_AUTH');
+  const isLoggedIn = localStorage.getItem('askmeanything_token');
   const history = useHistory();
 
   useEffect(() => {
@@ -36,10 +36,10 @@ const Login = () => {
         .then(token => {
           // store token and username in local storage in case of
           // successful login, and then redirect to homepage
-          localStorage.setItem('REACT_TOKEN_AUTH', JSON.stringify(token.accessToken));
+          localStorage.setItem('askmeanything_token', JSON.stringify(token.accessToken));
           localStorage.setItem('username', user.username);
-          NotificationManager.success('Successful login', 'Success!', 1000);
-          setTimeout(() => history.push('/'), 1000);
+          NotificationManager.success('Successful login', 'Success!', 2000);
+          setTimeout(() => history.push('/'), 2000);
         })
       }
       // error handling

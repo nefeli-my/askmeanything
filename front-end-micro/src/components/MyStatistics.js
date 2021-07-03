@@ -14,7 +14,7 @@ const MyStatistics = () => {
   const [mytopkeywords, setMyTopKeywords] = useState([]);
   const [topkeywords, setTopKeywords] = useState([]);
   const history = useHistory();
-  const token = localStorage.getItem('REACT_TOKEN_AUTH');
+  const token = localStorage.getItem('askmeanything_token');
   // 'dates' array contains last week's dates (today's date is also included)
   // format example: Jun 10th 2021
   const dates = [moment().subtract(7, 'days').format("MMM Do YYYY"),
@@ -44,7 +44,7 @@ const MyStatistics = () => {
           } else if (res.status === 401) {
             console.log('401 Unauthorized Error');
             alert('Your session expired. Please login again.');
-            localStorage.removeItem('REACT_TOKEN_AUTH');
+            localStorage.removeItem('askmeanything_token');
             history.push('/login');
           } else if (res.status === 400) {
             console.log('400 Bad Request');
@@ -165,7 +165,8 @@ const MyStatistics = () => {
           {/* question line diagram */}
           <div className="questions-diagram">
             <h3 className="diagram-title"> Number of <b>questions</b> you've posted during the last week: </h3>
-            <LineChart data={[[dates[0], qperday[0]], [dates[1], qperday[1]],
+            <LineChart loading="Loading..."
+                       data={[[dates[0], qperday[0]], [dates[1], qperday[1]],
                              [dates[2], qperday[2]], [dates[3], qperday[3]],
                              [dates[4], qperday[4]], [dates[5], qperday[5]],
                              [dates[6], qperday[6]], [dates[7], qperday[7]]]}
@@ -174,7 +175,8 @@ const MyStatistics = () => {
           <div className="answers-diagram">
             {/* answer line diagram */}
             <h3 className="diagram-title"> Number of <b>answers</b> you've posted during the last week: </h3>
-            <LineChart data={[[dates[0], aperday[0]], [dates[1], aperday[1]],
+            <LineChart loading="Loading..."
+                       data={[[dates[0], aperday[0]], [dates[1], aperday[1]],
                              [dates[2], aperday[2]], [dates[3], aperday[3]],
                              [dates[4], aperday[4]], [dates[5], aperday[5]],
                              [dates[6], aperday[6]], [dates[7], aperday[7]]]}

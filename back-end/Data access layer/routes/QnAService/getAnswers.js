@@ -4,6 +4,6 @@ const {findAll, findAllRestricted} = require('../../server/controllers/QnAServic
 
 
 router.get('/:id', findAll);
-router.get('/unassigned/:id', findAllRestricted);
+router.get('/unsigned/:id', findAllRestricted);
 
 module.exports = router;

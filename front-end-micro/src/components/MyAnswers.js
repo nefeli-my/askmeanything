@@ -8,7 +8,7 @@ const MyAnswers = () => {
   // signed in user has contributed to (answered)
   // the user is redirected here through the MyProfile component
   const [questions, setQuestions] = useState('');
-  const token = localStorage.getItem('REACT_TOKEN_AUTH');
+  const token = localStorage.getItem('askmeanything_token');
   const history = useHistory();
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const MyAnswers = () => {
               } else if (res.status === 401) {
                 console.log('401 Unauthorized Error');
                 alert('Your session expired. Please login again.');
-                localStorage.removeItem('REACT_TOKEN_AUTH');
+                localStorage.removeItem('askmeanything_token');
                 history.push('/login');
               } else if (res.status === 400) {
                 console.log('400 Bad Request');
@@ -62,8 +62,8 @@ const MyAnswers = () => {
             {questions.map((question) =>
               <li key={question.id} className="single-question">
                 {/* when question's title is clicked, redirect to         *
-                  * ViewQuestion component with the question obj as state */}
-                <Link to={{pathname: "/view-question", state: {question},}}
+                  * ViewQuestion component */}
+                  <Link to={{pathname: `/view-question/${question.id}`}}
                       className="link">
                   <h3 className="title"><b> {question.title} </b></h3>
                 </Link>

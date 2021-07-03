@@ -26,7 +26,7 @@ module.exports = {
     },
     async QgetallRestricted(){
         try {
-            const result = await axios.get(DataLayerUrl + '/question' +`/get/unassigned`);
+            const result = await axios.get(DataLayerUrl + '/question' +`/get/unsigned`);
             return {success: true, body: result.data};
         }
         catch(err) {
@@ -83,7 +83,7 @@ module.exports = {
     },
     async AgetRestricted(questionId){
         try {
-            const result = await axios.get(DataLayerUrl + '/answer'  +`/get/unassigned/${questionId}`);
+            const result = await axios.get(DataLayerUrl + '/answer'  +`/get/unsigned/${questionId}`);
             return {success: true, body: result};
         }
         catch(err) {
