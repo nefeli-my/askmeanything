@@ -22,7 +22,7 @@ const ContactForm = () => {
             'askmeanything',
             'contactus',
             toSend,
-            'user_6RYYMLMUvxyILBTlAHQxV'
+            process.env.EMAIL_ID
         )
             .then((response) => {
                 NotificationManager.success('Your message was sent successfully!','Success!', 2000);
