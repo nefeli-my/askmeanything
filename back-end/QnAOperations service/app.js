@@ -3,7 +3,6 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-const dotenv = require('dotenv');
 const cors = require('cors')
 const app = express();
 const getQuestionRouter = require('./routes/question/get');
@@ -11,13 +10,12 @@ const getAnswerRouter = require('./routes/answer/get');
 const answerRouter = require('./routes/answer/create');
 const questionRouter = require('./routes/question/create');
 
-dotenv.config();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+cors({origin: process.env.FRONT_URL});
 app.use(bodyParser.json());
 
 app.use('/createquestion',questionRouter);

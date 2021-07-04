@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const dotenv = require('dotenv')
-dotenv.config();
 
-const AuthenticatorURL = 'http://localhost:' + process.env.AUTH_PORT;
+const AuthenticatorURL = process.env.AUTH_URL;
 
 router.get('/',(req, res, next) => {
     axios.get(AuthenticatorURL + '/check', {

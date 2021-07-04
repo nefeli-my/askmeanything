@@ -4,7 +4,7 @@ const Question = models.Question;
 const Keyword = models.Keyword;
 const Keyword_Question = models.Question_Keyword;
 const axios = require("axios");
-const busURL = 'http://localhost:8006/bus'
+const busURL = process.env.BUS_URL + 'bus';
 
 module.exports = {
     async create(req, res, next) {

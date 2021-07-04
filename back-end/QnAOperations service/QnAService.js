@@ -1,7 +1,7 @@
 const axios = require('axios');
 const dotenv = require('dotenv');
 dotenv.config();
-const DataLayerUrl = 'http://localhost:' + process.env.DATA_PORT;
+const DataLayerUrl = process.env.DATA_URL;
 
 module.exports = {
     async Qcreate(question){

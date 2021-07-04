@@ -49,7 +49,7 @@ const NewQuestion = () => {
     e.preventDefault();
     const question = { title: title, body: body, keywords: keywords };
     const token = localStorage.getItem('askmeanything_token');
-    fetch('http://localhost:8002/createquestion/', {
+    fetch(process.env.QNA_URL + 'createquestion/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer "+ JSON.parse(token) },
       body: JSON.stringify(question)

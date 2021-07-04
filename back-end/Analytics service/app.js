@@ -1,7 +1,6 @@
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const cors = require('cors');
-const dotenv = require('dotenv');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
@@ -9,13 +8,12 @@ const generalRouter = require('./routes/general');
 const userRouter = require('./routes/user');
 const app = express();
 
-dotenv.config();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+cors({origin: process.env.FRONT_URL});
 app.use(bodyParser.json());
 
 app.use('/general/',generalRouter);

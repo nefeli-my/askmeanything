@@ -25,7 +25,7 @@ const Login = () => {
     // post request to login endpoint of authenticator microservice
     event.preventDefault();
     const user = { username, password };
-    fetch('http://localhost:8001/login/', {
+    fetch(process.env.AUTH_URL + 'login/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)

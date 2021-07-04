@@ -12,17 +12,15 @@ const getRouter = require('./routes/getUser');
 const passport = require('passport');
 
 const app = express();
-const dotenv = require('dotenv');
 const cors = require('cors');
 
-dotenv.config();
 
 app.use(passport.initialize())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+app.use(cors({origin: [process.env.FRONT_URL, process.env.ESB_URL]}));
 app.use(bodyParser.json());
 
 app.use('/register', authenticatorRouter);

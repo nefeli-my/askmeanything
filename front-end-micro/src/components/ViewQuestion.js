@@ -20,10 +20,10 @@ const ViewQuestion = () => {
     //  is mounted
     let url;
     if(token){
-      url = 'http://localhost:8004/getanswers/'
+      url = process.env.ANSWER_URL + 'getanswers/'
     }
     else{
-      url = 'http://localhost:8004/getanswers/unsigned/'
+      url = process.env.ANSWER_URL + 'getanswers/unsigned/'
     }
     fetch(url+id,
     {
@@ -75,7 +75,7 @@ const ViewQuestion = () => {
     e.preventDefault();
     // post new answer (for logged in users only, private route used)
     let answer = {questionId: question.id, body: body};
-    fetch('http://localhost:8004/create/', {
+    fetch(process.env.ANSWER_URL + 'create/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) },
       body: JSON.stringify(answer)

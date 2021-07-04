@@ -29,7 +29,7 @@ const MyStatistics = () => {
   useEffect(() => {
     // fetch number of questions per day (only last weeks's
     // and user's data), when component is mounted
-    fetch('http://localhost:8003/user/questions',
+    fetch(process.env.ANALYTICS_URL + 'user/questions',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
