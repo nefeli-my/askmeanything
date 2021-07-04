@@ -20,10 +20,10 @@ const ViewQuestion = () => {
     //  is mounted
     let url;
     if(token){
-      url = process.env.ANSWER_URL + 'getanswers/'
+      url = process.env.REACT_APP_ANSWER_URL + 'getanswers/'
     }
     else{
-      url = process.env.ANSWER_URL + 'getanswers/unsigned/'
+      url = process.env.REACT_APP_ANSWER_URL + 'getanswers/unsigned/'
     }
     fetch(url+id,
     {
@@ -75,7 +75,7 @@ const ViewQuestion = () => {
     e.preventDefault();
     // post new answer (for logged in users only, private route used)
     let answer = {questionId: question.id, body: body};
-    fetch(process.env.ANSWER_URL + 'create/', {
+    fetch(process.env.REACT_APP_ANSWER_URL + 'create/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) },
       body: JSON.stringify(answer)

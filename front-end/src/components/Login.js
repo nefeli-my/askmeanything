@@ -25,7 +25,7 @@ const Login = () => {
     // post request to login endpoint of authenticator service
     event.preventDefault();
     const user = { username, password };
-    fetch(process.env.AUTH_URL + 'login/', {
+    fetch(process.env.REACT_APP_AUTH_URL + 'login/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)

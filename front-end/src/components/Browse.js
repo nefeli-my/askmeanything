@@ -42,7 +42,7 @@ const Browse = () => {
     // show the first 10 (most recent) questions right after the page is mounted
     // offset used: 0 (reminder: sequelize query limit is set to 10)
     // get request to qnaoperations service endpoint
-    fetch(process.env.QNA_URL + 'getquestions/0',
+    fetch(process.env.REACT_APP_QNA_URL + 'getquestions/0',
         {
           method: 'GET',
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}
@@ -91,7 +91,7 @@ const Browse = () => {
       // when the user clicks the 'show more' button at the end of the page
       // the offset is increased by 10, thus loading more questions
       // in a gradual way. (10 questions loaded per request)
-      fetch(process.env.QNA_URL + 'getquestions/' + offset,
+      fetch(process.env.REACT_APP_QNA_URL + 'getquestions/' + offset,
           {
             method: 'GET',
             headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}
@@ -130,7 +130,7 @@ const Browse = () => {
     // filtered search
     else {
       //format url
-      let url = process.env.QNA_URL + 'getquestions/filters/?'
+      let url = process.env.REACT_APP_QNA_URL + 'getquestions/filters/?'
       if (author)
         url = url + `author=${author}&`;
       if (keyword)

@@ -6,7 +6,9 @@ const AuthenticatorURL = process.env.AUTH_URL;
 
 router.get('/',(req, res, next) => {
     axios.get(AuthenticatorURL + '/check', {
-        headers: req.headers
+        headers: {
+            'authorization': req.headers.authorization
+        }
     })
     .then(result => res.send({username: result.data.username}))
     .catch(err => {

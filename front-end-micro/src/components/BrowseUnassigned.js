@@ -15,7 +15,7 @@ const BrowseUnassigned = () => {
   // and cannot make filtered searches
   useEffect(() => {
     setLoading(true);
-    fetch(process.env.QNA + 'getquestions/unsigned',
+    fetch(process.env.REACT_APP_QNA + 'getquestions/unsigned',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json"}

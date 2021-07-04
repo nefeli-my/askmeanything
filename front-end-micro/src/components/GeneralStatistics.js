@@ -27,7 +27,7 @@ const GeneralStatistics = () => {
 
     // fetch number of questions per day (only last weeks's data),
     // when component is mounted
-    fetch(process.env.STATISTICS_URL + 'general/questions',
+    fetch(process.env.REACT_APP_STATISTICS_URL + 'general/questions',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json"}
@@ -57,7 +57,7 @@ const GeneralStatistics = () => {
     });
     // fetch number of answers per day (only last weeks's data),
     // when component is mounted
-    fetch(process.env.STATISTICS_URL + 'general/answers',
+    fetch(process.env.REACT_APP_STATISTICS_URL + 'general/answers',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json"}
@@ -87,7 +87,7 @@ const GeneralStatistics = () => {
     });
     // fetch the 20 most popular keywords (and the total number they
     // appear in questions), when component is mounted
-    fetch(process.env.STATISTICS_URL + 'general/keywords',
+    fetch(process.env.REACT_APP_STATISTICS_URL + 'general/keywords',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json"}

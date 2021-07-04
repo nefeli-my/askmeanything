@@ -50,7 +50,7 @@ const NewQuestion = () => {
     e.preventDefault();
     const question = { title: title, body: body, keywords: keywords };
     const token = localStorage.getItem('askmeanything_token');
-    fetch(process.env.QUESTION_URL + 'create/', {
+    fetch(process.env.REACT_APP_QUESTION_URL + 'create/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": "Bearer "+ JSON.parse(token) },
       body: JSON.stringify(question)

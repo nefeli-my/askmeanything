@@ -16,7 +16,7 @@ const MyAnswers = () => {
   useEffect(() => {
     // fetch questions when component is loaded
     setLoading(true);
-    fetch(process.env.QNA_URL + 'getquestions/user',
+    fetch(process.env.REACT_APP_QNA_URL + 'getquestions/user',
         {
           method: 'GET',
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}

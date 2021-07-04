@@ -22,7 +22,7 @@ const MyProfile = () => {
   useEffect(() => {
     // fetch user's account information when component is mounted
     // authenticator microservice endpoint accessed
-    fetch(process.env.AUTH_URL + 'get',
+    fetch(process.env.REACT_APP_AUTH_URL + 'get',
         {
           method: 'GET',
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}

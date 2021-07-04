@@ -13,7 +13,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-cors({origin: process.env.FRONT_URL});
+app.use(cors({origin: process.env.FRONT_URL}));
 app.use(bodyParser.json());
 
 app.use('/general/',generalRouter);

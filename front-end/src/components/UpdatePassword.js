@@ -44,7 +44,7 @@ const UpdatePassword = () => {
       NotificationManager.error('Password confirmation failed, please try again.','Error');
       return;
     }
-    fetch(process.env.AUTH_URL + 'update',
+    fetch(process.env.REACT_APP_AUTH_URL + 'update',
         {
           method: 'PATCH',
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)},

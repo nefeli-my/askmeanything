@@ -43,7 +43,7 @@ const UpdateName = () => {
   // update name
   function handleSubmit(e) {
     e.preventDefault(e);
-    fetch(process.env.AUTH_URL + 'update',
+    fetch(process.env.REACT_APP_AUTH_URL + 'update',
         {
           method: 'PATCH',
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)},
