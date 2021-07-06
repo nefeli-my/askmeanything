@@ -7,28 +7,25 @@ const userRouter = require('./routes/user')
 const busRouter = require('./routes/bus')
 const passport = require('passport');
 const app = express();
-const dotenv = require('dotenv');
 const cors = require('cors');
 const redis_pool = require('redis-connection-pool');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
 const {sync_messages} = require('./startup');
 
-dotenv.config();
 
 app.use(passport.initialize())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+app.use(cors({origin: [process.env.BUS_URL, process.env.FRONT_URL]}));
 app.use(transaction({ sequelize: db.sequelize }));
 
 // Redis connection
 const TotalConnections = 10;
 const pool = redis_pool('myRedisPool', {
-  host: process.env.REDIS_HOST,   // localhost
-  port: process.env.REDIS_PORT,   // Redis Port: 6379
+  url: process.env.REDIS_URL,
   maxclients: TotalConnections,
 });
 console.log('Connected to Redis');
@@ -40,7 +37,7 @@ pool.hset('services', 'StatisticsService', JSON.stringify(['Get questions per da
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
-  let myAddress = 'http://localhost:8002/bus';
+  let myAddress = process.env.STATISTICS_URL;
   for (let i=0; i<currentSubscribers.length; i++) {
     if (currentSubscribers[i] == myAddress) {
       alreadySubscribed = true;
@@ -56,7 +53,7 @@ pool.hget('subscribers', 'channel_users', async (err, data) => {
 pool.hget('subscribers', 'channel_questions', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
-  let myAddress = 'http://localhost:8002/bus';
+  let myAddress = process.env.STATISTICS_URL;
   for (let i=0; i<currentSubscribers.length; i++) {
     if (currentSubscribers[i] == myAddress) {
       alreadySubscribed = true;
@@ -72,7 +69,7 @@ pool.hget('subscribers', 'channel_questions', async (err, data) => {
 pool.hget('subscribers', 'channel_answers', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
-  let myAddress = 'http://localhost:8002/bus';
+  let myAddress = process.env.STATISTICS_URL;
   for (let i=0; i<currentSubscribers.length; i++) {
     if (currentSubscribers[i] == myAddress) {
       alreadySubscribed = true;

@@ -24,7 +24,7 @@ const Register = () => {
     }
     // user registration through the authenticator service
     const user = { username: username, password: password, firstName: first_name, lastName: last_name, email: email };
-    fetch('http://localhost:8001/register/', {
+    fetch(process.env.REACT_APP_AUTH_URL + 'register/', {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user)

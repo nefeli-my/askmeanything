@@ -2,20 +2,18 @@ const bodyParser = require('body-parser');
 const createError = require('http-errors');
 const cors = require('cors');
 const authenticationRouter = require('./routes/authenticate');
-const dotenv = require('dotenv');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const app = express();
 
-dotenv.config();
 
 // middlewares
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+app.use(cors({origin: [process.env.ANALYTICS_URL, process.env.QNA_URL]}));
 app.use(bodyParser.json());
 
 app.use('/authenticate',authenticationRouter);

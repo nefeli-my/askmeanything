@@ -4,21 +4,19 @@ const path = require('path');
 const logger = require('morgan');
 const redis_pool = require('redis-connection-pool');
 const app = express();
-const dotenv = require('dotenv');
 const axios = require("axios");
-
-dotenv.config();
+const cors = require('cors');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors({origin: [process.env.AUTH_URL, process.env.QUESTION_URL, process.env.ANSWER_URL]}));
 
 // Redis connection
 const TotalConnections = 10;
 const pool = redis_pool('myRedisPool', {
-  host: process.env.REDIS_HOST,   // localhost
-  port: process.env.REDIS_PORT,   // Redis Port: 6379
+  url: process.env.REDIS_URL,
   maxclients: TotalConnections,
 });
 console.log('Connected to Redis');

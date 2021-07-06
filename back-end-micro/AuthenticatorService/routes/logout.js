@@ -3,7 +3,6 @@ const JWTstrategy = require('passport-jwt').Strategy
 const passport = require('passport');
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken')
 
 passport.use('token', new JWTstrategy(
     {

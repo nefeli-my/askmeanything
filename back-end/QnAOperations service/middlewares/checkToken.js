@@ -1,7 +1,5 @@
 const axios = require('axios');
-const dotenv = require('dotenv');
-dotenv.config()
-const BusURL = 'http://localhost:' + process.env.BUS_PORT;
+const BusURL = process.env.ESB_URL;
 
 module.exports = function(req,res,next) {
     axios.get(BusURL + '/authenticate', {

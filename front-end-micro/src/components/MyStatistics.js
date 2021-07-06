@@ -29,7 +29,7 @@ const MyStatistics = () => {
   useEffect(() => {
     // fetch number of questions per day (only last weeks's
     // and user's data), when component is mounted
-    fetch('http://localhost:8002/user/questions',
+    fetch(process.env.REACT_APP_STATISTICS_URL + 'user/questions',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
@@ -60,7 +60,7 @@ const MyStatistics = () => {
     });
     // fetch number of answers per day (only last weeks's
     // and user's data), when component is mounted
-    fetch('http://localhost:8002/user/answers',
+    fetch(process.env.REACT_APP_STATISTICS_URL + 'user/answers',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
@@ -89,7 +89,7 @@ const MyStatistics = () => {
     });
     // fetch the user's most used keywords (when posting questions)
     // limit: 20
-    fetch('http://localhost:8002/user/keywords',
+    fetch(process.env.REACT_APP_STATISTICS_URL + 'user/keywords',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
@@ -120,7 +120,7 @@ const MyStatistics = () => {
     });
     // if the user hasn't asked any questions yet, show
     // most popular keywords in general instead
-    fetch('http://localhost:8002/general/keywords',
+    fetch(process.env.REACT_APP_ANALYTICS_URL + 'general/keywords',
     {
       method: 'GET',
       headers: { "Content-Type": "application/json" }

@@ -20,10 +20,10 @@ const ViewQuestion = () => {
     //  is mounted, through the qnaoperations service
     let url;
     if(token){
-      url = 'http://localhost:8002/getanswers/'
+      url = process.env.REACT_APP_QNA_URL + 'getanswers/'
     }
     else{
-      url = 'http://localhost:8002/getanswers/unsigned/'
+      url = process.env.REACT_APP_QNA_URL + 'getanswers/unsigned/'
     }
     fetch(url+id,
     {
@@ -75,7 +75,7 @@ const ViewQuestion = () => {
     e.preventDefault(e);
     // post new answer (for logged in users only, private route used)
     let answer = {questionId: question.id, body: body};
-    fetch('http://localhost:8002/createanswer/', {
+    fetch(process.env.REACT_APP_QNA_URL + 'createanswer/', {
       method: 'POST',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) },
       body: JSON.stringify(answer)

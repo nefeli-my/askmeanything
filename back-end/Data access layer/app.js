@@ -10,18 +10,16 @@ const answerRouter = require('./routes/QnAService/createAnswer');
 const questionRouter = require('./routes/QnAService/createQuestion');
 const analyticsRouter = require('./routes/Analytics');
 const app = express();
-const dotenv = require('dotenv');
 const cors = require('cors');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
 
-dotenv.config();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors());
+app.use(cors({origin: [process.env.ANALYTICS_URL, process.env.QNA_URL, process.env.AUTH_URL]}));
 app.use(bodyParser.json());
 app.use(transaction({ sequelize: db.sequelize }));
 

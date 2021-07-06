@@ -3,8 +3,6 @@ var router = express.Router();
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 const JWTstrategy = require('passport-jwt').Strategy
 const passport = require('passport');
-const dotenv = require('dotenv')
-dotenv.config()
 
 passport.use('token', new JWTstrategy(
     {
