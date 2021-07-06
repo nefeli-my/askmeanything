@@ -1,6 +1,5 @@
 import '../css/Documentation.css';
 import {Container, Row, Col} from "react-bootstrap";
-//import { FileSaver } from 'file-saver';
 import nodejs from '../assets/nodejs.png';
 import expressjs from '../assets/expressjs.png';
 import sequelize from '../assets/sequelize.png';

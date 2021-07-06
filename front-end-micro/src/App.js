@@ -54,7 +54,6 @@ function App() {
             <ContactForm/>
           </Route>
           <Route path="/browse-unsigned">
-            <Navbar/>
             <BrowseUnassigned/>
           </Route>
           <Route path="/error-500">
@@ -65,9 +64,7 @@ function App() {
             <ViewQuestion/>
           </Route>
           <Route path="/general-statistics">
-            <Navbar/>
             <GeneralStatistics/>
-            <Footer/>
           </Route>
           <Route path="/documentation">
             <Navbar/>

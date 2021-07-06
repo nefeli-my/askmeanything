@@ -22,7 +22,6 @@ import UpdateName from './components/UpdateName';
 import UpdatePw from './components/UpdatePassword';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
-import Loading from './components/Loading';
 
 function App() {
   return (
@@ -40,9 +39,6 @@ function App() {
             <Login/>
             <Footer/>
           </Route>
-          <Route path="/loading">
-            <Loading/>
-          </Route>
           <Route path="/register">
             <Navbar/>
             <Register/>
@@ -58,7 +54,6 @@ function App() {
             <Footer/>
           </Route>
           <Route path="/browse-unsigned">
-            <Navbar/>
             <BrowseUnassigned/>
           </Route>
           <Route path="/error-500">
@@ -69,9 +64,7 @@ function App() {
             <ViewQuestion/>
           </Route>
           <Route path="/general-statistics">
-            <Navbar/>
             <GeneralStatistics/>
-            <Footer/>
           </Route>
           <Route path="/documentation">
             <Navbar/>

@@ -86,7 +86,7 @@ const Browse = () => {
 
   function getQuestions(e) {
     e.preventDefault();
-    // unfiltered seach
+    // unfiltered search
     if (!author && !keyword && !startDate) {
       // when the user clicks the 'show more' button at the end of the page
       // the offset is increased by 10, thus loading more questions
