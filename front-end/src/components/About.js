@@ -8,8 +8,8 @@ const About = () => {
       <h3><b> About </b></h3>
       <p>
         The 'askmeanything' project was developed under the supervision
-        and guidance of the National Technical University of Athens (NTUA) professors
-        <a href="http://www.survey.ntua.gr/en/dep/veskoukis-vasileios"> Vescoukis
+        and guidance of the National Technical University of Athens (NTUA) professors <a
+        href="http://www.survey.ntua.gr/en/dep/veskoukis-vasileios"> Vescoukis
         Vassilios</a>, <a href="https://www.ece.ntua.gr/en/staff/71"> Papaspyrou
         Nikolaos </a> and <a href="https://www.ece.ntua.gr/en/staff/39"> Tsanakas
         Panayiotis</a>, as part of the 'Software as a Service' course of the

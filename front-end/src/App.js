@@ -22,6 +22,7 @@ import UpdateName from './components/UpdateName';
 import UpdatePw from './components/UpdatePassword';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
+import Loading from './components/Loading';
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
             <Navbar/>
             <Login/>
             <Footer/>
+          </Route>
+          <Route path="/loading">
+            <Loading/>
           </Route>
           <Route path="/register">
             <Navbar/>
