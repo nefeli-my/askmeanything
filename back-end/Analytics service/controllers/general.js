@@ -1,5 +1,6 @@
 const {questionsPerDay, answersPerDay, questionsPerKeyword} = require('../AnalyticsService');
 
+//controllers for calling the corresponding function in AnalyticsService concerning the general statistics
 module.exports = {
     async qPerDay(req, res, next) {
         try {

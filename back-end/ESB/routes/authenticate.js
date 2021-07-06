@@ -4,6 +4,7 @@ const axios = require('axios');
 
 const AuthenticatorURL = process.env.AUTH_URL;
 
+//pass authorization header to Authenticator service to confirm validity of given token
 router.get('/',(req, res, next) => {
     axios.get(AuthenticatorURL + '/check', {
         headers: {

@@ -15,6 +15,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+//check the validity of given token
 router.get('/', passport.authenticate('token',{session:false}),
     (req, res) => {
         res.send({

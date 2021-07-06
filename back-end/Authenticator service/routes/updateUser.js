@@ -16,6 +16,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+//update personal info of signed-in user
 router.patch('/',  passport.authenticate('token',{session:false}), update);
 
 module.exports = router;

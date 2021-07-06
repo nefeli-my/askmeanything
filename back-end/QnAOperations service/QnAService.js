@@ -1,8 +1,8 @@
 const axios = require('axios');
-const dotenv = require('dotenv');
-dotenv.config();
+
 const DataLayerUrl = process.env.DATA_URL;
 
+//functions to retrieve the appropriate data from data access layer
 module.exports = {
     async Qcreate(question){
       try {

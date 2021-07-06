@@ -1,5 +1,6 @@
 const {Qcreate, Qgetall, QgetallRestricted,Qgetfiltered, Qgetbyuser} = require( "../QnAService" );
 
+//controllers for calling the corresponding function in QnAService for the operations concerning the questions
 module.exports = {
     async create(req, res, next) {
       try {

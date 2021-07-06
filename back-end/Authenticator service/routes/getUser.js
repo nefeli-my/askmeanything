@@ -16,6 +16,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+//get personal info of signed-in user
 router.get('/', passport.authenticate('token',{session:false}), get);
 
 module.exports = router;

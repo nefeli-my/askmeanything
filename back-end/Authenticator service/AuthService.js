@@ -2,6 +2,7 @@ const axios = require('axios');
 
 const DataLayerUrl = process.env.DATA_URL;
 
+//functions to retrieve the appropriate data from data access layer
 module.exports = {
     async Usercreate(user){
         try {

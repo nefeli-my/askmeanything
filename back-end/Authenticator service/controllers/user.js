@@ -1,5 +1,6 @@
 const {Usercreate, Uservalidate, Userupdate, Userget} = require('../AuthService');
 
+//controllers for calling the corresponding function in AuthService concerning the desired operation to be concluded
 module.exports = {
     async create(req, res,next) {
         try {
@@ -43,7 +44,7 @@ module.exports = {
             console.log(err)
         }
     },
-    async update(req, res,next) {
+    async update(req, res, next) {
         try {
             req.body.user = req.user;
             const updatedUser = await Userupdate(req.body);

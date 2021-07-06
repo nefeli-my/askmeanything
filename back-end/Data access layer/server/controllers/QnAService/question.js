@@ -6,6 +6,7 @@ const Keyword = models.Keyword;
 const Keyword_Question = models.Question_Keyword;
 const Answer = models.Answer;
 
+//db operations for the QnAOperations service concerning the questions
 module.exports = {
     async create(req, res, next) {
         try {

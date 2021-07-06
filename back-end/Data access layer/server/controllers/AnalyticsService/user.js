@@ -7,6 +7,7 @@ const Keyword = models.Keyword;
 const Keyword_Question = models.Question_Keyword;
 const Answer = models.Answer;
 
+//db operations for the Statistics service concerning based upon signed-in user data
 module.exports = {
     async questionsPerDay(req, res, next) {
         try {

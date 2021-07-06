@@ -11,6 +11,7 @@ passport.use('signin', new LocalStrategy((async function (username, password, do
         .then(data => done(null,data))
 })))
 
+//validate the given credentials and provide token with expiration after 6 hours
 router.post('/', passport.authenticate('signin',{session:false}),(req,res,next)=>{
     let username = req.user;
     let accessToken = jwt.sign({username}, process.env.SECRET, {expiresIn: '6h'});

@@ -3,10 +3,13 @@ const User = models.User;
 const bcrypt = require('bcryptjs');
 const { Op } = require("sequelize");
 
+//store the hashed password
 function getHashedPassword (password) {
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     return hash;
 }
+
+//db operations for the Authenticator service
 module.exports = {
     async create(req, res,next) {
         const { username, email, firstName, lastName, password} = req.body;

@@ -1,5 +1,6 @@
 const {Acreate, Aget, AgetRestricted} = require( "../QnAService" );
 
+//controllers for calling the corresponding function in QnAService for the operations concerning the answers
 module.exports = {
     async create(req,res,next){
       try {

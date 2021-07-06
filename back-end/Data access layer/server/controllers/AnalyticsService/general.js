@@ -6,6 +6,7 @@ const Question = models.Question;
 const Keyword = models.Keyword;
 const Keyword_Question = models.Question_Keyword;
 
+//db operations for the Statistics service concerning general data
 module.exports = {
     async questionsPerDay(req, res, next) {
         try {

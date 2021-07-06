@@ -14,15 +14,16 @@ const cors = require('cors');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
 
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+//let only Analytics service, QnAOperations service and Authenticator service access data access layer
 app.use(cors({origin: [process.env.ANALYTICS_URL, process.env.QNA_URL, process.env.AUTH_URL]}));
 app.use(bodyParser.json());
 app.use(transaction({ sequelize: db.sequelize }));
 
+//6 self-explanatory routes
 app.use('/user', userRouter);
 app.use('/question/create',questionRouter);
 app.use('/answer/create', answerRouter);
@@ -30,12 +31,12 @@ app.use('/answer/get', getAnswerRouter);
 app.use('/question/get', getQuestionRouter);
 app.use('/analytics/', analyticsRouter);
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
+// error handler
 app.use(function (err, req, res, next ){
   const status = err.status || 500;
   if( status >= 500 || req.app.get('env') === 'development'){
@@ -52,7 +53,6 @@ app.use(function (err, req, res, next ){
   }
 })
 
-// error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   const status = err.status || 500;
