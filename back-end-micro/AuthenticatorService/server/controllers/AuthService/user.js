@@ -3,7 +3,7 @@ const User = models.User;
 const bcrypt = require('bcryptjs');
 const axios = require("axios");
 const { Op } = require("sequelize");
-const busURL = process.env.BUS_URL + 'bus';
+const busURL = process.env.BUS_URL + '/bus';
 
 function getHashedPassword (password) {
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
