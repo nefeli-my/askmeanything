@@ -22,7 +22,7 @@ const Documentation = () => {
         (This page does not, by any means, replace the required project's documentation
         using UML diagrams, only complements it. The project's documentation using Unified Modeling
         Language, can be found
-        <a href="askmeanything_v2.vpp" download> here</a>.)
+        <a href="askmeanything-25.vpp" download> here</a>.)
       </i></p>
       <b> Technologies used for the project: </b>
       <Container className="images">
