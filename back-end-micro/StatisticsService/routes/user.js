@@ -19,6 +19,8 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+// personalized statistics get endpoints
+// (user's token validation required)
 router.get('/questions',passport.authenticate('token',{session:false}), questionsPerDay);
 router.get('/answers',passport.authenticate('token',{session:false}),answersPerDay);
 router.get('/keywords',passport.authenticate('token',{session:false}),questionsPerKeyword);

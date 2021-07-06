@@ -1,7 +1,8 @@
 const models = require('../models');
 const Messages = models.Messages;
 
-
+// create bus message and get last message stored in microservice's database
+// Sequelize ORM used
 module.exports = {
     async create(message_id) {
         return Messages.findOne({

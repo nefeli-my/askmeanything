@@ -16,6 +16,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+// get user's account information route (passport middleware used for user's token validation)
 router.get('/', passport.authenticate('token',{session:false}), get);
 
 module.exports = router;

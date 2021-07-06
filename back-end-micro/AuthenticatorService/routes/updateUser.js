@@ -16,6 +16,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+// update user's account information route (passport middleware used for user's token validation)
 router.patch('/',  passport.authenticate('token',{session:false}), update);
 
 module.exports = router;

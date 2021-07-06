@@ -14,7 +14,7 @@ const cors = require('cors');
 const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
 
-
+// middlewares
 app.use(passport.initialize())
 app.use(logger('dev'));
 app.use(express.json());
@@ -32,11 +32,13 @@ const pool = redis_pool('myRedisPool', {
 });
 console.log('Connected to Redis');
 
+// services provided by the Authenticator microservice
 pool.hset('services', 'AuthenticatorService', JSON.stringify(['Create a new user','Authenticate a user',
                                                                               'Get information of user', 'Update information of existing user']),
                                                                               ()=>{});
 
 
+// the Authenticator microservice is the publisher in the users channel
 pool.hget('publishers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;

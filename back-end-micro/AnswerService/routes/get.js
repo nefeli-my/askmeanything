@@ -16,6 +16,7 @@ passport.use('token', new JWTstrategy(
     }
     )
 )
+// get answers of given question (endpoints for signed-in and unsigned users)
 router.get('/unsigned/:id', findAllRestricted);
 router.get('/:id',passport.authenticate('token',{session:false}), findAll);
 

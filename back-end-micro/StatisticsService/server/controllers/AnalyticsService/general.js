@@ -6,6 +6,9 @@ const Question = models.Question;
 const Keyword = models.Keyword;
 const Keyword_Question = models.Question_Keyword;
 
+// questionsPerDay, answersPerDay, questionsPerKeyword controllers
+// (for generalized statistics)
+// Sequelize ORM used
 module.exports = {
     async questionsPerDay(req, res, next) {
         try {

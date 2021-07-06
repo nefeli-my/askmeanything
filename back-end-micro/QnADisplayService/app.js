@@ -12,6 +12,7 @@ const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
 const {sync_messages} = require('./startup');
 
+// middlewares
 app.use(passport.initialize())
 app.use(logger('dev'));
 app.use(express.json());
@@ -29,8 +30,13 @@ const pool = redis_pool('myRedisPool', {
 });
 console.log('Connected to Redis');
 
-pool.hset('services', 'QnaDisplayService', JSON.stringify(['Create a new question.']), ()=>{});
 
+pool.hset('services', 'QnADisplayService', JSON.stringify(['Get questions based on date, author and keyword',
+                                                                        'Get question associated with a user.',
+                                                                        'Get questions after a specific offset',
+                                                                        'Get questions visible to visitors.']), ()=>{});
+
+// subscribe to users channel
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
@@ -47,6 +53,7 @@ pool.hget('subscribers', 'channel_users', async (err, data) => {
   }
 })
 
+// subscribe to questions channel
 pool.hget('subscribers', 'channel_questions', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
@@ -63,6 +70,7 @@ pool.hget('subscribers', 'channel_questions', async (err, data) => {
   }
 })
 
+// subscribe to answers channel
 pool.hget('subscribers', 'channel_answers', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;

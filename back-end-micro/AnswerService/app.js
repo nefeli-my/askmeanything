@@ -13,7 +13,7 @@ const transaction = require('./middlewares/transaction');
 const db = require('./server/models/index');
 const {sync_messages} = require('./startup');
 
-
+// middlewares
 app.use(passport.initialize())
 app.use(logger('dev'));
 app.use(express.json());
@@ -30,8 +30,11 @@ const pool = redis_pool('myRedisPool', {
 });
 console.log('Connected to Redis');
 
-pool.hset('services', 'AnswerService', JSON.stringify(['Create an answer to a specific question.']), ()=>{});
+// services offered by the Answer microservice
+pool.hset('services', 'AnswerService', JSON.stringify(['Create an answer to a specific question.',
+                                                                      'Get all answers of clicked question']), ()=>{});
 
+// the Answer Microservice is the publisher in the answers channel
 pool.hget('publishers', 'channel_answers', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
@@ -48,6 +51,7 @@ pool.hget('publishers', 'channel_answers', async (err, data) => {
   }
 })
 
+// subscribe the Answer Microservice to the users channel
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
@@ -64,6 +68,7 @@ pool.hget('subscribers', 'channel_users', async (err, data) => {
   }
 })
 
+// subscribe the Answer Microservice to the questions channel
 pool.hget('subscribers', 'channel_questions', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;

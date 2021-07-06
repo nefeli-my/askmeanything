@@ -2,6 +2,7 @@ const models = require('../models');
 const Question = models.Question;
 const Keyword = models.Keyword;
 
+// create question using Sequelize ORM after corresponding notification by bus
 module.exports = {
     async create(question) {
         try {

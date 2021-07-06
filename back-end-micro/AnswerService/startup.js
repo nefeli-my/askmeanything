@@ -2,6 +2,7 @@ const {getLast, create} = require('./server/controllers/message')
 const {create: createU} = require('./server/controllers/user')
 const {create: createQ} = require('./server/controllers/question')
 
+// microservice checks for missed bus messages everytime it is started up
 module.exports = {
     async sync_messages(pool) {
         pool.hget('bus', 'messages', async (err, data) => {

@@ -6,7 +6,8 @@ const Keyword = models.Keyword;
 const axios = require("axios");
 const busURL = process.env.BUS_URL + '/bus';
 
-
+// create answer and get answers controllers
+// implemented using the Sequelize ORM
 module.exports = {
     async create(req,res,next){
         let answer = req.body;

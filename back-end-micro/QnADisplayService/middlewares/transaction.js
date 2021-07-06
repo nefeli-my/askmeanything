@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const cls = require('cls-hooked')
 
-
+//middleware to assure that the db operations for a specific service are made using a transaction
 module.exports = function({ sequelize }) {
     if (!sequelize || !(sequelize instanceof Sequelize)) {
         throw new Error('must be passed an instance of Sequelize');

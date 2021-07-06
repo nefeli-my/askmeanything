@@ -17,6 +17,8 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+// routes for getting questions
+// passport middleware used for user's token validation when needed
 router.get('/filters', passport.authenticate('token',{session:false}), findFiltered);
 router.get('/unsigned',  findAllRestricted);
 router.get('/user',passport.authenticate('token',{session:false}),findByUser);

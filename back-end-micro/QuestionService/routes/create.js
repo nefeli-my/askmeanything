@@ -17,6 +17,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+// create question route (user's token validation required)
 router.post('/', passport.authenticate('token',{session:false}), create);
 
 module.exports = router;

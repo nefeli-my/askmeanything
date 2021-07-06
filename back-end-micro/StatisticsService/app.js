@@ -30,10 +30,12 @@ const pool = redis_pool('myRedisPool', {
 });
 console.log('Connected to Redis');
 
+// services provided by the Statistics microservice
 pool.hset('services', 'StatisticsService', JSON.stringify(['Get questions per day', 'Get answers per day',
                                                                           'Get most used keywords','Get questions per day by a user',
                                                                           'Get answers per day by a user','Get most used keywords by a user']), ()=>{});
 
+// subscribe the Statistics microservice to the users channel
 pool.hget('subscribers', 'channel_users', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
@@ -50,6 +52,7 @@ pool.hget('subscribers', 'channel_users', async (err, data) => {
   }
 })
 
+// subscribe the Statistics microservice to the questions channel
 pool.hget('subscribers', 'channel_questions', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;
@@ -66,6 +69,7 @@ pool.hget('subscribers', 'channel_questions', async (err, data) => {
   }
 })
 
+// subscribe the Statistics microservice to the answers channel
 pool.hget('subscribers', 'channel_answers', async (err, data) => {
   let currentSubscribers = JSON.parse(data);
   let alreadySubscribed = false;

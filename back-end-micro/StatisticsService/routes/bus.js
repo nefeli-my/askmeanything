@@ -5,6 +5,7 @@ const {create:createA} = require('../server/controllers/answer');
 const {create:createQ} = require('../server/controllers/question');
 const {create:createM} = require('../server/controllers/message');
 
+// post endpoints to receive bus messages (for handling data integrity issues)
 router.post('/', (req,res, next) => {
     let action = req.body.event.action;
     if(action === 'createUser'){

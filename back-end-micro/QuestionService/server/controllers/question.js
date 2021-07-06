@@ -6,6 +6,8 @@ const Keyword_Question = models.Question_Keyword;
 const axios = require("axios");
 const busURL = process.env.BUS_URL + '/bus';
 
+// create new question controller
+// Sequelize ORM used
 module.exports = {
     async create(req, res, next) {
         try {

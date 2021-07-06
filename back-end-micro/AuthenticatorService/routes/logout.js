@@ -15,6 +15,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+// user logout
 router.delete('/',  passport.authenticate('token',{session:false}),(req,res,next)=>{
     res.send({message:`Bye, ${req.user}!`});
 });

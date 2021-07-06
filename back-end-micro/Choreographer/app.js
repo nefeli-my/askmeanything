@@ -67,7 +67,6 @@ pool.hget('subscribers', 'channel_answers', async (err, data) => {
 
 
 // endpoints
-
 app.post('/bus', async (req, res) => {
   const event = req.body.event;
   console.log(event)

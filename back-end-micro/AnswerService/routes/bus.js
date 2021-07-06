@@ -4,6 +4,7 @@ const {create} = require('../server/controllers/user');
 const {create:createQ} = require('../server/controllers/question');
 const {create:createM} = require('../server/controllers/message');
 
+// post endpoints to accept bus messages (for handling data integrity issues)
 router.post('/', (req,res, next) => {
     let action = req.body.event.action;
     if(action === 'createUser'){

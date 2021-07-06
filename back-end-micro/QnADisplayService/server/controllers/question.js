@@ -6,7 +6,8 @@ const Keyword = models.Keyword;
 const Keyword_Question = models.Question_Keyword;
 const Answer = models.Answer;
 
-
+// create question (after notification by bus), get questions controllers
+// Sequelize ORM used
 module.exports = {
     async create(question) {
         try {

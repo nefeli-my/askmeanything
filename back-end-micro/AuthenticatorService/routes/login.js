@@ -12,6 +12,7 @@ passport.use('signin', new LocalStrategy((async function (username, password, do
         .catch(err => next(err))
 })))
 
+// user login using jwt token and passport middleware
 router.post('/', passport.authenticate('signin',{session:false}),(req,res,next)=>{
     let username = req.user;
     let accessToken = jwt.sign({username}, process.env.SECRET, {expiresIn: '6h'});

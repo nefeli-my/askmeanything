@@ -17,6 +17,7 @@ passport.use('token', new JWTstrategy(
     )
 )
 
+// answer creation endpoint (passport middleware used for token validation)
 router.post('/', passport.authenticate('token',{session:false}), create);
 
 module.exports = router;

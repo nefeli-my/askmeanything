@@ -9,6 +9,10 @@ function getHashedPassword (password) {
     const hash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     return hash;
 }
+
+// controllers for creating user, getting and updating account information,
+// validating user's credentials
+// Sequelize ORM used
 module.exports = {
     async create(req, res,next) {
         const { username, email, firstName, lastName, password} = req.body;
