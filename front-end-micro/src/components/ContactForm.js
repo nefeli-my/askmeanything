@@ -26,8 +26,7 @@ const ContactForm = () => {
         )
             .then((response) => {
                 NotificationManager.success('Your message was sent successfully!','Success!', 2000);
-                history.push('/contactus');
-
+                history.push('/');
             })
             .catch((err) => {
                 NotificationManager.error('Your message was not sent!Please try again later!','Error!', 2000);

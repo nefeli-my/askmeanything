@@ -14,7 +14,7 @@ const About = () => {
         Nikolaos </a> and <a href="https://www.ece.ntua.gr/en/staff/39"> Tsanakas
         Panayiotis</a>, as part of the 'Software as a Service' course of the
         Electrical and Computer School of Engineering (ECE) of the same university.
-        The project's goal was to create a Q&A platform where users can <br/> browse
+        The project's goal was to create a Q&A platform where users can browse
         existing questions and answers, post and answer questions, as well as
         view personalized and general usage statistics.
         <br/>

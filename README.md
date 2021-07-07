@@ -1,5 +1,5 @@
 # SaaS-25
-ask**me**anything is a project developed by two undergraduate students, [Nefeli Myropoulou](https://github.com/nefeli-my) and [Iliana Xigkou](https://github.com/IlianaXn) 
+**ask**me**anything** is a project developed by two undergraduate students, [Nefeli Myropoulou](https://github.com/nefeli-my) and [Iliana Xigkou](https://github.com/IlianaXn) 
 for the course SaaS 2021 [NTUA ECE](https://www.ece.ntua.gr/gr).   
 
 ## Purpose
@@ -85,9 +85,9 @@ for the authentication of a user.
 
 **QnAOperations service** ⟷ **ESB** ⟷ **Authenticator service**
 
-### Microservices
+### Microservices architecture
 
-The implementation of the app based on Microservices is located in the `back-end-micro` and `front-end-micro` directories.
+The implementation of the app based on Microservices architecture is located in the `back-end-micro` and `front-end-micro` directories.
 It was broken down into 
 5 microservices:
 * Authenticator service:
@@ -156,15 +156,12 @@ by this service, it is ensured that once it is functional again, it can obtain t
 missing messages from the `bus messages` field.
 
 ## Deployment
-For the deployment of the app ask**me**anything the cloud application platform
+For the deployment of the app **ask**me**anything** the cloud application platform
 [Heroku](https://www.heroku.com/) is used.
 
 The version of the app according to SOA can be found [here](https://askmeanything25-soa.herokuapp.com/).
 
 The version of the app according to Microservices architecture can be found [here](https://askmeanything25-ms.herokuapp.com/).
-
-The code of both above versions adjusted to the deployment configuration
-is located on the branch `production`.
 
 For the deployment of the app the instructions as stated below are executed given
 that one has installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):
@@ -206,8 +203,10 @@ These diagrams can be found in the VPP project `askmeanything.vpp` in the direct
 3. Component diagrams:
    - `SOA1`
    - `SOA2` (more detailed)
+   - `SOA Front-End`  
    - `Microservices1`
    - `Microservices2` (more detailed)
+   - `Microservices Front-End`
 4. Deployment diagrams:
    - `SOA`
    - `Microservices`

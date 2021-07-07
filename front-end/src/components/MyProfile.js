@@ -16,7 +16,7 @@ const MyProfile = () => {
 
   function showRegDate() {
     let newDate = (new Date(registeredAt)).toLocaleString('en-GB');
-    return newDate.substring(0,8);
+    return newDate.substring(0,10);
   }
 
   useEffect(() => {
