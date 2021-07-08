@@ -3,6 +3,8 @@ import React, {useState, useEffect} from 'react';
 import {useHistory, useParams} from "react-router-dom";
 import {NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+import Navbar from './Navbar';
+import Loading from './Loading';
 
 const ViewQuestion = () => {
   // view a question + all of its current answers
@@ -14,8 +16,10 @@ const ViewQuestion = () => {
   const [body, setAnsBody] = useState("");
   const history = useHistory();
   const token = localStorage.getItem('askmeanything_token');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     // get all answers of a chosen question when component
     //  is mounted
     let url;
@@ -31,6 +35,7 @@ const ViewQuestion = () => {
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + (token? JSON.parse(token): '') }
     })
     .then(function (res) {
+          setLoading(false);
           if (res.status === 200) {
             res.json()
                 .then(function (data) {
@@ -108,75 +113,80 @@ const ViewQuestion = () => {
 
   return (
     <div>
-      <div className="view-question">
-        {/* display question */}
-        <div className="question">
-          <h3 className="title"><b> {question.title} </b></h3>
-          {/* &nbsp; used to create empty space */}
-          <h3 className="author-on">
-            posted by user {question.Author.username} on &nbsp;
-            {(new Date(question.createdAt)).toLocaleString('en-GB')}
-          </h3>
-          {/* full question body is shown here */}
-          <div className="question-body">
-            <p> {question.body} </p>
-          </div>
-          {/* keywords display */}
-          <ul className="keyword-list">
-            {question.Keywords.map((keyword,index) =>
-              <li key={index} className="single-keyword">
-                 {keyword.word}
-              </li>
-            )}
-          </ul>
-        </div>
-        {/* display question's answers (if there are any) */}
-        { !noanswers &&
-          <ul className="answer-list">
-            <h3 className="num-answers"> { answers.length } Answers </h3>
-            {answers.map((answer) =>
-              <li key={answer.id} className="single-answer">
-                {/* &nbsp; used to create empty space */}
-                <h3 className="author-on">
-                  posted by user {answer.User.username} on &nbsp;
-                  {(new Date(answer.createdAt)).toLocaleString('en-GB')}
-                </h3>
-                <div className="question-body">
-                  <p> {answer.body} </p>
+      {loading && <Loading/>}
+      {!loading &&
+        <div>
+            <Navbar/>
+            <div className="view-question">
+                {/* display question */}
+                <div className="question">
+                    <h3 className="title"><b> {question.title} </b></h3>
+                    {/* &nbsp; used to create empty space */}
+                    <h3 className="author-on">
+                        posted by user {question.Author.username} on &nbsp;
+                        {(new Date(question.createdAt)).toLocaleString('en-GB')}
+                    </h3>
+                    {/* full question body is shown here */}
+                    <div className="question-body">
+                        <p> {question.body} </p>
+                    </div>
+                    {/* keywords display */}
+                    <ul className="keyword-list">
+                        {question.Keywords.map((keyword, index) =>
+                            <li key={index} className="single-keyword">
+                                {keyword.word}
+                            </li>
+                        )}
+                    </ul>
                 </div>
-              </li>
-            )}
-          </ul>
-        }
-        {/* in case no answers exist */}
-        { noanswers && <h3 className="no-answers-msg"> { noanswers } </h3> }
-        {/* post new answer form is only shown to logged in users */}
-        { token &&
-        <div className="your-answer">
-          <h3 className="num-answers"> Your Answer: </h3>
-          <textarea rows="8"
-                    cols="100"
-                    value={body}
-                    onChange={(e) => setAnsBody(e.target.value)}>
+                {/* display question's answers (if there are any) */}
+                {!noanswers &&
+                <ul className="answer-list">
+                    <h3 className="num-answers"> {answers.length} Answers </h3>
+                    {answers.map((answer) =>
+                        <li key={answer.id} className="single-answer">
+                            {/* &nbsp; used to create empty space */}
+                            <h3 className="author-on">
+                                posted by user {answer.User.username} on &nbsp;
+                                {(new Date(answer.createdAt)).toLocaleString('en-GB')}
+                            </h3>
+                            <div className="question-body">
+                                <p> {answer.body} </p>
+                            </div>
+                        </li>
+                    )}
+                </ul>
+                }
+                {/* in case no answers exist */}
+                {noanswers && <h3 className="no-answers-msg"> {noanswers} </h3>}
+                {/* post new answer form is only shown to logged in users */}
+                {token &&
+                <div className="your-answer">
+                    <h3 className="num-answers"> Your Answer: </h3>
+                    <textarea rows="8"
+                              cols="100"
+                              value={body}
+                              onChange={(e) => setAnsBody(e.target.value)}>
           </textarea>
-          <div className="inline-buttons">
-            {/* submit button is disabled for empty answer body */}
-            <button className="btn btn-primary btn-sm"
-                    disabled={!body}
-                    onClick={(e) => postAnswer(e)}
-            >
-              Post Your Answer
-            </button>
-            <button className="btn btn-primary btn-sm"
-                    onClick={() => setAnsBody("")}
-            >
-              Clear Answer
-            </button>
-          </div>
+                    <div className="inline-buttons">
+                        {/* submit button is disabled for empty answer body */}
+                        <button className="btn btn-primary btn-sm"
+                                disabled={!body}
+                                onClick={(e) => postAnswer(e)}
+                        >
+                            Post Your Answer
+                        </button>
+                        <button className="btn btn-primary btn-sm"
+                                onClick={() => setAnsBody("")}
+                        >
+                            Clear Answer
+                        </button>
+                    </div>
+                </div>
+                }
+            </div>
         </div>
       }
-      </div>
-      
     </div>
   );
 }

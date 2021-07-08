@@ -60,7 +60,6 @@ function App() {
             <Error500/>
           </Route>
           <Route path="/view-question/:id">
-            <Navbar/>
             <ViewQuestion/>
           </Route>
           <Route path="/general-statistics">

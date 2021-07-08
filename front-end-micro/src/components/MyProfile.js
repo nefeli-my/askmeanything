@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from "react-router-dom";
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Loading from './Loading';
 import '../css/MyProfile.css';
 
 const MyProfile = () => {
@@ -13,6 +14,7 @@ const MyProfile = () => {
   const username = localStorage.getItem('username');
   const token = localStorage.getItem('askmeanything_token');
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
 
   function showRegDate() {
     let newDate = (new Date(registeredAt)).toLocaleString('en-GB');
@@ -20,6 +22,7 @@ const MyProfile = () => {
   }
 
   useEffect(() => {
+    setLoading(true);
     // fetch user's account information when component is mounted
     // authenticator microservice endpoint accessed
     fetch(process.env.REACT_APP_AUTH_URL + 'get',
@@ -28,6 +31,7 @@ const MyProfile = () => {
           headers: {"Content-Type": "application/json", "Authorization": 'Bearer ' + JSON.parse(token)}
         })
         .then(function (res) {
+              setLoading(false);
               if (res.status === 200) {
                 res.json()
                     .then(function (data) {
@@ -59,48 +63,53 @@ const MyProfile = () => {
 
   return (
     <div>
-      <Navbar/>
-      <div className="my-profile">
-        {/* small navigation bar */}
-        <nav>
-          <a href="/profile">Account information</a>
-          <a href="/my-statistics">My askmeanything statistics</a>
-        </nav>
-        {/* display user's current account information */}
-        <div className="account-info">
-          <h3><b> Current Account Information: </b></h3>
-          {/* use in-line stylying for the display */}
-          <div className="info-line">
-            <p><b>Username:</b></p> <p id="username-state"> {username} </p>
-          </div>
-          <div className="info-line">
-            <p><b>Email Address:</b></p> <p id="email-state"> {email} </p>
-          </div>
-          <div className="info-line">
-            <p><b>Full Name:</b></p> <p id="fullname-state"> {firstName} {lastName} </p>
-          </div>
-          <div className="info-line">
-            <p><b>Registered since:</b></p> <p id="date-state"> {showRegDate()} </p>
-          </div>
+      {loading && <Loading/>}
+      {!loading &&
+        <div>
+            <Navbar/>
+            <div className="my-profile">
+                {/* small navigation bar */}
+                <nav>
+                    <a href="/profile">Account information</a>
+                    <a href="/my-statistics">My askmeanything statistics</a>
+                </nav>
+                {/* display user's current account information */}
+                <div className="account-info">
+                    <h3><b> Current Account Information: </b></h3>
+                    {/* use in-line stylying for the display */}
+                    <div className="info-line">
+                        <p><b>Username:</b></p> <p id="username-state"> {username} </p>
+                    </div>
+                    <div className="info-line">
+                        <p><b>Email Address:</b></p> <p id="email-state"> {email} </p>
+                    </div>
+                    <div className="info-line">
+                        <p><b>Full Name:</b></p> <p id="fullname-state"> {firstName} {lastName} </p>
+                    </div>
+                    <div className="info-line">
+                        <p><b>Registered since:</b></p> <p id="date-state"> {showRegDate()} </p>
+                    </div>
+                </div>
+                {/* links to update components */}
+                <div className="update-links">
+                    <Link to="/update-password" className="link">
+                        Reset password
+                    </Link> <br/>
+                    <Link to="/update-name" className="link">
+                        Change first and last name
+                    </Link> <br/>
+                    {/* links to my qna components */}
+                    <Link to="/my-questions" className="link">
+                        View the questions you have posted
+                    </Link> <br/>
+                    <Link to="/my-answers" className="link">
+                        View the questions which you have contributed to
+                    </Link>
+                </div>
+            </div>
+            <Footer/>
         </div>
-        {/* links to update components */}
-        <div className="update-links">
-          <Link to="/update-password" className="link">
-            Reset password
-          </Link> <br/>
-          <Link to="/update-name" className="link">
-            Change first and last name
-          </Link> <br/>
-          {/* links to my qna components */}
-          <Link to="/my-questions" className="link">
-            View the questions you have posted
-          </Link> <br/>
-          <Link to="/my-answers" className="link">
-            View the questions which you have contributed to
-          </Link>
-        </div>
-      </div>
-      <Footer/>
+        }
     </div>
   );
 }
