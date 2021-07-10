@@ -82,7 +82,6 @@ const Register = () => {
             />
             </Form.Group>
           </Form.Row>
-
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>Username</Form.Label>
@@ -94,7 +93,6 @@ const Register = () => {
                 onChange={(e) => setUsename(e.target.value)}
               />
             </Form.Group>
-
             <Form.Group as={Col}>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
@@ -106,7 +104,10 @@ const Register = () => {
               />
             </Form.Group>
           </Form.Row>
-
+          <p className="text-muted">
+          Please fill up your first and last names using only alphabetical values
+          and your username using only alphabetical and/or numerical characters.
+          </p>
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>Password</Form.Label>
@@ -135,7 +136,7 @@ const Register = () => {
           </Button>
         </Form>
       </div>
-      
+
     </div>
   );
 }

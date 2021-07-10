@@ -106,7 +106,10 @@ const Register = () => {
               />
             </Form.Group>
           </Form.Row>
-
+          <p className="text-muted">
+          Please fill up your first and last names using only alphabetical values
+          and your username using only alphabetical and/or numerical characters.
+          </p>
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>Password</Form.Label>
@@ -135,7 +138,7 @@ const Register = () => {
           </Button>
         </Form>
       </div>
-      
+
     </div>
   );
 }

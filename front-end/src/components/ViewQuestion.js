@@ -142,7 +142,7 @@ const ViewQuestion = () => {
                 {/* display question's answers (if there are any) */}
                 {!noanswers &&
                 <ul className="answer-list">
-                    <h3 className="num-answers"> {answers.length} Answers </h3>
+                    <h3 className="num-answers"> {answers.length} Answer(s) </h3>
                     {answers.map((answer) =>
                         <li key={answer.id} className="single-answer">
                             {/* &nbsp; used to create empty space */}
