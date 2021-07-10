@@ -10,14 +10,15 @@ const Keyword_Question = models.Question_Keyword;
 module.exports = {
     async questionsPerDay(req, res, next) {
         try {
+            const tz = req.params.tz;
             const questions = await Question.findAll({
                 attributes: [
-                    [Sequelize.literal(`DATE("createdAt")`), 'date'],
+                    [Sequelize.literal(`DATE("createdAt" at time zone '${tz}' at time zone 'utc')`), 'date'],
                     [Sequelize.literal(`COUNT(*)`), 'count']
                 ],
                 group: ['date'],
                 limit: 8,
-                order: [[Sequelize.literal(`DATE("createdAt")`), 'DESC']],
+                order: [[Sequelize.literal(`DATE("createdAt" at time zone '${tz}' at time zone 'utc')`), 'DESC']],
                 raw: true
             });
 
@@ -40,14 +41,15 @@ module.exports = {
     },
     async answersPerDay(req, res, next) {
         try {
+            const tz = req.params.tz;
             const answers = await Answer.findAll({
                 attributes: [
-                    [Sequelize.literal(`DATE("createdAt")`), 'date'],
+                    [Sequelize.literal(`DATE("createdAt" at time zone '${tz}' at time zone 'utc')`), 'date'],
                     [Sequelize.literal(`COUNT(*)`), 'count']
                 ],
                 group: ['date'],
                 limit: 8,
-                order: [[Sequelize.literal(`DATE("createdAt")`), 'DESC']],
+                order: [[Sequelize.literal(`DATE("createdAt" at time zone '${tz}' at time zone 'utc')`), 'DESC']],
                 raw: true
             });
             const criticalMoment =  moment().startOf('day').subtract(7, 'days');

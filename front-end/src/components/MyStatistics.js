@@ -38,7 +38,7 @@ const MyStatistics = () => {
     setLoading2(true);
     setLoading3(true);
     setLoading4(true);
-    fetch(process.env.REACT_APP_ANALYTICS_URL + 'user/questions',
+    fetch(process.env.REACT_APP_ANALYTICS_URL + 'user/questions/' + Intl.DateTimeFormat().resolvedOptions().timeZone.replace('/','%2F'),
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }
@@ -70,7 +70,7 @@ const MyStatistics = () => {
     });
     // fetch number of answers per day (only last weeks's
     // and user's data), when component is mounted
-    fetch(process.env.REACT_APP_ANALYTICS_URL + 'user/answers',
+    fetch(process.env.REACT_APP_ANALYTICS_URL + 'user/answers/' + Intl.DateTimeFormat().resolvedOptions().timeZone.replace('/','%2F'),
     {
       method: 'GET',
       headers: { "Content-Type": "application/json", "Authorization": 'Bearer '+ JSON.parse(token) }

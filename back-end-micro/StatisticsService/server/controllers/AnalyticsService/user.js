@@ -20,9 +20,10 @@ module.exports = {
                 raw: true
             })
             const author = user.id;
+            const tz = req.params.tz;
             const questions = await Question.findAll({
                 attributes: [
-                    [Sequelize.literal(`DATE("createdAt")`), 'date'],
+                    [Sequelize.literal(`DATE("createdAt" at time zone '${tz}' at time zone 'utc')`), 'date'],
                     [Sequelize.literal(`COUNT(*)`), 'count']
                 ],
                 where: {
@@ -31,7 +32,7 @@ module.exports = {
                 ,
                 group: ['date'],
                 limit: 8,
-                order: [[Sequelize.literal(`DATE("createdAt")`), 'DESC']],
+                order: [[Sequelize.literal(`DATE("createdAt" at time zone '${tz}' at time zone 'utc')`), 'DESC']],
                 raw: true
             });
             const criticalMoment =  moment().startOf('day').subtract(7, 'days');
@@ -59,9 +60,10 @@ module.exports = {
                 raw: true
             })
             const author = user.id;
+            const tz = req.params.tz;
             const answers = await Answer.findAll({
                 attributes: [
-                    [Sequelize.literal(`DATE("createdAt")`), 'date'],
+                    [Sequelize.literal(`DATE("createdAt" at time zone '${tz}' at time zone 'utc')`), 'date'],
                     [Sequelize.literal(`COUNT(*)`), 'count']
                 ],
                 where: {
@@ -70,7 +72,7 @@ module.exports = {
                 ,
                 group: ['date'],
                 limit: 8,
-                order: [[Sequelize.literal(`DATE("createdAt")`), 'DESC']],
+                order: [[Sequelize.literal(`DATE("createdAt" at time zone '${tz}' at time zone 'utc')`), 'DESC']],
                 raw: true
             });
             const criticalMoment =  moment().startOf('day').subtract(7, 'days');

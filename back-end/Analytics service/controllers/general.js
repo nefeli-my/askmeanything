@@ -4,7 +4,7 @@ const {questionsPerDay, answersPerDay, questionsPerKeyword} = require('../Analyt
 module.exports = {
     async qPerDay(req, res, next) {
         try {
-            const results = await questionsPerDay();
+            const results = await questionsPerDay(req.params.tz);
             if(results.error) {
                 let err = new Error(results.error.response.data.msg);
                 err.status = results.error.status;
@@ -18,7 +18,7 @@ module.exports = {
     },
     async aPerDay(req, res, next) {
         try {
-            const results = await answersPerDay();
+            const results = await answersPerDay(req.params.tz);
             if(results.error) {
                 let err = new Error(results.error.response.data.msg);
                 err.status = results.error.status;
