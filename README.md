@@ -163,6 +163,10 @@ The version of the app according to SOA can be found [here](https://askmeanythin
 
 The version of the app according to Microservices architecture can be found [here](https://askmeanything25-ms.herokuapp.com/).
 
+We note that some of the pages may take some time to load at first, due to the usage of free Heroku dynos. 
+(Heroku puts free dynos to ['sleep'](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping) if they receive no 
+web traffic during a 30-minute period).
+
 For the deployment of the app the instructions as stated below are executed given
 that one has installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):
 
