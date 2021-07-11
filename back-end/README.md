@@ -38,7 +38,7 @@ as a different app, the only one with the ability to communicate directly with t
 
 ## Enterprise Service Bus (ESB)
 The ESB is implemented as a different app for the inter-service communication and specifically
-for the authentication of a user.
+for the user's token validation everytime he wants to access protected resources via a request
 
 **Analytics service** ⟷ **ESB** ⟷ **Authenticator service**
 
