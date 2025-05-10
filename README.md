@@ -157,15 +157,7 @@ missing messages from the `bus messages` field.
 
 ## Deployment
 For the deployment of the app **ask**me**anything** the cloud application platform
-[Heroku](https://www.heroku.com/) is used.
-
-The version of the app according to SOA can be found [here](https://askmeanything25-soa.herokuapp.com/).
-
-The version of the app according to Microservices architecture can be found [here](https://askmeanything25-ms.herokuapp.com/).
-
-We note that some of the pages may take some time to load at first, due to the usage of free Heroku dynos. 
-(Heroku puts free dynos to ['sleep'](https://devcenter.heroku.com/articles/free-dyno-hours#dyno-sleeping) if they receive no 
-web traffic during a 30-minute period).
+[Heroku](https://www.heroku.com/) was used.
 
 For the deployment of the app the instructions as stated below are executed given
 that one has installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli):
@@ -214,6 +206,9 @@ These diagrams can be found in the VPP project `askmeanything-25.vpp` in the dir
 4. Deployment diagrams:
    - `SOA`
    - `Microservices`
+
   
-  
+  ![main view](https://github.com/user-attachments/assets/2ad395fd-201e-4a54-adec-e42314916f3a)
+
+
 
